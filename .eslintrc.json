@@ -76,7 +76,7 @@
       {
         "vars": "all",
         "ignoreRestSiblings": false,
-        "varsIgnorePattern": "^(is|set)[A-Z].*$"
+        "varsIgnorePattern": "^(is|set)[A-Z].*$|^(Dev)[a-zA-Z].*$"
       }
     ]
   }
