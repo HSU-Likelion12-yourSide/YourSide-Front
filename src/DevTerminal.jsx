@@ -51,6 +51,12 @@ const Terminal = () => {
             <Link to="/Notation">Notation</Link>
           </li>
           <li>
+            <Link to="/FindID">FindID</Link>
+          </li>
+          <li>
+            <Link to="/FindPW">FindPW</Link>
+          </li>
+          <li>
             <Link
               to="/DevTerminal"
               onClick={() => {
@@ -59,6 +65,9 @@ const Terminal = () => {
             >
               Dev Terminal
             </Link>
+          </li>
+          <li>
+            <Link to="/NotationExample">NotationExample</Link>
           </li>
         </ul>
       </div>
