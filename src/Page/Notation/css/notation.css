@@ -6,7 +6,7 @@
   --notation-button-color : #204598;
 }
 
-body,h1 {
+/* body,h1 {
   margin: 0;
   padding: 0;
   background-color: var(--symbol-background-color);
@@ -14,7 +14,7 @@ body,h1 {
 
 p, ul{
   padding: 0;
-}
+} */
 
 .Notation {
   display: flex;

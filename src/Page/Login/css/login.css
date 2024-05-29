@@ -12,11 +12,12 @@ body {
   background-color: var(--symbol-background-color);
 }
 
-p{
+.id>p, .pw>p{
   margin: 0;
 }
 
-input{
+
+.id>input, .pw>input{
   width: 500px;
   padding: 16px;
   border: 1px solid var(--Login-border-color);
