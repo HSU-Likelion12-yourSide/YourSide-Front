@@ -21,7 +21,7 @@
     font-size: 24px;
     cursor: pointer;
   }
-
+  
   .banner-button.left {
     left: 10px;
   }
@@ -29,8 +29,6 @@
   .banner-button.right {
     right: 10px;
   }
-
-  
   
   .banner-dots {
     position: absolute;
