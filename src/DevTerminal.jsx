@@ -51,6 +51,9 @@ const Terminal = () => {
             <Link to="/Notation">Notation</Link>
           </li>
           <li>
+            <Link to="/NotationExample">NotationExample</Link>
+          </li>
+          <li>
             <Link to="/FindID">FindID</Link>
           </li>
           <li>
@@ -67,7 +70,7 @@ const Terminal = () => {
             </Link>
           </li>
           <li>
-            <Link to="/NotationExample">NotationExample</Link>
+            <Link to="/DevMockingApi">DevMockingApi</Link>
           </li>
         </ul>
       </div>

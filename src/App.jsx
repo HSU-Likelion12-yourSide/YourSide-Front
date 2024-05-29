@@ -11,9 +11,10 @@ import Notation from './Page/Notation/components/Notation';
 import FindID from './Page/FindID/components/FindID';
 import FindPW from './Page/FindPW/components/FindPW';
 
-import DevTerminal from './DevTerminal';
-
 import NotationExample from './Page/Notation/components/NotationExample';
+
+import DevTerminal from './DevTerminal';
+import DevMockingApi from './Test/Mocking/API/DevMockingApi';
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
         <Route path="/FindID" element={<FindID />} />
         <Route path="/FindPW" element={<FindPW />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
-
+        <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/NotationExample" element={<NotationExample />} />
       </Routes>
     </Router>
