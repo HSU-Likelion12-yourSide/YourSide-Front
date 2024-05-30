@@ -22,13 +22,13 @@ const Header = () => {
           <Link to="/Notation" className="link">
             <div className="button">공지사항</div>
           </Link>
-          <Link to="./ContractReview" className="link">
+          <Link to="/ContractReview" className="link">
             <div className="button">내 계약서 검토</div>
           </Link>
-          <Link to="./WorkArrangement" className="link">
+          <Link to="/WorkArrangement" className="link">
             <div className="button">내 근로 정리</div>
           </Link>
-          <Link to="./QuestionAndAnswer" className="link">
+          <Link to="/QuestionAndAnswer" className="link">
             <div className="button">네편 현답</div>
           </Link>
         </div>

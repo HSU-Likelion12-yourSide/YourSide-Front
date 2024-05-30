@@ -19,7 +19,7 @@ const Main = () => {
           <div>이용해보세요</div>
         </div>
 
-        <div className="card-grid">
+        <div className="card-list">
           <div className="card">
             <div className="card-header">
               <div className="card-number">1</div>
@@ -32,7 +32,8 @@ const Main = () => {
               <div className="card-link">바로가기</div>
             </Link>
           </div>
-          <div className="card empty" />
+        </div>
+        <div className="card-list">
           <div className="card">
             <div className="card-header">
               <div className="card-number">2</div>
@@ -43,6 +44,8 @@ const Main = () => {
               <div className="card-link">바로가기</div>
             </Link>
           </div>
+        </div>
+        <div className="card-list">
           <div className="card">
             <div className="card-header">
               <div className="card-number">3</div>
