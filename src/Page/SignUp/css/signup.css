@@ -12,11 +12,11 @@ body {
   background-color: var(--symbol-background-color);
 }
 
-p{
+.sign-up>p{
   margin: 0;
 }
 
-input{
+.id>input, .pw>input, .email>input, .name>input, .nickname>input{
   width: 500px;
   padding: 16px;
   border: 1px solid var(--signup-border-color);
@@ -68,6 +68,7 @@ input{
 
 .id>p, .pw>p, .email>p, .name>p, .nickname>p {
   margin-bottom: 12px;
+  margin: 0;
 }
 
 
