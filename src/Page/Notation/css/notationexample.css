@@ -7,11 +7,11 @@
   --notation-font-color : #204598;
 }
 
-body,h3 {
+/* body,h3 {
   margin: 0;
   padding: 0;
   background-color: var(--symbol-background-color);
-}
+} */
 
 .NotationExample {
   display: flex;
@@ -60,7 +60,7 @@ body,h3 {
   margin-bottom: 120px;
 }
 
-button{
+.button-container>button{
   background-color: var(--notation-button-color);
   color: var(--notation-background-color);
   font-size: 15px;

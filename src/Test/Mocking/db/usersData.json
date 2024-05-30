@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "user1",
+      "password": "password1",
+      "email": "user1@example.com",
+      "name": "홍길동",
+      "nickname": "길동이"
+    },
+    {
+      "id": "2",
+      "username": "user2",
+      "password": "password2",
+      "email": "user2@example.com",
+      "name": "이몽룡",
+      "nickname": "몽룡이"
+    },
+    {
+      "id": "2776",
+      "username": "admin01",
+      "password": "1234",
+      "email": "admin@admin.com",
+      "name": "adminmin",
+      "nickname": "min"
+    },
+    {
+      "id": "0d43",
+      "username": "admin01",
+      "password": "1234",
+      "email": "admin01@likelion.com",
+      "name": "Admin",
+      "nickname": "min"
+    },
+    {
+      "id": "b2b3",
+      "username": "Admin1234",
+      "password": "101011dd",
+      "email": "lastAdmin@likelion.com",
+      "name": "Admin",
+      "nickname": "min"
+    }
+  ]
+}
