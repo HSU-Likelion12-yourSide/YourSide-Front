@@ -1,11 +1,18 @@
-\.page-container {
+.page-container {
   font-family: Arial, sans-serif;
-  padding: 20px;
   background-color: #f0f4f8;
+  width: 1920px;
+  height: 2514px;
 }
 
+
+
 .header-section {
-  text-align: center;
+  margin-top: 90px;
+  margin-left: 370px;
+  margin-right: 370px;
+  background-color: #8893a9;
+
 }
 
 .header-section h2 {
@@ -16,9 +23,8 @@
   font-weight: 600;
   line-height: 68px; 
   letter-spacing: -1.2px;  
-  margin: 60px;
-  
 }
+
 
 .header-section .highlight {
   color: var(--main-color-Sub-color, #1BBFC1);
@@ -27,15 +33,11 @@
   font-style: normal;
   font-weight: 600;
   line-height: 68px;
-  letter-spacing: -1.2px;
-}
+  letter-spacing: -1.2px;}
 
 .banner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
+    display: flex;
+    margin-top: 60px;
 }
 
 .banner-photo {
@@ -46,9 +48,11 @@
   width: 880px;
   height: 308px;
   flex-shrink: 0;
+  flex-direction: row; /* 가로로 요소들을 나열 */
 }
 
-.banner-button {
+.banner-button2 {
+  margin-right: 20px;
   width: 280px;
   height: 308px;
   background-color: #003399;
@@ -56,8 +60,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  font-size: 24px;
+  flex-direction: row; /* 가로로 요소들을 나열 */
+  
+  color: #FFF;
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px; /* 131.25% */
 }
 
 .results-section {
@@ -66,9 +76,10 @@
 }
 
 .results-section h3 {
-  text-align: center;
+ 
   margin-bottom: 20px;
   margin: 140px;
+  margin-left: 370px;
   color: var(--system-color-system-black-900, #111);
   font-family: Pretendard;
   font-size: 48px;
@@ -83,15 +94,20 @@
   flex-wrap: wrap;
   justify-content: center; /* 가로 가운데 정렬 */
   align-items: center; /* 세로 가운데 정렬 */
+  gap: 40px; /* result-card 간의 간격 설정 */
+  background: #003399;
+  width: 300px;
 
 }
 
 .result-card {
-  width: 100%;
+  width: 60%;
+  margin:0 auto;
   height: 275px;
   flex-shrink: 0;
-  background: #FFF;
+  background: #ffffff;
   box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
+  border: 1px solid #e0e0e0; /* 구분선을 추가합니다 */
 
 }
 
