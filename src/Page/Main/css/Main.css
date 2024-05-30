@@ -20,6 +20,7 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
+    gap:10px;
   }
   
   .banner-button.left {
@@ -29,6 +30,8 @@
     flex-shrink: 0;
     background: rgba(0, 0, 0, 0.60);
   }
+  
+
   
   .banner-button.right {
     right: 0px;
@@ -73,7 +76,7 @@
     border-radius: 8px;
   }
 
-  
+
   .card-list{
     display: flex;
     flex-direction: column;

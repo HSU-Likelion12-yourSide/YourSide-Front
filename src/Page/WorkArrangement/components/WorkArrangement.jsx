@@ -54,13 +54,12 @@ const QuestionAndAnswer = () => {
       <Header />
       <div className="header-section">
         <h2>
-          현재 <span className="highlight">나의 근로 상황</span>
-          <br />
+          현재 <span className="highlight">나의 근로 상황</span> <br />
           얼마나 알고 계신가요?
         </h2>
         <div className="banner-container">
           <div className="banner-photo">배너 사진</div>
-          <div className="banner-button">바로가기</div>
+          <div className="banner-button2">바로가기</div>
         </div>
       </div>
       <div className="results-section">
