@@ -1,8 +1,8 @@
-// import React from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
-// import '../css/WorkArrangement.css';
-// import Header from '../../Header/components/Header';
+import '../css/WorkArrangement.css';
+import Header from '../../Header/components/Header';
 
 // const data = {
 //   results: [
@@ -47,37 +47,37 @@
 //   ],
 // };
 
-// const QuestionAndAnswer = () => {
-//   return (
-//     <div className="page-container">
-//       <Header />
-//       <div className="header-section">
-//         <h2>
-//           현재 <span className="highlight">나의 근로 상황</span> <br />
-//           얼마나 알고 계신가요?
-//         </h2>
-//         <div className="banner-container">
-//           <div className="banner-photo">배너 사진</div>
-//           <div className="banner-button2">바로가기</div>
-//         </div>
-//       </div>
-//       <div className="results-section">
-//         <h3>다른 결과지들은 어떨까?</h3>
-//         {data.results.map(result => (
-//           <ResultCard
-//             key={result.id}
-//             title={result.title}
-//             detail={result.detail}
-//             description={result.description}
-//             conditions={result.conditions}
-//           />
-//         ))}
-//       </div>
+const QuestionAndAnswer = () => {
+  return (
+    <div className="page-container">
+      <Header />
+      {/* <div className="header-section">
+        <h2>
+          현재 <span className="highlight">나의 근로 상황</span> <br />
+          얼마나 알고 계신가요?
+        </h2>
+        <div className="banner-container">
+          <div className="banner-photo">배너 사진</div>
+          <div className="banner-button2">바로가기</div>
+        </div>
+      </div>
+      <div className="results-section">
+        <h3>다른 결과지들은 어떨까?</h3>
+        {data.results.map(result => (
+          <ResultCard
+            key={result.id}
+            title={result.title}
+            detail={result.detail}
+            description={result.description}
+            conditions={result.conditions}
+          />
+        ))}
+      </div>
 
-//       <button className="load-more-button">더보기</button>
-//     </div>
-//   );
-// };
+      <button className="load-more-button">더보기</button> */}
+    </div>
+  );
+};
 
 // const ResultCard = ({ title, detail, description, conditions }) => {
 //   return (
@@ -114,4 +114,4 @@
 //   ).isRequired,
 // };
 
-// export default QuestionAndAnswer;
+export default QuestionAndAnswer;

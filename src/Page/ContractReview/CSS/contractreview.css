@@ -1,0 +1,80 @@
+:root{
+  --font-color : #767676;
+  --symbol-background-color : #EFF6FE;
+  --notation-background-color : #FFFFFF;
+  --notation-border-color : #E5E5EC;
+  --notation-button-color : #204598;
+}
+
+.contract-review{
+  background-color: yellow;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.contract-review>.container{
+  /* background-color: greenyellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1180px;
+  height: 100%;
+}
+.contract-review>.container>.intro{
+  /* background-color: wheat; */
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.intro>h1{
+  /* background-color: aqua; */
+  margin: 0px 180px 0px 0px;
+}
+
+.contract-review>.container>.contents{
+  /* background-color: #204598; */
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.contract-review>.container>.contents>.list{
+  /* background-color: tomato; */
+  margin-right: 40px;
+  width: 241px;
+  height: 698px;
+  border: 1px solid black;
+}
+
+.contract-review>.container>.contents>.standard-contract{
+  /* background-color: blueviolet; */
+  width: 900px;
+  border: 1px solid black;
+}
+
+#notice{
+  color: var(--notation-button-color);
+}
+
+.contract-review>.container>.contents>.standard-contract>.info{
+  /* background-color: aqua; */
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* 
+.contract-review>.standard-contract>div>div{
+  border: 1px solid black;
+}
+
+.contract-review>.standard-contract>div>div>div{
+  border: 1px solid black;
+} */

@@ -6,12 +6,6 @@
   --signup-button-color : #204598;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--symbol-background-color);
-}
-
 .sign-up>p{
   margin: 0;
 }
@@ -24,6 +18,7 @@ body {
 
 /* .sign 컴포넌트 */
 .Sign-Up {
+  background-color: var(--symbol-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +35,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 40%;
-  height: 90%;
+  width: 800px;
+  height: 100%;
   box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 }
 
