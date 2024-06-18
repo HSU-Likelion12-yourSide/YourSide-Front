@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/QuestionAndAnswer.css';
 import Header from '../../Header/components/Header';
-import Footer from '../../Footer/components/Footer';
 
 const App = () => {
   const popularPosts = [
@@ -58,7 +57,6 @@ const App = () => {
           <button className="view-more-button">자세히 보기</button>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };
