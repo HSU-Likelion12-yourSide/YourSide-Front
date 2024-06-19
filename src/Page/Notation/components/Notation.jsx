@@ -36,9 +36,7 @@ const Notation = () => {
       </div>
       <div className="pagination">
         <div>이전</div>
-        <div>
-          <p>1</p>
-        </div>
+        <div>1</div>
         <div>이후</div>
       </div>
     </div>

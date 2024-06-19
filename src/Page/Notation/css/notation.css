@@ -6,17 +6,8 @@
   --notation-button-color : #204598;
 }
 
-/* body,h1 {
-  margin: 0;
-  padding: 0;
-  background-color: var(--symbol-background-color);
-}
-
-p, ul{
-  padding: 0;
-} */
-
 .Notation {
+  background-color: var(--symbol-background-color);
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -46,7 +37,7 @@ p, ul{
   display: flex;  
   border: 1px solid var(--notation-border-color);
   padding: 21px;
-  width: 38px;
+  width: 110px;
 } 
 .content-container>div{
   display: flex;  
@@ -59,15 +50,16 @@ p, ul{
   border: 1px solid var(--notation-border-color);
   padding: 21px;
   text-align: center;
-  width: 98px;
-}
-
-#notation{
-  color: var(--notation-button-color);
+  width: 130px;
 }
 
 .pagination {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 80px;
+}
+
+#notation{
+  color: var(--notation-button-color);
 }
