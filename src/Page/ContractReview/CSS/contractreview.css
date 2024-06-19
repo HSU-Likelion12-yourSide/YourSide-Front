@@ -7,12 +7,12 @@
 }
 
 .contract-review{
-  background-color: yellow;
+  /* background-color: yellow; */
   display: flex;
   box-sizing: border-box;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* 변경된 속성 */
 }
 
 .contract-review>.container{
@@ -29,6 +29,7 @@
   box-sizing: border-box;
   justify-content: center;
   flex-direction: row;
+  margin-bottom: 120px;
 }
 
 .intro>h1{
@@ -52,6 +53,22 @@
   border: 1px solid black;
 }
 
+.contract-review>.container>.contents>.list>div{
+  margin-left: 21px;
+  width: 200px;
+}
+
+.contract-review>.container>.contents>.list>h2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 80px 17px 79px;
+}
+
+.contract-review>.container>.contents>.list>div>div{
+  margin: 13px 9px 13px 9px;
+}
+
 .contract-review>.container>.contents>.standard-contract{
   /* background-color: blueviolet; */
   width: 900px;
@@ -59,10 +76,18 @@
 }
 
 #notice{
-  color: var(--notation-button-color);
+  color: #204598;
+}
+.contract-review>.container>.contents>.standard-contract>h2{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0px 50px 0px;
+}
+.contract-review>.container>.contents>.standard-contract>div{
+  margin: 0px 50px 40px 50px;
 }
 
-.contract-review>.container>.contents>.standard-contract>.info{
+.contract-review>.container>.contents>.standard-contract>div>.info{
   /* background-color: aqua; */
   display: flex;
   box-sizing: border-box;
