@@ -1,13 +1,13 @@
 :root{
   --font-color : #767676;
   --symbol-background-color : #EFF6FE;
-  --notation-background-color : #FFFFFF;
-  --notation-border-color : #E5E5EC;
-  --notation-button-color : #204598;
+  --contract-review-background-color : #FFFFFF;
+  --contract-review-border-color : #E5E5EC;
+  --contract-review-button-color : #204598;
 }
 
 .contract-review{
-  /* background-color: yellow; */
+  background-color: var(--symbol-background-color);
   display: flex;
   box-sizing: border-box;
   justify-content: center;
@@ -46,7 +46,7 @@
 }
 
 .contract-review>.container>.contents>.list{
-  /* background-color: tomato; */
+  background-color: var(--contract-review-background-color);
   margin-right: 40px;
   width: 241px;
   height: 698px;
@@ -70,13 +70,13 @@
 }
 
 .contract-review>.container>.contents>.standard-contract{
-  /* background-color: blueviolet; */
+  background-color: var(--contract-review-background-color);
   width: 900px;
   border: 1px solid black;
 }
 
 #notice{
-  color: #204598;
+  color:#204598;
 }
 .contract-review>.container>.contents>.standard-contract>h2{
   display: flex;
