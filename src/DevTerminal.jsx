@@ -8,7 +8,7 @@ const Terminal = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: '30vh',
+        marginTop: '20vh',
       }}
     >
       <h1>네편 프로젝트 with 멋사</h1>

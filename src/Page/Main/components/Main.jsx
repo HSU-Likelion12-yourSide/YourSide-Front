@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../../Footer/components/Footer';
 
 const Main = () => {
   return (
@@ -18,7 +17,6 @@ const Main = () => {
       <Link to="/DevTerminal">
         <button>개발 터미널로 이동</button>
       </Link>
-      <Footer />
     </div>
   );
 };
