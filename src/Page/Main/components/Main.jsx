@@ -1,22 +1,69 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import slidShow from '../image/slide-show.png';
+import contractReviewIntro from '../image/contract-review-intro.png';
+import workArrangementIntro from '../image/work-arrangement-intro.png';
+import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
+import '../css/main.css';
 
 const Main = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '40vh',
-        border: '1px solid black',
-      }}
-    >
-      <h1>네편 프로젝트 with 멋사</h1>
-      <h3>현재 페이지 파일 이름은 Main.jsx 입니다.</h3>
-      <Link to="/DevTerminal">
-        <button>개발 터미널로 이동</button>
-      </Link>
+    <div className="main">
+      <div className="slide-show">
+        <div>좌</div>
+        <img src={slidShow} alt="" />
+        <div>우</div>
+      </div>
+      <div className="container">
+        <div className="intro">
+          <h1>이렇게 이용해보세요</h1>
+        </div>
+
+        <div className="contents">
+          <div className="contract-review-intro">
+            <div className="group">
+              <div id="number">1</div>
+              <div>내 계약서 검토</div>
+              <div>지피지기 백전백승!</div>
+              <div>근로 계약서에 유의깊게 봐야할 항목을 확인해봐요</div>
+              <div id="short-cut">바로가기</div>
+            </div>
+            <div id="image">
+              <img src={contractReviewIntro} alt="" />
+            </div>
+          </div>
+
+          <div className="work-arrangement-intro">
+            <div id="image">
+              <img src={workArrangementIntro} alt="" />
+            </div>
+            <div className="group">
+              <div id="number">2</div>
+              <div>내 근로 정리</div>
+              <div>나의 근로 현황을 한 눈에!</div>
+              <div>
+                혹시 놓치고 있는 급여가 얼마를 받을 수 있는 지 확인해 봐요.
+              </div>
+              <div id="short-cut">바로가기</div>
+            </div>
+          </div>
+
+          <div id="question-and-answer-intro">
+            <div className="group">
+              <div id="number">3</div>
+              <div>네편 현답</div>
+              <div>도와줘요 네편!</div>
+              <div>
+                결과지를 토대로 나의 상황을 간단히 보여주고 궁금점에 대한 답을
+                알아가요!
+              </div>
+              <div id="short-cut">바로가기</div>
+            </div>
+            <div id="image">
+              <img src={questionAndAnswerIntro} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
