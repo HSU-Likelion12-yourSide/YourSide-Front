@@ -1,17 +1,17 @@
 import React from 'react';
 import slidShow from '../image/slide-show.png';
-import contractReviewIntro from '../image/contract-review-intro.png';
-import workArrangementIntro from '../image/work-arrangement-intro.png';
-import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
+// import contractReviewIntro from '../image/contract-review-intro.png';
+// import workArrangementIntro from '../image/work-arrangement-intro.png';
+// import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
 import '../css/main.css';
 
 const Main = () => {
   return (
     <div className="main">
       <div className="slide-show">
-        <div>좌</div>
-        <img src={slidShow} alt="" />
-        <div>우</div>
+        <div id="left">좌</div>
+        <img src={slidShow} alt="imageName" />
+        <div id="right">우</div>
       </div>
       <div className="container">
         <div className="intro">
@@ -28,13 +28,13 @@ const Main = () => {
               <div id="short-cut">바로가기</div>
             </div>
             <div id="image">
-              <img src={contractReviewIntro} alt="" />
+              <img src="" alt="imageName" />
             </div>
           </div>
 
           <div className="work-arrangement-intro">
             <div id="image">
-              <img src={workArrangementIntro} alt="" />
+              <img src="" alt="imageName" />
             </div>
             <div className="group">
               <div id="number">2</div>
@@ -47,7 +47,7 @@ const Main = () => {
             </div>
           </div>
 
-          <div id="question-and-answer-intro">
+          <div className="question-and-answer-intro">
             <div className="group">
               <div id="number">3</div>
               <div>네편 현답</div>
@@ -59,7 +59,7 @@ const Main = () => {
               <div id="short-cut">바로가기</div>
             </div>
             <div id="image">
-              <img src={questionAndAnswerIntro} alt="" />
+              <img src="" alt="imageName" />
             </div>
           </div>
         </div>
