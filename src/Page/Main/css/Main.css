@@ -11,7 +11,7 @@
 }
 
 .main > .slide-show{
-  /* border: 3px solid black; */
+  border: 3px solid black;
   display: flex;
   box-sizing: border-box;
   justify-content: center;
