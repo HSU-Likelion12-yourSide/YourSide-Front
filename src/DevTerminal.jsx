@@ -72,6 +72,9 @@ const Terminal = () => {
           <li>
             <Link to="/DevMockingApi">DevMockingApi</Link>
           </li>
+          <li>
+            <Link to="/DevNotation">DevNotation</Link>
+          </li>
         </ul>
       </div>
     </div>

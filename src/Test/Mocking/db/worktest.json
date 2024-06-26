@@ -1,0 +1,12 @@
+{
+  "hour_pay": 30000,
+  "week_work": 16,
+  "over_five": true,
+  "overtime_work": 2,
+  "night_work": 5,
+  "holiday_work": 0,
+  "major_insurance": true,
+  "income_tax": false,
+  "total_pay": 560000,
+  "id": 2
+}
