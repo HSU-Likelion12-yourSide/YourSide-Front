@@ -15,6 +15,7 @@ import NotationExample from './Page/Notation/components/NotationExample';
 
 import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
+import DevNotation from './Test/Mocking/API/DevNotation';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/FindPW" element={<FindPW />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
+        <Route path="/DevNotation" element={<DevNotation />} />
         <Route path="/NotationExample" element={<NotationExample />} />
       </Routes>
     </Router>
