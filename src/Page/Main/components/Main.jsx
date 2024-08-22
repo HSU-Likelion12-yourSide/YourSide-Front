@@ -1,9 +1,9 @@
 import React from 'react';
 import slidShow from '../image/slide-show.png';
-// import contractReviewIntro from '../image/contract-review-intro.png';
-// import workArrangementIntro from '../image/work-arrangement-intro.png';
-// import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
-import '../css/Main.css';
+import contractReviewIntro from '../image/contract-review-intro.png';
+import workArrangementIntro from '../image/work-arrangement-intro.png';
+import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
+import '../css/Main.scss';
 
 const Main = () => {
   return (
@@ -15,7 +15,7 @@ const Main = () => {
       </div>
       <div className="container">
         <div className="intro">
-          <h1>이렇게 이용해보세요</h1>
+          <div>이렇게</div> <div>이용해보세요</div>
         </div>
 
         <div className="contents">
@@ -28,13 +28,13 @@ const Main = () => {
               <div id="short-cut">바로가기</div>
             </div>
             <div id="image">
-              <img src="" alt="imageName" />
+              <img src={contractReviewIntro} alt="imageName" />
             </div>
           </div>
 
           <div className="work-arrangement-intro">
             <div id="image">
-              <img src="" alt="imageName" />
+              <img src={workArrangementIntro} alt="imageName" />
             </div>
             <div className="group">
               <div id="number">2</div>
@@ -59,7 +59,7 @@ const Main = () => {
               <div id="short-cut">바로가기</div>
             </div>
             <div id="image">
-              <img src="" alt="imageName" />
+              <img src={questionAndAnswerIntro} alt="imageName" />
             </div>
           </div>
         </div>
