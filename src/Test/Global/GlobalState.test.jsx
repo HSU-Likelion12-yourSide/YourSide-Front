@@ -30,5 +30,7 @@ export const useGlobalState = () => {
   }
   return context;
 };
+// *사용예시 : `const { isState, setState, isNum, setNum } = useGlobalState(StateContext);`
+// *커스텀 훅을 사용하지 않은 예시 : `const { isState, setState, isNum, setNum } = useContext(StateContext);`
 
 // export default GlobalState;

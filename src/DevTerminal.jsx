@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { StateContext } from './Test/Global/ContextProviderState';
+import useGlobalState from './Test/Hooks/useGlobalState';
 
 const Terminal = () => {
-  const { isState, setState, isNum, setNum } = useContext(StateContext);
+  // const { isState, setState, isNum, setNum } = useContext(StateContext);
+  const { isState, setState, isNum, setNum } = useGlobalState();
   const handleClick = value => {
     setState(value);
+    setNum(prev => prev + 1);
     return console.log('in the !handleClick-Fn', isState);
   };
 
@@ -87,10 +89,10 @@ const Terminal = () => {
       <button
         onClick={() => {
           handleClick('newValue');
-          console.log('in the !onClick-Fn', isState);
+          console.log('in the !onClick-Fn', isState, isNum);
         }}
       >
-        GlobalStateTest {isState}
+        GlobalStateTest {isState}/{isNum}
       </button>
     </div>
   );
