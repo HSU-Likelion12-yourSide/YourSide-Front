@@ -3,7 +3,7 @@ import slidShow from '../image/slide-show.png';
 // import contractReviewIntro from '../image/contract-review-intro.png';
 // import workArrangementIntro from '../image/work-arrangement-intro.png';
 // import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
-import '../css/main.css';
+import '../css/Main.css';
 
 const Main = () => {
   return (

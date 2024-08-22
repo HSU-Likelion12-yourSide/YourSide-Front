@@ -1,7 +1,7 @@
 import React from 'react';
 import quizImage from '../image/quiz-short-cut.png';
 import arrowRight from '../image/arrow-right.png';
-import '../css/workarrangement.css';
+import '../css/WorkArrangement.css';
 
 const WorkArrangement = () => {
   return (
