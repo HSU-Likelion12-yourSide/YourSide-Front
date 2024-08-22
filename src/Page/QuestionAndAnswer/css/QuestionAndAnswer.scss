@@ -1,0 +1,56 @@
+/* App.css */
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f0f4f8;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.nav-button.active {
+  background-color: #0056b3;
+}
+
+.popular-posts, .posts {
+  margin: 20px 0;
+}
+
+.post-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  flex: 1;
+  margin: 0 10px;
+}
+
+.view-more-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.view-more-button:hover {
+  background-color: #0056b3;
+}
