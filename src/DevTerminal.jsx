@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useGlobalState from './Test/Hooks/useGlobalState';
 
 const Terminal = () => {
+  // const { isState, setState, isNum, setNum } = useContext(StateContext);
+  const { isState, setState, isNum, setNum } = useGlobalState();
+  const handleClick = value => {
+    setState(value);
+    setNum(prev => prev + 1);
+    return console.log('in the !handleClick-Fn', isState);
+  };
+
   return (
     <div
       style={{
@@ -63,7 +72,7 @@ const Terminal = () => {
             <Link
               to="/DevTerminal"
               onClick={() => {
-                alert("현재 페이지가 'DevTerminal' 입니다.");
+                console.log('현재 페이지가 DevTerminal 입니다.');
               }}
             >
               Dev Terminal
@@ -77,6 +86,14 @@ const Terminal = () => {
           </li>
         </ul>
       </div>
+      <button
+        onClick={() => {
+          handleClick('newValue');
+          console.log('in the !onClick-Fn', isState, isNum);
+        }}
+      >
+        GlobalStateTest {isState}/{isNum}
+      </button>
     </div>
   );
 };
