@@ -1,0 +1,148 @@
+.main {
+  // border: 3px solid gray;
+  background-color: #EFF6FE;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Pretendard';
+}
+
+#short-cut {
+  background-color: #E5E5EC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 109px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-right: 4px;
+  margin-top: 40px;
+  cursor: pointer;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {}
+  }
+}
+
+// @extend로 나눌 수도 있음.
+#number {
+  background-color: #1BBFC1;
+  color: #F1F1F5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 34px;
+  margin-bottom: 20px;
+}
+
+.main {
+  .slide-show {
+    // border: 3px solid black;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      background-color: gray;
+      color: #FFFF;
+      display: flex;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 70px;
+    }
+
+    #left {
+      margin-right: 50px;
+
+      #arrowL {
+        position: relative;
+      }
+    }
+
+    #right {
+      margin-left: 50px;
+
+      #arrowR {
+        position: relative;
+      }
+    }
+  }
+
+  .container {
+    width: 1180px;
+    // border: 3px solid aqua;
+    margin-top: 50px;
+
+    #group-title {
+      // background-color: white;
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 68px;
+      margin-bottom: 16px;
+    }
+
+    #sub-title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 26px;
+    }
+
+    .intro {
+      // border: 3px solid tomato;
+      display: flex;
+      flex-direction: column;
+      font-size: 72px;
+      font-weight: 600;
+      line-height: 90px;
+      margin-bottom: 40px;
+    }
+
+    .contents {
+      // border: 3px solid greenyellow;
+
+      .group {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .member {
+        width: 509px;
+      }
+
+      .contract-review-intro {
+        // border: 3px solid plum;
+        display: flex;
+      }
+
+      .work-arrangement-intro {
+        // border: 3px solid purple;
+        display: flex;
+      }
+
+      .question-and-answer-intro {
+        // border: 3px solid red;
+        display: flex;
+      }
+    }
+  }
+}
