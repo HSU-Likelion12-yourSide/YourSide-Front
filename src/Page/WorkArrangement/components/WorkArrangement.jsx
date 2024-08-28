@@ -56,8 +56,10 @@ const WorkArrangement = () => {
               </div>
             </div>
           </div>
-          <div className="wa-short-cut" href="/#">
-            더보기
+          <div className="wa-group">
+            <div className="wa-short-cut" href="/#">
+              더보기
+            </div>
           </div>
         </div>
       </div>

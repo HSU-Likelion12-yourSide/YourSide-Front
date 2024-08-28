@@ -171,18 +171,24 @@
         }
       }
 
-      .wa-short-cut {
-        background-color: #1BBFC1;
+      .wa-group {
+        width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #FFFFFF;
-        width: 73px;
-        height: 56px;
-        margin-top: 20px;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
+        justify-content: flex-end;
+
+        .wa-short-cut {
+          background-color: #1BBFC1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #FFFFFF;
+          width: 73px;
+          height: 56px;
+          margin-top: 20px;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+        }
       }
     }
   }
