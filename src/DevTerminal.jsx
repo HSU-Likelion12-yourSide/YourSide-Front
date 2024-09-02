@@ -48,6 +48,9 @@ const Terminal = () => {
             <Link to="/WorkArrangement">Work Arrangement</Link>
           </li>
           <li>
+            <Link to="/ViewMyWork">ViewMyWork</Link>
+          </li>
+          <li>
             <Link to="/Login">Login</Link>
           </li>
           <li>
