@@ -1,6 +1,6 @@
 import React from 'react';
 
-const vmwOption = () => {
+const ViewMyWorkOption = () => {
   return (
     <div className="vmw-group">
       <div className="vmw-question">
@@ -18,4 +18,4 @@ const vmwOption = () => {
   );
 };
 
-export default vmwOption();
+export default ViewMyWorkOption;

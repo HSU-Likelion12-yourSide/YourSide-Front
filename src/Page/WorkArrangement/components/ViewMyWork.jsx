@@ -1,5 +1,8 @@
 import React from 'react';
 import '../css/ViewMyWork.scss';
+import ViewMyWorkOption from './ViewMyWorkOption.component';
+
+const Option = ViewMyWorkOption;
 
 const ViewMyWork = () => {
   return (
@@ -13,12 +16,12 @@ const ViewMyWork = () => {
               주 연장 근로 시간 (1일 8시간, 1주 40시간 초과한 시간)
             </span>
           </div>
-
           <div className="vmw-answer">
             <input type="input" placeholder="입력해주세요." />
             <span>원</span>
           </div>
         </div>
+        <Option />
       </div>
       <button className="vmw-result">검사하기</button>
     </div>
