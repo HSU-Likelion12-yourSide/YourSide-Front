@@ -1,21 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ViewMyWorkOption = () => {
+const ViewMyWorkOption = ({
+  option,
+  display = 'none',
+  description,
+  type = 'input',
+  placeholder = '시간을 입력해주세요.',
+  unit = '시간',
+}) => {
   return (
     <div className="vmw-group">
       <div className="vmw-question">
-        <span>코카콜라 님의 시급은 얼마입니까?</span>
-        <span id="description" style={{ display: 'none' }}>
-          주 연장 근로 시간 (1일 8시간, 1주 40시간 초과한 시간)
+        <span>{option}</span>
+        <span id="description" style={{ display }}>
+          주 연장 근로 시간 (1일 8시간, 1주 40시간 초과한 시간) {description}
         </span>
       </div>
 
       <div className="vmw-answer">
-        <input type="input" placeholder="입력해주세요." />
-        <span>원</span>
+        <input id="input-styled" type={type} placeholder={placeholder} />
+        <span>{unit}</span>
       </div>
     </div>
   );
+};
+
+ViewMyWorkOption.propTypes = {
+  option: PropTypes.string.isRequired,
+  display: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  unit: PropTypes.string.isRequired,
 };
 
 export default ViewMyWorkOption;

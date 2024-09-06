@@ -38,14 +38,15 @@
       }
 
       .vmw-answer {
-        input {
+        #input-styled {
           border: 1px solid #E5E5EC;
           width: 242px;
           height: 48px;
           margin-right: 6px;
         }
 
-        input::placeholder {
+        #input-styled::placeholder {
+          padding: 14px 16px 14px 16px;
           font-family: 'Pretendard';
           font-weight: 400;
           font-size: 14px;
