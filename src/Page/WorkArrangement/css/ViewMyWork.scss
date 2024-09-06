@@ -37,7 +37,7 @@
         }
       }
 
-      .vmw-answer {
+      .vmw-input-answer {
         #input-styled {
           border: 1px solid #E5E5EC;
           width: 242px;
@@ -53,12 +53,28 @@
           line-height: 20px;
         }
 
+        #check-box-styled {}
+
         span {
           font-family: 'Pretendard';
           font-weight: 600;
           font-size: 18px;
           line-height: 28px;
         }
+      }
+
+      .vmw-yesOrNo-answer {
+        font-family: 'Inter';
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
+      }
+
+      .vmw-checkbox-answer {
+        font-family: 'Inter';
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
       }
     }
   }
