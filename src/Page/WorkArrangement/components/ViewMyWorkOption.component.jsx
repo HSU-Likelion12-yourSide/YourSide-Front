@@ -17,7 +17,7 @@ const ViewMyWorkOption = ({
       <div className="vmw-question">
         <span>{option}</span>
         <span id="description" style={{ display }}>
-          주 연장 근로 시간 (1일 8시간, 1주 40시간 초과한 시간) {description}
+          {description}
         </span>
       </div>
       {(() => {

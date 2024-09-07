@@ -1,6 +1,7 @@
+const user = '코카콜라';
 const data = [
   {
-    option: '코카콜라님의 시급은 얼마입니까?',
+    option: `${user}님의 시급은 얼마입니까?`,
     display: 'none',
     type: 'input',
     placeholder: '시급을 입력해주세요.',
@@ -16,7 +17,7 @@ const data = [
   {
     option: '상시 5인 이상 사업장입니까?',
     display: 'none',
-    type: 'input',
+    type: 'binary',
   },
   {
     option: '한 주 동안 연장 근로시간은 몇 시간  입니까?',
@@ -37,9 +38,22 @@ const data = [
   {
     option: '취업규칙 등에서 정한 약정휴일에 근무하는 시간은?',
     display: 'none',
-    description: '야간 근로 시간 (오후 10시부터 명일 오전 6시까지 근무한 시간)',
     type: 'input',
   },
+  {
+    option: '어떤 세금이 적용되나요?',
+    display: 'none',
+    type: 'multi',
+  },
 ];
+
+// // 데이터를 비동기적으로 반환하는 함수
+// const fetchData = () => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(data); // 데이터를 1초 후에 반환 (예시)
+//     }, 1000);
+//   });
+// };
 
 export default data;
