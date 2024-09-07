@@ -10,34 +10,34 @@ const Header = () => {
     <div className="header">
       <div className="h-container">
         <div className="h-logo">
-          <Link class="h-link" to="/">
+          <Link id="h-link" to="/">
             <img src={logo} alt="" />
           </Link>
         </div>
 
         <div className="h-hyper-group">
           <div className="h-hyper-link">
-            <Link class="h-link" to="/">
+            <Link id="h-link" to="/">
               홈
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link class="h-link" to="/Notation">
+            <Link id="h-link" to="/Notation">
               공지사항
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link class="h-link" to="/ContractReview">
+            <Link id="h-link" to="/ContractReview">
               내 계약서 검토
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link class="h-link" to="/WorkArrangement">
+            <Link id="h-link" to="/WorkArrangement">
               내 근로 정리
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link class="h-link" to="/QuestionAndAnswer">
+            <Link id="h-link" to="/QuestionAndAnswer">
               네편 현답
             </Link>
           </div>
@@ -45,12 +45,12 @@ const Header = () => {
 
         <div className="h-group">
           <div id="h-my-page">
-            <Link class="h-link" to="/">
+            <Link id="h-link" to="/">
               <img src={myPage} alt="" />
             </Link>
           </div>
           <div id="h-login">
-            <Link class="h-link" to="/Login">
+            <Link id="h-link" to="/Login">
               <img src={login} alt="" />
             </Link>
           </div>

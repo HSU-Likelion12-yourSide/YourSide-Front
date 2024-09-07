@@ -17,6 +17,13 @@
     justify-content: space-around;
     width: 1180px;
 
+    #h-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
     .h-logo {
       display: flex;
       align-items: center;
@@ -33,46 +40,22 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 100px;
-
-        .h-link {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-          height: 98px;
-          padding-bottom: 2px;
-          /* border-bottom 공간 확보 */
-          border-bottom: 2px solid transparent;
-          /* 기본 상태에서 투명한 border */
-        }
+        height: 98px;
+        padding-bottom: 2px;
+        /* border-bottom 공간 확보 */
+        border-bottom: 2px solid transparent;
+        /* 기본 상태에서 투명한 border */
 
         &:nth-of-type(1) {
-          .h-link {
-            // background-color: aqua;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            width: 80px;
-            height: 98px;
-            padding-bottom: 2px;
-            /* border-bottom 공간 확보 */
-          }
-        }
-
-        // .h-link:first-child {
-        //   background-color: aqua;
-        //   width: 80px;
-        //   height: 100%;
-        // }
-
-        .h-link:hover {
-          height: 100px;
-          border-bottom: 2px solid #204598;
+          width: 80px;
+          height: 100%;
         }
       }
 
+      .h-hyper-link:hover {
+        height: 100%;
+        border-bottom: 2px solid #204598;
+      }
 
     }
 
