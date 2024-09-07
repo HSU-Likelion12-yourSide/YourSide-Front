@@ -3,40 +3,57 @@ import { Link } from 'react-router-dom';
 import '../css/Header.scss';
 import logo from '../img/logo.svg';
 import login from '../img/login.svg';
+import myPage from '../img/my-page.svg';
 
 const Header = () => {
   return (
     <div className="header">
-      <div className="header-menu">
-        <div className="logo">
-          <Link to="/" className="logo">
-            <img src={logo} alt="" className="logo" />
-            <span />
+      <div className="h-container">
+        <div className="h-logo">
+          <Link class="h-link" to="/">
+            <img src={logo} alt="" />
           </Link>
         </div>
 
-        <div className="nav">
-          <Link to="/" className="link">
-            <div className="button">홈</div>
-          </Link>
-          <Link to="/Notation" className="link">
-            <div className="button">공지사항</div>
-          </Link>
-          <Link to="/ContractReview" className="link">
-            <div className="button">내 계약서 검토</div>
-          </Link>
-          <Link to="/WorkArrangement" className="link">
-            <div className="button">내 근로 정리</div>
-          </Link>
-          <Link to="/QuestionAndAnswer" className="link">
-            <div className="button">네편 현답</div>
-          </Link>
+        <div className="h-hyper-group">
+          <div className="h-hyper-link">
+            <Link class="h-link" to="/">
+              홈
+            </Link>
+          </div>
+          <div className="h-hyper-link">
+            <Link class="h-link" to="/Notation">
+              공지사항
+            </Link>
+          </div>
+          <div className="h-hyper-link">
+            <Link class="h-link" to="/ContractReview">
+              내 계약서 검토
+            </Link>
+          </div>
+          <div className="h-hyper-link">
+            <Link class="h-link" to="/WorkArrangement">
+              내 근로 정리
+            </Link>
+          </div>
+          <div className="h-hyper-link">
+            <Link class="h-link" to="/QuestionAndAnswer">
+              네편 현답
+            </Link>
+          </div>
         </div>
 
-        <div className="user-icons">
-          <Link to="/Login" className="link">
-            <img src={login} alt="" className="icon" />
-          </Link>
+        <div className="h-group">
+          <div id="h-my-page">
+            <Link class="h-link" to="/">
+              <img src={myPage} alt="" />
+            </Link>
+          </div>
+          <div id="h-login">
+            <Link class="h-link" to="/Login">
+              <img src={login} alt="" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
