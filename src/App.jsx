@@ -5,11 +5,11 @@ import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
 import Login from './Page/Login/components/Login';
-import SignUp from './Page/SignUp/components/SignUp';
+import SignUp from './Page/Login/SignUp/components/SignUp';
 import MyPage from './Page/MyPage/components/MyPage';
 import Notation from './Page/Notation/components/Notation';
-import FindID from './Page/FindID/components/FindID';
-import FindPW from './Page/FindPW/components/FindPW';
+import FindID from './Page/Login/FindID/components/FindID';
+import FindPW from './Page/Login/FindPW/components/FindPW';
 
 import NotationExample from './Page/Notation/components/NotationExample';
 
