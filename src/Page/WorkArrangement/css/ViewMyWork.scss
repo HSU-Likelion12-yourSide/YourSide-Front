@@ -64,17 +64,48 @@
       }
 
       .vmw-yesOrNo-answer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         font-family: 'Inter';
         font-weight: 600;
         font-size: 15px;
         line-height: 22px;
+
+        #input-styled {
+          border: 1px solid #E5E5EC;
+          width: 22px;
+          height: 22px;
+          margin-right: 6px;
+        }
+
+        span:nth-of-type(2) {
+          background-color: aqua;
+          margin-left: 80px;
+        }
       }
 
       .vmw-checkbox-answer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         font-family: 'Inter';
         font-weight: 600;
         font-size: 15px;
         line-height: 22px;
+
+        #input-styled {
+          border: 1px solid #E5E5EC;
+          width: 22px;
+          height: 22px;
+          margin-right: 6px;
+        }
+
+        span:nth-of-type(2),
+        span:nth-of-type(3) {
+          background-color: aqua;
+          margin-left: 32px;
+        }
       }
     }
   }
