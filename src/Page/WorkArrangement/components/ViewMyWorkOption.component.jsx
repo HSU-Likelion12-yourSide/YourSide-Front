@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VmwInputAnswer from './type/VmwInputAnswer.component';
-import VmwYesOrNoAnswer from './type/VmwYesOrNoAnswer.component';
-import VmwCheckboxAnswer from './type/VmwCheckboxAnswer.compnent';
+import VmwYesOrNoAnswer from './type/VmwBinaryAnswer.component';
+import VmwMultiAnswer from './type/VmwMultiAnswer.component';
 
 const ViewMyWorkOption = ({
   option = '코카콜라님의 시급은 얼마입니까?',
@@ -23,11 +23,14 @@ const ViewMyWorkOption = ({
       {(() => {
         if (type === 'input') {
           return <VmwInputAnswer placeholder={placeholder} unit={unit} />;
+          // type: input
         }
         if (type === 'binary') {
           return <VmwYesOrNoAnswer placeholder={placeholder} />;
+          // type: binary
         }
-        return <VmwCheckboxAnswer placeholder={placeholder} />;
+        return <VmwMultiAnswer placeholder={placeholder} />;
+        // type: multi
       })()}
       {/* 삼항연산 방법 -> eslint no-nested-ternary 규칙으로 사용 불가능 */}
       {/* {type === 'input' ? (
