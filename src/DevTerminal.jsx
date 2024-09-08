@@ -39,6 +39,12 @@ const Terminal = () => {
             <Link to="/">Main</Link>
           </li>
           <li>
+            <Link to="/Header">Header</Link>
+          </li>
+          <li>
+            <Link to="/Footer">Footer</Link>
+          </li>
+          <li>
             <Link to="/ContractReview">Contract Review</Link>
           </li>
           <li>
