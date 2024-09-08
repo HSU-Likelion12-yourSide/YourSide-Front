@@ -12,7 +12,14 @@
   .vmw-container {
     width: 1180px;
 
-    #vmw-title {}
+    #vmw-title {
+      font-family: Pretendard;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 68px;
+      letter-spacing: -0.025em;
+      margin: 90px 0px 60px 0px;
+    }
 
     .vmw-group {
       background-color: white;
@@ -80,7 +87,7 @@
         }
 
         span:nth-of-type(2) {
-          background-color: aqua;
+          // background-color: aqua;
           margin-left: 80px;
         }
       }
@@ -103,12 +110,24 @@
 
         span:nth-of-type(2),
         span:nth-of-type(3) {
-          background-color: aqua;
+          // background-color: aqua;
           margin-left: 32px;
         }
       }
     }
   }
 
-  .vmw-result {}
+  .vmw-result {
+    background-color: #E5E5EC;
+    align-content: center;
+    text-align: center;
+    margin: 60px 0px 120px 0px;
+    width: 212px;
+    height: 60px;
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.025em;
+  }
 }

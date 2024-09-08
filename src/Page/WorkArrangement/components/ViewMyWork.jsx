@@ -26,7 +26,7 @@ const ViewMyWork = () => {
         }
         ;
       </div>
-      <button className="vmw-result">검사하기</button>
+      <div className="vmw-result">검사하기</div>
     </div>
   );
 };
