@@ -6,6 +6,7 @@ const data = [
     type: 'input',
     placeholder: '시급을 입력해주세요.',
     unit: '원',
+    warning: '숫자를 입력해 주세요',
   },
   {
     option: '한 주 동안 근로 시간은 몇 시간 입니까?',
@@ -13,11 +14,13 @@ const data = [
     type: 'input',
     placeholder: '시간을 입력해주세요.',
     unit: '시간',
+    warning: '숫자를 입력해 주세요',
   },
   {
     option: '상시 5인 이상 사업장입니까?',
     display: 'none',
     type: 'binary',
+    warning: '두 체크 박스 중 하나를 선택해 주세요',
   },
   {
     option: '한 주 동안 연장 근로시간은 몇 시간  입니까?',
@@ -26,6 +29,7 @@ const data = [
     type: 'input',
     placeholder: '시간을 입력해주세요.',
     unit: '시간',
+    warning: '숫자를 입력해 주세요',
   },
   {
     option: '한 주 동안 야간 근로시간이 몇 시간 입니까?',
@@ -34,16 +38,19 @@ const data = [
     type: 'input',
     placeholder: '시간을 입력해주세요.',
     unit: '시간',
+    warning: '숫자를 입력해 주세요',
   },
   {
     option: '취업규칙 등에서 정한 약정휴일에 근무하는 시간은?',
     display: 'none',
     type: 'input',
+    warning: '숫자를 입력해 주세요',
   },
   {
     option: '어떤 세금이 적용되나요?',
     display: 'none',
     type: 'multi',
+    warning: '세 체크 박스 중 하나를 선택해 주세요',
   },
 ];
 

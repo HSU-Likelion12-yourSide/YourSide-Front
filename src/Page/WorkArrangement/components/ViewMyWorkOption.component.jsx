@@ -11,6 +11,7 @@ const ViewMyWorkOption = ({
   type = 'input',
   placeholder = '시간을 입력해주세요.',
   unit = '시간',
+  warning,
 }) => {
   return (
     <div className="vmw-group">
@@ -22,14 +23,22 @@ const ViewMyWorkOption = ({
       </div>
       {(() => {
         if (type === 'input') {
-          return <VmwInputAnswer placeholder={placeholder} unit={unit} />;
+          return (
+            <VmwInputAnswer
+              placeholder={placeholder}
+              unit={unit}
+              warning={warning}
+            />
+          );
           // type: input
         }
         if (type === 'binary') {
-          return <VmwYesOrNoAnswer placeholder={placeholder} />;
+          return (
+            <VmwYesOrNoAnswer placeholder={placeholder} warning={warning} />
+          );
           // type: binary
         }
-        return <VmwMultiAnswer placeholder={placeholder} />;
+        return <VmwMultiAnswer placeholder={placeholder} warning={warning} />;
         // type: multi
       })()}
       {/* 삼항연산 방법 -> eslint no-nested-ternary 규칙으로 사용 불가능 */}
@@ -55,6 +64,7 @@ ViewMyWorkOption.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   unit: PropTypes.string.isRequired,
+  warning: PropTypes.string.isRequired,
 };
 
 export default ViewMyWorkOption;

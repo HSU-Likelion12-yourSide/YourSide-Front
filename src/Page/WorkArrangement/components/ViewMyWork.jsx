@@ -21,6 +21,7 @@ const ViewMyWork = () => {
               type={el.type}
               placeholder={el.placeholder}
               unit={el.unit}
+              warning={el.warning}
             />
           ))
         }
