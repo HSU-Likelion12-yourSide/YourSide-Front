@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './Page/Main/components/Main';
 import Header from './Page/Header/components/Header';
+import Footer from './Page/Footer/components/Footer';
 import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Header" element={<Header />} />
+        <Route path="/Footer" element={<Footer />} />
         <Route path="/ContractReview" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
