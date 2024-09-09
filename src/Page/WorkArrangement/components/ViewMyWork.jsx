@@ -18,10 +18,10 @@ const ViewMyWork = () => {
               key={el.id}
               option={el.option}
               display={el.display}
-              description={el.description}
+              description={el.description || ''}
               type={el.type}
-              placeholder={el.placeholder}
-              unit={el.unit}
+              placeholder={el.placeholder || ''}
+              unit={el.unit || ''}
               warning={el.warning}
             />
           ))
