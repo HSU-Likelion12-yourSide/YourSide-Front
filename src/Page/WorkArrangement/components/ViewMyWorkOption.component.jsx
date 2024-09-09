@@ -10,7 +10,7 @@ const ViewMyWorkOption = ({
   description,
   type = 'input',
   placeholder = '시간을 입력해주세요.',
-  unit = '시간',
+  unit,
   warning,
 }) => {
   return (
@@ -60,11 +60,19 @@ const ViewMyWorkOption = ({
 ViewMyWorkOption.propTypes = {
   option: PropTypes.string.isRequired,
   display: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  unit: PropTypes.string.isRequired,
-  warning: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  unit: PropTypes.string,
+  warning: PropTypes.string,
+};
+
+// 기본값 설정
+ViewMyWorkOption.defaultProps = {
+  description: '기본 설명이 필요할 때 사용됩니다.',
+  placeholder: '기본 설명이 필요할 때 사용됩니다.',
+  unit: '기본 설명이 필요할 때 사용됩니다.',
+  warning: '기본 설명이 필요할 때 사용됩니다.',
 };
 
 export default ViewMyWorkOption;
