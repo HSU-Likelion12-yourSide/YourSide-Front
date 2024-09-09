@@ -1,23 +1,140 @@
 import React from 'react';
 import '../css/QuestionAndAnswer.scss';
-import { Link } from 'react-router-dom';
+import learnMoreArrow from '../image/learnMoreArrow.svg';
 
 const App = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '40vh',
-        border: '1px solid black',
-      }}
-    >
-      <h1>네편 프로젝트 with 멋사</h1>
-      <h3>현재 페이지 파일 이름은 QuestionAndAnswer.jsx 입니다.</h3>
-      <Link to="/DevTerminal">
-        <button>개발 터미널로 이동</button>
-      </Link>
+    <div className="question-and-answer">
+      <div className="qa-group">
+        <div id="qa-box" className="selected">
+          네편 답변
+        </div>
+        <div id="qa-box">네편 정보</div>
+      </div>
+      <div className="qa-popular-container">
+        <div id="qa-popular-intro">인기게시글</div>
+        <div className="qa-popular-group">
+          <div className="qa-popular-box">
+            <div className="qa-popular-question">
+              <div id="qa-popular-mark">Q.</div>
+              <div id="qa-popular-title">
+                해당 사안에도 주휴수당이 발생하는지 궁금합니다
+              </div>
+            </div>
+            <div id="qa-popular-text">
+              물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일 대체
+              공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다 쉽니다
+              법정공휴일도 어떻게 되는지 궁금 합니다.
+            </div>
+          </div>
+          <div className="qa-popular-box">
+            <div className="qa-popular-question">
+              <div id="qa-popular-mark">Q.</div>
+              <div id="qa-popular-title">
+                해당 사안에도 주휴수당이 발생하는지 궁금합니다
+              </div>
+            </div>
+            <div id="qa-popular-text">
+              물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일 대체
+              공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다 쉽니다
+              법정공휴일도 어떻게 되는지 궁금 합니다.
+            </div>
+          </div>
+          <div className="qa-popular-box">
+            <div className="qa-popular-question">
+              <div id="qa-popular-mark">Q.</div>
+              <div id="qa-popular-title">
+                해당 사안에도 주휴수당이 발생하는지 궁금합니다
+              </div>
+            </div>
+            <div id="qa-popular-text">
+              물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일 대체
+              공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다 쉽니다
+              법정공휴일도 어떻게 되는지 궁금 합니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="qa-post-container">
+        <div className="qa-post-intro">
+          <div id="qa-post-word">게시글</div>
+          <div id="qa-write">게시글 작성</div>
+        </div>
+        <div className="qa-post-group">
+          <div className="qa-post-card">
+            <div className="qa-left-group">
+              <div className="qa-post-title">
+                <div id="qa-post-mark">Q.</div>
+                <div id="qa-post-question">
+                  계약서 쓴 날짜 보다 미리 와서 2시간 있다갔어요.
+                </div>
+              </div>
+              <div className="qa-post-text">
+                물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일
+                대체 공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다
+                쉽니다 법정공휴일도 어떻게 되는지 궁금 합니다.
+              </div>
+            </div>
+            <div className="qa-right-group">
+              <div id="qa-post-date">2024.04.11</div>
+              <div className="qa-learn-more">
+                <div id="qa-learn-more-text">자세히 보기</div>
+                <div>
+                  <img src={learnMoreArrow} alt="qa-learn-more" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="qa-post-card">
+            <div className="qa-left-group">
+              <div className="qa-post-title">
+                <div id="qa-post-mark">Q.</div>
+                <div id="qa-post-question">
+                  계약서 쓴 날짜 보다 미리 와서 2시간 있다갔어요.
+                </div>
+              </div>
+              <div className="qa-post-text">
+                물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일
+                대체 공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다
+                쉽니다 법정공휴일도 어떻게 되는지 궁금 합니다.
+              </div>
+            </div>
+            <div className="qa-right-group">
+              <div id="qa-post-date">2024.04.11</div>
+              <div className="qa-learn-more">
+                <div id="qa-learn-more-text">자세히 보기</div>
+                <div>
+                  <img src={learnMoreArrow} alt="qa-learn-more" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="qa-post-card">
+            <div className="qa-left-group">
+              <div className="qa-post-title">
+                <div id="qa-post-mark">Q.</div>
+                <div id="qa-post-question">
+                  계약서 쓴 날짜 보다 미리 와서 2시간 있다갔어요.
+                </div>
+              </div>
+              <div className="qa-post-text">
+                물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일
+                대체 공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다
+                쉽니다 법정공휴일도 어떻게 되는지 궁금 합니다.
+              </div>
+            </div>
+            <div className="qa-right-group">
+              <div id="qa-post-date">2024.04.11</div>
+              <div className="qa-learn-more">
+                <div id="qa-learn-more-text">자세히 보기</div>
+                <div>
+                  <img src={learnMoreArrow} alt="qa-learn-more" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
