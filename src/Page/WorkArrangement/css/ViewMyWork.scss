@@ -1,0 +1,178 @@
+.view-my-work {
+  background-color: #EFF6FE;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Pretendard';
+
+  .vmw-container {
+    // background-color: aqua;
+    width: 1180px;
+
+    #vmw-title {
+      font-family: 'Pretendard';
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 68px;
+      letter-spacing: -0.025em;
+      margin: 90px 0px 60px 0px;
+    }
+
+    .vmw-group {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1069px;
+      padding: 60px 51px 68px 60px;
+
+      .vmw-question {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+
+        #description {
+          color: #204598;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+
+      .vmw-input-answer {
+        display: flex;
+        flex-direction: column;
+
+        .vmw-input-group {
+          #input-styled {
+            border: 1px solid #E5E5EC;
+            width: 242px;
+            height: 48px;
+            margin-right: 6px;
+          }
+
+          #input-styled::placeholder {
+            padding: 14px 16px 14px 16px;
+            font-family: 'Pretendard';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+          }
+
+          span {
+            font-family: 'Pretendard';
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 28px;
+          }
+        }
+
+        #input-warning-message {
+          margin-top: 8px;
+          color: #DC0000;
+          font-family: 'Pretendard';
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: -0.025em;
+        }
+      }
+
+      .vmw-yesOrNo-answer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-family: 'Inter';
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
+
+        .vmw-input-group {
+          #input-styled {
+            border: 1px solid #E5E5EC;
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+          }
+
+          span:nth-of-type(2) {
+            // background-color: aqua;
+            margin-left: 80px;
+          }
+        }
+
+        #input-warning-message {
+          margin-top: 8px;
+          color: #DC0000;
+          font-family: 'Pretendard';
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: -0.025em;
+        }
+      }
+
+      .vmw-checkbox-answer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
+
+        .vmw-input-group {
+          display: flex;
+          align-items: center;
+
+          #input-styled {
+            border: 1px solid #E5E5EC;
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+          }
+
+          span:nth-of-type(2),
+          span:nth-of-type(3) {
+            // background-color: aqua;
+            margin-left: 32px;
+          }
+        }
+
+        #input-warning-message {
+          margin-top: 8px;
+          width: 100%;
+          /* 텍스트가 부모 요소 안에서 오른쪽에 위치하도록 전체 너비를 사용 */
+          text-align: right;
+          color: #DC0000;
+          font-family: 'Pretendard';
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: -0.025em;
+        }
+      }
+    }
+  }
+
+  .vmw-result {
+    background-color: #E5E5EC;
+    align-content: center;
+    text-align: center;
+    margin: 60px 0px 120px 0px;
+    width: 212px;
+    height: 60px;
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.025em;
+  }
+}
