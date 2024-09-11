@@ -39,6 +39,12 @@ const Terminal = () => {
             <Link to="/">Main</Link>
           </li>
           <li>
+            <Link to="/Header">Header</Link>
+          </li>
+          <li>
+            <Link to="/Footer">Footer</Link>
+          </li>
+          <li>
             <Link to="/ContractReview">Contract Review</Link>
           </li>
           <li>
@@ -46,6 +52,9 @@ const Terminal = () => {
           </li>
           <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
+          </li>
+          <li>
+            <Link to="/ViewMyWork">ViewMyWork</Link>
           </li>
           <li>
             <Link to="/Login">Login</Link>
