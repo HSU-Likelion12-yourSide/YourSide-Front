@@ -1,9 +1,12 @@
 import React from 'react';
 import '../css/ViewMyWorkResult.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const ViewMyWorkResult = () => {
   return (
     <div className="ViewMyWorkResult">
+      <Header />
       <div className="vmwr-title">내 근로 결과지</div>
       <div className="vmwr-container">
         <div className="vmwr-contents">
@@ -40,6 +43,7 @@ const ViewMyWorkResult = () => {
         </div>
       </div>
       <div className="vmwr-button">결과지 저장하기</div>
+      <Footer />
     </div>
   );
 };
