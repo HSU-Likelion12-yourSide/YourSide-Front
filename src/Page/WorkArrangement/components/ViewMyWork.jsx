@@ -26,7 +26,6 @@ const ViewMyWork = () => {
             />
           ))
         }
-        ;
       </div>
       <div className="vmw-result">검사하기</div>
     </div>
