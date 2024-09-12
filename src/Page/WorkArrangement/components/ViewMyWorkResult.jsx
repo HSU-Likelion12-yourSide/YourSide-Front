@@ -34,15 +34,17 @@ const ViewMyWorkResult = () => {
         <div className="vmwr-group">
           <div className="vmwr-options">발생 요건들</div>
           <div className="vmwr-list">
-            <div>가산수당</div>
-            <div>주휴수당</div>
-            <div>야간근로수당</div>
-            <div>연장근로수당</div>
-            <div>휴일근로수당</div>
+            <div className="check">가산수당</div>
+            <div className="check">주휴수당</div>
+            <div className="uncheck">야간근로수당</div>
+            <div className="check">연장근로수당</div>
+            <div className="uncheck">휴일근로수당</div>
           </div>
         </div>
       </div>
-      <div className="vmwr-button">결과지 저장하기</div>
+      <div id="vmwr-group">
+        <div className="vmwr-button">결과지 저장하기</div>
+      </div>
       <Footer />
     </div>
   );

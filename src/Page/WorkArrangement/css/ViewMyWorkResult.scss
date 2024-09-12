@@ -15,6 +15,7 @@
     line-height: 68px;
     letter-spacing: -0.025em;
     width: 1180px;
+    margin: 90px 0px 60px 0px;
   }
 
   .vmwr-container {
@@ -22,22 +23,78 @@
     width: 980px;
     padding: 60px 100px;
 
-    .vmwr-title {}
-
     .vmwr-contents {
       border-bottom: 2px solid #E5E5EC;
 
-      .vmwr-result-title {}
+      .vmwr-result-title {
+        font-family: 'Pretendard';
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 42px;
+        margin-bottom: 24px;
+      }
+
+      div {
+        margin-bottom: 12px;
+
+        &:last-child {
+          margin-bottom: 24px;
+        }
+      }
     }
 
     .vmwr-group {
-      .vmwr-options {}
+      .vmwr-options {
+        font-family: 'Pretendard';
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 34px;
+        margin: 24px 0px 14px 0px;
+      }
 
       .vmwr-list {
         display: flex;
+        font-family: 'Pretendard';
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.025em;
+        text-align: center;
+
+        .check {
+          background-color: #204598;
+          color: #FFFFFF;
+          padding: 14px 16px 14px 16px;
+          border-radius: 100px;
+          margin-right: 12px;
+        }
+
+        .uncheck {
+          background-color: #F1F1F5;
+          color: #999999;
+          padding: 14px 16px 14px 16px;
+          border-radius: 100px;
+          margin-right: 12px;
+        }
       }
     }
   }
 
-  .vmwr-button {}
+  #vmwr-group {
+    display: flex;
+    justify-content: flex-end;
+    width: 1180px;
+    margin: 60px 0px 120px 0px;
+
+    .vmwr-button {
+      background-color: #1BBFC1;
+      color: #FFFFFF;
+      font-family: 'Pretendard';
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.025em;
+      padding: 16px;
+    }
+  }
 }
