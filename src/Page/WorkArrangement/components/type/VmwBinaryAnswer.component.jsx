@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const VmwYesOrNoAnswer = ({ placeholder, warning }) => {
+const VmwBinaryAnswer = ({ placeholder, warning }) => {
   return (
     <div className="vmw-yesOrNo-answer">
       <div className="vmw-input-group">
@@ -15,9 +15,9 @@ const VmwYesOrNoAnswer = ({ placeholder, warning }) => {
   );
 };
 
-VmwYesOrNoAnswer.propTypes = {
+VmwBinaryAnswer.propTypes = {
   placeholder: PropTypes.string.isRequired,
   warning: PropTypes.string.isRequired,
 };
 
-export default VmwYesOrNoAnswer;
+export default VmwBinaryAnswer;
