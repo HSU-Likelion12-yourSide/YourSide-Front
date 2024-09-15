@@ -78,4 +78,23 @@ const VmwrResult = () => {
   );
 };
 
+// VmwrResult.propTypes = {
+//   data: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       status: PropTypes.number.isRequired,
+//       data: PropTypes.shape({
+//         nickname: PropTypes.string.isRequired,
+//         title: PropTypes.string.isRequired,
+//         content: PropTypes.string.isRequired,
+//         extraPay: PropTypes.bool.isRequired,
+//         weekPay: PropTypes.bool.isRequired,
+//         nightPay: PropTypes.bool.isRequired,
+//         overtimePay: PropTypes.bool.isRequired,
+//         holidayPay: PropTypes.bool.isRequired,
+//       }).isRequired,
+//       message: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };
+
 export default VmwrResult;

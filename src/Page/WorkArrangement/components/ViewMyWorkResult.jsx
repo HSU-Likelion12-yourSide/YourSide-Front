@@ -4,8 +4,9 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import VmwrResult from '../../Common/components/VmwrResult.component';
 
+const Result = VmwrResult;
+
 const ViewMyWorkResult = () => {
-  const Result = VmwrResult;
   return (
     <div className="ViewMyWorkResult">
       <Header />
