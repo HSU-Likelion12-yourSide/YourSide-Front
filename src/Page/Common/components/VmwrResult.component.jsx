@@ -3,6 +3,7 @@ import VmwrOptionButton from '../../WorkArrangement/components/VmwrButton.compon
 import '../css/VmwrResult.component.scss';
 import data from '../temp/data/vmwrResult.data';
 
+// 해당 데이터를 API로 받아오기 때문에 Props로 받아올 수 있게 구조를 다시 검토하고 재구성 필요
 const OptionsResultData = data;
 const ResultContents = OptionsResultData[0].data.content
   .trim()
