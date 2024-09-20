@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/QuestionAndAnswer.scss';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
+import MainShortCut from '../../Main/components/MainShortCut.component';
 
 const App = () => {
   return (
@@ -77,12 +78,14 @@ const App = () => {
             </div>
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
-              <div className="qa-learn-more">
-                <div id="qa-learn-more-text">자세히 보기</div>
-                <div>
-                  <img src={learnMoreArrow} alt="qa-learn-more" />
-                </div>
-              </div>
+              <MainShortCut
+                text="자세히 보기"
+                img={learnMoreArrow}
+                alt="learnMoreArrow"
+                width={120}
+                height={40}
+                border="1px solid #111"
+              />
             </div>
           </div>
           <div className="qa-post-card">
@@ -101,12 +104,14 @@ const App = () => {
             </div>
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
-              <div className="qa-learn-more">
-                <div id="qa-learn-more-text">자세히 보기</div>
-                <div>
-                  <img src={learnMoreArrow} alt="qa-learn-more" />
-                </div>
-              </div>
+              <MainShortCut
+                text="자세히 보기"
+                img={learnMoreArrow}
+                alt="Learn more arrow"
+                width={120}
+                height={40}
+                border="1px solid #111"
+              />
             </div>
           </div>
           <div className="qa-post-card">
@@ -125,12 +130,14 @@ const App = () => {
             </div>
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
-              <div className="qa-learn-more">
-                <div id="qa-learn-more-text">자세히 보기</div>
-                <div>
-                  <img src={learnMoreArrow} alt="qa-learn-more" />
-                </div>
-              </div>
+              <MainShortCut
+                text="자세히 보기"
+                img={learnMoreArrow}
+                alt="Learn more arrow"
+                width={120}
+                height={40}
+                border="1px solid #111"
+              />
             </div>
           </div>
         </div>

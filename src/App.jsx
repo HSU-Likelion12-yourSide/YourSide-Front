@@ -6,6 +6,7 @@ import Footer from './Page/Footer/components/Footer';
 import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
+import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/SignUp/components/SignUp';
 import MyPage from './Page/MyPage/components/MyPage';
@@ -28,6 +29,10 @@ const App = () => {
         <Route path="/Footer" element={<Footer />} />
         <Route path="/ContractReview" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
+        <Route
+          path="/ViewQuestionAndAnswer"
+          element={<ViewQuestionAndAnswer />}
+        />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
