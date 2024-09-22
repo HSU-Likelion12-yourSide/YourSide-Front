@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VmwInputAnswer from './type/VmwInputAnswer.component';
-import VmwYesOrNoAnswer from './type/VmwBinaryAnswer.component';
+import VmwBinaryAnswer from './type/VmwBinaryAnswer.component';
 import VmwMultiAnswer from './type/VmwMultiAnswer.component';
 
 const ViewMyWorkOption = ({
@@ -34,7 +34,7 @@ const ViewMyWorkOption = ({
         }
         if (type === 'binary') {
           return (
-            <VmwYesOrNoAnswer placeholder={placeholder} warning={warning} />
+            <VmwBinaryAnswer placeholder={placeholder} warning={warning} />
           );
           // type: binary
         }
@@ -45,14 +45,14 @@ const ViewMyWorkOption = ({
       {/* {type === 'input' ? (
         <VmwInputAnswer placeholder={placeholder} unit={unit} />
       ) : type === 'binary' ? (
-        <VmwYesOrNoAnswer placeholder={placeholder} />
+        <VmwBinaryAnswer placeholder={placeholder} />
       ) : (
-        <VmwYesOrNoAnswer placeholder={placeholder} />
+        <VmwBinaryAnswer placeholder={placeholder} />
       )} */}
 
       {/* <VmwInputAnswer placeholder={placeholder} unit={unit} /> */}
-      {/* <VmwYesOrNoAnswer placeholder={placeholder} /> */}
-      {/* <VmwYesOrNoAnswer placeholder={placeholder} /> */}
+      {/* <VmwBinaryAnswer placeholder={placeholder} /> */}
+      {/* <VmwBinaryAnswer placeholder={placeholder} /> */}
     </div>
   );
 };
