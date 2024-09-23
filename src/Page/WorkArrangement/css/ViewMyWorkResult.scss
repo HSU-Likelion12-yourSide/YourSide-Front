@@ -1,0 +1,38 @@
+.ViewMyWorkResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pretendard';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+
+  .vmwr-title {
+    font-family: 'Pretendard';
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 68px;
+    letter-spacing: -0.025em;
+    width: 1180px;
+    margin: 90px 0px 60px 0px;
+  }
+
+  #vmwr-group {
+    display: flex;
+    justify-content: flex-end;
+    width: 1180px;
+    margin: 60px 0px 120px 0px;
+
+    .vmwr-button {
+      background-color: #1BBFC1;
+      color: #FFFFFF;
+      font-family: 'Pretendard';
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.025em;
+      padding: 16px;
+    }
+  }
+}
