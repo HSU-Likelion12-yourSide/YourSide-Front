@@ -7,7 +7,7 @@
   min-height: 100vh;
 
   .container {
-    /* background-color: greenyellow; */
+    // background-color: greenyellow;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,14 +22,24 @@
       flex-direction: row;
       margin-bottom: 120px;
 
-      h1 {
-        /* background-color: aqua; */
-        margin: 0px 180px 0px 0px;
+      #title {
+        font-family: Pretendard;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 68px;
+        letter-spacing: -0.025em;
+        width: 1180px;
+        // background-color: aqua;
+        display: flex;
+        flex-direction: column;
+
+        #effect {
+          color: #1BBFC1
+        }
       }
     }
 
     .contents {
-      /* background-color: #204598; */
       display: flex;
       box-sizing: border-box;
       justify-content: center;
@@ -160,13 +170,3 @@
     color: #204598;
   }
 }
-
-/* 
-.contract-review>.standard-contract>div>div {
-  border: 1px solid black;
-}
-
-.contract-review>.standard-contract>div>div>div {
-  border: 1px solid black;
-}
-*/

@@ -6,9 +6,14 @@ const ContractReview = () => {
     <div className="contract-review">
       <div className="container">
         <div className="intro">
-          <h1>
-            나의 근로계약서를 가지고 화면에 표준 근로계약서와 비교해보세요
-          </h1>
+          <div id="title">
+            <div>
+              <span id="effect">나의 근로계약서</span>를 가지고
+            </div>
+            <div>
+              화면에 <span id="effect">표준 근로계약서</span>와 비교해보세요
+            </div>
+          </div>
         </div>
 
         <div className="contents">
