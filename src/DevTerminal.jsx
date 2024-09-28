@@ -63,7 +63,7 @@ const Terminal = () => {
             <Link
               to="/DevTerminal"
               onClick={() => {
-                alert("현재 페이지가 'DevTerminal' 입니다.");
+                // alert("현재 페이지가 'DevTerminal' 입니다.");
               }}
             >
               Dev Terminal
