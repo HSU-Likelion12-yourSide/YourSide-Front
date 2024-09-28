@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useGlobalState from './Test/Hooks/useGlobalState';
 
 const Terminal = () => {
+  // const { isState, setState, isNum, setNum } = useContext(StateContext);
+  const { isState, setState, isNum, setNum } = useGlobalState();
+  const handleClick = value => {
+    setState(value);
+    setNum(prev => prev + 1);
+    return console.log('in the !handleClick-Fn', isState);
+  };
+
   return (
     <div
       style={{
@@ -30,6 +39,12 @@ const Terminal = () => {
             <Link to="/">Main</Link>
           </li>
           <li>
+            <Link to="/Header">Header</Link>
+          </li>
+          <li>
+            <Link to="/Footer">Footer</Link>
+          </li>
+          <li>
             <Link to="/ContractReview">Contract Review</Link>
           </li>
           <li>
@@ -37,6 +52,12 @@ const Terminal = () => {
           </li>
           <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
+          </li>
+          <li>
+            <Link to="/ViewMyWork">ViewMyWork</Link>
+          </li>
+          <li>
+            <Link to="/ViewMyWorkResult">ViewMyWorkResult</Link>
           </li>
           <li>
             <Link to="/Login">Login</Link>
@@ -63,7 +84,7 @@ const Terminal = () => {
             <Link
               to="/DevTerminal"
               onClick={() => {
-                // alert("현재 페이지가 'DevTerminal' 입니다.");
+                console.log('현재 페이지가 DevTerminal 입니다.');
               }}
             >
               Dev Terminal
@@ -77,6 +98,14 @@ const Terminal = () => {
           </li>
         </ul>
       </div>
+      <button
+        onClick={() => {
+          handleClick('newValue');
+          console.log('in the !onClick-Fn', isState, isNum);
+        }}
+      >
+        GlobalStateTest {isState}/{isNum}
+      </button>
     </div>
   );
 };
