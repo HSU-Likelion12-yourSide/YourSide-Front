@@ -8,6 +8,8 @@ const useFetchAPI = (initialUrl, method = 'GET', requestData = null) => {
   const [isData, setData] = useState(null); // API에서 가져온 데이터나 컴포넌트가 렌더링할 데이터 : isData로 가져온 데이터를 저장하고,
   const [isError, setError] = useState(null); // 데이터 요청 중에 발생한 에러 : isError로 오류가 발생했는지 관리합니다.
 
+  // 받아온 데이터를 검증할 수 있는 방법은 prop-types의 shape을 사용하면 가능하다.
+  // 이를 더해서 jsdoc을 사용해서 인가받은 코드들에도 타입 힌트를 줄 수 있다.
   // 데이터를 요청하는 함수
   const fetchData = async () => {
     setLoading(true);
