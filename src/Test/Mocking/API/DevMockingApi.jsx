@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getData } from '../../../Global/API/fetch.instance';
+import { getData } from '../../../Global/API/fetch.instance.test';
 
 const DevMockingApi = () => {
   useEffect(() => {
