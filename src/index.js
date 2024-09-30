@@ -7,11 +7,11 @@ import ContextProviderState from './Test/Global/ContextProviderState';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ContextProviderState>
-      <App />
-    </ContextProviderState>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ContextProviderState>
+    <App />
+  </ContextProviderState>,
+  // </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

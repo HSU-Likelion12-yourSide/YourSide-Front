@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getData } from './fetch.instance';
+import { getData } from './fetch.instance.test';
 // API 함수 불러오기
 const iGetData = getData;
 // 커스텀 훅: 데이터를 fetch하는 로직
