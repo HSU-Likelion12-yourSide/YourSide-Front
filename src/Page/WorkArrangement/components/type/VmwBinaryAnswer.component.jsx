@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * A binary (yes or no) answer component.
+ * @param {Object} props - The props object.
+ * @param {string} props.placeholder - The placeholder text for the input.
+ * @param {string} props.warning - The warning message to display.
+ */
+
 const VmwBinaryAnswer = ({ placeholder, warning }) => {
   return (
     <div className="vmw-yesOrNo-answer">

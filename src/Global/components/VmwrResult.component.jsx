@@ -1,5 +1,5 @@
 import React from 'react';
-import VmwrOptionButton from '../../WorkArrangement/components/VmwrButton.component';
+import VmwrOptionButton from '../../Page/WorkArrangement/components/VmwrButton.component';
 import '../css/VmwrResult.component.scss';
 import data from '../temp/data/vmwrResult.data';
 
