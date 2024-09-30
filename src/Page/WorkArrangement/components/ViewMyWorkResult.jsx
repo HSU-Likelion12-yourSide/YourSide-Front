@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/ViewMyWorkResult.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-import VmwrResult from '../../Common/components/VmwrResult.component';
+import VmwrResult from '../../../Global/components/VmwrResult.component';
 
 const Result = VmwrResult;
 
