@@ -1,0 +1,172 @@
+.contract-review {
+  background-color: #eff6fe;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+
+  .container {
+    // background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1180px;
+    height: 100%;
+
+    .intro {
+      /* background-color: wheat; */
+      display: flex;
+      box-sizing: border-box;
+      justify-content: center;
+      flex-direction: row;
+      margin-bottom: 120px;
+
+      #title {
+        font-family: Pretendard;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 68px;
+        letter-spacing: -0.025em;
+        width: 1180px;
+        // background-color: aqua;
+        display: flex;
+        flex-direction: column;
+
+        #effect {
+          color: #1BBFC1
+        }
+      }
+    }
+
+    .contents {
+      display: flex;
+      box-sizing: border-box;
+      justify-content: center;
+      flex-direction: row;
+
+      .list {
+        background-color: #ffffff;
+        margin-right: 40px;
+        width: 241px;
+        height: 698px;
+        border: 1px solid black;
+
+        div {
+          margin-left: 21px;
+          width: 200px;
+
+          div {
+            margin: 13px 9px 13px 9px;
+          }
+        }
+
+        h2 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 24px 80px 17px 79px;
+        }
+      }
+
+      .standard-contract {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        width: 900px;
+        border: 1px solid black;
+
+        h2 {
+          display: flex;
+          justify-content: center;
+          margin: 40px 0px 50px 0px;
+        }
+
+        .container {
+          display: flex;
+          width: 800px;
+          margin: 0px 50px 40px 50px;
+
+          .group {
+            width: 100%;
+            font-family: Pretendard;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 30px;
+            letter-spacing: -0.025em;
+
+            div {
+              margin-bottom: 20px;
+            }
+          }
+
+          .info {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: flex-end;
+            color: #111111;
+
+            #contractDate {
+              display: flex;
+              justify-content: space-between;
+              width: 110px;
+              margin-bottom: 40px;
+            }
+
+            #officeName {
+              display: flex;
+              justify-content: space-between;
+              width: 280px;
+              margin-bottom: 8px;
+            }
+
+            #address {
+              display: flex;
+              justify-content: space-between;
+              width: 200px;
+              margin-bottom: 8px;
+            }
+
+            #owner {
+              display: flex;
+              justify-content: space-between;
+              margin-right: 30px;
+              width: 190px;
+              margin-bottom: 40px;
+            }
+
+            #employee {
+              display: flex;
+              justify-content: space-between;
+              width: 260px;
+              margin-bottom: 8px;
+
+            }
+
+            #contact {
+              display: flex;
+              justify-content: space-between;
+              width: 220px;
+              margin-bottom: 8px;
+
+            }
+
+            #userName {
+              display: flex;
+              justify-content: space-between;
+              margin-right: 30px;
+              width: 170px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #notice {
+    color: #204598;
+  }
+}
