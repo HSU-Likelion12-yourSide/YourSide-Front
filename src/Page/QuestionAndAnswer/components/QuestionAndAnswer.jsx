@@ -1,10 +1,13 @@
 import React from 'react';
 import '../css/QuestionAndAnswer.scss';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const App = () => {
   return (
     <div className="question-and-answer">
+      <Header />
       <div className="qa-group">
         <div id="qa-box" className="selected">
           네편 답변
@@ -135,6 +138,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
