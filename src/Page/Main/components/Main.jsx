@@ -1,18 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import slidShow from '../image/slide-show.png';
+import contractReviewIntro from '../image/contract-review-intro.png';
+import workArrangementIntro from '../image/work-arrangement-intro.png';
+import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
+import arrowL from '../image/arrowL.svg';
+import arrowR from '../image/arrowR.svg';
+import arrowB from '../image/arrowB.svg';
+import '../css/Main.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-import '../css/Main.css';
 
 const Main = () => {
   return (
-    <div>
+    <div className="main">
       <Header />
-      <div className="main-content">
-        <div className="banner">
-          <button className="banner-button left">{'<'}</button>
-          <button className="banner-button right">{'>'}</button>
-          <div className="banner-dots">...</div>
+      <div className="slide-show">
+        <div id="left">
+          <img id="arrowL" src={arrowL} alt="arrowL" />
         </div>
         <div className="section-title">
           <div>이렇게</div>
