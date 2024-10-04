@@ -1,22 +1,13 @@
-:root{
-  --font-color : #767676;
-  --symbol-background-color : #EFF6FE;
-  --notation-background-color : #FFFFFF;
-  --notation-border-color : #E5E5EC;
-  --notation-button-color : #204598;
+:root {
+  --font-color: #767676;
+  --symbol-background-color: #eff6fe;
+  --notation-background-color: #ffffff;
+  --notation-border-color: #e5e5ec;
+  --notation-button-color: #204598;
 }
-
-/* body,h1 {
-  margin: 0;
-  padding: 0;
-  background-color: var(--symbol-background-color);
-}
-
-p, ul{
-  padding: 0;
-} */
 
 .Notation {
+  background-color: var(--symbol-background-color);
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -27,47 +18,49 @@ p, ul{
   height: 100vh;
 }
 
-#title{
+#title {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 20px;
   width: 980px;
 }
-.Notation .container{
+.Notation .temp {
+  margin: 40px 0 120px 0;
+}
+.Notation .temp .container {
   background-color: var(--notation-background-color);
-
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   margin-bottom: 70px;
 }
-.id-container>div{
-  display: flex;  
+.id-container > div {
+  display: flex;
   border: 1px solid var(--notation-border-color);
   padding: 21px;
-  width: 38px;
-} 
-.content-container>div{
-  display: flex;  
+  width: 110px;
+}
+.content-container > div {
+  display: flex;
   border: 1px solid var(--notation-border-color);
   padding: 21px;
   width: 740px;
-} 
-.date-container>div{
-  display: flex;  
+}
+.date-container > div {
+  display: flex;
   border: 1px solid var(--notation-border-color);
   padding: 21px;
   text-align: center;
-  width: 98px;
-}
-
-#notation{
-  color: var(--notation-button-color);
+  width: 130px;
 }
 
 .pagination {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 80px;
+}
+
+#notation {
+  color: var(--notation-button-color);
 }
