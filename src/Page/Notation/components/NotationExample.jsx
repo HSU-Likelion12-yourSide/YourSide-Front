@@ -1,9 +1,12 @@
 import React from 'react';
 import '../css/notationexample.css';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const NotationExample = () => {
   return (
     <div className="NotationExample">
+      <Header />
       <div className="container">
         <div className="title">
           <h3>네편 설명서</h3>
@@ -68,6 +71,7 @@ const NotationExample = () => {
           <button>목록보기</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
