@@ -1,9 +1,12 @@
 import React from 'react';
 import '../css/contractreview.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const ContractReview = () => {
   return (
     <div className="contract-review">
+      <Header />
       <div className="container">
         <div className="intro">
           <div id="title">
@@ -174,6 +177,7 @@ const ContractReview = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

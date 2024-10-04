@@ -1,17 +1,18 @@
-:root{
-  --font-color : #767676;
-  --symbol-background-color : #EFF6FE;
-  --Login-background-color : #FFFFFF;
-  --Login-border-color : #E5E5EC;
-  --Login-button-color : #204598;
+:root {
+  --font-color: #767676;
+  --symbol-background-color: #eff6fe;
+  --Login-background-color: #ffffff;
+  --Login-border-color: #e5e5ec;
+  --Login-button-color: #204598;
 }
 
-.id>p, .pw>p{
+.id > p,
+.pw > p {
   margin: 0;
 }
 
-
-.id>input, .pw>input{
+.id > input,
+.pw > input {
   width: 500px;
   padding: 16px;
   border: 1px solid var(--Login-border-color);
@@ -24,11 +25,12 @@
   justify-content: center;
   align-items: center;
   color: var(--font-color);
-  width: 100%; 
+  width: 100%;
   height: 100vh;
+  margin: 40px 0 40px 0;
 }
 
-.Login .container{
+.Login .container {
   background-color: var(--Login-background-color);
 
   display: flex;
@@ -37,11 +39,11 @@
   align-items: center;
 
   width: 800px;
-  height: 100%;
+  height: 900px;
   box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 }
 
-.Login .container .symbol{
+.Login .container .symbol {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,25 +51,25 @@
   margin-bottom: 60px;
 }
 
-.symbol>p{
+.symbol > p {
   margin-top: 20px;
   margin-bottom: 12px;
 }
 
-.id{
+.id {
   margin-bottom: 24px;
 }
 
-.pw{
+.pw {
   margin-bottom: 140px;
 }
 
-.id>p, .pw>p{
+.id > p,
+.pw > p {
   margin-bottom: 12px;
 }
 
-
-#login-button{
+#login-button {
   background-color: var(--Login-button-color);
   color: var(--Login-background-color);
 
@@ -76,10 +78,10 @@
   width: 500px;
 }
 
-.sign-up{
+.sign-up {
   display: flex;
 }
 
-.sign-up>p{
+.sign-up > p {
   margin-right: 12px;
 }

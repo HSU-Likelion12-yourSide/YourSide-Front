@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/ViewMyWork.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 import ViewMyWorkOption from './ViewMyWorkOption.component';
 import data from '../data/viewMyWork.data';
 
@@ -9,6 +11,7 @@ const OptionsData = data;
 const ViewMyWork = () => {
   return (
     <div className="view-my-work">
+      <Header />
       <div className="vmw-container">
         <div id="vmw-title">내 근로 살펴보기</div>
         {
@@ -28,6 +31,7 @@ const ViewMyWork = () => {
         }
       </div>
       <div className="vmw-result">검사하기</div>
+      <Footer />
     </div>
   );
 };
