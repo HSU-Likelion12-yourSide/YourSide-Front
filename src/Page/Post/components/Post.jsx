@@ -2,9 +2,10 @@ import React from 'react';
 import '../css/Post.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-import VmwrResult from '../../../Global/components/VmwrResult.component';
+import plusIcon from '../image/plusIcon.svg';
+// import VmwrResult from '../../../Global/components/VmwrResult.component';
 
-const Result = VmwrResult;
+// const Result = VmwrResult;
 
 const Post = () => {
   return (
@@ -38,9 +39,14 @@ const Post = () => {
             placeholder="질문 내용을 입력해주세요"
           />
         </div>
-        <div>내 결과지 가져오기(선택)</div>
-        <Result />
+        <div className="post-myresult-container">
+          <div id="post-title">내 결과지 가져오기(선택)</div>
+          <div className="post-myresult-none">
+            <img src={plusIcon} alt="+" id="post-plusIcon" />
+          </div>
+        </div>
       </div>
+      {/* <Result /> */}
       <div id="post-group">
         <div className="post-button">등록하기</div>
       </div>

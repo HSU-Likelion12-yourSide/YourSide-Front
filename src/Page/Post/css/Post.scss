@@ -106,6 +106,26 @@
     }
   }
 
+  .post-myresult-container {
+    #post-title {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 30px;
+      margin-bottom: 12px;
+      color: #111111;
+    }
+    .post-myresult-none {
+      background-color: #E1E1E1;
+      border: dashed 1px #111111;
+      width: 1100px;
+      height: 250px;
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
   #post-group {
     display: flex;
     justify-content: flex-end;
