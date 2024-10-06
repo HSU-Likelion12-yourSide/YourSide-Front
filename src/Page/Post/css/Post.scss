@@ -33,6 +33,7 @@
         width: 1100px;
         height: 48px;
         font-size: 14px;
+        font-weight: 400;
         color: #111111;
         border: 1px solid #E5E5EC;
         padding: 14px 16px;
@@ -77,7 +78,32 @@
         }
       }
     }
-  
+    .post-content-container {
+      margin-bottom: 33px;
+      #post-title {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 30px;
+        margin-bottom: 12px;
+        color: #111111;
+      }
+      .post-content-textarea {
+        width: 1100px;
+        height: 404px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #111111;
+        border: 1px solid #E5E5EC;
+        padding: 12px 16px;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: #666666;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
   }
 
   #post-group {
