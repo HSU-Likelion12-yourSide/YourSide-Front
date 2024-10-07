@@ -1,14 +1,22 @@
 import React from 'react';
-import '../css/contractreview.css';
+import '../css/contractreview.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const ContractReview = () => {
   return (
     <div className="contract-review">
+      <Header />
       <div className="container">
         <div className="intro">
-          <h1>
-            나의 근로계약서를 가지고 화면에 표준 근로계약서와 비교해보세요
-          </h1>
+          <div id="title">
+            <div>
+              <span id="effect">나의 근로계약서</span>를 가지고
+            </div>
+            <div>
+              화면에 <span id="effect">표준 근로계약서</span>와 비교해보세요
+            </div>
+          </div>
         </div>
 
         <div className="contents">
@@ -39,8 +47,8 @@ const ContractReview = () => {
 
           <div className="standard-contract">
             <h2>표준 근로계약서</h2>
-            <div>
-              <div>
+            <div className="container">
+              <div className="group">
                 <div>
                   __________(이하 “사업주”라 함)과(와) __________ (이하
                   “근로자”라 함)은 다음과 같이 근로계약을 체결한다.
@@ -142,18 +150,34 @@ const ContractReview = () => {
               </div>
 
               <div className="info">
-                <div>년 월 일</div>
-                <div>(사업주) 사업체명 : (전화 : )/</div>
-                <div>주 소 :</div>
-                <div>대 표 자 : (서명)</div>
-                <div>(근로자) 주 소 :</div>
-                <div>연 락 처 :</div>
-                <div>성 명 : (서명)</div>
+                <div id="contractDate">
+                  <span>년</span> <span>월</span> <span>일</span>
+                </div>
+                <div id="officeName">
+                  <span>(사업주) 사업체명:</span> <span>(전화 :</span> )
+                </div>
+                <div id="address">
+                  <span>주 소 :</span>
+                </div>
+                <div id="owner">
+                  <span>대 표 자 :</span> <span>(서명)</span>
+                </div>
+                <div id="employee">
+                  <span>(근로자) 주 소 :</span>
+                </div>
+                <div id="contact">
+                  <span>연 락 처 :</span>
+                </div>
+                <div id="userName">
+                  <span>성 명 :</span>
+                  <span>(서명)</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -8,14 +8,12 @@
   width: 100%;
   min-height: 100vh;
   font-family: 'Pretendard';
-}
 
-.question-and-answer{
-  .qa-group{
+  .qa-group {
     margin-top: 90px;
     display: flex;
 
-    #qa-box{
+    #qa-box {
       display: flex;
       width: 248px;
       height: 38px;
@@ -29,7 +27,8 @@
       text-align: center;
       font-size: 28px;
       font-weight: 400;
-      line-height: 38px; /* 135.714% */
+      line-height: 38px;
+      /* 135.714% */
       letter-spacing: -0.7px;
     }
 
@@ -41,43 +40,48 @@
       font-size: 28px;
       font-style: normal;
       font-weight: 600;
-      line-height: 38px; /* 135.714% */
+      line-height: 38px;
+      /* 135.714% */
       letter-spacing: -0.7px;
     }
   }
 
-  .qa-popular-container{
-    #qa-popular-intro{
+  .qa-popular-container {
+    #qa-popular-intro {
       margin-top: 90px;
       color: var(--system-color-system-black-900, #111);
       font-family: Pretendard;
       font-size: 48px;
       font-style: normal;
       font-weight: 600;
-      line-height: 68px; /* 141.667% */
+      line-height: 68px;
+      /* 141.667% */
       letter-spacing: -1.2px;
     }
 
-    .qa-popular-group{
+    .qa-popular-group {
       margin-top: 50px;
       display: flex;
-      align-items: center;  /* 수직 중앙 정렬 */
-      gap:20px;
+      align-items: center;
+      /* 수직 중앙 정렬 */
+      gap: 20px;
 
-      .qa-popular-box{
+      .qa-popular-box {
         width: 380px;
         height: 218px;
         flex-shrink: 0;
         background: #FFF;
         box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 
-        .qa-popular-question{
+        .qa-popular-question {
           margin-left: 20px;
-          display: flex;  /* 자식 요소를 flex로 배치 */
-          align-items: center;  /* 수직 중앙 정렬 */
+          display: flex;
+          /* 자식 요소를 flex로 배치 */
+          align-items: center;
+          /* 수직 중앙 정렬 */
           gap: 4px;
 
-          #qa-popular-mark{
+          #qa-popular-mark {
             height: 36px;
             width: 28px;
             margin-top: 20px;
@@ -86,10 +90,11 @@
             font-size: 28px;
             font-style: normal;
             font-weight: 600;
-            line-height: 36px; /* 128.571% */
+            line-height: 36px;
+            /* 128.571% */
           }
-  
-          #qa-popular-title{
+
+          #qa-popular-title {
             margin-top: 30px;
             width: 300px;
             height: 48px;
@@ -97,17 +102,20 @@
             color: var(--system-color-system-black-900, #111);
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-family: Pretendard; 
+            font-family: Pretendard;
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 24px; /* 133.333% */
-            overflow: visible; /* 텍스트가 넘칠 경우 표시 */
-            white-space: normal; /* 줄바꿈을 허용 */
+            line-height: 24px;
+            /* 133.333% */
+            overflow: visible;
+            /* 텍스트가 넘칠 경우 표시 */
+            white-space: normal;
+            /* 줄바꿈을 허용 */
           }
         }
 
-        #qa-popular-text{
+        #qa-popular-text {
           margin-top: 18px;
           padding-left: 20px;
           width: 332px;
@@ -115,37 +123,43 @@
           flex-shrink: 0;
           overflow: hidden;
           color: var(--system-color-system-black-700, #505050);
-          white-space: normal; /* 줄바꿈을 허용 */
-          overflow: visible; /* 텍스트가 넘칠 경우 표시 */
+          white-space: normal;
+          /* 줄바꿈을 허용 */
+          overflow: visible;
+          /* 텍스트가 넘칠 경우 표시 */
           font-family: Pretendard;
           font-size: 14px;
           font-style: normal;
           font-weight: 400;
-          line-height: 22px; /* 157.143% */
+          line-height: 22px;
+          /* 157.143% */
         }
       }
     }
   }
 
-  .qa-post-container{
-    margin-top:88px;
-    .qa-post-intro{
+  .qa-post-container {
+    margin-top: 88px;
+    margin-bottom: 220px;
+
+    .qa-post-intro {
       display: flex;
       //align-items: center;
 
 
-      #qa-post-word{
+      #qa-post-word {
         margin-right: auto;
         color: var(--system-color-system-black-900, #111);
         font-family: Pretendard;
         font-size: 40px;
         font-style: normal;
         font-weight: 600;
-        line-height: 50px; /* 125% */
+        line-height: 50px;
+        /* 125% */
         letter-spacing: -1px;
       }
 
-      #qa-write{
+      #qa-write {
         margin-left: auto;
         display: inline-flex;
         padding: 8px 16px;
@@ -156,43 +170,44 @@
 
         color: #FFF;
         text-align: center;
-        
+
         /* Button/BUT1_Sb */
         font-family: Pretendard;
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px; /* 150% */
+        line-height: 24px;
+        /* 150% */
         letter-spacing: -0.4px;
       }
     }
 
-    .qa-post-group{
+    .qa-post-group {
       margin-top: 50px;
       display: flex;
       gap: 30px;
       flex-direction: column;
       justify-content: center;
 
-      .qa-post-card{
+      .qa-post-card {
         width: 1180px;
         height: 200px;
         flex-shrink: 0;
         background: #FFF;
-        
+
         /* 네편 카드 */
         box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
         display: flex;
 
-        .qa-left-group{
+        .qa-left-group {
           margin-right: auto;
 
-          .qa-post-title{
+          .qa-post-title {
             margin-top: 30px;
             display: flex;
             align-items: center;
 
-            #qa-post-mark{
+            #qa-post-mark {
               margin-left: 36.12px;
               width: 33.714px;
               color: var(--main-color-Primary-color, #204598);
@@ -200,10 +215,11 @@
               font-size: 28px;
               font-style: normal;
               font-weight: 600;
-              line-height: 36px; /* 128.571% */
+              line-height: 36px;
+              /* 128.571% */
             }
 
-            #qa-post-question{
+            #qa-post-question {
               margin-left: 4.82px;
               width: 553.878px;
               color: var(--system-color-system-black-900, #111);
@@ -211,11 +227,12 @@
               font-size: 24px;
               font-style: normal;
               font-weight: 400;
-              line-height: 36px; /* 150% */
+              line-height: 36px;
+              /* 150% */
             }
           }
 
-          .qa-post-text{
+          .qa-post-text {
             padding-left: 51px;
             margin-top: 24px;
             width: 895px;
@@ -223,25 +240,29 @@
             flex-shrink: 0;
             overflow: hidden;
             color: var(--system-color-system-black-700, #505050);
-            overflow: visible; /* 텍스트가 넘칠 경우 표시 */
-            white-space: normal; /* 줄바꿈을 허용 */
+            overflow: visible;
+            /* 텍스트가 넘칠 경우 표시 */
+            white-space: normal;
+            /* 줄바꿈을 허용 */
             font-family: Pretendard;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: 24px; /* 150% */
+            line-height: 24px;
+            /* 150% */
           }
         }
 
-        .qa-right-group{
+        .qa-right-group {
           margin-left: auto;
-          padding-right:36px;
+          padding-right: 36px;
           display: flex;
           flex-direction: column;
-          align-items: flex-end; /* 자식 요소들을 오른쪽 끝에 맞추기 */
+          align-items: flex-end;
+          /* 자식 요소들을 오른쪽 끝에 맞추기 */
 
-          #qa-post-date{
-            margin-top:38.14px;
+          #qa-post-date {
+            margin-top: 38.14px;
             width: 79.469px;
             height: 20px;
             color: var(--system-color-system-black-600, #666);
@@ -250,7 +271,8 @@
             font-size: 14px;
             font-style: normal;
             font-weight: 300;
-            line-height: 20px; /* 142.857% */
+            line-height: 20px;
+            /* 142.857% */
           }
 
           #qa-learn-more{
@@ -267,16 +289,18 @@
             border: 1px solid var(--system-color-system-black-900, #111);
             box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
 
-            #qa-learn-more-text{
+            #qa-learn-more-text {
               color: var(--system-color-system-black-900, #111);
               font-family: Pretendard;
               font-size: 14px;
               font-style: normal;
               font-weight: 500;
-              line-height: 20px; /* 142.857% */
+              line-height: 20px;
+              /* 142.857% */
               width: 64px;
               height: 20px;
-              white-space: nowrap; /* 텍스트 줄바꿈 금지 */
+              white-space: nowrap;
+              /* 텍스트 줄바꿈 금지 */
             }
 
             img {

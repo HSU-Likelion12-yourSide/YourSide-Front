@@ -17,7 +17,9 @@ const Terminal = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: '20vh',
+        justifyContent: 'center',
+        height: '100vh',
+        // marginTop: '20vh',
       }}
     >
       <h1>네편 프로젝트 with 멋사</h1>
@@ -52,6 +54,12 @@ const Terminal = () => {
           </li>
           <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
+          </li>
+          <li>
+            <Link to="/ViewMyWork">ViewMyWork</Link>
+          </li>
+          <li>
+            <Link to="/ViewMyWorkResult">ViewMyWorkResult</Link>
           </li>
           <li>
             <Link to="/Login">Login</Link>

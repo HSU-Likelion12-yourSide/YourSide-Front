@@ -6,6 +6,8 @@ import Footer from './Page/Footer/components/Footer';
 import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
+import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
+import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
 import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/SignUp/components/SignUp';
@@ -34,6 +36,8 @@ const App = () => {
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
+        <Route path="/ViewMyWork" element={<ViewMyWork />} />
+        <Route path="/ViewMyWorkResult" element={<ViewMyWorkResult />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />
