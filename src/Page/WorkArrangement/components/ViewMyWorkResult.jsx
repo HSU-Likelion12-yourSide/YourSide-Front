@@ -12,7 +12,9 @@ const ViewMyWorkResult = () => {
     <div className="ViewMyWorkResult">
       <Header />
       <div className="vmwr-title">내 근로 결과지</div>
-      <Result data={data} />
+      <div className="vmwr-result">
+        <Result data={data} />
+      </div>
       <div id="vmwr-group">
         <div className="vmwr-button">결과지 저장하기</div>
       </div>

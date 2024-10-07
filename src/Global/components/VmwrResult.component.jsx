@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VmwrOptionButton from '../../Page/WorkArrangement/components/VmwrButton.component';
 import '../css/VmwrResult.component.scss';
-// data를 해당 컴포넌트를 사용하는 최상위 컴포넌트로 부터 props를 받아오게 코드 리팩토링
+// * data를 해당 컴포넌트를 사용하는 최상위 컴포넌트로 부터 props를 받아오게 코드 리팩토링
 // import data from '../temp/data/vmwrResult.data';
 
 const VmwrResult = ({ data }) => {
-  //* 여기서 부터 함수로 분리가 필요
+  // * 여기서 부터 함수로 분리가 필요 논의가 필요
   // 해당 데이터를 API로 받아오기 때문에 Props로 받아올 수 있게 구조를 다시 검토하고 재구성 필요
   const OptionsResultData = data;
   const ResultContents = OptionsResultData[0].data.content
