@@ -5,6 +5,27 @@ import '../css/VmwrResult.component.scss';
 // * data를 해당 컴포넌트를 사용하는 최상위 컴포넌트로 부터 props를 받아오게 코드 리팩토링
 // import data from '../temp/data/vmwrResult.data';
 
+/**
+ * VmwrResult 컴포넌트
+ * API로부터 받은 근로 결과 데이터를 렌더링하는 컴포넌트입니다.
+ *
+ * @component
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {Array} props.data - 근로 결과 데이터 배열
+ * @param {Object} props.data[].data - 근로 결과 데이터 객체
+ * @param {number} props.data[].status - HTTP 상태 코드 (예: 200, 404)
+ * @param {string} props.data[].data.nickname - 근로자 닉네임
+ * @param {string} props.data[].data.title - 근로지 이름
+ * @param {string} props.data[].data.content - 결과지 설명
+ * @param {boolean} props.data[].data.extraPay - 가산수당 여부
+ * @param {boolean} props.data[].data.weekPay - 주휴수당 여부
+ * @param {boolean} props.data[].data.nightPay - 야간 근로 수당 여부
+ * @param {boolean} props.data[].data.overtimePay - 연장 근로 수당 여부
+ * @param {boolean} props.data[].data.holidayPay - 휴일 근로 수당 여부
+ * @param {string} props.data[].message - 결과 메시지
+ * @returns {JSX.Element} VmwrResult 컴포넌트
+ */
+
 const VmwrResult = ({ data }) => {
   // * 여기서 부터 함수로 분리가 필요 논의가 필요
   // 해당 데이터를 API로 받아오기 때문에 Props로 받아올 수 있게 구조를 다시 검토하고 재구성 필요
@@ -58,6 +79,10 @@ const VmwrResult = ({ data }) => {
 };
 
 VmwrResult.propTypes = {
+  /**
+   * data: 근로 결과 데이터를 담고 있는 배열
+   * - 배열 안의 객체는 근로자 정보와 각 근로 수당 발생 여부 등을 포함한다.
+   */
   data: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.number.isRequired,
