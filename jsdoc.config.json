@@ -1,4 +1,17 @@
 {
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react",
+    "maxNodeModuleJsDepth": 2
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "tags": {
     "allowUnknownTags": true
   },
