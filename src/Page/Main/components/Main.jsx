@@ -7,10 +7,13 @@ import arrowL from '../image/arrowL.svg';
 import arrowR from '../image/arrowR.svg';
 import arrowB from '../image/arrowB.svg';
 import '../css/Main.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const Main = () => {
   return (
     <div className="main">
+      <Header />
       <div className="slide-show">
         <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
@@ -94,6 +97,7 @@ const Main = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

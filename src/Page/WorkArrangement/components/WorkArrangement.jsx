@@ -2,10 +2,13 @@ import React from 'react';
 import quizImage from '../image/quiz-short-cut.svg';
 import arrowRight from '../image/arrow-right.svg';
 import '../css/WorkArrangement.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const WorkArrangement = () => {
   return (
     <div className="work-arrangement">
+      <Header />
       <div className="wa-container">
         <div id="wa-title">
           <div>
@@ -63,6 +66,7 @@ const WorkArrangement = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
