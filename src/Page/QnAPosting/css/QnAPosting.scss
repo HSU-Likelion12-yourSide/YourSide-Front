@@ -2,7 +2,7 @@
   font-family: 'Pretendard';
 }
 
-.Post {
+.qnaposting {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@
   font-weight: 400;
   line-height: 28px;
 
-  .post-container{
+  .qnaposting-container{
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
@@ -21,16 +21,16 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 
-    .post-title-container{
+    .qnaposting-title-container{
       margin-bottom: 33px;
-      #post-title {
+      #qnaposting-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .post-title-input{
+      .qnaposting-title-input{
         width: 1100px;
         height: 48px;
         font-size: 14px;
@@ -50,16 +50,16 @@
       }
     }
   
-    .post-category-container {
+    .qnaposting-category-container {
       margin-bottom: 33px;
-      #post-title {
+      #qnaposting-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .post-input-group {
+      .qnaposting-input-group {
         color: 000000;
         font-size: 14px;
         font-weight: 400;
@@ -79,16 +79,16 @@
         }
       }
     }
-    .post-content-container {
+    .qnaposting-content-container {
       margin-bottom: 33px;
-      #post-title {
+      #qnaposting-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .post-content-textarea {
+      .qnaposting-content-textarea {
         width: 1100px;
         height: 404px;
         font-size: 14px;
@@ -107,15 +107,15 @@
     }
   }
 
-  .post-myresult-container {
-    #post-title {
+  .qnaposting-myresult-container {
+    #qnaposting-title {
       font-size: 22px;
       font-weight: 500;
       line-height: 30px;
       margin-bottom: 12px;
       color: #111111;
     }
-    .post-myresult-none {
+    .qnaposting-myresult-none {
       background-color: #E1E1E1;
       border: dashed 1px #111111;
       width: 1100px;
@@ -127,19 +127,19 @@
     }
   }
 
-  .post-vmwr-result {
+  .qnaposting-vmwr-result {
     background-color: white;
     padding: 36px 60px;
     box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
   }
 
-  #post-group {
+  #qnaposting-group {
     display: flex;
     justify-content: flex-end;
     width: 1180px;
     margin: 60px 0px 120px 0px;
 
-    .post-button {
+    .qnaposting-button {
       background-color: #1BBFC1;
       color: #FFFFFF;
       font-family: 'Pretendard';
