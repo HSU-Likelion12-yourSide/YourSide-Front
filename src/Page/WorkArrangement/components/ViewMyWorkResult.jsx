@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/ViewMyWorkResult.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
@@ -10,29 +10,22 @@ const Result = VmwrResult;
 
 const ViewMyWorkResult = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
+  const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
 
   useEffect(() => {
     if (isLoading) {
       console.log('..is Loading');
+      setContent('Loading...');
     } else if (isError) {
       console.log(`is Error : ${isError}`);
-    } else {
+      setContent(`Error: ${isError}`);
+    } else if (isData) {
       console.log(`Success Contact : ${isData}`);
+      setContent(<Result data={isData} />);
+    } else {
+      setContent(null);
     }
-  });
-
-  // 렌더링할 내용을 if 문으로 처리
-  // 이 부분을 함수로 분리 및 관리 해야할지 고민
-  let content;
-  if (isLoading) {
-    content = 'Loading...';
-  } else if (isError) {
-    content = `Error: ${isError}`;
-  } else if (isData) {
-    content = <Result data={isData} />;
-  } else {
-    content = null; // 모든 조건에 해당하지 않을 때
-  }
+  }, [isLoading, isError, isData]);
 
   return (
     <div className="ViewMyWorkResult">
