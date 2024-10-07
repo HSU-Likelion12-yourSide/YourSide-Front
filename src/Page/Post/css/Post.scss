@@ -19,6 +19,7 @@
     margin: 82px 0px 60px 0px;
     width: 1180px;
     box-sizing: border-box;
+    box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 
     .post-title-container{
       margin-bottom: 33px;
@@ -124,6 +125,12 @@
       align-items: center;
       justify-content: center;
     }
+  }
+
+  .post-vmwr-result {
+    background-color: white;
+    padding: 36px 60px;
+    box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
   }
 
   #post-group {

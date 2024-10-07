@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/Post.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-import plusIcon from '../image/plusIcon.svg';
-// import VmwrResult from '../../../Global/components/VmwrResult.component';
+// import plusIcon from '../image/plusIcon.svg';
+import VmwrResult from '../../../Global/components/VmwrResult.component';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
-// const Result = VmwrResult;
+const Result = VmwrResult;
 
 const Post = () => {
+  const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
+  const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
+
+  useEffect(() => {
+    if (isLoading) {
+      console.log('..is Loading');
+      setContent('Loading...');
+    } else if (isError) {
+      console.log(`is Error : ${isError}`);
+      setContent(`Error: ${isError}`);
+    } else if (isData) {
+      console.log(`Success Contact : ${isData}`);
+      setContent(<Result data={isData} />);
+    } else {
+      setContent(null);
+    }
+  }, [isLoading, isError, isData]);
+
   return (
     <div className="Post">
       <Header />
@@ -41,12 +60,12 @@ const Post = () => {
         </div>
         <div className="post-myresult-container">
           <div id="post-title">내 결과지 가져오기(선택)</div>
-          <div className="post-myresult-none">
+          {/* <div className="post-myresult-none">
             <img src={plusIcon} alt="+" id="post-plusIcon" />
-          </div>
+          </div> */}
+          <div className="post-vmwr-result">{content}</div>
         </div>
       </div>
-      {/* <Result /> */}
       <div id="post-group">
         <div className="post-button">등록하기</div>
       </div>
