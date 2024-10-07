@@ -253,19 +253,19 @@
             line-height: 20px; /* 142.857% */
           }
 
-          .qa-learn-more{
+          #qa-learn-more{
             margin-top: 63.86px;
             display: flex;
             width: 92px;
             height: 24px;
-            //width: auto;
-            //height: auto;
+            width: auto;
+            height: auto;
             padding: 12px 16px;
             flex-direction: row;
             align-items: center;
             gap: 4px;
             border: 1px solid var(--system-color-system-black-900, #111);
-            //box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
+            box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
 
             #qa-learn-more-text{
               color: var(--system-color-system-black-900, #111);

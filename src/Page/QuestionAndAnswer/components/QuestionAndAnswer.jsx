@@ -79,12 +79,10 @@ const App = () => {
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
               <MainShortCut
+                id="qa-learn-more"
                 text="자세히 보기"
                 img={learnMoreArrow}
-                alt="learnMoreArrow"
-                width={120}
-                height={40}
-                border="1px solid #111"
+                alt="Learn more arrow"
               />
             </div>
           </div>
@@ -105,12 +103,10 @@ const App = () => {
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
               <MainShortCut
+                id="qa-learn-more"
                 text="자세히 보기"
                 img={learnMoreArrow}
                 alt="Learn more arrow"
-                width={120}
-                height={40}
-                border="1px solid #111"
               />
             </div>
           </div>
@@ -131,12 +127,10 @@ const App = () => {
             <div className="qa-right-group">
               <div id="qa-post-date">2024.04.11</div>
               <MainShortCut
+                id="qa-learn-more"
                 text="자세히 보기"
                 img={learnMoreArrow}
                 alt="Learn more arrow"
-                width={120}
-                height={40}
-                border="1px solid #111"
               />
             </div>
           </div>

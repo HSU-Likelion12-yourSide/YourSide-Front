@@ -75,6 +75,9 @@ const Terminal = () => {
             <Link to="/FindPW">FindPW</Link>
           </li>
           <li>
+            <Link to="/ViewQuestionAndAnswer">ViewQuestionAndAnswer</Link>
+          </li>
+          <li>
             <Link
               to="/DevTerminal"
               onClick={() => {

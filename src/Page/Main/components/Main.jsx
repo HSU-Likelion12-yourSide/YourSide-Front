@@ -36,12 +36,10 @@ const Main = () => {
                   근로 계약서에 유의깊게 봐야할 항목을 확인해봐요
                 </div>
                 <MainShortCut
+                  id="short-cut"
                   text="바로가기"
                   img={arrowB}
                   alt="short-cut"
-                  width={93}
-                  height={48}
-                  border="1px solid #E5E5EC"
                 />
               </div>
               <div id="image">
@@ -63,12 +61,10 @@ const Main = () => {
                   혹시 놓치고 있는 급여가 얼마를 받을 수 있는 지 확인해 봐요.
                 </div>
                 <MainShortCut
+                  id="short-cut"
                   text="바로가기"
                   img={arrowB}
                   alt="short-cut"
-                  width={93}
-                  height={48}
-                  border="1px solid #E5E5EC"
                 />
               </div>
             </div>
@@ -84,12 +80,10 @@ const Main = () => {
                 </div>
                 <div id="sub-title">궁금점에 대한 답을 알아가요!</div>
                 <MainShortCut
+                  id="short-cut"
                   text="바로가기"
                   img={arrowB}
                   alt="short-cut"
-                  width={93}
-                  height={48}
-                  border="1px solid #E5E5EC"
                 />
               </div>
               <div id="image">
