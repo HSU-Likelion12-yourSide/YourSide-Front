@@ -3,6 +3,7 @@ import '../css/ViewMyWorkResult.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
+import data from '../../../Global/temp/data/vmwrResult.data';
 
 const Result = VmwrResult;
 
@@ -11,7 +12,7 @@ const ViewMyWorkResult = () => {
     <div className="ViewMyWorkResult">
       <Header />
       <div className="vmwr-title">내 근로 결과지</div>
-      <Result />
+      <Result data={data} />
       <div id="vmwr-group">
         <div className="vmwr-button">결과지 저장하기</div>
       </div>
