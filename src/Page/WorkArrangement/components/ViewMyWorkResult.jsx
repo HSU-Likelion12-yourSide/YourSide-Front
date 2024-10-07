@@ -21,13 +21,24 @@ const ViewMyWorkResult = () => {
     }
   });
 
+  // 렌더링할 내용을 if 문으로 처리
+  // 이 부분을 함수로 분리 및 관리 해야할지 고민
+  let content;
+  if (isLoading) {
+    content = 'Loading...';
+  } else if (isError) {
+    content = `Error: ${isError}`;
+  } else if (isData) {
+    content = <Result data={isData} />;
+  } else {
+    content = null; // 모든 조건에 해당하지 않을 때
+  }
+
   return (
     <div className="ViewMyWorkResult">
       <Header />
       <div className="vmwr-title">내 근로 결과지</div>
-      <div className="vmwr-result">
-        <Result data={isData} />
-      </div>
+      <div className="vmwr-result">{content}</div>
       <div id="vmwr-group">
         <div className="vmwr-button">결과지 저장하기</div>
       </div>
