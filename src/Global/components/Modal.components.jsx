@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../css/Modal.scss';
+// 해당 modal.default는 modal.default 컴포넌트 분리시 함께 분리되는 부분
+import '../css/Modal.default.scss';
 
 const Modal = ({ isOpen = true }) => {
   useEffect(() => {
