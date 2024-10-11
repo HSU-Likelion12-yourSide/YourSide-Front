@@ -18,6 +18,7 @@ const Main = () => {
   return (
     <div className="main">
       <Header />
+      <Modal />
       <div className="slide-show">
         <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
