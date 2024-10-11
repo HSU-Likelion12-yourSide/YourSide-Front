@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../css/Modal.scss';
 
-const Modal = ({ isOpen }) => {
+const Modal = ({ isOpen = true }) => {
   useEffect(() => {
     if (isOpen) {
       // 모달이 열리면 스크롤 비활성화
@@ -22,14 +22,14 @@ const Modal = ({ isOpen }) => {
 
   return (
     <div className="Modal">
-      <div className="overlay">
-        <div className="default">
-          <div>결과지 이름</div>
-          <div>
+      <div className="modal-overlay">
+        <div className="modal-default">
+          <div id="modal-title">결과지 이름</div>
+          <div className="modal-content">
             <input type="text" />
-            <div>근로 결과지</div>
+            <div id="modal-input-sub">근로 결과지</div>
           </div>
-          <div>저장하기</div>
+          <div id="modal-save">저장하기</div>
         </div>
       </div>
     </div>
