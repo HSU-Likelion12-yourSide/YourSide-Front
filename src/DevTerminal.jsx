@@ -53,6 +53,9 @@ const Terminal = () => {
             <Link to="/QuestionAndAnswer">Question and Answer</Link>
           </li>
           <li>
+            <Link to="/QnAPosting">QandAPosting</Link>
+          </li>
+          <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
           </li>
           <li>
