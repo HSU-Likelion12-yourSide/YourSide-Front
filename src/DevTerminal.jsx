@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useGlobalState from './Test/Hooks/useGlobalState';
+import useGlobalState from './Global/Hooks/useGlobalState';
 
 const Terminal = () => {
   // const { isState, setState, isNum, setNum } = useContext(StateContext);
