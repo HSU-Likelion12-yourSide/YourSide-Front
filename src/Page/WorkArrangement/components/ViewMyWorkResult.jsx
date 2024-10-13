@@ -9,6 +9,7 @@ import Modal from '../../../Global/components/Modal.components';
 import ModalResult from '../../../Global/components/ModalType/ModalResult.components';
 import ModalResultMessage from '../../../Global/components/ModalType/ModalResultMessage.components';
 import modalStateController from '../../../Global/function/modalStateController';
+import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMessage.components';
 
 const Result = VmwrResult;
 
@@ -24,6 +25,8 @@ const ViewMyWorkResult = () => {
   let ModalComponent = ModalResult;
   if (isModalType === 'ResultMessage') {
     ModalComponent = ModalResultMessage;
+  } else if (isModalType === 'ShareMessage') {
+    ModalComponent = ModalShareMessage;
   }
 
   useEffect(() => {
