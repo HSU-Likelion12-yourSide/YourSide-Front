@@ -25,6 +25,14 @@ const Modal = ({ isOpen, ModalType }) => {
 
   if (!isOpen) return null;
 
+  const messageController = () => {
+    console.log('test');
+  };
+
+  const modalStateController = () => {
+    setModalState(!isModalState);
+  };
+
   return (
     <div className="Modal">
       <div
