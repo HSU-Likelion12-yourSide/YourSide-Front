@@ -27,6 +27,8 @@ const ViewMyWorkResult = () => {
   let ModalComponent = ModalResult;
   if (isModalType === 'ResultMessage') {
     ModalComponent = ModalResultMessage;
+  } else if (isModalType === 'ShareMessage') {
+    ModalComponent = ModalShareMessage;
   }
 
   const { isModalState, setModalState, isModalType, setModalType } =
