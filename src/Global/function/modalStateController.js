@@ -1,4 +1,4 @@
-export const modalStateController = (isModalState, setModalState) => {
+const modalStateController = (isModalState, setModalState) => {
   setModalState(!isModalState);
 };
 
