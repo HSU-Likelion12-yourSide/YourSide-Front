@@ -4,8 +4,10 @@ import '../css/Modal.scss';
 // 해당 modal.default는 modal.default 컴포넌트 분리시 함께 분리되는 부분
 import '../css/Modal.default.scss';
 import useGlobalState from '../Hooks/useGlobalState';
+import modalController from '../function/modalController';
+// import ModalResult from './ModalType/ModalResult.components';
 
-const Modal = ({ isOpen = true }) => {
+const Modal = ({ isOpen, ModalType }) => {
   const { isModalState, setModalState } = useGlobalState();
 
   useEffect(() => {
@@ -24,36 +26,30 @@ const Modal = ({ isOpen = true }) => {
 
   if (!isOpen) return null;
 
-  const messageController = () => {
-    console.log('test');
-  };
-
-  const modalStateController = () => {
-    setModalState(!isModalState);
-  };
-
   return (
     <div className="Modal">
       <div
         className="modal-overlay"
-        onKeyDown={messageController} // 키보드 지원
+        onKeyDown={() => {
+          console.log('test');
+        }} // 키보드 지원
         role="button"
         tabIndex="0"
-        onClick={modalStateController}
+        onClick={() => {
+          modalController(isModalState, setModalState);
+        }}
       >
         <div
           className="modal-default"
           onClick={e => e.stopPropagation()} // 내부 클릭 시 이벤트 전파 차단
-          onKeyDown={messageController} // 키보드 지원
+          onKeyDown={() => {
+            console.log('test');
+          }} // 키보드 지원
           role="button"
           tabIndex="0"
         >
-          <div id="modal-title">결과지 이름</div>
-          <div className="modal-content">
-            <input type="text" />
-            <div id="modal-input-sub">근로 결과지</div>
-          </div>
-          <div id="modal-save">저장하기</div>
+          {/* <ModalResult /> */}
+          {ModalType && <ModalType />}
         </div>
       </div>
     </div>
@@ -62,7 +58,7 @@ const Modal = ({ isOpen = true }) => {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  // onClose: PropTypes.bool.isRequired,
+  ModalType: PropTypes.elementType.isRequired,
 };
 
 export default Modal;

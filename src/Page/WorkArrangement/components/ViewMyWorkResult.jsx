@@ -7,6 +7,7 @@ import VmwrResult from '../../../Global/components/VmwrResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import Modal from '../../../Global/components/Modal.components';
+import ModalResult from '../../../Global/components/ModalType/ModalResult.components';
 
 const Result = VmwrResult;
 
@@ -38,7 +39,7 @@ const ViewMyWorkResult = () => {
   return (
     <div className="ViewMyWorkResult">
       <Header />
-      {isModalState && <Modal isOpen={isModalState} />}
+      {isModalState && <Modal isOpen={isModalState} ModalType={ModalResult} />}
       <div className="vmwr-title">내 근로 결과지</div>
       <div className="vmwr-result">{content}</div>
       <div id="vmwr-group">
