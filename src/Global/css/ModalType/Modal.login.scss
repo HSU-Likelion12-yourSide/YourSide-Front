@@ -46,6 +46,11 @@
     align-items: center;
     width: 100%;
 
+    #link-underline {
+      text-decoration: none;
+      color: inherit;
+    }
+
     #modal-login-in {
       background-color: #1BBFC1;
       color: white;
