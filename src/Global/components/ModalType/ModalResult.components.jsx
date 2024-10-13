@@ -3,13 +3,13 @@ import '../../css/ModalType/Modal.result.scss';
 import useGlobalState from '../../Hooks/useGlobalState';
 
 const ModalResult = () => {
-  const { isModalType, setModalType } = useGlobalState();
+  const { setModalType } = useGlobalState();
 
   return (
     <div className="modal-default">
       <div id="modal-title">결과지 이름</div>
       <div className="modal-content">
-        <input type="text" />
+        <input placeholder="이름(ex. ㅁㅁ 카페)" type="text" />
         <div id="modal-input-sub">근로 결과지</div>
       </div>
       <div
