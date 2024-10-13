@@ -16,6 +16,12 @@ const Result = VmwrResult;
 const ViewMyWorkResult = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
+  // 리팩토링 필요
+  // const { isModalState, setModalState } = useGlobalState();
+
+  const modalStateController = () => {
+    setModalState(!isModalState);
+  };
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
