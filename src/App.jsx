@@ -14,7 +14,7 @@ import MyPage from './Page/MyPage/components/MyPage';
 import Notation from './Page/Notation/components/Notation';
 import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
-
+import ModalCheck from './Global/components/Modal.components';
 import NotationExample from './Page/Notation/components/NotationExample';
 
 import DevTerminal from './DevTerminal';
@@ -43,6 +43,7 @@ const App = () => {
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/DevNotation" element={<DevNotation />} />
         <Route path="/NotationExample" element={<NotationExample />} />
+        <Route path="/ModalCheck" element={<ModalCheck />} />
       </Routes>
     </Router>
   );
