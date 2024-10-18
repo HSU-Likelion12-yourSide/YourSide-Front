@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
 import bookmark from '../image/bookmark.svg';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import VmwrResult from '../../../Global/components/VmwrResult.component';
 
 const App = () => {
+  const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
+  const [content, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+
+  useEffect(() => {
+    if (isLoading) {
+      console.log('..is Loading');
+      setContent('Loading...');
+    } else if (isError) {
+      console.log(`is Error : ${isError}`);
+      setContent(`Error: ${isError}`);
+    } else if (isData) {
+      console.log(`Success Contact : ${isData}`);
+      setContent(<VmwrResult data={isData} />);
+    } else {
+      setContent(null);
+    }
+  }, [isLoading, isError, isData]);
+
   return (
     <div className="question-and-answer-view">
       <Header />
@@ -30,9 +50,8 @@ const App = () => {
               끝나는거고 끝나는거고 그런건가요?
               {`.\n .\n .\n .\n .\n .`}
             </div>
-            <div className="qav-work-arrangement">
-              근로 결과지가 들어갈 자리 근로결과지 근로결과지
-            </div>
+
+            <div className="qav-work-arrangement">{content}</div>
           </div>
         </div>
         <div className="qav-middle">
