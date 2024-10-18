@@ -5,6 +5,7 @@ import Header from './Page/Header/components/Header';
 import Footer from './Page/Footer/components/Footer';
 import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
+import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
 import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
 import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
@@ -30,6 +31,10 @@ const App = () => {
         <Route path="/Footer" element={<Footer />} />
         <Route path="/ContractReview" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
+        <Route
+          path="/ViewQuestionAndAnswer"
+          element={<ViewQuestionAndAnswer />}
+        />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
         <Route path="/ViewMyWorkResult" element={<ViewMyWorkResult />} />

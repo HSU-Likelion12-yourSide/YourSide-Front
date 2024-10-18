@@ -1,0 +1,278 @@
+.question-and-answer-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .qav-container {
+    width: 1180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .qav-post {
+      // width: calc(100% - 200px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // padding: 60px 100px;
+      margin-top: 30px;
+      background: #FFF;
+      // height: 932px;
+
+      .qav-group {
+        width: calc(100% - 200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .qav-title {
+          display: flex;
+          flex-direction: row;
+          padding-bottom: 24px;
+
+          #qav-question-mark {
+            color: #204598;
+            font-family: Pretendard;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 46px;
+            /* 127.778% */
+          }
+
+          #qav-title-text {
+            color: #111;
+            font-family: Pretendard;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 36px;
+            /* 128.571% */
+          }
+        }
+
+        .qav-write-info {
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 32px;
+
+          #qav-writer {
+            flex-direction: column;
+            color: #111;
+            font-family: Pretendard;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px;
+            /* 177.778% */
+          }
+
+          #qav-date {
+            flex-direction: column;
+            color: #666;
+            font-family: Pretendard;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            /* 142.857% */
+          }
+        }
+
+        .qav-content {
+          width: 100%;
+          height: auto;
+          color: #505050;
+          font-family: Pretendard;
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30px;
+          /* 136.364% */
+        }
+
+        .qav-work-arrangement {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          // padding: 36px 30px;
+          align-items: center;
+          // gap: 10px;
+        }
+      }
+    }
+
+    .qav-middle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // justify-content: space-between;
+      width: 100%;
+
+      .qav-group {
+        background-color: #d6f089;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+          // width: 72px;
+          // height: 72px;
+          // position: absolute;
+          // left: 50%;
+          /* 왼쪽으로부터 50% */
+          // transform: translateX(-50%);
+        }
+
+        #qav-middle-list {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #E5E5EC;
+          padding: 16px;
+          // margin-left: auto;
+        }
+      }
+    }
+
+    .qav-write-comment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // width: 1180px;
+      width: 1180px;
+      // height: 208px;
+      background: #DFE6FF;
+
+      .qav-group {
+        // background-color: aqua;
+        width: calc(100% - 40px);
+        //1140
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: center;
+
+        #qav-comment-writer {
+          color: #111;
+          font-family: Pretendard;
+          font-size: 20px;
+          // font-style: normal;
+          font-weight: 700;
+          line-height: 28px;
+          /* 140% */
+          // padding-left: 20px;
+        }
+
+        #qav-comment-textfield {
+          width: calc(100% - 84px);
+          // width: 1060px;
+          // height: 80px;
+          color: #666;
+          background-color: #c8d4ff;
+          border: none;
+          font-family: Pretendard;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px;
+          /* 142.857% */
+          // padding: 20px;
+        }
+
+        .qav-button-group {
+          display: flex;
+          justify-content: flex-end;
+
+          #qav-comment-button {
+            display: flex;
+            width: 60px;
+            justify-content: center;
+            align-items: center;
+            background: #204598;
+            color: white;
+            font-family: Pretendard;
+            padding: 10px;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+            /* 171.429% */
+          }
+        }
+      }
+    }
+
+    .qav-comment-array {
+      width: 100%;
+      background-color: #abd6a4;
+      font-family: Pretendard;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+
+      .qav-comment-array-group {
+        background-color: pink;
+        width: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .qav-comment {
+        background-color: lightsalmon;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .qav-group {
+          background-color: white;
+          width: 1140px;
+
+          .qav-comment-writer {
+            flex-direction: column;
+          }
+
+          .qav-users-group {
+            display: flex;
+            justify-content: space-between;
+
+            #qav-users-comment {
+              width: 1012px;
+            }
+
+            .qav-users-button {
+              width: 96px;
+              display: flex;
+              justify-content: space-between;
+              margin-left: 32px;
+
+              #qav-button-like-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+              }
+
+              #qav-button-bad-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
