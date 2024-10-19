@@ -11,6 +11,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 222px;
 
     .qav-post {
       // width: calc(100% - 200px);
@@ -20,7 +22,6 @@
       justify-content: center;
       align-items: center;
       // padding: 60px 100px;
-      margin-top: 30px;
       background: #FFF;
       // height: 932px;
 
@@ -118,12 +119,28 @@
       justify-content: center;
       // justify-content: space-between;
       width: 100%;
+      margin-top: 56px;
+      margin-bottom: 56px;
 
       .qav-group {
-        background-color: #d6f089;
+        // background-color: #d6f089;
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        #bookmark-logo {
+          width: 72px;
+          height: 72px;
+          cursor: pointer;
+          background-image: url('../image/bookmark.svg');
+          background-size: cover;
+          /* 이미지 크기를 맞춤 */
+        }
+
+        #bookmark-logo:hover {
+          cursor: pointer;
+          background-image: url('../image/bookmark-hover.svg');
+        }
 
         #qav-middle-list {
           display: flex;
@@ -132,6 +149,10 @@
           background: #E5E5EC;
           padding: 16px;
           // margin-left: auto;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: -0.025em;
         }
       }
     }
@@ -142,9 +163,11 @@
       justify-content: center;
       align-items: center;
       // width: 1180px;
-      width: 1180px;
+      width: calc(1180px);
       // height: 208px;
       background: #DFE6FF;
+      padding-top: 20px;
+      padding-bottom: 20px;
 
       .qav-group {
         // background-color: aqua;
@@ -153,7 +176,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        // align-items: center;
 
         #qav-comment-writer {
           color: #111;
@@ -162,24 +184,42 @@
           // font-style: normal;
           font-weight: 700;
           line-height: 28px;
+          margin-bottom: 8px;
           /* 140% */
           // padding-left: 20px;
         }
 
         #qav-comment-textfield {
-          width: calc(100% - 84px);
+          width: calc(100% - 84px - 16px);
+          background-color: #d4ddff;
           // width: 1060px;
-          // height: 80px;
+          // border-color: #eff6fe;
+          outline: none;
+          height: 80px;
           color: #666;
-          background-color: #c8d4ff;
           border: none;
           font-family: Pretendard;
           font-size: 14px;
           font-style: normal;
           font-weight: 400;
           line-height: 20px;
+          margin-bottom: 18px;
+          padding: 10px;
           /* 142.857% */
           // padding: 20px;
+        }
+
+        #qav-comment-textfield:hover {
+          // border-color: #eff6fe;
+          // outline: 2px solid #d4ddff;
+          background-color: #cdd8fe;
+          // background-color: #f6f8ff;
+        }
+
+        #qav-comment-textfield:focus {
+          // border-color: #eff6fe;
+          outline: 2px solid #cdd8fe;
+          background-color: #f6f8ff;
         }
 
         .qav-button-group {
@@ -207,7 +247,7 @@
 
     .qav-comment-array {
       width: 100%;
-      background-color: #abd6a4;
+      // background-color: #abd6a4;
       font-family: Pretendard;
       font-size: 14px;
       font-weight: 400;
@@ -215,15 +255,17 @@
       text-align: left;
 
       .qav-comment-array-group {
-        background-color: pink;
+        // background-color: pink;
         width: 100px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 48px;
+        margin-bottom: 24px;
       }
 
       .qav-comment {
-        background-color: lightsalmon;
+        background-color: white;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -270,6 +312,10 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 14px;
+            font-family: "Pretendard";
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
 
             #qav-users-comment {
               width: 1012px;

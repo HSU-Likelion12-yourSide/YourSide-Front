@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
-import bookmark from '../image/bookmark.svg';
+// import bookmark from '../image/bookmark.svg';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
@@ -41,7 +41,7 @@ const App = () => {
             </div>
             <div className="qav-write-info">
               <div id="qav-writer">코카콜라</div>
-              <div id="qav-date">24.05.11</div>
+              <div id="qav-date">2024.05.11</div>
             </div>
             <div className="qav-content">
               정규직일때는 해고하기 한달전에 말해줘야 한다는 법이 있다던데요.
@@ -56,14 +56,15 @@ const App = () => {
         <div className="qav-middle">
           <div className="qav-group">
             <div id="qav-blank" />
-            <img src={bookmark} alt="bookmark" />
+            <div id="bookmark-logo" />
             <div id="qav-middle-list">목록</div>
           </div>
         </div>
         <div className="qav-write-comment">
           <div className="qav-group">
             <div id="qav-comment-writer">코카콜라</div>
-            <input
+            <textarea
+              cols="80"
               id="qav-comment-textfield"
               type="text"
               placeholder="답변을 남겨주세요"
