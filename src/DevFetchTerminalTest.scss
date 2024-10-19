@@ -1,0 +1,89 @@
+.DevFetch {
+  padding: 30px;
+
+  .API-attribute {
+    width: 100%;
+    display: flex;
+
+    .select-method-type {
+      display: flex;
+    }
+
+    .input-API-URI {
+      display: flex;
+
+      .input-API-group {
+        display: flex;
+      }
+    }
+  }
+
+  #API-attribute-result {
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .post-API {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    #input-A {
+      display: flex;
+      width: 500px;
+
+      #post-element-API {
+        display: flex;
+        width: 50%;
+
+        #inputA-label {
+          display: flex;
+        }
+      }
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    #input-B {
+      display: flex;
+      width: 500px;
+      margin-top: 10px;
+
+      #post-element-API {
+        display: flex;
+        width: 50%;
+
+        #inputB-label {
+          display: flex;
+        }
+      }
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    #post-button {
+      width: 10%;
+    }
+  }
+
+  .post-API-result {
+    background-color: white;
+    width: 80%;
+    height: 40vh;
+
+    #API-result {
+      background-color: white;
+      width: 100%;
+    }
+  }
+
+  .post-API-message {
+    margin-top: 30px;
+  }
+}
