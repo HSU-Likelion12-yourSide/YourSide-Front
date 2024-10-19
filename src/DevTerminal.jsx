@@ -109,6 +109,9 @@ const Terminal = () => {
           <li>
             <Link to="/DevNotation">DevNotation</Link>
           </li>
+          <li>
+            <Link to="/DevFetch">DevFetchTerminalTest</Link>
+          </li>
         </ul>
       </div>
       <button
