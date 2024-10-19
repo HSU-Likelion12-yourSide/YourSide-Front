@@ -181,7 +181,7 @@ const DevFetchTerminalTest = () => {
           ? JSON.stringify(isData, null, 2)
               .split(',')
               .map((item, index) => (
-                <div id="API-result" key={index}>
+                <div id="post-API-result" key={index}>
                   {item}
                   <br />
                 </div>
