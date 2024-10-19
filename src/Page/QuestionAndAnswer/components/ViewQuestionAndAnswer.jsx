@@ -48,7 +48,6 @@ const App = () => {
               그런가요? 예를들어 1개월 계약직이면 1개월만 계약할거고 더 연장의사
               없다.라고 말해줘야 하는건가요? 아니면 그냥 계약기간 끝나면
               끝나는거고 끝나는거고 그런건가요?
-              {`.\n .\n .\n .\n .\n .`}
             </div>
 
             <div className="qav-work-arrangement">{content}</div>
@@ -81,7 +80,11 @@ const App = () => {
           </div>
           <div className="qav-comment">
             <div className="qav-group">
-              <div className="qav-comment-writer">사장나와</div>
+              <div className="qav-comment-writer">
+                <span id="qav-writer">사장나와</span>
+                {/* 등급 부분 */}
+                <div id="user-rank">네편 노무사</div>
+              </div>
               <div className="qav-users-group">
                 <div id="qav-users-comment">
                   기간제 근로자의 경우, 약정한 근로계약 기간이 만료됨에 따라

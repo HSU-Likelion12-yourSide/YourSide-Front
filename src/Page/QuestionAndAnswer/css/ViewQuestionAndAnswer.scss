@@ -228,18 +228,48 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-family: Pretendard;
+        font-size: 14px;
+        padding: 20px;
 
         .qav-group {
           background-color: white;
           width: 1140px;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
 
           .qav-comment-writer {
-            flex-direction: column;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            width: 155px;
+
+            #qav-writer {
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 28px;
+              // margin-right: 8px;
+            }
+
+            #user-rank {
+              background-color: #204598;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: white;
+              padding: 4px 10px 4px 10px;
+              font-size: 12px;
+              font-weight: 700;
+              line-height: 18px;
+            }
           }
 
           .qav-users-group {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 14px;
 
             #qav-users-comment {
               width: 1012px;
@@ -250,12 +280,19 @@
               display: flex;
               justify-content: space-between;
               margin-left: 32px;
+              font-size: 12px;
+              font-weight: 700;
+              line-height: 18px;
 
               #qav-button-like-group {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+
+                .qav-comment-like {
+                  margin-bottom: 4px;
+                }
               }
 
               #qav-button-bad-group {
@@ -263,8 +300,18 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+
+                .qav-comment-bad {
+                  margin-bottom: 4px;
+                }
               }
             }
+          }
+
+          #qav-comment-date {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
           }
         }
       }
