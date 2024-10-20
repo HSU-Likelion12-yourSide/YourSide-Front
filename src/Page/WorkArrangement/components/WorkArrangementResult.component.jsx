@@ -1,14 +1,30 @@
 import React from 'react';
 import '../css/WorkArrangementResult.scss';
+import { useNavigate } from 'react-router-dom';
+import navigateController from '../../../Global/function/navigateController';
 import arrowRight from '../image/arrow-right.svg';
 
 const WorkArrangementResult = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="wa-result">
       <div className="wa-control">
         <div id="wa-title">미도인 성수 근로 결과지</div>
-        <div id="wa-short-cut">
-          <a href="/#">상세보기</a>
+        <div
+          id="wa-short-cut"
+          onKeyDown={() => {}}
+          onClick={() => {
+            /* eslint-disable-next-line no-alert */
+            alert(
+              '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewMyWorkResult로 넘거 갑니다.',
+            );
+            navigateController(navigate, '/ViewMyWorkResult');
+          }}
+          role="button"
+          tabIndex="0"
+        >
+          <span>상세보기</span>
           <div>
             <img src={arrowRight} alt="short-cut" />
           </div>
