@@ -18,7 +18,18 @@ const WorkArrangement = () => {
         </div>
         <div className="wa-quiz">
           <img src={quizImage} alt="quiz-name" />
-          <div id="wa-short-cut">바로가기</div>
+          <div
+            id="wa-short-cut"
+            onKeyDown={() => {}}
+            onClick={() => {
+              /* eslint-disable-next-line no-alert */
+              alert('준비중입니다.');
+            }}
+            role="button"
+            tabIndex="0"
+          >
+            바로가기
+          </div>
         </div>
         <div className="wa-contents">
           <div className="wa-title">다른 결과지들은 어떨까요?</div>
@@ -61,7 +72,16 @@ const WorkArrangement = () => {
           </div> */}
           <WorkArrangementResult />
           <div className="wa-short-cut-button">
-            <div className="wa-short-cut" href="/#">
+            <div
+              className="wa-short-cut"
+              onKeyDown={() => {}}
+              onClick={() => {
+                /* eslint-disable-next-line no-alert */
+                alert('다른 결과지 페이지가 제작 되지 않았습니다.');
+              }}
+              role="button"
+              tabIndex="0"
+            >
               더보기
             </div>
           </div>
