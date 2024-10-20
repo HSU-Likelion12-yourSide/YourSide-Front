@@ -1,9 +1,9 @@
 import React from 'react';
 import quizImage from '../image/quiz-short-cut.svg';
-import arrowRight from '../image/arrow-right.svg';
 import '../css/WorkArrangement.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
+import WorkArrangementResult from './WorkArrangementResult.component';
 
 const WorkArrangement = () => {
   return (
@@ -22,7 +22,7 @@ const WorkArrangement = () => {
         </div>
         <div className="wa-contents">
           <div className="wa-title">다른 결과지들은 어떨까요?</div>
-          <div className="wa-result">
+          {/* <div className="wa-result">
             <div className="wa-control">
               <div className="wa-title">미도인 성수 근로 결과지</div>
               <div id="wa-short-cut">
@@ -58,8 +58,9 @@ const WorkArrangement = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="wa-group">
+          </div> */}
+          <WorkArrangementResult />
+          <div className="wa-short-cut-button">
             <div className="wa-short-cut" href="/#">
               더보기
             </div>
