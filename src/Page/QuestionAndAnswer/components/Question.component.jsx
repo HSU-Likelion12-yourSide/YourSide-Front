@@ -1,8 +1,11 @@
 import React from 'react';
 import '../css/Question.scss';
+import { useNavigate } from 'react-router-dom';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
+import navigateController from '../../../Global/function/navigateController';
 
 const Question = () => {
+  const navigate = useNavigate();
   return (
     <div className="qa-post-card">
       <div className="qa-left-group">
@@ -20,7 +23,19 @@ const Question = () => {
       </div>
       <div className="qa-right-group">
         <div id="qa-post-date">2024.04.11</div>
-        <div className="qa-learn-more">
+        <div
+          className="qa-learn-more"
+          onKeyDown={() => {}}
+          onClick={() => {
+            /* eslint-disable-next-line no-alert */
+            alert(
+              '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewQuestionAndAnswer로 넘거 갑니다.',
+            );
+            navigateController(navigate, '/ViewQuestionAndAnswer');
+          }}
+          role="button"
+          tabIndex="0"
+        >
           <div id="qa-learn-more-text">자세히 보기</div>
           <div>
             <img src={learnMoreArrow} alt="qa-learn-more" />
