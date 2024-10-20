@@ -1,0 +1,69 @@
+.qa-popular-box {
+  width: 380px;
+  height: 218px;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
+
+  .qa-popular-question {
+    margin-left: 20px;
+    display: flex;
+    /* 자식 요소를 flex로 배치 */
+    align-items: center;
+    /* 수직 중앙 정렬 */
+    gap: 4px;
+
+    #qa-popular-mark {
+      height: 36px;
+      width: 28px;
+      margin-top: 20px;
+      color: var(--main-color-Primary-color, #204598);
+      font-family: Pretendard;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px;
+      /* 128.571% */
+    }
+
+    #qa-popular-title {
+      margin-top: 30px;
+      width: 300px;
+      height: 48px;
+      flex-shrink: 0;
+      color: var(--system-color-system-black-900, #111);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: Pretendard;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      /* 133.333% */
+      overflow: visible;
+      /* 텍스트가 넘칠 경우 표시 */
+      white-space: normal;
+      /* 줄바꿈을 허용 */
+    }
+  }
+
+  #qa-popular-text {
+    margin-top: 18px;
+    padding-left: 20px;
+    width: 332px;
+    height: 102px;
+    flex-shrink: 0;
+    overflow: hidden;
+    color: var(--system-color-system-black-700, #505050);
+    white-space: normal;
+    /* 줄바꿈을 허용 */
+    overflow: visible;
+    /* 텍스트가 넘칠 경우 표시 */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    /* 157.143% */
+  }
+}
