@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import quizImage from '../image/quiz-short-cut.svg';
 import '../css/WorkArrangement.scss';
+import navigateController from '../../../Global/function/navigateController';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import WorkArrangementResult from './WorkArrangementResult.component';
 
 const WorkArrangement = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="work-arrangement">
       <Header />
@@ -22,8 +26,7 @@ const WorkArrangement = () => {
             id="wa-short-cut"
             onKeyDown={() => {}}
             onClick={() => {
-              /* eslint-disable-next-line no-alert */
-              alert('준비중입니다.');
+              navigateController(navigate, '/ViewMyWork');
             }}
             role="button"
             tabIndex="0"
