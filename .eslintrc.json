@@ -47,6 +47,8 @@
     ],
     /** ⚠ camelcase만 허용 */
     "camelcase": ["error", { "properties": "always" }],
+    /** ⚠ key를 index를 사용할 할 수 있게 허용 */
+    "react/no-array-index-key": "off",
     /** ⚠jsx와 js파일들이 해당 rules에 적용 되게 한다. */
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     /** ⚠. button type */
