@@ -1,9 +1,24 @@
 import React from 'react';
 import '../css/RankQuestion.scss';
+import { useNavigate } from 'react-router-dom';
+import navigateController from '../../../Global/function/navigateController';
 
 const RankQuestion = () => {
+  const navigate = useNavigate();
   return (
-    <div className="qa-popular-box">
+    <div
+      className="qa-popular-box"
+      onKeyDown={() => {}}
+      onClick={() => {
+        /* eslint-disable-next-line no-alert */
+        alert(
+          '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewQuestionAndAnswer로 넘거 갑니다.',
+        );
+        navigateController(navigate, '/ViewQuestionAndAnswer');
+      }}
+      role="button"
+      tabIndex="0"
+    >
       <div className="qa-popular-question">
         <div id="qa-popular-mark">Q.</div>
         <div id="qa-popular-title">
