@@ -5,6 +5,7 @@ import Header from './Page/Header/components/Header';
 import Footer from './Page/Footer/components/Footer';
 import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
+import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
 import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
 import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
@@ -20,6 +21,7 @@ import NotationExample from './Page/Notation/components/NotationExample';
 import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
 import DevNotation from './Test/Mocking/API/DevNotation';
+import DevFetchTerminalTest from './DevFetchTerminalTest';
 
 const App = () => {
   return (
@@ -30,6 +32,10 @@ const App = () => {
         <Route path="/Footer" element={<Footer />} />
         <Route path="/ContractReview" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
+        <Route
+          path="/ViewQuestionAndAnswer"
+          element={<ViewQuestionAndAnswer />}
+        />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
         <Route path="/ViewMyWorkResult" element={<ViewMyWorkResult />} />
@@ -44,6 +50,7 @@ const App = () => {
         <Route path="/DevNotation" element={<DevNotation />} />
         <Route path="/NotationExample" element={<NotationExample />} />
         <Route path="/ModalCheck" element={<ModalCheck />} />
+        <Route path="/DevFetch" element={<DevFetchTerminalTest />} />
       </Routes>
     </Router>
   );
