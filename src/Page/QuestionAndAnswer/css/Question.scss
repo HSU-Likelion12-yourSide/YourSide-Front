@@ -1,0 +1,122 @@
+.qa-post-card {
+  width: 1180px;
+  height: 200px;
+  flex-shrink: 0;
+  background: #FFF;
+
+  /* 네편 카드 */
+  box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
+  display: flex;
+
+  .qa-left-group {
+    margin-right: auto;
+
+    .qa-post-title {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+
+      #qa-post-mark {
+        margin-left: 36.12px;
+        width: 33.714px;
+        color: var(--main-color-Primary-color, #204598);
+        font-family: Pretendard;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 36px;
+        /* 128.571% */
+      }
+
+      #qa-post-question {
+        margin-left: 4.82px;
+        width: 553.878px;
+        color: var(--system-color-system-black-900, #111);
+        font-family: Pretendard;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 36px;
+        /* 150% */
+      }
+    }
+
+    .qa-post-text {
+      padding-left: 51px;
+      margin-top: 24px;
+      width: 895px;
+      height: 80px;
+      flex-shrink: 0;
+      overflow: hidden;
+      color: var(--system-color-system-black-700, #505050);
+      overflow: visible;
+      /* 텍스트가 넘칠 경우 표시 */
+      white-space: normal;
+      /* 줄바꿈을 허용 */
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      /* 150% */
+    }
+  }
+
+  .qa-right-group {
+    // margin-left: auto;
+    padding-right: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* 자식 요소들을 오른쪽 끝에 맞추기 */
+
+    #qa-post-date {
+      margin-top: 38.14px;
+      width: 79.469px;
+      height: 20px;
+      color: var(--system-color-system-black-600, #666);
+      text-align: right;
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 20px;
+      /* 142.857% */
+    }
+
+    .qa-learn-more {
+      margin-top: 63.86px;
+      display: flex;
+      width: 92px;
+      height: 24px;
+      //width: auto;
+      //height: auto;
+      padding: 12px 16px;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--system-color-system-black-900, #111);
+      //box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
+      cursor: pointer;
+
+      #qa-learn-more-text {
+        color: var(--system-color-system-black-900, #111);
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        /* 142.857% */
+        width: 64px;
+        height: 20px;
+        white-space: nowrap;
+        /* 텍스트 줄바꿈 금지 */
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
