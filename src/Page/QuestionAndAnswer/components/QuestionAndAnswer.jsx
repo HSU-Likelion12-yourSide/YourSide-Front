@@ -77,12 +77,11 @@ const QuestionAndAnswer = () => {
       <Header />
       <div className="qa-group">
         <div
-          id="qa-box-selected"
-          className="selected"
+          id={isType === 0 ? 'qa-box-selected' : 'qa-box'}
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert('SPA로 type 0입니다.');
+            // alert('SPA로 type 0입니다.');
             if (isType !== 0) {
               setType(0);
               // setUrl로 다시 Fetch
@@ -95,11 +94,11 @@ const QuestionAndAnswer = () => {
           네편 답변
         </div>
         <div
-          id="qa-box"
+          id={isType === 1 ? 'qa-box-selected' : 'qa-box'}
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert('SPA로 type 1입니다.');
+            // alert('SPA로 type 1입니다.');
             if (isType !== 1) {
               setType(1);
               // setUrl로 다시 Fetch
@@ -116,8 +115,8 @@ const QuestionAndAnswer = () => {
         <div id="qa-popular-intro">인기게시글</div>
         <div className="qa-popular-group">
           {isPopularLoading && <p>Loading...</p>}
-          {isPopularError && <p>Error: {isError.message}</p>}
-          {isPopularData && isPopularData.data
+          {!isLoading && isPopularError && <p>Error: {isError.message}</p>}
+          {!isLoading && isPopularData && isPopularData.data
             ? isPopularData.data.map((item, index) => (
                 <RankQuestion
                   key={index}
@@ -149,8 +148,8 @@ const QuestionAndAnswer = () => {
         <div className="qa-post-group">
           {/* 일반적으로 컴포넌트를 불러오면 안된다. 각 useFetchAPI의 상태에 따른 컴포넌트가 있어야 한다. */}
           {isLoading && <p>Loading...</p>}
-          {isError && <p>Error: {isError.message}</p>}
-          {isData && isData.data
+          {!isLoading && isError && <p>Error: {isError.message}</p>}
+          {!isLoading && isData && isData.data
             ? isData.data.map(item => (
                 <Question
                   key={item.id}
