@@ -31,6 +31,7 @@ const Question = ({ id, title, content, date }) => {
           role="button"
           tabIndex="0"
         >
+          {/* 여기서 QuestionAndAnswer에서 받아온 GlobalState를 set하고 return할 수 있도록 해야함 */}
           <div id="qa-learn-more-text">자세히 보기</div>
           <div>
             <img src={learnMoreArrow} alt="qa-learn-more" />
