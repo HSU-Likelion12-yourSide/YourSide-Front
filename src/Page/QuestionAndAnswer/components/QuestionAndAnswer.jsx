@@ -11,18 +11,14 @@ import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 const QuestionAndAnswer = () => {
   const navigate = useNavigate();
   const [isContent, setContent] = useState('');
-  const [isType, setType] = useState(1);
+  const [isType, setType] = useState(0);
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
 
   useEffect(() => {
-    if (isType) {
+    if (isType !== null && isType !== undefined) {
       console.log(`Page-Type is ${isType}`);
-      // if (isType === 1) {
-      //   setUrl(`api/posting/list/${isType}`);
-      // } else if (isType === 2) {
-      //   setUrl(`api/posting/list/${isType}`);
-      // }
       setUrl(`posting/list/${isType}`);
+      // setUrl(`posting/list/popular/${isType}`);
     } else if (!isType) {
       console.error(`!Error: lost Page-Type. Check Page-Type`);
     }
@@ -36,7 +32,7 @@ const QuestionAndAnswer = () => {
       console.log(`is Error : ${isError}`);
       setContent(`Error: ${isError}`);
     } else if (isData) {
-      console.log(`Success, Page-Type${isType} Contact: `, isData);
+      console.log(`Success, Page-Type${isType} Contact: `, isData.data);
       setContent(isData);
     } else {
       setContent(null);
@@ -53,9 +49,9 @@ const QuestionAndAnswer = () => {
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert('SPA로 type 1입니다.');
-            if (isType !== 1) {
-              setType(1);
+            alert('SPA로 type 0입니다.');
+            if (isType !== 0) {
+              setType(0);
               // setUrl로 다시 Fetch
               // console.log(`Page-Type is ${isType}`);
             }
@@ -70,9 +66,9 @@ const QuestionAndAnswer = () => {
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert('SPA로 type 2입니다.');
-            if (isType !== 2) {
-              setType(2);
+            alert('SPA로 type 1입니다.');
+            if (isType !== 1) {
+              setType(1);
               // setUrl로 다시 Fetch
               // console.log(`Page-Type is ${isType}`);
             }
@@ -109,9 +105,23 @@ const QuestionAndAnswer = () => {
           </div>
         </div>
         <div className="qa-post-group">
+          {/* 일반적으로 컴포넌트를 불러오면 안된다. 각 useFetchAPI의 상태에 따른 컴포넌트가 있어야 한다. */}
+          {isLoading && <p>Loading...</p>}
+          {isError && <p>Error: {isError.message}</p>}
+          {isData && isData.data && isData.data.length > 0
+            ? isData.data.map(item => (
+                <Question
+                  key={item.id}
+                  title={item.title}
+                  content={item.content}
+                  created_at={item.date}
+                  // bookmark_count={item.bookmark_count}
+                />
+              ))
+            : !isLoading && !isError && <p>No data available</p>}
+          {/* <Question />
           <Question />
-          <Question />
-          <Question />
+          <Question /> */}
         </div>
       </div>
       <Footer />
