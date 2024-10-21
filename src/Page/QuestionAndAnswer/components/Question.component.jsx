@@ -1,28 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../css/Question.scss';
 import { useNavigate } from 'react-router-dom';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
 import navigateController from '../../../Global/function/navigateController';
 
-const Question = () => {
+const Question = ({ id, title, content, date }) => {
   const navigate = useNavigate();
   return (
-    <div className="qa-post-card">
+    <div id={id} className="qa-post-card">
       <div className="qa-left-group">
         <div className="qa-post-title">
           <div id="qa-post-mark">Q.</div>
-          <div id="qa-post-question">
-            계약서 쓴 날짜 보다 미리 와서 2시간 있다갔어요.
-          </div>
+          <div id="qa-post-question">{title}</div>
         </div>
-        <div className="qa-post-text">
-          물류센터 아르바이트 하고 있는데 5월1일 근로자의날 이나 5월6일 대체
-          공휴일 같은 날은 주휴수당이 해당 되나요? 참고로 저날은 다 쉽니다
-          법정공휴일도 어떻게 되는지 궁금 합니다.
-        </div>
+        <div className="qa-post-text">{content}</div>
       </div>
       <div className="qa-right-group">
-        <div id="qa-post-date">2024.04.11</div>
+        <div id="qa-post-date">{date}</div>
         <div
           className="qa-learn-more"
           onKeyDown={() => {}}
@@ -44,6 +39,13 @@ const Question = () => {
       </div>
     </div>
   );
+};
+
+Question.propTypes = {
+  id: PropTypes.number.isRequired, // id string
+  title: PropTypes.string.isRequired, // title string
+  content: PropTypes.string.isRequired, // content string
+  date: PropTypes.string.isRequired, // date string
 };
 
 export default Question;
