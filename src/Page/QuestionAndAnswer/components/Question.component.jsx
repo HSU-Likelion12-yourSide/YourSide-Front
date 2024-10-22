@@ -26,7 +26,7 @@ const Question = ({ id, title, content, date }) => {
           onKeyDown={() => {}}
           onClick={() => {
             setWorkSheetId(id);
-            navigateController(navigate, `/ViewQuestionAndAnswer`);
+            navigateController(navigate, `/ViewQuestionAndAnswer/${id}`);
           }}
           role="button"
           tabIndex="0"
