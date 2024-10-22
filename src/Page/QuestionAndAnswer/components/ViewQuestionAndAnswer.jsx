@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
 // import bookmark from '../image/bookmark.svg';
+// import { useParams } from 'react-router-dom';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
@@ -15,13 +16,27 @@ const ViewQuestionAndAnswer = () => {
   // 북마크 비구조 할당 으로 선언 필요
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
   // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
-
+  // const id = useParams();
+  // const encodedId = encodeURIComponent(id);
   // GlobalState 확인
   useEffect(() => {
     const id = isWorkSheetId;
+    // setUrl(`/posting/${isWorkSheetId}`);
+    // console.log(Number(id));
     setUrl(`/posting/${id}`);
+    // setUrl(`/posting/${encodedId}`);
     // console.log(isData.data.content);
-  }, [isWorkSheetId, setUrl]); // [isWorkSheetId, setUrl]
+    // if (id) {
+    //   const numericId = Number(id);
+    //   //   const numericId = parseInt(id, 10);
+    //   if (!Number.isNaN(numericId) && numericId > 0) {
+    //     // NaN인지 확인하고 유효한 id인지 확인
+    //     setUrl(`/posting/${numericId}`);
+    //   } else {
+    //     console.error(`Invalid id: ${id}`);
+    //   }
+    // }
+  }, [isWorkSheetId, setUrl]); // [id, setUrl]
 
   useEffect(() => {
     if (isLoading) {
