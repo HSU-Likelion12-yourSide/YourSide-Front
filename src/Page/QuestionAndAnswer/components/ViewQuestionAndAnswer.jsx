@@ -12,6 +12,7 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 const ViewQuestionAndAnswer = () => {
   const { isWorkSheetId } = useGlobalState();
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  // 북마크 비구조 할당 으로 선언 필요
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
 
   // GlobalState 확인
@@ -69,6 +70,7 @@ const ViewQuestionAndAnswer = () => {
           </div>
         </div>
         <div className="qav-middle">
+          {/* 북마크 post 관련 API 연결 필요 */}
           <div className="qav-group">
             <div id="qav-blank" />
             <div id="bookmark-logo" />
