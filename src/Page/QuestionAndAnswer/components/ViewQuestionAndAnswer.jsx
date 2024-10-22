@@ -7,21 +7,31 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
-const App = () => {
-  const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
-  const [content, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+const ViewQuestionAndAnswer = () => {
+  const { isWorkSheetId } = useGlobalState();
+  const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+
+  // GlobalState 확인
+  useEffect(() => {
+    const id = isWorkSheetId;
+    setUrl(`/posting/${id}`);
+    // console.log(isData.data.content);
+  }, [isWorkSheetId, setUrl]); // [isWorkSheetId, setUrl]
 
   useEffect(() => {
     if (isLoading) {
       console.log('..is Loading');
       setContent('Loading...');
     } else if (isError) {
-      console.log(`is Error : ${isError}`);
-      setContent(`Error: ${isError}`);
-    } else if (isData) {
-      console.log(`Success Contact : ${isData}`);
-      setContent(<VmwrResult data={isData} />);
+      console.log(`is Error : `, isError);
+      setContent(`Error: `, isError);
+    } else if (isData && isData.data) {
+      console.log(`Success Contact : `, isData);
+      setContent(isData.data);
+      // setContent();
     } else {
       setContent(null);
     }
@@ -36,21 +46,26 @@ const App = () => {
             <div className="qav-title">
               <div id="qav-question-mark">Q.</div>
               <div id="qav-title-text">
-                계약직도 연장 여부 미리 말해줘야 하나요?
+                {isData && isData.data ? isData.data.title : '제목 없음'}
               </div>
             </div>
             <div className="qav-write-info">
-              <div id="qav-writer">코카콜라</div>
-              <div id="qav-date">2024.05.11</div>
+              <div id="qav-writer">
+                {isData && isData.data ? isData.data.nickname : '작성자 없음'}
+              </div>
+              <div id="qav-date">
+                {isData && isData.data ? isData.data.created_at : '날짜 없음'}
+              </div>
             </div>
             <div className="qav-content">
-              정규직일때는 해고하기 한달전에 말해줘야 한다는 법이 있다던데요.
-              그런가요? 예를들어 1개월 계약직이면 1개월만 계약할거고 더 연장의사
-              없다.라고 말해줘야 하는건가요? 아니면 그냥 계약기간 끝나면
-              끝나는거고 끝나는거고 그런건가요?
+              {isData && isData.data ? isData.data.content : '내용 없음'}
             </div>
 
-            <div className="qav-work-arrangement">{content}</div>
+            <div className="qav-work-arrangement">
+              {isData && isData.data && isData.data.worksheet_id ? (
+                <VmwrResult resultId={isData.data.worksheet_id} />
+              ) : null}
+            </div>
           </div>
         </div>
         <div className="qav-middle">
@@ -124,4 +139,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ViewQuestionAndAnswer;
