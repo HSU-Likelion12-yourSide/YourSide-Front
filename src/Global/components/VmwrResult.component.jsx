@@ -56,24 +56,21 @@ const VmwrResult = ({ resultId }) => {
     }
   }, [isLoading, isError, isData]);
 
-  // * 여기서 부터 함수로 분리가 필요 논의가 필요
-  // 해당 데이터를 API로 받아오기 때문에 Props로 받아올 수 있게 구조를 다시 검토하고 재구성 필요
   // 데이터 검증이 필요
-  let OptionsResultData = '';
+
   let ResultContents = '';
   let resultState = [];
   if (isData && isData.data) {
-    OptionsResultData = isData;
-    ResultContents = OptionsResultData.data.content
+    ResultContents = isData.data.content
       .trim()
       .split('니다.')
       .filter(el => el !== ''); // 빈 문자열 제거
     resultState = [
-      OptionsResultData.data.extraPay,
-      OptionsResultData.data.weekPay,
-      OptionsResultData.data.nightPay,
-      OptionsResultData.data.overtimePay,
-      OptionsResultData.data.holidayPay,
+      isData.data.extra_pay,
+      isData.data.week_pay,
+      isData.data.night_pay,
+      isData.data.overtime_pay,
+      isData.data.holiday_pay,
     ];
   } else {
     // 데이터가 없을 경우 기본값 설정
@@ -87,8 +84,6 @@ const VmwrResult = ({ resultId }) => {
     '연장근로수당',
     '휴일근로수당',
   ];
-
-  // 결과 상태 데이터 가공 배열
 
   return (
     <div className="vmwr-container">
@@ -122,27 +117,6 @@ const VmwrResult = ({ resultId }) => {
 };
 
 VmwrResult.propTypes = {
-  /**
-   * data: 근로 결과 데이터를 담고 있는 배열
-   * - 배열 안의 객체는 근로자 정보와 각 근로 수당 발생 여부 등을 포함한다.
-   */
-  // data: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     status: PropTypes.number.isRequired,
-  //     data: PropTypes.shape({
-  //       nickname: PropTypes.string.isRequired,
-  //       title: PropTypes.string.isRequired,
-  //       content: PropTypes.string.isRequired,
-  //       extraPay: PropTypes.bool.isRequired,
-  //       weekPay: PropTypes.bool.isRequired,
-  //       nightPay: PropTypes.bool.isRequired,
-  //       overtimePay: PropTypes.bool.isRequired,
-  //       holidayPay: PropTypes.bool.isRequired,
-  //     }).isRequired,
-  //     message: PropTypes.string.isRequired,
-  //   }),
-  // ).isRequired,
-
   resultId: PropTypes.number.isRequired,
 };
 

@@ -14,6 +14,7 @@ const ViewQuestionAndAnswer = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   // 북마크 비구조 할당 으로 선언 필요
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+  // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
 
   // GlobalState 확인
   useEffect(() => {
