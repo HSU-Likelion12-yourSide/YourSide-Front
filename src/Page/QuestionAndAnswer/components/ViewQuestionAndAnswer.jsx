@@ -1,42 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
-// import bookmark from '../image/bookmark.svg';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
-import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const ViewQuestionAndAnswer = () => {
-  const { isWorkSheetId } = useGlobalState();
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   // 북마크 비구조 할당 으로 선언 필요
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
   // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
-  // const id = useParams();
-  // const encodedId = encodeURIComponent(id);
+  // 객체로 들어가서 생기는 문제
+  const { id } = useParams();
   // GlobalState 확인
   useEffect(() => {
-    const id = isWorkSheetId;
-    // setUrl(`/posting/${isWorkSheetId}`);
-    // console.log(Number(id));
+    console.log(id);
     setUrl(`/posting/${id}`);
-    // setUrl(`/posting/${encodedId}`);
-    // console.log(isData.data.content);
-    // if (id) {
-    //   const numericId = Number(id);
-    //   //   const numericId = parseInt(id, 10);
-    //   if (!Number.isNaN(numericId) && numericId > 0) {
-    //     // NaN인지 확인하고 유효한 id인지 확인
-    //     setUrl(`/posting/${numericId}`);
-    //   } else {
-    //     console.error(`Invalid id: ${id}`);
-    //   }
-    // }
-  }, [isWorkSheetId, setUrl]); // [id, setUrl]
+    if (id) {
+      //   const numericId = parseInt(id, 10);
+      if (!Number.isNaN(id) && id > 0) {
+        // NaN인지 확인하고 유효한 id인지 확인
+        setUrl(`/posting/${id}`);
+      } else {
+        console.error(`Invalid id: ${id}`);
+        // 여기서 경고 표시 창
+      }
+    }
+  }, [id, setUrl]); // [id, setUrl]
 
   useEffect(() => {
     if (isLoading) {
