@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
+import navigateController from '../../../Global/function/navigateController';
 
 const ViewQuestionAndAnswer = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  const navigate = useNavigate();
   // 북마크 비구조 할당 으로 선언 필요
+  const [isBookMark, setBookMark] = useState();
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
   // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
   // 객체로 들어가서 생기는 문제
   const { id } = useParams();
-  // GlobalState 확인
+
   useEffect(() => {
-    console.log(id);
-    setUrl(`/posting/${id}`);
+    // id 값 거증
     if (id) {
       //   const numericId = parseInt(id, 10);
       if (!Number.isNaN(id) && id > 0) {
@@ -41,6 +43,7 @@ const ViewQuestionAndAnswer = () => {
     } else if (isData && isData.data) {
       console.log(`Success Contact : `, isData);
       setContent(isData.data);
+      setBookMark(isData.data.is_bookmarked);
       // setContent();
     } else {
       setContent(null);
@@ -82,8 +85,27 @@ const ViewQuestionAndAnswer = () => {
           {/* 북마크 post 관련 API 연결 필요 */}
           <div className="qav-group">
             <div id="qav-blank" />
-            <div id="bookmark-logo" />
-            <div id="qav-middle-list">목록</div>
+            <div
+              id={isBookMark ? 'bookmark-selected' : 'bookmark-logo'}
+              onKeyDown={() => {}}
+              onClick={() => {
+                setBookMark(!isBookMark);
+              }}
+              role="button"
+              tabIndex="0"
+              aria-label="Bookmark"
+            />
+            <div
+              id="qav-middle-list"
+              onKeyDown={() => {}}
+              onClick={() => {
+                navigateController(navigate, `/QuestionAndAnswer`);
+              }}
+              role="button"
+              tabIndex="0"
+            >
+              목록
+            </div>
           </div>
         </div>
         <div className="qav-write-comment">
