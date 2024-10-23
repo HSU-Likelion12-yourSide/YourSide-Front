@@ -10,15 +10,28 @@ import VmwrResult from '../../../Global/components/VmwrResult.component';
 import navigateController from '../../../Global/function/navigateController';
 
 const ViewQuestionAndAnswer = () => {
-  const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const navigate = useNavigate();
   // 북마크 비구조 할당 으로 선언 필요
   const [isBookMark, setBookMark] = useState();
+  const [isReqBookMark, setReqBookMark] = useState();
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
   // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
+
+  // useFetchAPI
+  // GET
+  const { isData, isLoading, isError, setUrl } = useFetchAPI();
+
+  // POST -> useEffect로 상태 표기 하지 않음
+  const {
+    isData: isBookMarkData,
+    isLoading: isBookMarkLoading,
+    isError: isBookMarkError,
+    setUrl: setBookMarkUrl,
+  } = useFetchAPI('', 'POST', isReqBookMark);
+
   // 객체로 들어가서 생기는 문제
   const { id } = useParams();
-
+  // 동적 URI 검증 useEffect
   useEffect(() => {
     // id 값 거증
     if (id) {
@@ -33,6 +46,7 @@ const ViewQuestionAndAnswer = () => {
     }
   }, [id, setUrl]); // [id, setUrl]
 
+  // GET API 상태 표기
   useEffect(() => {
     if (isLoading) {
       console.log('..is Loading');
@@ -49,6 +63,20 @@ const ViewQuestionAndAnswer = () => {
       setContent(null);
     }
   }, [isLoading, isError, isData]);
+
+  // bookmark controller
+  const bookmarkStateController = () => {
+    const bookmarkData = {
+      /* eslint-disable camelcase */
+      user_id: 2, // 임시 아이디
+      post_id: id,
+      is_bookmarked: isBookMark,
+      /* eslint-enable camelcase */
+    };
+    setReqBookMark(bookmarkData);
+    setBookMarkUrl('/posting/bookmarks');
+    setBookMark(!isBookMark);
+  };
 
   return (
     <div className="question-and-answer-view">
@@ -82,14 +110,14 @@ const ViewQuestionAndAnswer = () => {
           </div>
         </div>
         <div className="qav-middle">
-          {/* 북마크 post 관련 API 연결 필요 */}
+          {/* BookMark Post */}
           <div className="qav-group">
             <div id="qav-blank" />
             <div
               id={isBookMark ? 'bookmark-selected' : 'bookmark-logo'}
               onKeyDown={() => {}}
               onClick={() => {
-                setBookMark(!isBookMark);
+                bookmarkStateController();
               }}
               role="button"
               tabIndex="0"
