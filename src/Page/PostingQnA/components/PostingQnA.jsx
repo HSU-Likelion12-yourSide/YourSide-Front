@@ -2,16 +2,34 @@ import React, { useEffect, useState } from 'react';
 import '../css/PostingQnA.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-// import plusIcon from '../image/plusIcon.svg';
+import Modal from '../../../Global/components/Modal.components';
+import ModalResultList from '../../../Global/components/ModalType/ModalResultList.components';
+import ModalResultMessage from '../../../Global/components/ModalType/ModalResultMessage.components';
+import modalStateController from '../../../Global/function/modalStateController';
+import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMessage.components';
+
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
+
+import plusIcon from '../image/plusIcon.svg';
 // 이 외에 아래 코드에서 주석처리 된 부분은 내 결과지를 가져오지 않을 때의 기본 화면
 import VmwrResult from '../../../Global/components/VmwrResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
 const Result = VmwrResult;
 
-const QnAPosting = () => {
+const PostingQnA = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
+
+  const { isModalState, setModalState, isModalType, setModalType } =
+    useGlobalState();
+
+  let ModalComponent = ModalResultList;
+  if (isModalType === 'ResultMessage') {
+    ModalComponent = ModalResultMessage;
+  } else if (isModalType === 'ShareMessage') {
+    ModalComponent = ModalShareMessage;
+  }
 
   useEffect(() => {
     if (isLoading) {
@@ -29,21 +47,28 @@ const QnAPosting = () => {
   }, [isLoading, isError, isData]);
 
   return (
-    <div className="qnaposting">
+    <div className="postingqna">
       <Header />
-      <div className="qnaposting-container">
-        <div className="qnaposting-title-container">
-          <div id="qnaposting-title">게시글 제목</div>
+      {isModalState && (
+        <Modal
+          isOpen={isModalState}
+          ModalType={ModalComponent}
+          // ModalDefaultTypeState={isModalType}
+        />
+      )}
+      <div className="postingqna-container">
+        <div className="postingqna-title-container">
+          <div id="postingqna-title">게시글 제목</div>
           <input
-            className="qnaposting-title-input"
+            className="postingqna-title-input"
             type="text"
             placeholder="질문 제목을 입력해주세요"
           />
         </div>
-        <div className="qnaposting-category-container">
-          <div id="qnaposting-title">게시판 선택</div>
-          <div className="qnaposting-category-option">
-            <div className="qnaposting-input-group">
+        <div className="postingqna-category-container">
+          <div id="postingqna-title">게시판 선택</div>
+          <div className="postingqna-category-option">
+            <div className="postingqna-input-group">
               <input id="input-styled" type="checkbox" />
               <span>네편 답변</span>
               <input id="input-styled" type="checkbox" />
@@ -51,28 +76,39 @@ const QnAPosting = () => {
             </div>
           </div>
         </div>
-        <div className="qnaposting-content-container">
-          <div id="qnaposting-title">게시글 내용</div>
+        <div className="postingqna-content-container">
+          <div id="postingqna-title">게시글 내용</div>
           <textarea
-            className="qnaposting-content-textarea"
+            className="postingqna-content-textarea"
             type="text"
             placeholder="질문 내용을 입력해주세요"
           />
         </div>
-        <div className="qnaposting-myresult-container">
-          <div id="qnaposting-title">내 결과지 가져오기(선택)</div>
-          {/* <div className="qnaposting-myresult-none">
-            <img src={plusIcon} alt="+" id="qnaposting-plusIcon" />
-          </div> */}
-          <div className="qnaposting-vmwr-result">{content}</div>
+        <div className="postingqna-myresult-container">
+          <div id="postingqna-title">내 결과지 가져오기(선택)</div>
+          <div
+            className="postingqna-myresult-none"
+            onKeyDown={() => {
+              console.log('test');
+            }}
+            role="button"
+            tabIndex="0"
+            onClick={() => {
+              setModalType('Result');
+              modalStateController(isModalState, setModalState);
+            }}
+          >
+            <img src={plusIcon} alt="+" id="postingqna-plusIcon" />
+          </div>
+          <div className="postingqna-vmwr-result">{content}</div>
         </div>
       </div>
-      <div id="qnaposting-group">
-        <div className="qnaposting-button">등록하기</div>
+      <div id="postingqna-group">
+        <div className="postingqna-button">등록하기</div>
       </div>
       <Footer />
     </div>
   );
 };
 
-export default QnAPosting;
+export default PostingQnA;
