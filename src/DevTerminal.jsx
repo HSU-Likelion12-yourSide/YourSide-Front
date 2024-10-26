@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useGlobalState from './Test/Hooks/useGlobalState';
+import useGlobalState from './Global/Hooks/useGlobalState';
+import Modal from './Global/components/Modal.components';
+import modalStateController from './Global/function/modalStateController';
+// import ModalResultMessage from './Global/components/ModalType/ModalResultMessage.components';
+// import ModalShareMessage from './Global/components/ModalType/ModalShareMessage.components';
+// import ModalResult from './Global/components/ModalType/ModalResultMessage.components';
+// import ModalLogin from './Global/components/ModalType/ModalLogin.components';
+import ModalSignUp from './Global/components/ModalType/ModalSignUp.components';
 
 const Terminal = () => {
   // const { isState, setState, isNum, setNum } = useContext(StateContext);
-  const { isState, setState, isNum, setNum } = useGlobalState();
+  const { isState, setState, isNum, setNum, isModalState, setModalState } =
+    useGlobalState();
   const handleClick = value => {
     setState(value);
     setNum(prev => prev + 1);
@@ -53,6 +61,9 @@ const Terminal = () => {
             <Link to="/QuestionAndAnswer">Question and Answer</Link>
           </li>
           <li>
+            <Link to="/ViewQuestionAndAnswer">ViewQuestion and Answer</Link>
+          </li>
+          <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
           </li>
           <li>
@@ -98,6 +109,9 @@ const Terminal = () => {
           <li>
             <Link to="/DevNotation">DevNotation</Link>
           </li>
+          <li>
+            <Link to="/DevFetch">DevFetchTerminalTest</Link>
+          </li>
         </ul>
       </div>
       <button
@@ -107,6 +121,14 @@ const Terminal = () => {
         }}
       >
         GlobalStateTest {isState}/{isNum}
+      </button>
+      {isModalState && <Modal isOpen={isModalState} ModalType={ModalSignUp} />}
+      <button
+        onClick={() => {
+          modalStateController(isModalState, setModalState);
+        }}
+      >
+        ModalTest
       </button>
     </div>
   );
