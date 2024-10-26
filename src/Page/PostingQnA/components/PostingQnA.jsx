@@ -4,12 +4,9 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import Modal from '../../../Global/components/Modal.components';
 import ModalResultList from '../../../Global/components/ModalType/ModalResultList.components';
-import ModalResultMessage from '../../../Global/components/ModalType/ModalResultMessage.components';
+import ModalResultGet from '../../../Global/components/ModalType/ModalResultGet.components';
 import modalStateController from '../../../Global/function/modalStateController';
-import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMessage.components';
-
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
-
 import plusIcon from '../image/plusIcon.svg';
 // 이 외에 아래 코드에서 주석처리 된 부분은 내 결과지를 가져오지 않을 때의 기본 화면
 import VmwrResult from '../../../Global/components/VmwrResult.component';
@@ -25,10 +22,8 @@ const PostingQnA = () => {
     useGlobalState();
 
   let ModalComponent = ModalResultList;
-  if (isModalType === 'ResultMessage') {
-    ModalComponent = ModalResultMessage;
-  } else if (isModalType === 'ShareMessage') {
-    ModalComponent = ModalShareMessage;
+  if (isModalType === 'ResultGet') {
+    ModalComponent = ModalResultGet;
   }
 
   useEffect(() => {
@@ -94,7 +89,7 @@ const PostingQnA = () => {
             role="button"
             tabIndex="0"
             onClick={() => {
-              setModalType('Result');
+              setModalType('ResultList');
               modalStateController(isModalState, setModalState);
             }}
           >

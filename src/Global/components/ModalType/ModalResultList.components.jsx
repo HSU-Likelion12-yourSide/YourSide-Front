@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../css/ModalType/Modal.resultlist.scss';
 import useGlobalState from '../../Hooks/useGlobalState';
-import closeIcon from './closeIcon.svg';
+import modalStateController from '../../function/modalStateController';
+import closeIcon from '../../image/modal-closeIcon.svg';
 
-const ModalResult = () => {
+const ModalResultList = () => {
+  const { isModalState, setModalState } = useGlobalState();
   const { setModalType } = useGlobalState();
 
   return (
@@ -20,20 +22,56 @@ const ModalResult = () => {
         >
           가져오기
         </div>
-        <div id="modal-close">
+        <div
+          id="modal-close"
+          onKeyDown={() => {
+            console.log('test');
+          }} // 키보드 지원
+          role="button"
+          tabIndex="0"
+          onClick={() => {
+            modalStateController(isModalState, setModalState);
+          }}
+        >
           <img src={closeIcon} alt="x" id="modal-closeicon" />
         </div>
       </div>
       <div id="modal-contents">
-        {[...Array(5)].map((_, index) => (
-          <div key={index} id="modal-resultbox">
-            <div id="modal-resultname">미도인 성수 근로 결과지</div>
-            <div id="modal-viewdetails">자세히 보기 &gt;</div>
+        <div className="modal-resultbox">
+          <div className="modal-resultname">미도인 성수 근로 결과지</div>
+          <div
+            className="modal-viewdetails"
+            onKeyDown={() => {
+              console.log('test');
+            }} // 키보드 지원
+            role="button"
+            tabIndex="0"
+            onClick={() => {
+              setModalType('ResultGet');
+            }}
+          >
+            자세히 보기 &gt;
           </div>
-        ))}
+        </div>
+        <div className="modal-resultbox">
+          <div className="modal-resultname">미도인 성수 근로 결과지</div>
+          <div className="modal-viewdetails">자세히 보기 &gt;</div>
+        </div>
+        <div className="modal-resultbox">
+          <div className="modal-resultname">미도인 성수 근로 결과지</div>
+          <div className="modal-viewdetails">자세히 보기 &gt;</div>
+        </div>
+        <div className="modal-resultbox">
+          <div className="modal-resultname">미도인 성수 근로 결과지</div>
+          <div className="modal-viewdetails">자세히 보기 &gt;</div>
+        </div>
+        <div className="modal-resultbox">
+          <div className="modal-resultname">미도인 성수 근로 결과지</div>
+          <div className="modal-viewdetails">자세히 보기 &gt;</div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ModalResult;
+export default ModalResultList;
