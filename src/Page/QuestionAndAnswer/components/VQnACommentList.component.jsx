@@ -1,9 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import '../css/VQnACommentList.scss';
 
 const VQnACommentList = () => {
+  const requestData = {
+    // eslint-disable-next-line camelcase
+    user_id: 1, // 현재 조회하는 회원의 고유 ID
+    // eslint-disable-next-line camelcase
+    posting_id: 2, // 댓글 고유 ID
+  };
+
+  const { isData, isLoading, isError, setUrl } = useFetchAPI(
+    '/comment/list',
+    'GET',
+    requestData,
+  );
+
+  const [isContent, setContent] = useState('');
+
+  useEffect(() => {
+    setUrl('/comment/list');
+    if (isLoading) {
+      console.log('..is Loading');
+      setContent('Loading...');
+    } else if (isError) {
+      console.log(`is Error : `, isError);
+      setContent(`Error: `, isError);
+    } else if (isData && isData.data) {
+      console.log(`Success Contact : `, isData);
+      setContent(isData.data);
+    } else {
+      setContent(null);
+    }
+  }, [isLoading, isError, isData]);
+
+  // 임시
+  // useEffect(() => {
+  //   const fetchDataWithBodyInGet = async () => {
+  //     const requestData = {
+  //       // eslint-disable-next-line camelcase
+  //       user_id: 1, // 현재 조회하는 회원의 고유 ID
+  //       // eslint-disable-next-line camelcase
+  //       posting_id: 2, // 댓글 고유 ID
+  //     };
+
+  //     try {
+  //       const response = await axios({
+  //         method: 'GET',
+  //         url: 'http://13.124.144.93:8080/api/comment/list',
+  //         transformRequest: [
+  //           /* eslint-disable no-param-reassign */
+  //           (data, headers) => {
+  //             headers['Content-Type'] = 'application/json';
+  //             // payload 확인용 로깅
+  //             console.log('Payload:', data);
+  //             return JSON.stringify(data);
+  //           } /* eslint-enable no-param-reassign */,
+  //         ],
+
+  //         data: requestData, // GET 요청에서 body에 데이터 포함
+  //       });
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchDataWithBodyInGet();
+  // }, []);
+
   return (
     <div className="qav-comment-group">
       <div className="qav-write-comment">
