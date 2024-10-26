@@ -45,7 +45,17 @@ const Header = () => {
 
         <div className="h-group">
           <div id="h-my-page">
-            <Link id="h-link" to="/">
+            <Link
+              id="h-link"
+              to="/MyPage"
+              onKeyDown={() => {}}
+              onClick={() => {
+                /* eslint-disable-next-line no-alert */
+                alert('마이 페이지는 준비 중입니다.');
+              }}
+              role="button"
+              tabIndex="0"
+            >
               <img src={myPage} alt="" />
             </Link>
           </div>
