@@ -4,7 +4,7 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import Modal from '../../../Global/components/Modal.components';
 import ModalResultList from '../../../Global/components/ModalType/ModalResultList.components';
-import ModalResultGet from '../../../Global/components/ModalType/ModalResultGet.components';
+import ModalGetResult from '../../../Global/components/ModalType/ModalGetResult.components';
 import modalStateController from '../../../Global/function/modalStateController';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import plusIcon from '../image/plusIcon.svg';
@@ -22,8 +22,8 @@ const PostingQnA = () => {
     useGlobalState();
 
   let ModalComponent = ModalResultList;
-  if (isModalType === 'ResultGet') {
-    ModalComponent = ModalResultGet;
+  if (isModalType === 'GetResult') {
+    ModalComponent = ModalGetResult;
   }
 
   useEffect(() => {

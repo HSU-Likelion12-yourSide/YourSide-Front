@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/ModalType/Modal.resultlist.scss';
+import '../../css/ModalType/Modal.resultget.scss';
 import useGlobalState from '../../Hooks/useGlobalState';
-import modalStateController from '../../function/modalStateController';
-import closeIcon from '../../image/modal-closeIcon.svg';
+// import modalStateController from '../../function/modalStateController';
 import VmwrResult from '../VmwrResult.component';
 import useFetchAPI from '../../API/Hooks/useFetchAPI';
 
 const Result = VmwrResult;
 
-const ModalResult = () => {
+const ModalGetResult = () => {
   const { isModalState, setModalState } = useGlobalState();
   const { setModalType } = useGlobalState();
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
@@ -32,34 +31,23 @@ const ModalResult = () => {
   return (
     <div className="modal-default">
       <div id="modal-header">
-        <div id="modal-title">나의 결과지</div>
         <div
-          id="modal-get"
+          className="modal-back"
           onKeyDown={() => {
             console.log('test');
           }}
-          role="button"
-          tabIndex="0"
-        >
-          가져오기
-        </div>
-        <div
-          id="modal-close"
-          onKeyDown={() => {
-            console.log('test');
-          }} // 키보드 지원
           role="button"
           tabIndex="0"
           onClick={() => {
-            modalStateController(isModalState, setModalState);
+            setModalType('ResultList');
           }}
         >
-          <img src={closeIcon} alt="x" id="modal-closeicon" />
+          &lt; 이전으로
         </div>
       </div>
-      <div id="modal-contents">{content}</div>
+      <div className="modal-result">{content}</div>
     </div>
   );
 };
 
-export default ModalResult;
+export default ModalGetResult;

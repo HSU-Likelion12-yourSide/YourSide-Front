@@ -19,6 +19,9 @@ const ModalResultList = () => {
           }}
           role="button"
           tabIndex="0"
+          onClick={() => {
+            modalStateController(isModalState, setModalState);
+          }}
         >
           가져오기
         </div>
@@ -47,7 +50,7 @@ const ModalResultList = () => {
             role="button"
             tabIndex="0"
             onClick={() => {
-              setModalType('ResultGet');
+              setModalType('GetResult');
             }}
           >
             자세히 보기 &gt;
