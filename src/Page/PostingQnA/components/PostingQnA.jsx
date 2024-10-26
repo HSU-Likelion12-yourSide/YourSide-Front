@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/QnAPosting.scss';
+import '../css/PostingQnA.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 // import plusIcon from '../image/plusIcon.svg';

@@ -16,7 +16,7 @@ import Notation from './Page/Notation/components/Notation';
 import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
 import ModalCheck from './Global/components/Modal.components';
-import QnAPosting from './Page/QnAPosting/components/QnAPosting';
+import PostingQnA from './Page/PostingQnA/components/PostingQnA';
 
 import NotationExample from './Page/Notation/components/NotationExample';
 
@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/Notation" element={<Notation />} />
         <Route path="/FindID" element={<FindID />} />
         <Route path="/FindPW" element={<FindPW />} />
-        <Route path="/QnAPosting" element={<QnAPosting />} />
+        <Route path="/PostingQnA" element={<PostingQnA />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/DevNotation" element={<DevNotation />} />
