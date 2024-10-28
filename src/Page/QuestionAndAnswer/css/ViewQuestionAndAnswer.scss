@@ -145,6 +145,14 @@
           /* 이미지 크기를 맞춤 */
         }
 
+        #bookmark-selected {
+          width: 72px;
+          height: 72px;
+          cursor: pointer;
+          background-image: url('../image/bookmark-hover.svg');
+          background-size: cover;
+        }
+
         #bookmark-logo:hover {
           cursor: pointer;
           background-image: url('../image/bookmark-hover.svg');
@@ -161,6 +169,7 @@
           font-weight: 400;
           line-height: 24px;
           letter-spacing: -0.025em;
+          cursor: pointer;
         }
       }
     }
@@ -247,6 +256,7 @@
             font-style: normal;
             font-weight: 700;
             line-height: 24px;
+            cursor: pointer;
             /* 171.429% */
           }
         }

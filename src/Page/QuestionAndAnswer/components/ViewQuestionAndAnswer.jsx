@@ -1,31 +1,82 @@
 import React, { useEffect, useState } from 'react';
 import '../css/ViewQuestionAndAnswer.scss';
-// import bookmark from '../image/bookmark.svg';
+import { useNavigate, useParams } from 'react-router-dom';
 import likeButton from '../image/like-btn.svg';
 import badButton from '../image/bad-btn.svg';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
+import navigateController from '../../../Global/function/navigateController';
 
-const App = () => {
-  const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
-  const [content, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+const ViewQuestionAndAnswer = () => {
+  const navigate = useNavigate();
+  // 북마크 비구조 할당 으로 선언 필요
+  const [isBookMark, setBookMark] = useState();
+  const [isReqBookMark, setReqBookMark] = useState();
+  const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+  // isContent를 잘 활용하면 번거로운 데이터 검증이 해소되지 않는지 고민
 
+  // useFetchAPI
+  // GET
+  const { isData, isLoading, isError, setUrl } = useFetchAPI();
+
+  // POST -> useEffect로 상태 표기 하지 않음
+  const {
+    isData: isBookMarkData,
+    isLoading: isBookMarkLoading,
+    isError: isBookMarkError,
+    setUrl: setBookMarkUrl,
+  } = useFetchAPI('', 'POST', isReqBookMark);
+
+  // 객체로 들어가서 생기는 문제
+  const { id } = useParams();
+  // 동적 URI 검증 useEffect
+  useEffect(() => {
+    // id 값 거증
+    if (id) {
+      //   const numericId = parseInt(id, 10);
+      if (!Number.isNaN(id) && id > 0) {
+        // NaN인지 확인하고 유효한 id인지 확인
+        setUrl(`/posting/${id}`);
+      } else {
+        console.error(`Invalid id: ${id}`);
+        // 여기서 경고 표시 창
+      }
+    }
+  }, [id, setUrl]); // [id, setUrl]
+
+  // GET API 상태 표기
   useEffect(() => {
     if (isLoading) {
       console.log('..is Loading');
       setContent('Loading...');
     } else if (isError) {
-      console.log(`is Error : ${isError}`);
-      setContent(`Error: ${isError}`);
-    } else if (isData) {
-      console.log(`Success Contact : ${isData}`);
-      setContent(<VmwrResult data={isData} />);
+      console.log(`is Error : `, isError);
+      setContent(`Error: `, isError);
+    } else if (isData && isData.data) {
+      console.log(`Success Contact : `, isData);
+      setContent(isData.data);
+      setBookMark(isData.data.is_bookmarked);
+      // setContent();
     } else {
       setContent(null);
     }
   }, [isLoading, isError, isData]);
+
+  // bookmark controller
+  const bookmarkStateController = () => {
+    const bookmarkData = {
+      /* eslint-disable camelcase */
+      user_id: 2, // 임시 아이디
+      post_id: id,
+      is_bookmarked: isBookMark,
+      /* eslint-enable camelcase */
+    };
+    setReqBookMark(bookmarkData);
+    setBookMarkUrl('/posting/bookmarks');
+    setBookMark(!isBookMark);
+  };
 
   return (
     <div className="question-and-answer-view">
@@ -36,28 +87,53 @@ const App = () => {
             <div className="qav-title">
               <div id="qav-question-mark">Q.</div>
               <div id="qav-title-text">
-                계약직도 연장 여부 미리 말해줘야 하나요?
+                {isData && isData.data ? isData.data.title : '제목 없음'}
               </div>
             </div>
             <div className="qav-write-info">
-              <div id="qav-writer">코카콜라</div>
-              <div id="qav-date">2024.05.11</div>
+              <div id="qav-writer">
+                {isData && isData.data ? isData.data.nickname : '작성자 없음'}
+              </div>
+              <div id="qav-date">
+                {isData && isData.data ? isData.data.created_at : '날짜 없음'}
+              </div>
             </div>
             <div className="qav-content">
-              정규직일때는 해고하기 한달전에 말해줘야 한다는 법이 있다던데요.
-              그런가요? 예를들어 1개월 계약직이면 1개월만 계약할거고 더 연장의사
-              없다.라고 말해줘야 하는건가요? 아니면 그냥 계약기간 끝나면
-              끝나는거고 끝나는거고 그런건가요?
+              {isData && isData.data ? isData.data.content : '내용 없음'}
             </div>
 
-            <div className="qav-work-arrangement">{content}</div>
+            <div className="qav-work-arrangement">
+              {isData && isData.data && isData.data.worksheet_id ? (
+                <VmwrResult resultId={isData.data.worksheet_id} />
+              ) : null}
+            </div>
           </div>
         </div>
         <div className="qav-middle">
+          {/* BookMark Post */}
           <div className="qav-group">
             <div id="qav-blank" />
-            <div id="bookmark-logo" />
-            <div id="qav-middle-list">목록</div>
+            <div
+              id={isBookMark ? 'bookmark-selected' : 'bookmark-logo'}
+              onKeyDown={() => {}}
+              onClick={() => {
+                bookmarkStateController();
+              }}
+              role="button"
+              tabIndex="0"
+              aria-label="Bookmark"
+            />
+            <div
+              id="qav-middle-list"
+              onKeyDown={() => {}}
+              onClick={() => {
+                navigateController(navigate, `/QuestionAndAnswer`);
+              }}
+              role="button"
+              tabIndex="0"
+            >
+              목록
+            </div>
           </div>
         </div>
         <div className="qav-write-comment">
@@ -124,4 +200,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ViewQuestionAndAnswer;
