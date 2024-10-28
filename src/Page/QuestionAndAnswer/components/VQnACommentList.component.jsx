@@ -11,7 +11,7 @@ const VQnACommentList = () => {
   // 해당 user_id, posting_id 다시 설정 필요
   const requestData = {
     // eslint-disable-next-line camelcase
-    user_id: 1, // 현재 조회하는 회원의 고유 ID
+    user_id: 2, // 현재 조회하는 회원의 고유 ID
     // eslint-disable-next-line camelcase
     posting_id: 2, // 댓글 고유 ID
   };
@@ -19,7 +19,7 @@ const VQnACommentList = () => {
   // 해당 user_id, posting_id 다시 설정 필요
   const requestCommentData = {
     // eslint-disable-next-line camelcase
-    user_id: 1,
+    user_id: 2,
     // eslint-disable-next-line camelcase
     posting_id: 2,
     content: isComment,
