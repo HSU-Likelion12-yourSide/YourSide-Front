@@ -21,6 +21,7 @@ const QuestionAndAnswer = () => {
     setUrl: setPopularUrl,
   } = useFetchAPI();
 
+  // Page-state 상태 초기 값
   useEffect(() => {
     if (isType !== null && isType !== undefined) {
       console.log(`Page-Type is ${isType}`);
@@ -31,6 +32,7 @@ const QuestionAndAnswer = () => {
     }
   }, [isType]);
 
+  // fetch 상태 초기 값
   useEffect(() => {
     if (isLoading || isPopularLoading) {
       console.log('..is Loading');
@@ -80,12 +82,8 @@ const QuestionAndAnswer = () => {
           id={isType === 0 ? 'qa-box-selected' : 'qa-box'}
           onKeyDown={() => {}}
           onClick={() => {
-            /* eslint-disable-next-line no-alert */
-            // alert('SPA로 type 0입니다.');
             if (isType !== 0) {
               setType(0);
-              // setUrl로 다시 Fetch
-              // console.log(`Page-Type is ${isType}`);
             }
           }}
           role="button"
@@ -97,12 +95,8 @@ const QuestionAndAnswer = () => {
           id={isType === 1 ? 'qa-box-selected' : 'qa-box'}
           onKeyDown={() => {}}
           onClick={() => {
-            /* eslint-disable-next-line no-alert */
-            // alert('SPA로 type 1입니다.');
             if (isType !== 1) {
               setType(1);
-              // setUrl로 다시 Fetch
-              // console.log(`Page-Type is ${isType}`);
             }
           }}
           role="button"
