@@ -121,8 +121,9 @@ const SignUp = () => {
           id="Sign-Up-button"
           onClick={() => {
             handleSignUp();
-            if (isData.data.status === 200 || isData.data.status === 201) {
+            if (!isError) {
               navigate('/Login');
+              console.log(isData);
             }
           }}
         >

@@ -112,7 +112,17 @@ const MyPage = () => {
         </button>
         <div className="sign-up">
           <p>아이디/비밀번호 찾기</p>
-          <p style={{ color: 'black' }}>
+          <p
+            style={{ color: 'black' }}
+            onClick={() => {
+              navigate('/SignUp');
+            }}
+            onKeyDown={() => {}}
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+            role="button"
+            tabIndex="0"
+            aria-label="Bookmark"
+          >
             <strong>회원가입</strong>
           </p>
         </div>
