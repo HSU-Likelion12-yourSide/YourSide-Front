@@ -34,7 +34,7 @@ const SignUp = () => {
     } else {
       setContent(null);
     }
-  }, [isLoading, isError, isData, navigate]);
+  }, [isLoading, isError, isData]);
 
   // 입력 필드 변경 함수
   const handleInputChange = e => {
@@ -121,7 +121,7 @@ const SignUp = () => {
           id="Sign-Up-button"
           onClick={() => {
             handleSignUp();
-            if (isData.status === 200 || isData.status === 201) {
+            if (isData.data.status === 200 || isData.data.status === 201) {
               navigate('/Login');
             }
           }}

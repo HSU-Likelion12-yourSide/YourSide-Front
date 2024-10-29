@@ -28,9 +28,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/:user" element={<Main />} />
         <Route path="/Header" element={<Header />} />
         <Route path="/Footer" element={<Footer />} />
-        <Route path="/ContractReview" element={<ContractReview />} />
+        <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
           path="/ViewQuestionAndAnswer/:id"
