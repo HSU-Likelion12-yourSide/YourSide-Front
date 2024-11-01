@@ -15,11 +15,16 @@ const ContractReview = () => {
     section7: false,
     section8: false,
     section9: false,
+    section10: false,
   });
 
   const handleSection = section => {
-    // const delay = section === 'section5' ? 1000 : 500;
-    const delay = 500;
+    const delay =
+      section === 'section7' || section === 'section8' || section === 'section9'
+        ? 1000
+        : 500;
+
+    // const delay = 500;
 
     setTimeout(() => {
       setSection(prev => {
@@ -39,6 +44,16 @@ const ContractReview = () => {
         return updatedSections;
       });
     }, delay);
+  };
+
+  const handleSectionAll = () => {
+    setSection(prev => {
+      const updatedSections = {};
+      Object.keys(prev).forEach(el => {
+        updatedSections[el] = true;
+      });
+      return updatedSections;
+    });
   };
 
   const scrollSet = el => {
@@ -182,14 +197,14 @@ const ContractReview = () => {
               </HashLink>
               <hr />
               <HashLink
-                to="#section10"
+                to="#section1"
                 className={
-                  isSection.section1
+                  isSection.section10
                     ? 'clicked-section-element'
                     : 'section-element'
                 }
                 scroll={scrollSet}
-                onClick={() => handleSection('section1')}
+                onClick={() => handleSectionAll()}
               >
                 10. 전체
               </HashLink>
@@ -251,7 +266,7 @@ const ContractReview = () => {
                     8시간인 경우 1시간 이상을 주도록 소정근로시간 내에서 기재함
                   </div>
                 ) : (
-                  <div id="notice" />
+                  <div id="notice-other" />
                 )}
 
                 <div name="" id="section5">
@@ -265,7 +280,7 @@ const ContractReview = () => {
                     요일로 할지 결정하여 명기
                   </div>
                 ) : (
-                  <div id="notice" />
+                  <div id="notice-other" />
                 )}
 
                 <div name="" id="section6">
