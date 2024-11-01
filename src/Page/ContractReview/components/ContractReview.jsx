@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import '../css/contractreview.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 
 const ContractReview = () => {
+  const [isSection, setSection] = useState({
+    section1: false,
+    section2: false,
+    section3: false,
+    section4: false,
+    section5: false,
+    section6: false,
+    section7: false,
+    section8: false,
+    section9: false,
+  });
+
+  const handleSection = section => {
+    setSection(prev => {
+      const updatedSections = {};
+      // Object를 사용해서 객체의 keys라는 속성으로 접근 한다.
+      // Object.keys()는 객체의 모든 키를 배열로 가져오는 메서드
+      // 따라서 [{key':value'},{key'':value''},...] 이렇게 나열이 된다.
+      // 즉, Object.keys로 접근했기 때문에 prev는 key를 의미하며 매개변수 인자로 들어간 section가 Object를 통한 배열로 구성된 key가 같은 경우만 true이고 나며지는 false가 되는 것이다.
+      Object.keys(prev).forEach(el => {
+        if (el === section) {
+          updatedSections[el] = true;
+        } else {
+          updatedSections[el] = false;
+        }
+      });
+
+      return updatedSections;
+    });
+  };
+
+  const scrollSet = el => {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="contract-review">
       <Header />
@@ -24,25 +59,135 @@ const ContractReview = () => {
           <div className="list">
             <h2>항목</h2>
             <div>
-              <HashLink to="#section1">1. 근로계약기간</HashLink>
+              <HashLink
+                to="#section1"
+                className={
+                  isSection.section1
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section1')}
+              >
+                1. 근로계약기간
+              </HashLink>
               <hr />
-              <HashLink to="#section2">2. 근무장소</HashLink>
+              <HashLink
+                to="#section2"
+                className={
+                  isSection.section2
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section2')}
+              >
+                2. 근무장소
+              </HashLink>
               <hr />
-              <HashLink to="#section3">3. 업무의 내용</HashLink>
+              <HashLink
+                to="#section3"
+                className={
+                  isSection.section3
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section3')}
+              >
+                3. 업무의 내용
+              </HashLink>
               <hr />
-              <HashLink to="#section4">4. 소정근로시간</HashLink>
+              <HashLink
+                to="#section4"
+                className={
+                  isSection.section4
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section4')}
+              >
+                4. 소정근로시간
+              </HashLink>
               <hr />
-              <HashLink to="#section5">5. 근무일/휴일</HashLink>
+              <HashLink
+                to="#section5"
+                className={
+                  isSection.section5
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section5')}
+              >
+                5. 근무일/휴일
+              </HashLink>
               <hr />
-              <HashLink to="#section6">6. 임 금</HashLink>
+              <HashLink
+                to="#section6"
+                className={
+                  isSection.section6
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section6')}
+              >
+                6. 임 금
+              </HashLink>
               <hr />
-              <HashLink to="#section7">7. 연차유급휴가</HashLink>
+              <HashLink
+                to="#section7"
+                className={
+                  isSection.section7
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section7')}
+              >
+                7. 연차유급휴가
+              </HashLink>
               <hr />
-              <HashLink to="#section8">8. 사회보험 적용여부</HashLink>
+              <HashLink
+                to="#section8"
+                className={
+                  isSection.section8
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section8')}
+              >
+                8. 사회보험 적용여부
+              </HashLink>
               <hr />
-              <HashLink to="#section9">9. 근로계약서 교부</HashLink>
+              <HashLink
+                to="#section9"
+                className={
+                  isSection.section9
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section9')}
+              >
+                9. 근로계약서 교부
+              </HashLink>
               <hr />
-              <HashLink to="#section10">10. 전체</HashLink>
+              <HashLink
+                to="#section10"
+                className={
+                  isSection.section1
+                    ? 'clicked-section-element'
+                    : 'section-element'
+                }
+                scroll={scrollSet}
+                onClick={() => handleSection('section1')}
+              >
+                10. 전체
+              </HashLink>
             </div>
           </div>
 
@@ -54,41 +199,53 @@ const ContractReview = () => {
                   __________(이하 “사업주”라 함)과(와) __________ (이하
                   “근로자”라 함)은 다음과 같이 근로계약을 체결한다.
                 </div>
-                <div id="section1">
+                <div name="" id="section1">
                   1. 근로계약기간 : 년 월 일부터 년 월 일까지
                 </div>
                 <div>
                   ※ 근로계약기간을 정하지 않는 경우에는 “근로개시일”만 기재
                 </div>
-                <div id="notice">
-                  ☞ 노사가 협의하여 결정하는 일을 하기로 한 기간
+                {isSection.section1 ? (
+                  <div id="notice">
+                    ☞ 노사가 협의하여 결정하는 일을 하기로 한 기간
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
+
+                <div name="" id="section2">
+                  2. 근 무 장 소 :
                 </div>
-                <br />
-                <div id="section2">2. 근 무 장 소 :</div>
                 <div id="notice">☞ 일을 수행하기 위한 장소를 명기</div>
-                <br />
-                <div id="section3">3. 업무의 내용 :</div>
-                <br />
-                <div id="section4">
+
+                <div name="" id="section3">
+                  3. 업무의 내용 :
+                </div>
+
+                <div name="" id="section4">
                   4. 소정근로시간 : 시 분부터 시 분까지 (휴게시간 : 시 분~ 시
                   분)
                 </div>
-                <div id="notice">
+                {/* false 일때 notice */}
+                <div id="notice-other">
                   ☞ 노사가 법정근로시간 내(하루 8시간, 주40시간)에서 하루에
                   몇시간을 일할지 정한 시간을 기재휴게시간은 4시간에 30분,
                   8시간인 경우 1시간 이상을 주도록 소정근로시간 내에서 기재함
                 </div>
-                <br />
-                <div id="section5">
+
+                <div name="" id="section5">
                   5. 근무일/휴일 : 매주 일(또는 매일단위)근무, 주휴일 매주 요일
                 </div>
-                <div id="notice">
+                {/* false 일때 notice */}
+                <div id="notice-other">
                   ☞ 일주일 중 어떤날에 근무할지를 명기하며, 주 중 근무하기로
                   한날을 만근 하였을 경우 부여하는 유급휴일(주휴일)을 어느
                   요일로 할지 결정하여 명기
                 </div>
-                <br />
-                <div id="section6">6. 임 금</div>
+
+                <div name="" id="section6">
+                  6. 임 금
+                </div>
                 <div>
                   <div>- 월(일, 시간)급 : ________________ 원</div>
                   <div id="notice">
@@ -113,8 +270,10 @@ const ContractReview = () => {
                     ☞ 임금을 계좌로 지급할 것인지 등에 대해 노사간 협의 후 기재
                   </div>
                 </div>
-                <br />
-                <div id="section7">7. 연차유급휴가</div>
+
+                <div name="" id="section7">
+                  7. 연차유급휴가
+                </div>
                 <div>
                   - 연차유급휴가는 근로기준법에서 정하는 바에 따라 부여함
                 </div>
@@ -125,12 +284,16 @@ const ContractReview = () => {
                 <div>
                   ②1년 미만 또는 1년간 80% 미만 출근자에게 1개월 개근시 1일 부여
                 </div>
-                <br />
-                <div id="section8">8. 사회보험 적용여부(해당란에 체크)</div>
+
+                <div name="" id="section8">
+                  8. 사회보험 적용여부(해당란에 체크)
+                </div>
                 <div>□ 고용보험 □ 산재보험 □ 국민연금 □ 건강보험</div>
                 <div id="notice">☞ 사회보험 적용에 대한 해당 내용을 기재</div>
-                <br />
-                <div id="section9">9. 근로계약서 교부</div>
+
+                <div name="" id="section9">
+                  9. 근로계약서 교부
+                </div>
                 <div>
                   - 사업주는 근로계약을 체결함과 동시에 본 계약서를 사본하여
                   근로자의 교부요구와 관계없이 근로자에게 교부함(근로기준법
@@ -140,18 +303,17 @@ const ContractReview = () => {
                   ☞ 근로기준법 제17조에 따라 근로계약 체결시 근로자에게
                   교부하여야 함을 알려주는 내용
                 </div>
-                <br />
-                <div id="section10">
+
+                <div name="" id="section10">
                   10. 근로계약, 취업규칙 등의 성실한 이행의무
                 </div>
                 <div>
                   - 사업주와 근로자는 각자가 근로계약, 취업규칙, 단체협약을
                   지키고 성실하게 이행하여야 함
                 </div>
-                <br />
+
                 <div>11. 기타</div>
                 <div>- 이 계약에 정함이 없는 사항은 근로기준법령에 의함</div>
-                <br />
               </div>
 
               <div className="info">
