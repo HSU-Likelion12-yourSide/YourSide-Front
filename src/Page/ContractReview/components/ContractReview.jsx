@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 import '../css/contractreview.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
@@ -23,25 +24,25 @@ const ContractReview = () => {
           <div className="list">
             <h2>항목</h2>
             <div>
-              <div>1. 근로계약기간</div>
+              <HashLink to="#section1">1. 근로계약기간</HashLink>
               <hr />
-              <div>2. 근무장소</div>
+              <HashLink to="#section2">2. 근무장소</HashLink>
               <hr />
-              <div>3. 업무의 내용</div>
+              <HashLink to="#section3">3. 업무의 내용</HashLink>
               <hr />
-              <div>4. 소정근로시간</div>
+              <HashLink to="#section4">4. 소정근로시간</HashLink>
               <hr />
-              <div>5. 근무일/휴일</div>
+              <HashLink to="#section5">5. 근무일/휴일</HashLink>
               <hr />
-              <div>6. 임 금</div>
+              <HashLink to="#section6">6. 임 금</HashLink>
               <hr />
-              <div>7. 연차유급휴가</div>
+              <HashLink to="#section7">7. 연차유급휴가</HashLink>
               <hr />
-              <div>8. 사회보험 적용여부</div>
+              <HashLink to="#section8">8. 사회보험 적용여부</HashLink>
               <hr />
-              <div>9. 근로계약서 교부</div>
+              <HashLink to="#section9">9. 근로계약서 교부</HashLink>
               <hr />
-              <div>10. 전체</div>
+              <HashLink to="#section10">10. 전체</HashLink>
             </div>
           </div>
 
@@ -53,7 +54,9 @@ const ContractReview = () => {
                   __________(이하 “사업주”라 함)과(와) __________ (이하
                   “근로자”라 함)은 다음과 같이 근로계약을 체결한다.
                 </div>
-                <div>1. 근로계약기간 : 년 월 일부터 년 월 일까지</div>
+                <div id="section1">
+                  1. 근로계약기간 : 년 월 일부터 년 월 일까지
+                </div>
                 <div>
                   ※ 근로계약기간을 정하지 않는 경우에는 “근로개시일”만 기재
                 </div>
@@ -61,12 +64,12 @@ const ContractReview = () => {
                   ☞ 노사가 협의하여 결정하는 일을 하기로 한 기간
                 </div>
                 <br />
-                <div>2. 근 무 장 소 :</div>
+                <div id="section2">2. 근 무 장 소 :</div>
                 <div id="notice">☞ 일을 수행하기 위한 장소를 명기</div>
                 <br />
-                <div>3. 업무의 내용 :</div>
+                <div id="section3">3. 업무의 내용 :</div>
                 <br />
-                <div>
+                <div id="section4">
                   4. 소정근로시간 : 시 분부터 시 분까지 (휴게시간 : 시 분~ 시
                   분)
                 </div>
@@ -76,7 +79,7 @@ const ContractReview = () => {
                   8시간인 경우 1시간 이상을 주도록 소정근로시간 내에서 기재함
                 </div>
                 <br />
-                <div>
+                <div id="section5">
                   5. 근무일/휴일 : 매주 일(또는 매일단위)근무, 주휴일 매주 요일
                 </div>
                 <div id="notice">
@@ -85,7 +88,7 @@ const ContractReview = () => {
                   요일로 할지 결정하여 명기
                 </div>
                 <br />
-                <div>6. 임 금</div>
+                <div id="section6">6. 임 금</div>
                 <div>
                   <div>- 월(일, 시간)급 : ________________ 원</div>
                   <div id="notice">
@@ -111,7 +114,7 @@ const ContractReview = () => {
                   </div>
                 </div>
                 <br />
-                <div>7. 연차유급휴가</div>
+                <div id="section7">7. 연차유급휴가</div>
                 <div>
                   - 연차유급휴가는 근로기준법에서 정하는 바에 따라 부여함
                 </div>
@@ -123,11 +126,11 @@ const ContractReview = () => {
                   ②1년 미만 또는 1년간 80% 미만 출근자에게 1개월 개근시 1일 부여
                 </div>
                 <br />
-                <div>8. 사회보험 적용여부(해당란에 체크)</div>
+                <div id="section8">8. 사회보험 적용여부(해당란에 체크)</div>
                 <div>□ 고용보험 □ 산재보험 □ 국민연금 □ 건강보험</div>
                 <div id="notice">☞ 사회보험 적용에 대한 해당 내용을 기재</div>
                 <br />
-                <div>9. 근로계약서 교부</div>
+                <div id="section9">9. 근로계약서 교부</div>
                 <div>
                   - 사업주는 근로계약을 체결함과 동시에 본 계약서를 사본하여
                   근로자의 교부요구와 관계없이 근로자에게 교부함(근로기준법
@@ -138,7 +141,9 @@ const ContractReview = () => {
                   교부하여야 함을 알려주는 내용
                 </div>
                 <br />
-                <div>10. 근로계약, 취업규칙 등의 성실한 이행의무</div>
+                <div id="section10">
+                  10. 근로계약, 취업규칙 등의 성실한 이행의무
+                </div>
                 <div>
                   - 사업주와 근로자는 각자가 근로계약, 취업규칙, 단체협약을
                   지키고 성실하게 이행하여야 함
