@@ -48,11 +48,13 @@ const useFetchAPI = (initialUrl, method = 'GET', requestData = null) => {
         default:
           throw new Error(`Unsupported method: ${method}`);
       }
-
+      console.log('Response received:', response);
       setData(response.data);
     } catch (error) {
+      console.error('Error occurred:', error);
       setError(error);
     } finally {
+      console.log('Setting isLoading to false');
       setLoading(false);
     }
   };
