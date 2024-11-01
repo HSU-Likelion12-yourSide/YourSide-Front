@@ -18,22 +18,27 @@ const ContractReview = () => {
   });
 
   const handleSection = section => {
-    setSection(prev => {
-      const updatedSections = {};
-      // Object를 사용해서 객체의 keys라는 속성으로 접근 한다.
-      // Object.keys()는 객체의 모든 키를 배열로 가져오는 메서드
-      // 따라서 [{key':value'},{key'':value''},...] 이렇게 나열이 된다.
-      // 즉, Object.keys로 접근했기 때문에 prev는 key를 의미하며 매개변수 인자로 들어간 section가 Object를 통한 배열로 구성된 key가 같은 경우만 true이고 나며지는 false가 되는 것이다.
-      Object.keys(prev).forEach(el => {
-        if (el === section) {
-          updatedSections[el] = true;
-        } else {
-          updatedSections[el] = false;
-        }
-      });
+    // const delay = section === 'section5' ? 1000 : 500;
+    const delay = 500;
 
-      return updatedSections;
-    });
+    setTimeout(() => {
+      setSection(prev => {
+        const updatedSections = {};
+        // Object를 사용해서 객체의 keys라는 속성으로 접근 한다.
+        // Object.keys()는 객체의 모든 키를 배열로 가져오는 메서드
+        // 따라서 [{key':value'},{key'':value''},...] 이렇게 나열이 된다.
+        // 즉, Object.keys로 접근했기 때문에 prev는 key를 의미하며 매개변수 인자로 들어간 section가 Object를 통한 배열로 구성된 key가 같은 경우만 true이고 나며지는 false가 되는 것이다.
+        Object.keys(prev).forEach(el => {
+          if (el === section) {
+            updatedSections[el] = true;
+          } else {
+            updatedSections[el] = false;
+          }
+        });
+
+        return updatedSections;
+      });
+    }, delay);
   };
 
   const scrollSet = el => {
@@ -206,7 +211,7 @@ const ContractReview = () => {
                   ※ 근로계약기간을 정하지 않는 경우에는 “근로개시일”만 기재
                 </div>
                 {isSection.section1 ? (
-                  <div id="notice">
+                  <div id="notice" className="show">
                     ☞ 노사가 협의하여 결정하는 일을 하기로 한 기간
                   </div>
                 ) : (
@@ -216,59 +221,100 @@ const ContractReview = () => {
                 <div name="" id="section2">
                   2. 근 무 장 소 :
                 </div>
-                <div id="notice">☞ 일을 수행하기 위한 장소를 명기</div>
+                {isSection.section2 ? (
+                  <div id="notice" className="show">
+                    ☞ 일을 수행하기 위한 장소를 명기
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
 
                 <div name="" id="section3">
                   3. 업무의 내용 :
                 </div>
-
+                {isSection.section3 ? (
+                  <div id="notice" className="show">
+                    ☞ 어떤 일을 할지에 대한 내용을 기재
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
                 <div name="" id="section4">
                   4. 소정근로시간 : 시 분부터 시 분까지 (휴게시간 : 시 분~ 시
                   분)
                 </div>
                 {/* false 일때 notice */}
-                <div id="notice-other">
-                  ☞ 노사가 법정근로시간 내(하루 8시간, 주40시간)에서 하루에
-                  몇시간을 일할지 정한 시간을 기재휴게시간은 4시간에 30분,
-                  8시간인 경우 1시간 이상을 주도록 소정근로시간 내에서 기재함
-                </div>
+                {isSection.section4 ? (
+                  <div id="notice-other" className="show">
+                    ☞ 노사가 법정근로시간 내(하루 8시간, 주40시간)에서 하루에
+                    몇시간을 일할지 정한 시간을 기재휴게시간은 4시간에 30분,
+                    8시간인 경우 1시간 이상을 주도록 소정근로시간 내에서 기재함
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
 
                 <div name="" id="section5">
                   5. 근무일/휴일 : 매주 일(또는 매일단위)근무, 주휴일 매주 요일
                 </div>
                 {/* false 일때 notice */}
-                <div id="notice-other">
-                  ☞ 일주일 중 어떤날에 근무할지를 명기하며, 주 중 근무하기로
-                  한날을 만근 하였을 경우 부여하는 유급휴일(주휴일)을 어느
-                  요일로 할지 결정하여 명기
-                </div>
+                {isSection.section5 ? (
+                  <div id="notice-other" className="show">
+                    ☞ 일주일 중 어떤날에 근무할지를 명기하며, 주 중 근무하기로
+                    한날을 만근 하였을 경우 부여하는 유급휴일(주휴일)을 어느
+                    요일로 할지 결정하여 명기
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
 
                 <div name="" id="section6">
                   6. 임 금
                 </div>
                 <div>
                   <div>- 월(일, 시간)급 : ________________ 원</div>
-                  <div id="notice">
-                    ☞ 임금을 시간급으로 정할지, 주급으로 정할지, 월급으로 정할지
-                    결정하여 그 금액 명기
-                  </div>
+                  {isSection.section6 ? (
+                    <div id="notice" className="show">
+                      ☞ 임금을 시간급으로 정할지, 주급으로 정할지, 월급으로
+                      정할지 결정하여 그 금액 명기
+                    </div>
+                  ) : (
+                    <div id="notice" />
+                  )}
                   <div> - 상여금 : 있음 ( ) ________________ 원, 없음 ( )</div>
-                  <div id="notice">
-                    ☞ 상여금이 있으면 그 내용 및 금액에 대해 기재
-                  </div>
+                  {isSection.section6 ? (
+                    <div id="notice" className="show">
+                      ☞ 상여금이 있으면 그 내용 및 금액에 대해 기재
+                    </div>
+                  ) : (
+                    <div id="notice" />
+                  )}
                   <div>- 기타급여(제수당 등) : 있음 ( ), 없음 ( )</div>
-                  <div id="notice">
-                    ☞ 가족수당, 자격증 수당 등 지급하기로 한 수당이 있으면 해당
-                    내용에 대해 기재
-                  </div>
+                  {isSection.section6 ? (
+                    <div id="notice" className="show">
+                      ☞ 가족수당, 자격증 수당 등 지급하기로 한 수당이 있으면
+                      해당 내용에 대해 기재
+                    </div>
+                  ) : (
+                    <div id="notice" />
+                  )}
                   <div>_____________________원, _____________________원</div>
-                  <div id="notice">
-                    ☞ 임금을 매월 언제 지급할 것인지에 대해 기재
-                  </div>
+                  {isSection.section6 ? (
+                    <div id="notice" className="show">
+                      ☞ 임금을 매월 언제 지급할 것인지에 대해 기재
+                    </div>
+                  ) : (
+                    <div id="notice" />
+                  )}
                   <div>_____________________원, _____________________원</div>
-                  <div id="notice">
-                    ☞ 임금을 계좌로 지급할 것인지 등에 대해 노사간 협의 후 기재
-                  </div>
+                  {isSection.section6 ? (
+                    <div id="notice" className="show">
+                      ☞ 임금을 계좌로 지급할 것인지 등에 대해 노사간 협의 후
+                      기재
+                    </div>
+                  ) : (
+                    <div id="notice" />
+                  )}
                 </div>
 
                 <div name="" id="section7">
@@ -277,10 +323,14 @@ const ContractReview = () => {
                 <div>
                   - 연차유급휴가는 근로기준법에서 정하는 바에 따라 부여함
                 </div>
-                <div id="notice">
-                  ☞ ①1년간 총 소정 근로일의 80%이상 출근자에게 15일부여, 1년
-                  초과 매 2년마다 1일씩 가산, 한도 25일
-                </div>
+                {isSection.section7 ? (
+                  <div id="notice" className="show">
+                    ☞ ①1년간 총 소정 근로일의 80%이상 출근자에게 15일부여, 1년
+                    초과 매 2년마다 1일씩 가산, 한도 25일
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
                 <div>
                   ②1년 미만 또는 1년간 80% 미만 출근자에게 1개월 개근시 1일 부여
                 </div>
@@ -289,7 +339,13 @@ const ContractReview = () => {
                   8. 사회보험 적용여부(해당란에 체크)
                 </div>
                 <div>□ 고용보험 □ 산재보험 □ 국민연금 □ 건강보험</div>
-                <div id="notice">☞ 사회보험 적용에 대한 해당 내용을 기재</div>
+                {isSection.section8 ? (
+                  <div id="notice" className="show">
+                    ☞ 사회보험 적용에 대한 해당 내용을 기재
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
 
                 <div name="" id="section9">
                   9. 근로계약서 교부
@@ -299,10 +355,14 @@ const ContractReview = () => {
                   근로자의 교부요구와 관계없이 근로자에게 교부함(근로기준법
                   제17조 이행)
                 </div>
-                <div id="notice">
-                  ☞ 근로기준법 제17조에 따라 근로계약 체결시 근로자에게
-                  교부하여야 함을 알려주는 내용
-                </div>
+                {isSection.section9 ? (
+                  <div id="notice" className="show">
+                    ☞ 근로기준법 제17조에 따라 근로계약 체결시 근로자에게
+                    교부하여야 함을 알려주는 내용
+                  </div>
+                ) : (
+                  <div id="notice" />
+                )}
 
                 <div name="" id="section10">
                   10. 근로계약, 취업규칙 등의 성실한 이행의무
@@ -311,9 +371,10 @@ const ContractReview = () => {
                   - 사업주와 근로자는 각자가 근로계약, 취업규칙, 단체협약을
                   지키고 성실하게 이행하여야 함
                 </div>
-
+                <div id="notice" />
                 <div>11. 기타</div>
                 <div>- 이 계약에 정함이 없는 사항은 근로기준법령에 의함</div>
+                <div id="notice" />
               </div>
 
               <div className="info">
