@@ -1,17 +1,17 @@
 import React from 'react';
-import '../css/notation.css';
+import '../css/Notice.css';
 import Header from '../../Header/components/Header';
 
-const Notation = () => {
+const Notice = () => {
   return (
-    <div className="Notation">
+    <div className="Notice">
       <Header />
       <div className="temp">
         <h1 id="title">공지사항</h1>
         <div className="container">
           <div className="id-container">
-            <div id="notation">주요</div>
-            <div id="notation">주요</div>
+            <div id="notice">주요</div>
+            <div id="notice">주요</div>
             <div>01</div>
             <div>01</div>
             <div>01</div>
@@ -47,4 +47,4 @@ const Notation = () => {
   );
 };
 
-export default Notation;
+export default Notice;
