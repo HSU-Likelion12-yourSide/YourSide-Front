@@ -22,7 +22,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link id="h-link" to="/Notation">
+            <Link id="h-link" to="/Notice">
               공지사항
             </Link>
           </div>
