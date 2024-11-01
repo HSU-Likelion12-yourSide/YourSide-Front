@@ -1,0 +1,110 @@
+.qav-comment-group {
+  .qav-write-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // width: 1180px;
+    width: calc(1180px);
+    // height: 208px;
+    background: #DFE6FF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .qav-group {
+      // background-color: aqua;
+      width: calc(100% - 40px);
+      //1140
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      #qav-comment-writer {
+        color: #111;
+        font-family: Pretendard;
+        font-size: 20px;
+        // font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        margin-bottom: 8px;
+        /* 140% */
+        // padding-left: 20px;
+      }
+
+      #qav-comment-textfield {
+        width: calc(100% - 84px - 16px);
+        background-color: #d4ddff;
+        // width: 1060px;
+        // border-color: #eff6fe;
+        outline: none;
+        height: 80px;
+        color: #666;
+        border: none;
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        margin-bottom: 18px;
+        padding: 10px;
+        /* 142.857% */
+        // padding: 20px;
+      }
+
+      #qav-comment-textfield:hover {
+        // border-color: #eff6fe;
+        // outline: 2px solid #d4ddff;
+        background-color: #cdd8fe;
+        // background-color: #f6f8ff;
+      }
+
+      #qav-comment-textfield:focus {
+        // border-color: #eff6fe;
+        outline: 2px solid #cdd8fe;
+        background-color: #f6f8ff;
+      }
+
+      .qav-button-group {
+        display: flex;
+        justify-content: flex-end;
+
+        #qav-comment-button {
+          display: flex;
+          width: 60px;
+          justify-content: center;
+          align-items: center;
+          background: #204598;
+          color: white;
+          font-family: Pretendard;
+          padding: 10px;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 24px;
+          cursor: pointer;
+          /* 171.429% */
+        }
+      }
+    }
+  }
+
+  .qav-comment-array {
+    width: 100%;
+    // background-color: #abd6a4;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+    .qav-comment-array-group {
+      // background-color: pink;
+      width: 100px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 48px;
+      margin-bottom: 24px;
+    }
+  }
+}
