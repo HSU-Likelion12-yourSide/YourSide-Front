@@ -12,6 +12,12 @@ const useFetchAPI = (initialUrl, method = 'GET', requestData = null) => {
 
   // 받아온 데이터를 검증할 수 있는 방법은 prop-types의 shape을 사용하면 가능하다.
   // 이를 더해서 jsdoc을 사용해서 인가받은 코드들에도 타입 힌트를 줄 수 있다.
+
+  const queryUrl = (url, queryData) => {
+    const queryString = new URLSearchParams(queryData).toString();
+    return `${url}?${queryString}`;
+  };
+
   // 데이터를 요청하는 함수
   const fetchData = async () => {
     setLoading(true);
@@ -20,27 +26,35 @@ const useFetchAPI = (initialUrl, method = 'GET', requestData = null) => {
     try {
       let response;
 
+      let url = isUrl;
+
+      if (method === 'GET' && requestData) {
+        url = queryUrl(isUrl, requestData);
+      }
+
       switch (method) {
         case 'GET':
-          response = await api.get(isUrl);
+          response = await api.get(url, requestData);
           break;
         case 'POST':
-          response = await api.post(isUrl, requestData);
+          response = await api.post(url, requestData);
           break;
         case 'PUT':
-          response = await api.put(isUrl, requestData);
+          response = await api.put(url, requestData);
           break;
         case 'DELETE':
-          response = await api.delete(isUrl);
+          response = await api.delete(url);
           break;
         default:
           throw new Error(`Unsupported method: ${method}`);
       }
-
+      console.log('Response received:', response);
       setData(response.data);
     } catch (error) {
+      console.error('Error occurred:', error);
       setError(error);
     } finally {
+      console.log('Setting isLoading to false');
       setLoading(false);
     }
   };

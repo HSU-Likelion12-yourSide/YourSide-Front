@@ -15,6 +15,7 @@ import MyPage from './Page/MyPage/components/MyPage';
 import Notation from './Page/Notation/components/Notation';
 import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
+import QnAPosting from './Page/QnAPosting/components/QnAPosting';
 import ModalCheck from './Global/components/Modal.components';
 import PostingQnA from './Page/PostingQnA/components/PostingQnA';
 
@@ -30,12 +31,13 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/:user" element={<Main />} />
         <Route path="/Header" element={<Header />} />
         <Route path="/Footer" element={<Footer />} />
-        <Route path="/ContractReview" element={<ContractReview />} />
+        <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
-          path="/ViewQuestionAndAnswer"
+          path="/ViewQuestionAndAnswer/:id"
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
