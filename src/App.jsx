@@ -12,14 +12,11 @@ import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult
 import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/SignUp/components/SignUp';
 import MyPage from './Page/MyPage/components/MyPage';
-import Notation from './Page/Notation/components/Notation';
+import Notice from './Page/Notice/components/Notice';
 import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
-// import QnAPosting from './Page/QnAPosting/components/QnAPosting';
 import ModalCheck from './Global/components/Modal.components';
-import PostingQnA from './Page/PostingQnA/components/PostingQnA';
-
-import NotationExample from './Page/Notation/components/NotationExample';
+import NoticeExample from './Page/Notice/components/NoticeExample';
 
 import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
@@ -46,14 +43,13 @@ const App = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />
-        <Route path="/Notation" element={<Notation />} />
+        <Route path="/Notice" element={<Notice />} />
         <Route path="/FindID" element={<FindID />} />
         <Route path="/FindPW" element={<FindPW />} />
-        <Route path="/PostingQnA" element={<PostingQnA />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/DevNotation" element={<DevNotation />} />
-        <Route path="/NotationExample" element={<NotationExample />} />
+        <Route path="/NoticeExample" element={<NoticeExample />} />
         <Route path="/ModalCheck" element={<ModalCheck />} />
         <Route path="/DevFetch" element={<DevFetchTerminalTest />} />
       </Routes>

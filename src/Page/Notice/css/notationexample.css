@@ -1,0 +1,71 @@
+:root {
+  --font-color: #767676;
+  --symbol-background-color: #eff6fe;
+  --notation-background-color: #ffffff;
+  --notation-border-color: #e5e5ec;
+  --notation-button-color: #1bbfc1;
+  --notation-font-color: #204598;
+}
+
+/* body,h3 {
+  margin: 0;
+  padding: 0;
+  background-color: var(--symbol-background-color);
+} */
+
+.NotationExample {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin-top: 199px;
+}
+
+/* .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+} */
+.container {
+  margin: 40px 0 120px 0;
+}
+.container .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+#notation {
+  color: var(--notation-font-color);
+}
+
+#date {
+  color: var(--font-color);
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.content {
+  margin-top: 24px;
+  width: 1180px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+
+.button-container > button {
+  background-color: var(--notation-button-color);
+  color: var(--notation-background-color);
+  font-size: 15px;
+  border: none;
+  width: 380px;
+  height: 60px;
+}
