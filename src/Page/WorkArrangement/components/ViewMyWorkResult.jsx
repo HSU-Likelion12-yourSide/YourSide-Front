@@ -16,20 +16,6 @@ const Result = VmwrResult;
 const ViewMyWorkResult = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
-  // 리팩토링 필요
-  // const { isModalState, setModalState } = useGlobalState();
-
-  const { isModalState, setModalState, isModalType, setModalType } =
-    useGlobalState();
-
-  // 미리 ModalType 컴포넌트를 설정
-  // ModalType이 변경 되어도 항상 ModalComponent는 ModalResult로 정의 된다.
-  let ModalComponent = ModalResult;
-  if (isModalType === 'ResultMessage') {
-    ModalComponent = ModalResultMessage;
-  } else if (isModalType === 'ShareMessage') {
-    ModalComponent = ModalShareMessage;
-  }
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
