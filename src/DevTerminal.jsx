@@ -64,9 +64,6 @@ const Terminal = () => {
             <Link to="/ViewQuestionAndAnswer">ViewQuestion and Answer</Link>
           </li>
           <li>
-            <Link to="/PostingQnA">Posting Question and Answer</Link>
-          </li>
-          <li>
             <Link to="/WorkArrangement">Work Arrangement</Link>
           </li>
           <li>

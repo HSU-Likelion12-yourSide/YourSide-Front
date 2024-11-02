@@ -22,47 +22,82 @@ const Main = () => {
         <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
         </div>
-        <div className="section-title">
-          <div>이렇게</div>
-          <div>이용해보세요</div>
+        <img src={slidShow} alt="imageName" />
+        <div id="right">
+          <img id="arrowR" src={arrowR} alt="arrowR" />
+        </div>
+      </div>
+      <div className="container">
+        <div className="intro">
+          <div>이렇게</div> <div>이용해보세요</div>
         </div>
 
-        <div className="card-list">
-          <div className="card">
-            <div className="card-header">
-              <div className="card-number">1</div>
-              <div className="card-title">내 계약서 검토</div>
+        <div className="contents">
+          <div className="contract-review-intro">
+            <div className="group">
+              <div className="member">
+                <div id="number">1</div>
+                <div id="group-title">내 계약서 검토</div>
+                <div id="sub-title">지피지기 백전백승!</div>
+                <div id="sub-title">
+                  근로 계약서에 유의깊게 봐야할 항목을 확인해봐요
+                </div>
+                <div id="short-cut">
+                  바로가기{' '}
+                  <div>
+                    <img src={arrowB} alt="short-cut" />
+                  </div>{' '}
+                </div>
+              </div>
+              <div id="image">
+                <img src={contractReviewIntro} alt="imageName" />
+              </div>
             </div>
-            <p>
-              우리 회사의 근로계약서를 쉽게 리뷰하고 궁금한 점을 남겨주세요.
-            </p>
-            <Link to="/ContractReview" className="link">
-              <div className="card-link">바로가기</div>
-            </Link>
           </div>
-        </div>
-        <div className="card-list">
-          <div className="card">
-            <div className="card-header">
-              <div className="card-number">2</div>
-              <div className="card-title">내 근로 정리</div>
+
+          <div className="work-arrangement-intro">
+            <div className="group">
+              <div id="image">
+                <img src={workArrangementIntro} alt="imageName" />
+              </div>
+              <div className="member">
+                <div id="number">2</div>
+                <div id="group-title">내 근로 정리</div>
+                <div id="sub-title">나의 근로 현황을 한 눈에!</div>
+                <div id="sub-title">
+                  혹시 놓치고 있는 급여가 얼마를 받을 수 있는 지 확인해 봐요.
+                </div>
+                <div id="short-cut">
+                  바로가기{' '}
+                  <div>
+                    <img src={arrowB} alt="short-cut" />
+                  </div>{' '}
+                </div>
+              </div>
             </div>
-            <p>정리된 정보를 바탕으로 내 근로상황을 파악해보세요.</p>
-            <Link to="/workArrangement" className="link">
-              <div className="card-link">바로가기</div>
-            </Link>
           </div>
-        </div>
-        <div className="card-list">
-          <div className="card">
-            <div className="card-header">
-              <div className="card-number">3</div>
-              <div className="card-title">네편 현답</div>
+
+          <div className="question-and-answer-intro">
+            <div className="group">
+              <div className="member">
+                <div id="number">3</div>
+                <div id="group-title">네편 현답</div>
+                <div id="sub-title">도와줘요 네편!</div>
+                <div id="sub-title">
+                  결과지를 토대로 나의 상황을 간단히 보여주고
+                </div>
+                <div id="sub-title">궁금점에 대한 답을 알아가요!</div>
+                <div id="short-cut">
+                  바로가기{' '}
+                  <div>
+                    <img src={arrowB} alt="short-cut" />
+                  </div>{' '}
+                </div>
+              </div>
+              <div id="image">
+                <img src={questionAndAnswerIntro} alt="imageName" />
+              </div>
             </div>
-            <p>우리의 현답을 통해 실시간 피드백을 확인하세요.</p>
-            <Link to="/QuestionAndAnswer" className="link">
-              <div className="card-link">바로가기</div>
-            </Link>
           </div>
         </div>
       </div>

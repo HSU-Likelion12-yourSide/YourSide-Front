@@ -1,0 +1,67 @@
+/* 삭제 예정 */
+:root {
+  --font-color: #767676;
+  --symbol-background-color: #eff6fe;
+  --notation-background-color: #ffffff;
+  --notation-border-color: #e5e5ec;
+  --notation-button-color: #204598;
+}
+
+.Notice {
+  background-color: var(--symbol-background-color);
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
+  width: 100%;
+  height: 100vh;
+}
+
+#title {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  width: 980px;
+}
+.Notice .temp {
+  margin: 40px 0 120px 0;
+}
+.Notice .temp .container {
+  background-color: var(--notation-background-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+.id-container > div {
+  display: flex;
+  border: 1px solid var(--notation-border-color);
+  padding: 21px;
+  width: 110px;
+}
+.content-container > div {
+  display: flex;
+  border: 1px solid var(--notation-border-color);
+  padding: 21px;
+  width: 740px;
+}
+.date-container > div {
+  display: flex;
+  border: 1px solid var(--notation-border-color);
+  padding: 21px;
+  text-align: center;
+  width: 130px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80px;
+}
+
+#notice {
+  color: var(--notation-button-color);
+}
