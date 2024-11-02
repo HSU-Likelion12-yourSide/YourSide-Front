@@ -131,7 +131,7 @@ const QuestionAndAnswer = () => {
             onClick={() => {
               /* eslint-disable-next-line no-alert */
               alert('게시글 작성 페이지는 준비 중입니다.');
-              navigateController(navigate, '/QnAPosing');
+              navigateController(navigate, '/PostingQnA');
             }}
             role="button"
             tabIndex="0"
