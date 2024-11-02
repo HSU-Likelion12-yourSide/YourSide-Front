@@ -15,7 +15,7 @@ import MyPage from './Page/MyPage/components/MyPage';
 import Notation from './Page/Notation/components/Notation';
 import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
-import QnAPosting from './Page/QnAPosting/components/QnAPosting';
+// import QnAPosting from './Page/QnAPosting/components/QnAPosting';
 import ModalCheck from './Global/components/Modal.components';
 import PostingQnA from './Page/PostingQnA/components/PostingQnA';
 
