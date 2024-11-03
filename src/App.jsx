@@ -17,7 +17,7 @@ import FindID from './Page/Login/FindID/components/FindID';
 import FindPW from './Page/Login/FindPW/components/FindPW';
 import ModalCheck from './Global/components/Modal.components';
 import NoticeExample from './Page/Notice/components/NoticeExample';
-
+import QnAPosting from './Page/QnAPosting/components/QnAPosting';
 import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
 import DevNotation from './Test/Mocking/API/DevNotation';
@@ -46,6 +46,7 @@ const App = () => {
         <Route path="/Notice" element={<Notice />} />
         <Route path="/FindID" element={<FindID />} />
         <Route path="/FindPW" element={<FindPW />} />
+        <Route path="/QnAPosting" element={<QnAPosting />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/DevNotation" element={<DevNotation />} />
