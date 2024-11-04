@@ -66,11 +66,11 @@ const WorkArrangement = () => {
                   id={item.id}
                   title={item.title}
                   content={item.content}
-                  extra_pay={item.extra_pay}
-                  week_pay={item.week_pay}
-                  night_pay={item.night_pay}
-                  overtime_pay={item.overtime_pay}
-                  holiday_pay={item.holiday_pay}
+                  extraPay={item.extra_pay}
+                  weekPay={item.week_pay}
+                  nightPay={item.night_pay}
+                  overtimePay={item.overtime_pay}
+                  holidayPay={item.holiday_pay}
                 />
               ))
             : !isLoading && !isError && <p>No data available</p>}

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/WorkArrangementResult.scss';
 import { useNavigate } from 'react-router-dom';
+import '../css/WorkArrangementResult.scss';
 import navigateController from '../../../Global/function/navigateController';
 import arrowRight from '../image/arrow-right.svg';
+import optionColor from '../function/optionColor';
 
 // key={item.id}
 // id={item.id}
@@ -15,7 +16,17 @@ import arrowRight from '../image/arrow-right.svg';
 // overtime_pay={item.overtime_pay}
 // holiday_pay={item.holiday_pay}
 
-const WorkArrangementResult = ({ id, title, content }) => {
+const WorkArrangementResult = ({
+  id,
+  title,
+  content,
+  extraPay,
+  weekPay,
+  nightPay,
+  // timePay,
+  overtimePay,
+  holidayPay,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -46,7 +57,27 @@ const WorkArrangementResult = ({ id, title, content }) => {
         <div className="wa-options">
           <div className="wa-contents">
             <div className="wa-title">발생 요건들</div>
-            <div id="wa-option">주휴수당</div>
+            <div id="wa-option" className={`waOption ${optionColor(weekPay)}`}>
+              주휴수당
+            </div>
+            <div id="wa-option" className={`waOption ${optionColor(extraPay)}`}>
+              가산수당
+            </div>
+            <div id="wa-option" className={`waOption ${optionColor(nightPay)}`}>
+              야간근로수당
+            </div>
+            <div
+              id="wa-option"
+              className={`waOption ${optionColor(overtimePay)}`}
+            >
+              연장근로수당
+            </div>
+            <div
+              id="wa-option"
+              className={`waOption ${optionColor(holidayPay)}`}
+            >
+              휴일근로수당
+            </div>
           </div>
         </div>
       </div>
@@ -58,6 +89,12 @@ WorkArrangementResult.propTypes = {
   id: PropTypes.number.isRequired, // id string
   title: PropTypes.string.isRequired, // title string
   content: PropTypes.string.isRequired, // content string
+  extraPay: PropTypes.bool.isRequired, // extraPay bool
+  weekPay: PropTypes.bool.isRequired, // weekPay bool
+  // timePay: PropTypes.bool.isRequired, // timePay bool
+  nightPay: PropTypes.bool.isRequired, // nightPay bool
+  overtimePay: PropTypes.bool.isRequired, // overtimePay bool
+  holidayPay: PropTypes.bool.isRequired, // holidayPay bool
 };
 
 export default WorkArrangementResult;

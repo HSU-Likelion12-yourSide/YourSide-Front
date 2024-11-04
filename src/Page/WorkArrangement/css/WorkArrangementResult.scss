@@ -90,9 +90,7 @@
         }
 
         #wa-option {
-          background-color: #204598;
           font-size: 12px;
-          color: white;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -101,6 +99,16 @@
           height: 45px;
           margin-right: 12px;
           margin-bottom: 24px;
+
+          &.true {
+            background-color: #204598;
+            color: white;
+          }
+        
+          &.false {
+            background-color: #f1f1f5;
+            color: #999999;
+          }
         }
 
       }
