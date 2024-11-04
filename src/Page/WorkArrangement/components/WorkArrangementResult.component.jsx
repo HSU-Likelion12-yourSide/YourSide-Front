@@ -6,16 +6,6 @@ import navigateController from '../../../Global/function/navigateController';
 import arrowRight from '../image/arrow-right.svg';
 import optionColor from '../function/optionColor';
 
-// key={item.id}
-// id={item.id}
-// title={item.title}
-// content={item.content}
-// extra_pay={item.extra_pay}
-// week_pay={item.week_pay}
-// night_pay={item.night_pay}
-// overtime_pay={item.overtime_pay}
-// holiday_pay={item.holiday_pay}
-
 const WorkArrangementResult = ({
   id,
   title,
@@ -23,7 +13,6 @@ const WorkArrangementResult = ({
   extraPay,
   weekPay,
   nightPay,
-  // timePay,
   overtimePay,
   holidayPay,
 }) => {
@@ -91,7 +80,6 @@ WorkArrangementResult.propTypes = {
   content: PropTypes.string.isRequired, // content string
   extraPay: PropTypes.bool.isRequired, // extraPay bool
   weekPay: PropTypes.bool.isRequired, // weekPay bool
-  // timePay: PropTypes.bool.isRequired, // timePay bool
   nightPay: PropTypes.bool.isRequired, // nightPay bool
   overtimePay: PropTypes.bool.isRequired, // overtimePay bool
   holidayPay: PropTypes.bool.isRequired, // holidayPay bool
