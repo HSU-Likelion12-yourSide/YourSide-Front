@@ -63,7 +63,7 @@ const WorkArrangement = () => {
             ? isData.data.map(item => (
                 <WorkArrangementResult
                   key={item.id}
-                  id={item.id}
+                  id={item.worksheet_id}
                   title={item.title}
                   content={item.content}
                   extraPay={item.extra_pay}

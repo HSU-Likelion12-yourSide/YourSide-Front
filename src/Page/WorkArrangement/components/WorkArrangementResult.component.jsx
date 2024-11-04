@@ -18,6 +18,35 @@ const WorkArrangementResult = ({
 }) => {
   const navigate = useNavigate();
 
+  // 조건에 따라 상단(true)과 하단(false) 배열을 생성
+  const conditions = [
+    { label: '주휴수당', value: weekPay },
+    { label: '가산수당', value: extraPay },
+    { label: '야간근로수당', value: nightPay },
+    { label: '연장근로수당', value: overtimePay },
+    { label: '휴일근로수당', value: holidayPay },
+  ];
+
+  const trueConditions = conditions.filter(cond => cond.value === true);
+  const falseConditions = conditions.filter(cond => cond.value === false);
+
+  const renderConditions = conditionArray => {
+    return (
+      <>
+        {conditionArray.slice(0, 3).map((cond, index) => (
+          <div
+            key={index}
+            id="wa-option"
+            className={`waOption ${optionColor(cond.value)}`}
+          >
+            {cond.label}
+          </div>
+        ))}
+        {conditionArray.length > 3 && <div className="waOption more">...</div>}
+      </>
+    );
+  };
+
   return (
     <div className="wa-result">
       <div className="wa-control">
@@ -46,26 +75,11 @@ const WorkArrangementResult = ({
         <div className="wa-options">
           <div className="wa-contents">
             <div className="wa-title">발생 요건들</div>
-            <div id="wa-option" className={`waOption ${optionColor(weekPay)}`}>
-              주휴수당
+            <div className="wa-true-options">
+              {renderConditions(trueConditions)}
             </div>
-            <div id="wa-option" className={`waOption ${optionColor(extraPay)}`}>
-              가산수당
-            </div>
-            <div id="wa-option" className={`waOption ${optionColor(nightPay)}`}>
-              야간근로수당
-            </div>
-            <div
-              id="wa-option"
-              className={`waOption ${optionColor(overtimePay)}`}
-            >
-              연장근로수당
-            </div>
-            <div
-              id="wa-option"
-              className={`waOption ${optionColor(holidayPay)}`}
-            >
-              휴일근로수당
+            <div className="wa-false-options">
+              {renderConditions(falseConditions)}
             </div>
           </div>
         </div>
