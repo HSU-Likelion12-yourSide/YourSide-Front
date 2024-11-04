@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import quizImage from '../image/quiz-short-cut.svg';
 import '../css/WorkArrangement.scss';
@@ -6,10 +6,30 @@ import navigateController from '../../../Global/function/navigateController';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import WorkArrangementResult from './WorkArrangementResult.component';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
 const WorkArrangement = () => {
   // useNavigate 사용하기 위한 변수 정의
   const navigate = useNavigate();
+  const [isContent, setContent] = useState('');
+  const { isData, isLoading, isError, setUrl } = useFetchAPI();
+
+  // API 요청을 위한 URL 설정
+  useEffect(() => {
+    setUrl('/worksheet/list');
+  }, [setUrl]);
+
+  useEffect(() => {
+    if (isLoading) {
+      setContent('Loading...');
+    } else if (isError) {
+      setContent(`Error: ${isError}`);
+    } else if (isData) {
+      setContent(isData);
+    } else {
+      setContent(null);
+    }
+  }, [isLoading, isError, isData]);
 
   return (
     <div className="work-arrangement">
@@ -37,7 +57,23 @@ const WorkArrangement = () => {
         </div>
         <div className="wa-contents">
           <div className="wa-title">다른 결과지들은 어떨까요?</div>
-          <WorkArrangementResult />
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && isError && <p>Error: {isError.message}</p>}
+          {!isLoading && isData && isData.data
+            ? isData.data.map(item => (
+                <WorkArrangementResult
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  content={item.content}
+                  extra_pay={item.extra_pay}
+                  week_pay={item.week_pay}
+                  night_pay={item.night_pay}
+                  overtime_pay={item.overtime_pay}
+                  holiday_pay={item.holiday_pay}
+                />
+              ))
+            : !isLoading && !isError && <p>No data available</p>}
           <div className="wa-short-cut-button">
             <div
               className="wa-short-cut"
