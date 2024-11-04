@@ -6,6 +6,7 @@ import ArrowLeft from '../img/page-left-arrow.svg';
 import ArrowRight from '../img/page-right-arrow.svg';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
+import NoticeElement from './NoticeElement.component';
 
 const Notice = () => {
   // const [isPage, setPage] = useState(1); // 페이지 네이션 시작 기본 설정
@@ -19,13 +20,7 @@ const Notice = () => {
         <div className="Notice-container">
           <div id="Notice-title">공지사항</div>
           <div className="Notice-list">
-            <div className="Notice-element">
-              <div id="Notice-number">주요</div>
-              <div id="Notice-content">
-                열심히 일하는 당신을 위한 ‘네편’이 되겠습니다.
-              </div>
-              <div id="Notice-date">2024.05.01</div>
-            </div>
+            <NoticeElement />
           </div>
           <div className="Notice-pagination">
             <div id="Notice-pagination-arrow">
