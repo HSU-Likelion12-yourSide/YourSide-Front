@@ -9,7 +9,7 @@ const VmwCheckboxAnswer = ({ placeholder, warning }) => {
         <input id="input-styled" type="checkbox" placeholder={placeholder} />
         <span>4대보험(9.32%)</span>
         <input id="input-styled" type="checkbox" placeholder={placeholder} />
-        <span>소득세(3.3%)(9.32%)</span>
+        <span>소득세(3.3%)</span>
         <input id="input-styled" type="checkbox" placeholder={placeholder} />
       </div>
       <span id="input-warning-message">{warning}</span>
