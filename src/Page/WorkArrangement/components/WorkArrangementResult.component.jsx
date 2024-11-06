@@ -28,6 +28,10 @@ const WorkArrangementResult = ({
     '휴일근로수당',
   ];
 
+  // 배열을 두 줄로 나눔
+  const firstRowOptions = OptionsList.slice(0, 3);
+  const secondRowOptions = OptionsList.slice(3);
+
   return (
     <div className="wa-result">
       <div className="wa-control">
@@ -56,13 +60,26 @@ const WorkArrangementResult = ({
         <div className="wa-options">
           <div className="wa-contents">
             <div className="wa-title">발생 요건들</div>
-            {OptionsList.map((option, index) => (
-              <VmwrOptionButton
-                key={option}
-                resultState={resultState[index] ? 'check' : 'uncheck'}
-                option={option}
-              />
-            ))}
+            <div className="wa-list">
+              <div className="wa-row">
+                {firstRowOptions.map((option, index) => (
+                  <VmwrOptionButton
+                    key={option}
+                    resultState={resultState[index] ? 'check' : 'uncheck'}
+                    option={option}
+                  />
+                ))}
+              </div>
+              <div className="wa-row">
+                {secondRowOptions.map((option, index) => (
+                  <VmwrOptionButton
+                    key={option}
+                    resultState={resultState[index + 3] ? 'check' : 'uncheck'}
+                    option={option}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

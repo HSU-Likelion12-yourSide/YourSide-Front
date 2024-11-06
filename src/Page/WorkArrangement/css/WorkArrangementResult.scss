@@ -89,28 +89,41 @@
           margin-bottom: 12px;
         }
 
-        #wa-option {
+        .wa-list {
           font-size: 12px;
           display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 50px;
-          width: 95px;
-          height: 45px;
-          margin-right: 12px;
-          margin-bottom: 24px;
+          flex-direction: column;
 
-          &.true {
-            background-color: #204598;
-            color: white;
+          .wa-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+          
+            .check {
+              display: flex;
+              background-color: #204598;
+              color: white;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50px;
+              width: 95px;
+              height: 45px;
+              margin-right: 12px;    
+            }
+    
+            .uncheck {
+              display: flex;
+              background-color: #f1f1f5;
+              color: #999999;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50px;
+              width: 95px;
+              height: 45px;
+              margin-right: 12px;
+            }
           }
-        
-          &.false {
-            background-color: #f1f1f5;
-            color: #999999;
           }
-        }
-
       }
     }
   }
