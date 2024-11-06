@@ -41,9 +41,9 @@ const WorkArrangementResult = ({
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert(
-              '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewMyWorkResult로 넘거 갑니다.',
-            );
+            // alert( // 경고문 불필요해서 주석처리
+            //   '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewMyWorkResult로 넘거 갑니다.',
+            // );
             navigateController(navigate, `/ViewMyWorkResult/${id}`);
           }}
           role="button"
