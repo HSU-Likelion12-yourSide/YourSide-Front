@@ -33,6 +33,14 @@
       border-right: solid 1px #F1F1F5;
       border-left: solid 1px #F1F1F5;
       border-top: solid 2px #111111;
+
+      #Notice-no-data {
+        display: flex;
+        width: calc(100% - 1px);
+        padding: 22px 16px;
+        border-bottom: solid 1px #F1F1F5;
+        justify-content: center;
+      }
     }
 
     .Notice-pagination {
