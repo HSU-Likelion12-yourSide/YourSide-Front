@@ -22,6 +22,7 @@ import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
 import DevNotation from './Test/Mocking/API/DevNotation';
 import DevFetchTerminalTest from './DevFetchTerminalTest';
+import LoginTest from './Page/Login/components/Login.test';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/NoticeExample" element={<NoticeExample />} />
         <Route path="/ModalCheck" element={<ModalCheck />} />
         <Route path="/DevFetch" element={<DevFetchTerminalTest />} />
+        <Route path="/LoginTest" element={<LoginTest />} />
       </Routes>
     </Router>
   );

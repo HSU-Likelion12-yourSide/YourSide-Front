@@ -112,6 +112,9 @@ const Terminal = () => {
           <li>
             <Link to="/DevFetch">DevFetchTerminalTest</Link>
           </li>
+          <li>
+            <Link to="/LoginTest">LoginTest</Link>
+          </li>
         </ul>
       </div>
       <button
