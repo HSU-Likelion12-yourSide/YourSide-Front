@@ -34,12 +34,15 @@ const App = () => {
         <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
-          path="/ViewQuestionAndAnswer/:id"
+          path="/ViewQuestionAndAnswer/:worksheetid"
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
-        <Route path="/ViewMyWorkResult/:id" element={<ViewMyWorkResult />} />
+        <Route
+          path="/ViewMyWorkResult/:worksheetId"
+          element={<ViewMyWorkResult />}
+        />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />

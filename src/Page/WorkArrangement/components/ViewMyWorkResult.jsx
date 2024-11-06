@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import '../css/ViewMyWorkResult.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
@@ -14,7 +15,11 @@ import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMe
 const Result = VmwrResult;
 
 const ViewMyWorkResult = () => {
-  const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
+  const { worksheetId } = useParams();
+  const { isData, isLoading, isError, setUrl } = useFetchAPI(
+    `/worksheet/${worksheetId}`,
+    'GET',
+  );
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
 
   const { isModalState, setModalState, isModalType, setModalType } =
@@ -38,7 +43,7 @@ const ViewMyWorkResult = () => {
       setContent(`Error: ${isError}`);
     } else if (isData) {
       console.log(`Success Contact : ${isData}`);
-      setContent(<Result data={isData} />);
+      setContent(<Result resultId={worksheetId} />);
     } else {
       setContent(null);
     }
@@ -54,7 +59,11 @@ const ViewMyWorkResult = () => {
           // ModalDefaultTypeState={isModalType}
         />
       )}
-      <div className="vmwr-title">내 근로 결과지</div>
+      <div className="vmwr-title">
+        {isData && isData.data && isData.data.nickname
+          ? `${isData.data.nickname}님의 근로 결과지`
+          : '내 근로 결과지'}
+      </div>
       <div className="vmwr-result">{content}</div>
       <div id="vmwr-group">
         <div

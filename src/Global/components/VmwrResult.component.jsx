@@ -88,7 +88,9 @@ const VmwrResult = ({ resultId }) => {
   return (
     <div className="vmwr-container">
       <div className="vmwr-contents">
-        <div className="vmwr-result-title">근로 결과지</div>
+        <div className="vmwr-result-title">
+          {isData && isData.data && `${isData.data.title} 근로 결과지`}
+        </div>
         <div>
           {isData &&
             isData.data &&
