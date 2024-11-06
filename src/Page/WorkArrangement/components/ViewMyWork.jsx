@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import ViewMyWorkOption from './ViewMyWorkOption.component';
-import data from '../data/viewMyWork.data';
+import OptionsData from '../data/viewMyWork.data';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
 const Option = ViewMyWorkOption;
-const OptionsData = data;
 
 const ViewMyWork = () => {
   const navigate = useNavigate();
@@ -20,8 +19,7 @@ const ViewMyWork = () => {
     overtimeWork: '',
     nightWork: '',
     holidayWork: '',
-    // majorInsurance: '',
-    imcomeTax: '',
+    tax: '',
   });
   // post
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
@@ -29,7 +27,21 @@ const ViewMyWork = () => {
     'POST',
     isRequestData,
   );
-
+  // POST할 이름 변경
+  const transformRequestData = data => {
+    /* eslint-disable camelcase */
+    return {
+      hour_pay: data.hourPay,
+      week_work: data.weekWork,
+      over_five: data.overFive === 'yes',
+      overtime_work: data.overtimeWork,
+      night_work: data.nightWork,
+      holiday_work: data.holidayWork,
+      major_insurance: data.tax === 'majorInsurance',
+      income_tax: data.tax === 'incomeTax',
+    };
+    /* eslint-enable camelcase */
+  };
   // 입력 필드 변경 함수
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -42,21 +54,20 @@ const ViewMyWork = () => {
   // 검사하기 버튼 클릭 시 실행할 함수
   const handleCalculate = () => {
     const requiredFields = Object.keys(isRequestData);
-    const isAllFieldsFilled = requiredFields.every(field => {
-      if (field === 'tax' || field === 'overFive') {
-        return isRequestData === 'on';
-      }
-      return isRequestData[field];
-    });
-    // 모든 필드가 채워졌는지 확인
+    const isAllFieldsFilled = requiredFields.every(
+      field => isRequestData[field] !== '',
+    );
+
     if (isAllFieldsFilled) {
-      setUrl('worksheet/calculate'); // 모든 필드가 입력된 경우에만 POST 요청
+      const requestData = transformRequestData(isRequestData); // 데이터 변환
+      console.log('Transformed Request Data:', requestData);
+
+      setUrl('worksheet/calculate'); // POST 요청 URL 설정
+      setRequestData(requestData); // 변환된 데이터로 요청 설정
     } else {
-      // eslint-disable-next-line no-alert
       alert('모든 필드를 입력해 주세요.');
     }
   };
-
   // 입력 필드 채워지는지 콘솔에서 확인
   useEffect(() => {
     console.log('Updated isRequestData:', isRequestData);
@@ -105,7 +116,7 @@ const ViewMyWork = () => {
         onClick={() => {
           handleCalculate();
           if (!isError) {
-            navigate('/viewMyWork');
+            navigate('/viewMyWorkResult');
             console.log(isData);
           }
         }}
