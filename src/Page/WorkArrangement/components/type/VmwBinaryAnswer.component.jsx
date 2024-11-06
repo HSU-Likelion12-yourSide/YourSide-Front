@@ -8,14 +8,26 @@ import PropTypes from 'prop-types';
  * @param {string} props.warning - The warning message to display.
  */
 
-const VmwBinaryAnswer = ({ placeholder, warning }) => {
+const VmwBinaryAnswer = ({ warning, name, onChange }) => {
   return (
     <div className="vmw-yesOrNo-answer">
       <div className="vmw-input-group">
         <span>예</span>
-        <input id="input-styled" type="checkbox" placeholder={placeholder} />
+        <input
+          id="input-styled"
+          type="radio"
+          name={name}
+          onChange={onChange}
+          value="yes"
+        />
         <span>아니오</span>
-        <input id="input-styled" type="checkbox" placeholder={placeholder} />
+        <input
+          id="input-styled"
+          type="radio"
+          name={name}
+          onChange={onChange}
+          value="no"
+        />
       </div>
       <span id="input-warning-message">{warning}</span>
     </div>
@@ -23,8 +35,9 @@ const VmwBinaryAnswer = ({ placeholder, warning }) => {
 };
 
 VmwBinaryAnswer.propTypes = {
-  placeholder: PropTypes.string.isRequired,
   warning: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default VmwBinaryAnswer;
