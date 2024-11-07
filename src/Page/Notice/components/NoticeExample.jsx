@@ -1,16 +1,16 @@
 import React from 'react';
-import '../css/notationexample.css';
+import '../css/NoticeExample.css';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 
-const NotationExample = () => {
+const NoticeExample = () => {
   return (
-    <div className="NotationExample">
+    <div className="NoticeExample">
       <Header />
       <div className="container">
         <div className="title">
           <h3>네편 설명서</h3>
-          <div id="notation">주요</div>
+          <div id="Notice">주요</div>
         </div>
         <div id="date">2024.05.03</div>
         <hr />
@@ -76,4 +76,4 @@ const NotationExample = () => {
   );
 };
 
-export default NotationExample;
+export default NoticeExample;

@@ -7,7 +7,7 @@ import '../css/signup.test.css';
 const SignUp = () => {
   const navigate = useNavigate();
   const [isContent, setContent] = useState();
-  const [requestData, setRequestData] = useState({
+  const [isRequestData, setRequestData] = useState({
     username: '',
     password: '',
     email: '',
@@ -18,7 +18,7 @@ const SignUp = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
     '',
     'POST',
-    requestData,
+    isRequestData,
   );
 
   useEffect(() => {
@@ -48,8 +48,7 @@ const SignUp = () => {
 
   // 회원가입 버튼 클릭 시 실행할 함수
   const handleSignUp = () => {
-    const { username, password, email, name, nickname } = requestData;
-
+    const { username, password, email, name, nickname } = isRequestData;
     // 모든 필드가 채워졌는지 확인
     if (username && password && email && name && nickname) {
       setUrl('user/signup'); // 모든 값이 입력된 경우에만 URL 설정하여 POST 요청 트리거
@@ -71,7 +70,7 @@ const SignUp = () => {
           <input
             name="username"
             placeholder="아이디를 입력해 주세요"
-            value={requestData.username}
+            value={isRequestData.username}
             onChange={handleInputChange}
           />
         </div>
@@ -82,7 +81,7 @@ const SignUp = () => {
             name="password"
             type="password"
             placeholder="비밀번호를 입력해 주세요"
-            value={requestData.password}
+            value={isRequestData.password}
             onChange={handleInputChange}
           />
         </div>
@@ -92,7 +91,7 @@ const SignUp = () => {
           <input
             name="email"
             placeholder="이메일을 입력해 주세요"
-            value={requestData.email}
+            value={isRequestData.email}
             onChange={handleInputChange}
           />
         </div>
@@ -102,7 +101,7 @@ const SignUp = () => {
           <input
             name="name"
             placeholder="이름을 입력해 주세요"
-            value={requestData.name}
+            value={isRequestData.name}
             onChange={handleInputChange}
           />
         </div>
@@ -112,7 +111,7 @@ const SignUp = () => {
           <input
             name="nickname"
             placeholder="닉네임을 입력해 주세요"
-            value={requestData.nickname}
+            value={isRequestData.nickname}
             onChange={handleInputChange}
           />
         </div>

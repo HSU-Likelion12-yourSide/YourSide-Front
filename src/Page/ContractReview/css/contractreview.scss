@@ -58,9 +58,29 @@
         div {
           margin-left: 21px;
           width: 200px;
+          text-decoration: none;
+          /* 밑줄 제거 */
+          color: inherit;
 
-          div {
+          /* 부모 요소의 색상 사용 */
+          // div {
+          //   margin: 13px 9px 13px 9px;
+          // }
+          .section-element {
             margin: 13px 9px 13px 9px;
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .clicked-section-element {
+            margin: 13px 9px 13px 9px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #204598;
+          }
+
+          .section-element:hover {
+            font-weight: 600;
           }
         }
 
@@ -99,7 +119,9 @@
             letter-spacing: -0.025em;
 
             div {
-              margin-bottom: 20px;
+              display: flex;
+              flex-direction: column;
+              // margin-bottom: 12px;
             }
           }
 
@@ -169,7 +191,29 @@
     }
   }
 
-  #notice {
+  #notice,
+  #notice-other {
+    display: flex;
+    height: 30px;
     color: #204598;
+    margin-bottom: 17px;
+    opacity: 0;
+    transform-origin: top;
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  #notice-other {
+    height: 60px;
+  }
+
+  #notice.show,
+  #notice-other.show {
+    opacity: 1;
+  }
+
+  #notice.close,
+  #notice-other.close {
+    opacity: 0;
+    // transition: opacity 1s ease, transform 1s ease;
   }
 }
