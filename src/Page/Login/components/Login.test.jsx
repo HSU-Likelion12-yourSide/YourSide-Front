@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
-import '../css/login.css';
+import '../css/login.test.css';
 import SymbolLogo from '../img/symbol-logo.png';
 import SymbolLogoText from '../img/symbol-logo-text.png';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';

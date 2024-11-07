@@ -46,13 +46,15 @@
   }
 
   .Findid-submit {
+    margin-top: calc(40px + 88px);
+
     #Findid-button {
       border: none;
       width: 500px;
       background-color: #204598;
       color: #ffffff;
       margin-bottom: 24px;
-      margin-top: calc(40px + 83.5px);
+      // margin-top: calc(40px + 94.78px);
       padding: 16px;
     }
 
@@ -84,7 +86,7 @@
   }
 
   .Findid-container .Findid-submit {
-    margin-top: 140px;
+    margin-top: calc(140px + 94.78px);
   }
 
   .Findid-container .Findid-group {

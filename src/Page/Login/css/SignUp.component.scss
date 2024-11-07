@@ -66,13 +66,14 @@
       margin-bottom: 24px;
       margin-top: 100px;
       padding: 16px;
+      cursor: pointer;
     }
 
     .SignUp-link {
       display: flex;
       justify-content: center;
 
-      #SignUp-find {
+      #SignUp-mention {
         color: #767676;
         margin-right: 16px;
       }
@@ -81,6 +82,7 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
+        cursor: pointer;
       }
 
     }
