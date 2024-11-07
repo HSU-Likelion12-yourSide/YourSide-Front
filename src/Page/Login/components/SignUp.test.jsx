@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SymbolRow from '../img/symbol-logo-row.png';
-import useFetchAPI from '../../../../Global/API/Hooks/useFetchAPI';
-import '../css/signup.css';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import '../css/signup.test.css';
 
 const SignUp = () => {
   const navigate = useNavigate();
