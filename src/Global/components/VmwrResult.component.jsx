@@ -163,7 +163,7 @@ const VmwrResult = ({ resultId, postData }) => {
 };
 
 VmwrResult.propTypes = {
-  resultId: PropTypes.number.isRequired,
+  resultId: PropTypes.number,
   postData: PropTypes.shape({
     data: PropTypes.shape({
       content: PropTypes.shape({
@@ -200,6 +200,7 @@ VmwrResult.propTypes = {
 };
 
 VmwrResult.defaultProps = {
+  resultId: null,
   postData: null, // 기본값 설정
 };
 
