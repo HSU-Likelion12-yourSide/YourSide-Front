@@ -10,6 +10,7 @@ import ModalResult from '../../../Global/components/ModalType/ModalResult.compon
 import ModalResultMessage from '../../../Global/components/ModalType/ModalResultMessage.components';
 import modalStateController from '../../../Global/function/modalStateController';
 import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMessage.components';
+import generateResultContent from '../function/generateResultContent';
 
 const Result = VmwrResult;
 
@@ -20,11 +21,13 @@ const ViewMyWorkResult = () => {
     useGlobalState();
   const location = useLocation();
   const { state: postData } = location || {}; // POST로 전달된 데이터
+  const resData = generateResultContent(postData.data);
+  console.log('가공된 데이터', resData);
 
   useEffect(() => {
     if (postData) {
       console.log('POST 응답 데이터:', postData.data);
-      setContent(<Result postData={postData} />);
+      setContent(<Result postData={resData} />);
     }
   }, [postData]);
   // 미리 ModalType 컴포넌트를 설정

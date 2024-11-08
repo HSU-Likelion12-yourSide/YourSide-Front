@@ -26,9 +26,19 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ resultId }) => {
+const VmwrResult = ({ resultId, postData }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
+  const [stringifiedValues, setStringifiedValues] = useState('');
+
+  // fetch 상태 초기 값
+  useEffect(() => {
+    if (postData && postData.data && postData.data.content) {
+      const values = Object.values(postData.data.content).join('');
+      console.log('Stringified Values:', values);
+      setStringifiedValues(values);
+    }
+  }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
     console.log(resultId);
@@ -40,6 +50,14 @@ const VmwrResult = ({ resultId }) => {
     }
   }, [resultId]);
 
+  useEffect(() => {
+    if (postData && postData.data && postData.data.content) {
+      const values = Object.values(postData.data.content).join('');
+      console.log('Stringified Values:', values);
+      setStringifiedValues(values);
+    }
+  }, [postData]);
+
   // fetch 상태 초기 값
   useEffect(() => {
     if (isLoading) {
@@ -48,16 +66,18 @@ const VmwrResult = ({ resultId }) => {
     } else if (isError) {
       console.log(`is Error : ${isError}`);
       setContent(`Error: ${isError}`);
-    } else if (isData) {
+    } else if (isData && isData.data) {
       setContent(isData);
       console.log(`Success, WorkSheet-Id ${resultId} Contact: `, isData.data);
+    } else if (postData && postData.data) {
+      setContent(postData);
+      console.log(`Success, content is : `, postData);
     } else {
       setContent(null);
     }
-  }, [isLoading, isError, isData]);
+  }, [isLoading, isError, isData, postData]);
 
   // 데이터 검증이 필요
-
   let ResultContents = '';
   let resultState = [];
   if (isData && isData.data) {
@@ -71,6 +91,19 @@ const VmwrResult = ({ resultId }) => {
       isData.data.night_pay,
       isData.data.overtime_pay,
       isData.data.holiday_pay,
+    ];
+  } else if (postData && postData.data) {
+    ResultContents = stringifiedValues
+      .trim()
+      .split('니다.')
+      .filter(el => el !== ''); // 빈 문자열 제거
+    console.log('ResultContents:', ResultContents);
+    resultState = [
+      postData.extra_pay,
+      postData.week_pay,
+      postData.night_pay,
+      postData.overtime_pay,
+      postData.holiday_pay,
     ];
   } else {
     // 데이터가 없을 경우 기본값 설정
@@ -89,11 +122,12 @@ const VmwrResult = ({ resultId }) => {
     <div className="vmwr-container">
       <div className="vmwr-contents">
         <div className="vmwr-result-title">
-          {isData && isData.data && `${isData.data.title} 근로 결과지`}
+          {isData && isData.data
+            ? `${isData.data.title} 근로 결과지`
+            : '근로 결과지'}
         </div>
         <div>
-          {isData &&
-            isData.data &&
+          {((isData && isData.data) || (postData && postData.data)) &&
             ResultContents.map(el => {
               return <div key={el}>{el}니다.</div>;
             })}
@@ -103,8 +137,7 @@ const VmwrResult = ({ resultId }) => {
       <div className="vmwr-group">
         <div className="vmwr-options">발생 요건들</div>
         <div className="vmwr-list">
-          {isData &&
-            isData.data &&
+          {((isData && isData.data) || (postData && postData.data)) &&
             OptionsList.map((option, index) => (
               <VmwrOptionButton
                 key={option}
@@ -120,6 +153,7 @@ const VmwrResult = ({ resultId }) => {
 
 VmwrResult.propTypes = {
   resultId: PropTypes.number.isRequired,
+  postData: PropTypes.isRequired,
 };
 
 export default VmwrResult;
