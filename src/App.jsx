@@ -7,6 +7,7 @@ import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
+import WorkArrangementList from './Page/WorkArrangement/components/WorkArrangementList';
 import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
 import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
 import ViewMyWorkResultCalculate from './Page/WorkArrangement/components/ViewMyWorkResultCalculate';
@@ -39,6 +40,7 @@ const App = () => {
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
+        <Route path="/WorkArrangement/List" element={<WorkArrangementList />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
         <Route
           path="/ViewMyWorkResult/:worksheetId"

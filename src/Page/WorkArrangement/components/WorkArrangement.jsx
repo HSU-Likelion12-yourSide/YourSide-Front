@@ -60,28 +60,28 @@ const WorkArrangement = () => {
           {isLoading && <p>Loading...</p>}
           {!isLoading && isError && <p>Error: {isError.message}</p>}
           {!isLoading && isData && isData.data
-            ? isData.data.map(item => (
-                <WorkArrangementResult
-                  key={item.id}
-                  id={item.worksheet_id}
-                  title={item.title}
-                  content={item.content}
-                  extraPay={item.extra_pay}
-                  weekPay={item.week_pay}
-                  nightPay={item.night_pay}
-                  overtimePay={item.overtime_pay}
-                  holidayPay={item.holiday_pay}
-                />
-              ))
+            ? isData.data
+                .slice(0, 3)
+                .map(item => (
+                  <WorkArrangementResult
+                    key={item.id}
+                    id={item.worksheet_id}
+                    title={item.title}
+                    content={item.content}
+                    extraPay={item.extra_pay}
+                    weekPay={item.week_pay}
+                    nightPay={item.night_pay}
+                    overtimePay={item.overtime_pay}
+                    holidayPay={item.holiday_pay}
+                  />
+                ))
             : !isLoading && !isError && <p>No data available</p>}
           <div className="wa-short-cut-button">
             <div
               className="wa-short-cut"
               onKeyDown={() => {}}
               onClick={() => {
-                /* eslint-disable-next-line no-alert */
-                alert('다른 결과지 페이지는 준비 중입니다.');
-                navigateController(navigate, '/ViewUsersWorkResult');
+                navigateController(navigate, './List');
               }}
               role="button"
               tabIndex="0"
