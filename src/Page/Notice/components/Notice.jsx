@@ -1,48 +1,62 @@
-import React from 'react';
-import '../css/Notice.css';
+// import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+// import '../css/Notice.css';
+import '../css/Notice.scss';
+import ArrowLeft from '../img/page-left-arrow.svg';
+import ArrowRight from '../img/page-right-arrow.svg';
 import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
+import NoticeElement from './NoticeElement.component';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
 const Notice = () => {
+  // const [isPage, setPage] = useState(1); // 페이지 네이션 시작 기본 설정
+  // const limit = 5;
+  // const offset = (isPage - 1) * limit;
+  const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
+  const { isData, isLoading, isError, setUrl } = useFetchAPI('/notation/list');
+  // GET API 상태 표기
+  useEffect(() => {
+    if (isLoading) {
+      console.log('..is Loading');
+      setContent('Loading...');
+    } else if (isError) {
+      console.log(`is Error : `, isError);
+      setContent(`Error: `, isError);
+    } else if (isData && isData.data) {
+      console.log(`Success Contact : `, isData);
+      setContent(isData.data);
+      // setContent();
+    } else {
+      setContent(null);
+    }
+  }, [isLoading, isError, isData]);
+
   return (
-    <div className="Notice">
+    <div>
       <Header />
-      <div className="temp">
-        <h1 id="title">공지사항</h1>
-        <div className="container">
-          <div className="id-container">
-            <div id="notice">주요</div>
-            <div id="notice">주요</div>
-            <div>01</div>
-            <div>01</div>
-            <div>01</div>
-            <div>01</div>
-            <div>01</div>
+      <div className="Notice">
+        <div className="Notice-container">
+          <div id="Notice-title">공지사항</div>
+          <div className="Notice-list">
+            {isData && isData.data ? (
+              <NoticeElement />
+            ) : (
+              <div id="Notice-no-data">현재 등록된 공지사항이 없습니다.</div>
+            )}
           </div>
-          <div className="content-container">
-            <div>네편 설명서</div>
-            <div>열심히 일하는 당신을 위한 ‘네편’이 되겠습니다.</div>
-            <div>공지사항 1</div>
-            <div>공지사항 2</div>
-            <div>공지사항 3</div>
-            <div>공지사항 4</div>
-            <div>공지사항 5</div>
+          <div className="Notice-pagination">
+            <div id="Notice-pagination-arrow">
+              <img src={ArrowLeft} alt="" />
+            </div>
+            <div className="Notice-pagination-number">1</div>
+            <div id="Notice-pagination-arrow">
+              <img src={ArrowRight} alt="" />
+            </div>
           </div>
-          <div className="date-container">
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-            <div>2024.05.13</div>
-          </div>
-        </div>
-        <div className="pagination">
-          <div>이전</div>
-          <div>1</div>
-          <div>이후</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
