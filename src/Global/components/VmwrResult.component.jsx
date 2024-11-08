@@ -164,7 +164,43 @@ const VmwrResult = ({ resultId, postData }) => {
 
 VmwrResult.propTypes = {
   resultId: PropTypes.number.isRequired,
-  postData: PropTypes.isRequired,
+  postData: PropTypes.shape({
+    data: PropTypes.shape({
+      content: PropTypes.shape({
+        holidayPayMessage: PropTypes.string,
+        incomeTasMessage: PropTypes.string,
+        insuranceMessage: PropTypes.string,
+        nightPayMessage: PropTypes.string,
+        overFiveMessage: PropTypes.string,
+        overtimePayMessage: PropTypes.string,
+        totalPayMessage: PropTypes.string,
+        weekPayMessage: PropTypes.string,
+      }),
+    }),
+    /* eslint-disable camelcase */
+    extra_pay: PropTypes.bool,
+    holiday_money: PropTypes.number,
+    holiday_pay: PropTypes.bool,
+    holiday_work: PropTypes.number,
+    income_tax: PropTypes.bool,
+    major_insurance: PropTypes.bool,
+    night_money: PropTypes.number,
+    night_pay: PropTypes.bool,
+    night_work: PropTypes.number,
+    over_five: PropTypes.bool,
+    overtime_money: PropTypes.number,
+    overtime_pay: PropTypes.bool,
+    overtime_work: PropTypes.number,
+    total_pay: PropTypes.number,
+    week_money: PropTypes.number,
+    week_pay: PropTypes.bool,
+    week_work: PropTypes.number,
+    /* eslint-able camelcase */
+  }),
+};
+
+VmwrResult.defaultProps = {
+  postData: null, // 기본값 설정
 };
 
 export default VmwrResult;
