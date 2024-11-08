@@ -85,16 +85,13 @@ const Terminal = () => {
             <Link to="/MyPage">My Page</Link>
           </li>
           <li>
+            <Link to="/FindUser">FindUser</Link>
+          </li>
+          <li>
             <Link to="/Notation">Notation</Link>
           </li>
           <li>
             <Link to="/NotationExample">NotationExample</Link>
-          </li>
-          <li>
-            <Link to="/FindID">FindID</Link>
-          </li>
-          <li>
-            <Link to="/FindPW">FindPW</Link>
           </li>
           <li>
             <Link
@@ -114,6 +111,9 @@ const Terminal = () => {
           </li>
           <li>
             <Link to="/DevFetch">DevFetchTerminalTest</Link>
+          </li>
+          <li>
+            <Link to="/LoginTest">LoginTest</Link>
           </li>
         </ul>
       </div>
