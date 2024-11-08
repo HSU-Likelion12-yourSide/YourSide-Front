@@ -128,8 +128,19 @@ const VmwrResult = ({ resultId, postData }) => {
         </div>
         <div>
           {((isData && isData.data) || (postData && postData.data)) &&
-            ResultContents.map(el => {
-              return <div key={el}>{el}니다.</div>;
+            ResultContents.map((el, index) => {
+              const isOverFive =
+                ['야간근로수당', '연장근로수당', '휴일근로수당'].some(keyword =>
+                  el.includes(keyword),
+                ) && postData?.over_five === false;
+              return (
+                <div
+                  key={index}
+                  className={isOverFive ? 'vmwr-result-overFive' : ''}
+                >
+                  {el}니다.
+                </div>
+              );
             })}
         </div>
         {/* <div>{content}</div> */}

@@ -12,11 +12,11 @@ const generateResultContent = isData => {
 
       nightPayMessage: isData.night_pay
         ? `한 주 동안 야간 근로시간이 ${isData.night_work} 시간이므로 야간근로수당 ${isData.night_money}원이 발생합니다.`
-        : `5인 미만 사업장에서 근무하시기에 야간 근로수당은 발생하지 않습니다.`,
+        : `5인 미만 사업장에서 근무하시기에 야간근로수당은 발생하지 않습니다.`,
 
       overtimePayMessage: isData.overtime_pay
         ? `한 주 동안 연장 근로시간이 ${isData.overtime_work} 시간이므로 연장근로수당 ${isData.overtime_money}원이 발생합니다.`
-        : `5인 미만 사업장에서 근무하시기에 연장 근로수당은 발생하지 않습니다.`,
+        : `5인 미만 사업장에서 근무하시기에 연장근로수당은 발생하지 않습니다.`,
 
       holidayPayMessage: isData.holiday_pay
         ? `취업 규칙 등에서 정한 약정 휴일에 ${isData.holiday_work} 시간 근무하므로 휴일근로수당 ${isData.holiday_money}원이 발생합니다.`

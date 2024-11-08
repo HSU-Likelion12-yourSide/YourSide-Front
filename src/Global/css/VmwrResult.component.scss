@@ -16,6 +16,10 @@
 
       div {
         margin-bottom: 12px;
+        color: black;
+        .vmwr-result-overFive {
+          color: gray;
+        }
 
         &:last-child {
           margin-bottom: 24px;
