@@ -7,8 +7,7 @@ import useFetchAPI from '../../API/Hooks/useFetchAPI';
 const ModalResult = ({ postData, postContent }) => {
   // user_id값 임시 지정
   const userID = 2;
-  const { setModalType } = useGlobalState();
-  console.log('모달 데이터', postData, postContent);
+  const { setModalType, setWorkSheetId } = useGlobalState();
   const [isContent, setContent] = useState();
   const [isRequestData, setRequestData] = useState({
     title: '',
@@ -23,7 +22,7 @@ const ModalResult = ({ postData, postContent }) => {
   const transformRequestData = () => {
     /* eslint-disable camelcase */
     return {
-      title: `${isRequestData.title} 근로 결과지`,
+      title: `${isRequestData.title}`,
       content: postContent,
       total_pay: postData.total_pay,
       extra_pay: postData.extra_pay,
@@ -37,7 +36,7 @@ const ModalResult = ({ postData, postContent }) => {
   };
 
   // 저장하기 버튼 클릭 시 실행할 함수
-  const handleSave = async () => {
+  const handleSave = () => {
     const requiredFields = Object.keys(isRequestData);
     const isAllFieldsFilled = requiredFields.every(
       field => isRequestData[field] !== '',
@@ -50,13 +49,8 @@ const ModalResult = ({ postData, postContent }) => {
         postContent,
       ); // 데이터 변환
       console.log('Transformed Request Data:', requestData);
-      try {
-        setUrl('worksheet'); // POST 요청 URL 설정
-        setRequestData(requestData); // 변환된 데이터로 요청 설정
-      } catch {
-        console.log('요청 실패...');
-      }
-
+      setUrl('worksheet'); // POST 요청 URL 설정
+      setRequestData(requestData); // 변환된 데이터로 요청 설정
       return true;
     }
     // eslint-disable-next-line no-alert
@@ -80,6 +74,7 @@ const ModalResult = ({ postData, postContent }) => {
       console.log(`Success Contact : `, isData);
       setContent(isData.data);
       // 요청 성공시 모달 변경
+      setWorkSheetId(isData.data.worksheet_id);
       setModalType('ResultMessage');
     } else {
       setContent(null);
