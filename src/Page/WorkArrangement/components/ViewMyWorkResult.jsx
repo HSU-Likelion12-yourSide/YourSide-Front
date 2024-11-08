@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../css/ViewMyWorkResult.scss';
+import navigateController from '../../../Global/function/navigateController';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
-import Modal from '../../../Global/components/Modal.components';
-import ModalResult from '../../../Global/components/ModalType/ModalResult.components';
-import ModalResultMessage from '../../../Global/components/ModalType/ModalResultMessage.components';
-import modalStateController from '../../../Global/function/modalStateController';
-import ModalShareMessage from '../../../Global/components/ModalType/ModalShareMessage.components';
 
 const Result = VmwrResult;
 
 const ViewMyWorkResult = () => {
+  const navigate = useNavigate();
   const { worksheetId } = useParams();
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
     `/worksheet/${worksheetId}`,
@@ -24,15 +21,6 @@ const ViewMyWorkResult = () => {
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
-
-  // 미리 ModalType 컴포넌트를 설정
-  // ModalType이 변경 되어도 항상 ModalComponent는 ModalResult로 정의 된다.
-  let ModalComponent = ModalResult;
-  if (isModalType === 'ResultMessage') {
-    ModalComponent = ModalResultMessage;
-  } else if (isModalType === 'ShareMessage') {
-    ModalComponent = ModalShareMessage;
-  }
 
   useEffect(() => {
     if (isLoading) {
@@ -52,13 +40,6 @@ const ViewMyWorkResult = () => {
   return (
     <div className="ViewMyWorkResult">
       <Header />
-      {isModalState && (
-        <Modal
-          isOpen={isModalState}
-          ModalType={ModalComponent}
-          // ModalDefaultTypeState={isModalType}
-        />
-      )}
       <div className="vmwr-title">
         {isData && isData.data && isData.data.nickname
           ? `${isData.data.nickname}님의 근로 결과지`
@@ -74,8 +55,7 @@ const ViewMyWorkResult = () => {
           role="button"
           tabIndex="0"
           onClick={() => {
-            setModalType('Result');
-            modalStateController(isModalState, setModalState);
+            navigateController(navigate, '/WorkArrangement/List');
           }}
         >
           목록

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/ViewMyWorkResult.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
@@ -15,8 +15,10 @@ import generateResultContent from '../function/generateResultContent';
 const Result = VmwrResult;
 
 const ViewMyWorkResult = () => {
+  const navigate = useNavigate();
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
   const [resultValues, setResultValues] = useState('');
+  const [resData, setResData] = useState(null);
 
   const handleResultValues = values => {
     setResultValues(values); // 자식에서 전달받은 값을 저장
@@ -27,17 +29,19 @@ const ViewMyWorkResult = () => {
     useGlobalState();
   const location = useLocation();
   const { state: postData } = location || {}; // POST로 전달된 데이터
-  const resData = generateResultContent(postData.data);
-  console.log('가공된 데이터', resData);
-
   useEffect(() => {
-    if (postData) {
-      console.log('POST 응답 데이터:', postData.data);
+    if (!postData || !postData.data) {
+      // postData가 없거나 데이터가 없는 경우
+      navigate('/ViewMyWork'); // ViewMyWork 페이지로 리디렉션
+    } else {
+      const processedData = generateResultContent(postData.data);
+      console.log('가공된 데이터', processedData);
+      setResData(processedData);
       setContent(
-        <Result postData={resData} onResultValues={handleResultValues} />,
+        <Result postData={processedData} onResultValues={handleResultValues} />,
       );
     }
-  }, [postData]);
+  }, [postData, navigate]);
   // 미리 ModalType 컴포넌트를 설정
   // ModalType이 변경 되어도 항상 ModalComponent는 ModalResult로 정의 된다.
   let ModalComponent = ModalResult;

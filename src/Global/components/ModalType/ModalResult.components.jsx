@@ -5,6 +5,7 @@ import useGlobalState from '../../Hooks/useGlobalState';
 import useFetchAPI from '../../API/Hooks/useFetchAPI';
 
 const ModalResult = ({ postData, postContent }) => {
+  console.log('모달 데이터: ', postData);
   // user_id값 임시 지정
   const userID = 2;
   const { setModalType, setWorkSheetId } = useGlobalState();

@@ -19,9 +19,7 @@ const ModalResult = () => {
           id="modal-share"
           onKeyDown={() => {}}
           onClick={() => {
-            /* eslint-disable-next-line no-alert */
-            alert('다른 결과지 페이지는 준비 중입니다.');
-            navigateController(navigate, '/ViewUsersWorkResult');
+            navigateController(navigate, '/WorkArrangement');
           }}
           role="button"
           tabIndex="0"
