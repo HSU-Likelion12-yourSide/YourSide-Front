@@ -2,8 +2,9 @@ import React from 'react';
 import '../../css/ModalType/Modal.result.scss';
 import useGlobalState from '../../Hooks/useGlobalState';
 
-const ModalResult = () => {
+const ModalResult = (postData, postContent) => {
   const { setModalType } = useGlobalState();
+  console.log('모달 데이터', postData, postContent);
 
   return (
     <div className="modal-default">

@@ -26,7 +26,7 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ resultId, postData }) => {
+const VmwrResult = ({ resultId, postData, onResultValues }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
   const [stringifiedValues, setStringifiedValues] = useState('');
@@ -53,10 +53,14 @@ const VmwrResult = ({ resultId, postData }) => {
   useEffect(() => {
     if (postData && postData.data && postData.data.content) {
       const values = Object.values(postData.data.content).join('');
-      console.log('Stringified Values:', values);
+      console.log('content:', values);
       setStringifiedValues(values);
+
+      if (onResultValues) {
+        onResultValues(values);
+      }
     }
-  }, [postData]);
+  }, [postData, onResultValues]);
 
   // fetch 상태 초기 값
   useEffect(() => {
@@ -163,6 +167,7 @@ const VmwrResult = ({ resultId, postData }) => {
 };
 
 VmwrResult.propTypes = {
+  onResultValues: PropTypes.func,
   resultId: PropTypes.number,
   postData: PropTypes.shape({
     data: PropTypes.shape({
@@ -200,6 +205,7 @@ VmwrResult.propTypes = {
 };
 
 VmwrResult.defaultProps = {
+  onResultValues: null,
   resultId: null,
   postData: null, // 기본값 설정
 };

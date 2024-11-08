@@ -16,6 +16,12 @@ const Result = VmwrResult;
 
 const ViewMyWorkResult = () => {
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
+  const [resultValues, setResultValues] = useState('');
+
+  const handleResultValues = values => {
+    setResultValues(values); // 자식에서 전달받은 값을 저장
+    console.log('Parent received ResultContents:', values);
+  };
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
@@ -27,7 +33,9 @@ const ViewMyWorkResult = () => {
   useEffect(() => {
     if (postData) {
       console.log('POST 응답 데이터:', postData.data);
-      setContent(<Result postData={resData} />);
+      setContent(
+        <Result postData={resData} onResultValues={handleResultValues} />,
+      );
     }
   }, [postData]);
   // 미리 ModalType 컴포넌트를 설정
@@ -46,14 +54,12 @@ const ViewMyWorkResult = () => {
         <Modal
           isOpen={isModalState}
           ModalType={ModalComponent}
+          postData={resData}
+          postContent={resultValues}
           // ModalDefaultTypeState={isModalType}
         />
       )}
-      <div className="vmwr-title">
-        {postData && postData.data && postData.data.nickname
-          ? `${postData.data.nickname}님의 근로 결과지`
-          : '내 근로 결과지'}
-      </div>
+      <div className="vmwr-title">내 근로 결과지</div>
       <div className="vmwr-result">{content}</div>
       <div id="vmwr-group">
         <div
