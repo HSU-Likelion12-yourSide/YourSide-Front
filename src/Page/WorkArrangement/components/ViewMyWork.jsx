@@ -64,9 +64,12 @@ const ViewMyWork = () => {
 
       setUrl('worksheet/calculate'); // POST 요청 URL 설정
       setRequestData(requestData); // 변환된 데이터로 요청 설정
-    } else {
-      alert('모든 필드를 입력해 주세요.');
+
+      return true;
     }
+    // eslint-disable-next-line no-alert
+    alert('모든 필드를 입력해 주세요.');
+    return false;
   };
   // 입력 필드 채워지는지 콘솔에서 확인
   useEffect(() => {
@@ -83,10 +86,11 @@ const ViewMyWork = () => {
     } else if (isData && isData.data) {
       console.log(`Success Contact : `, isData);
       setContent(isData.data);
+      navigate('/viewMyWorkResult', { state: isData });
     } else {
       setContent(null);
     }
-  }, [isLoading, isError, isData]);
+  }, [isLoading, isError, isData, navigate]);
 
   return (
     <div className="view-my-work">
@@ -114,10 +118,9 @@ const ViewMyWork = () => {
       <button
         className="vmw-result"
         onClick={() => {
-          handleCalculate();
-          if (!isError) {
-            navigate('/viewMyWorkResult');
-            console.log(isData);
+          const isValid = handleCalculate();
+          if (isValid) {
+            // POST 요청 시작
           }
         }}
       >

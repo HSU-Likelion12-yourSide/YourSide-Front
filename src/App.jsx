@@ -9,6 +9,7 @@ import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuest
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
 import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
 import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
+import ViewMyWorkResultCalculate from './Page/WorkArrangement/components/ViewMyWorkResultCalculate';
 import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/SignUp/components/SignUp';
 import MyPage from './Page/MyPage/components/MyPage';
@@ -42,6 +43,10 @@ const App = () => {
         <Route
           path="/ViewMyWorkResult/:worksheetId"
           element={<ViewMyWorkResult />}
+        />
+        <Route
+          path="/ViewMyWorkResult"
+          element={<ViewMyWorkResultCalculate />}
         />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />

@@ -78,7 +78,7 @@ const ViewMyWorkResult = () => {
             modalStateController(isModalState, setModalState);
           }}
         >
-          결과지 저장하기
+          목록
         </div>
       </div>
       <Footer />
