@@ -1,0 +1,95 @@
+.FindUser {
+  // background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  font-family: Pretendard;
+
+  .FindUser-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // min-width: 650px;
+    /* 최소 높이를 뷰포트 높이에 맞추기 */
+    min-height: 700px;
+    padding: 15px 70px;
+
+    .FindUser-SymbolLogo {
+      margin-bottom: 60px;
+    }
+
+    .FindUser-type {
+      display: flex;
+      width: 308px;
+      font-family: Pretendard;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: -0.025em;
+
+      #FindUser-id,
+      #FindUser-pw {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 16px;
+        border: solid 1px #E5E5EC;
+      }
+
+      #FindUser-id-check,
+      #FindUser-pw-check {
+        display: flex;
+        width: 50%;
+        color: #FFFF;
+        justify-content: center;
+        align-items: center;
+        background-color: #204598;
+        padding: 16px;
+      }
+
+      #FindUser-id:hover,
+      #FindUser-pw:hover {
+        color: #204598;
+        font-weight: 600;
+        background-color: #eff6fe;
+        padding: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* 뷰포트 높이가 900px 이상일 때 `min-height`를 1000px로 변경 */
+@media (min-height: 1000px) {
+  .FindUser .FindUser-container {
+    min-width: 500px;
+    min-height: calc(1000px - 120px);
+    padding: 80px 150px;
+  }
+
+  // .FindUser-container .FindUser-submit {
+  //   margin-top: 140px;
+  // }
+
+  // .FindUser-container .FindUser-group {
+  //   margin-top: 60px;
+  // }
+
+  // .FindUser-container .FindUser-group .FindUser-id #FindUser-input-id {
+  //   margin-top: 12px;
+  // }
+
+  // .FindUser-container .FindUser-group .FindUser-password span {
+  //   margin-top: 24px;
+  // }
+
+  // .FindUser-container .FindUser-group .FindUser-password #FindUser-input-password {
+  //   margin-top: 12px;
+  // }
+}

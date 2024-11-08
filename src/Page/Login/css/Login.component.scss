@@ -1,0 +1,118 @@
+.Login-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // min-width: 650px;
+  /* 최소 높이를 뷰포트 높이에 맞추기 */
+  min-height: 700px;
+  padding: 15px 70px;
+
+  #Login-Logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #Login-mention {
+      margin: 20px 0px 13px 0px;
+    }
+  }
+
+  .Login-group {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #767676;
+    margin-top: 20px;
+
+    .Login-id {
+      display: flex;
+      flex-direction: column;
+
+      #Login-input-id {
+        width: calc(500px - 16px - 17.6px);
+        padding: 16px;
+        border: 1px solid #e5e5ec;
+        margin-top: 5px;
+      }
+    }
+
+    .Login-password {
+      display: flex;
+      flex-direction: column;
+
+      #Login-input-password {
+        width: calc(500px - 16px - 17.6px);
+        padding: 16px;
+        border: 1px solid #e5e5ec;
+        margin-top: 5px;
+      }
+
+      span {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .Login-submit {
+    #Login-button {
+      border: none;
+      width: 500px;
+      background-color: #204598;
+      color: #ffffff;
+      margin-bottom: 24px;
+      margin-top: 40px;
+      padding: 16px;
+    }
+
+    .Login-link {
+      display: flex;
+      justify-content: center;
+
+      #Login-find {
+        color: #767676;
+        margin-right: 16px;
+        cursor: pointer;
+      }
+
+      #Login-SignUp {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+/* 뷰포트 높이가 900px 이상일 때 `min-height`를 1000px로 변경 */
+@media (min-height: 1000px) {
+  .Login-container {
+    min-width: 500px;
+    min-height: calc(1000px - 160px);
+    padding: 80px 150px;
+  }
+
+  .Login-container .Login-submit {
+    margin-top: 140px;
+  }
+
+  .Login-container .Login-group {
+    margin-top: 60px;
+  }
+
+  .Login-container .Login-group .Login-id #Login-input-id {
+    margin-top: 12px;
+  }
+
+  .Login-container .Login-group .Login-password span {
+    margin-top: 24px;
+  }
+
+  .Login-container .Login-group .Login-password #Login-input-password {
+    margin-top: 12px;
+  }
+}

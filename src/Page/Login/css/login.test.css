@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --font-color: #767676;
   --symbol-background-color: #eff6fe;
   --Login-background-color: #ffffff;
@@ -15,10 +15,9 @@
 .pw > input {
   width: 500px;
   padding: 16px;
-  border: 1px solid var(--Login-border-color);
+  border: 1px solid #e5e5ec;
 }
 
-/* .Login 컴포넌트 */
 .Login {
   background-color: var(--symbol-background-color);
   display: flex;
@@ -84,4 +83,4 @@
 
 .sign-up > p {
   margin-right: 12px;
-}
+} */

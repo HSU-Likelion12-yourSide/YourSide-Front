@@ -1,0 +1,109 @@
+.Findid-container {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // min-width: 650px;
+  /* 최소 높이를 뷰포트 높이에 맞추기 */
+  // min-height: 700px;
+  // padding: 15px 70px;
+
+  .Findid-group {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #767676;
+    margin-top: 20px;
+
+    .Findid-id,
+    .Findid-password,
+    .Findid-email,
+    .Findid-name,
+    .Findid-nickname {
+      display: flex;
+      flex-direction: column;
+
+      #Findid-input-id,
+      #Findid-input-password,
+      #Findid-input-email,
+      #Findid-input-name,
+      #Findid-input-nickname {
+        width: calc(500px - 16px - 17.6px);
+        padding: 16px;
+        border: 1px solid #e5e5ec;
+        margin-top: 5px;
+      }
+    }
+
+    .Findid-password,
+    .Findid-email,
+    .Findid-name,
+    .Findid-nickname {
+      span {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .Findid-submit {
+    margin-top: calc(40px + 88px);
+
+    #Findid-button {
+      border: none;
+      width: 500px;
+      background-color: #204598;
+      color: #ffffff;
+      margin-bottom: 24px;
+      // margin-top: calc(40px + 94.78px);
+      padding: 16px;
+      cursor: pointer;
+    }
+
+    .Findid-link {
+      display: flex;
+      justify-content: center;
+
+      #Findid-find {
+        color: #767676;
+        margin-right: 16px;
+      }
+
+      #Findid-Findid {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+/* 뷰포트 높이가 900px 이상일 때 `min-height`를 1000px로 변경 */
+@media (min-height: 1000px) {
+  .Findid-container {
+    min-width: 500px;
+    // min-height: calc(1000px - 120px);
+    // padding: 60px 150px;
+  }
+
+  .Findid-container .Findid-submit {
+    margin-top: calc(140px + 94.78px);
+  }
+
+  .Findid-container .Findid-group {
+    margin-top: 60px;
+  }
+
+  .Findid-container .Findid-group .Findid-id #Findid-input-id {
+    margin-top: 12px;
+  }
+
+  .Findid-container .Findid-group .Findid-password span {
+    margin-top: 24px;
+  }
+
+  .Findid-container .Findid-group .Findid-password #Findid-input-password {
+    margin-top: 12px;
+  }
+}

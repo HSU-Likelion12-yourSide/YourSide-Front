@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SymbolRow from '../img/symbol-logo-row.png';
-import useFetchAPI from '../../../../Global/API/Hooks/useFetchAPI';
-import '../css/signup.css';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import '../css/SignUp.component.scss';
+import SymbolLogo from '../img/symbol-logo-row.png';
 
-const SignUp = () => {
-  const navigate = useNavigate();
+const SignUpComponent = () => {
   const [isContent, setContent] = useState();
   const [isRequestData, setRequestData] = useState({
     username: '',
@@ -14,7 +13,8 @@ const SignUp = () => {
     name: '',
     nickname: '',
   });
-  // post
+  const navigate = useNavigate();
+
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
     '',
     'POST',
@@ -28,20 +28,23 @@ const SignUp = () => {
     } else if (isError) {
       console.log(`is Error : `, isError);
       setContent(`Error: `, isError);
-    } else if (isData && isData.data) {
+    } else if (isData) {
       console.log(`Success Contact : `, isData);
       setContent(isData.data);
+      console.log(isData);
+      if (isData.status === 200 || isData.status === 201) {
+        navigate('/Login');
+        console.log(isData.status);
+      }
     } else {
       setContent(null);
     }
   }, [isLoading, isError, isData]);
 
-  // 입력 필드 변경 함수
   const handleInputChange = e => {
-    // name으로 지정되어 있는 input 필드 값에 따라 함수가 useState에 저장될 수 있게 코드 구현
     const { name, value } = e.target;
-    setRequestData(pre => ({
-      ...pre,
+    setRequestData(prev => ({
+      ...prev,
       [name]: value,
     }));
   };
@@ -59,84 +62,82 @@ const SignUp = () => {
   };
 
   return (
-    <div className="Sign-Up">
-      <div className="container">
-        <div className="symbol">
-          <img src={SymbolRow} alt="symbol-logo-row" />
+    <div className="SignUp-container">
+      <div id="SignUp-Logo">
+        <div>
+          <img src={SymbolLogo} alt="" />
         </div>
+      </div>
 
-        <div className="id">
-          <p>아이디</p>
+      <div className="SignUp-group">
+        <div className="SignUp-id">
+          <span>아이디</span>
           <input
+            type="text"
+            id="SignUp-input-id"
             name="username"
             placeholder="아이디를 입력해 주세요"
             value={isRequestData.username}
             onChange={handleInputChange}
           />
         </div>
-
-        <div className="pw">
-          <p>비밀번호</p>
+        <div className="SignUp-password">
+          <span>비밀번호</span>
           <input
-            name="password"
             type="password"
+            id="SignUp-input-password"
+            name="password"
             placeholder="비밀번호를 입력해 주세요"
             value={isRequestData.password}
             onChange={handleInputChange}
           />
         </div>
-
-        <div className="email">
-          <p>이메일</p>
+        <div className="SignUp-email">
+          <span>이메일</span>
           <input
+            type="text"
+            id="SignUp-input-email"
             name="email"
             placeholder="이메일을 입력해 주세요"
             value={isRequestData.email}
             onChange={handleInputChange}
           />
         </div>
-
-        <div className="name">
-          <p>이름</p>
+        <div className="SignUp-name">
+          <span>이름</span>
           <input
+            type="text"
+            id="SignUp-input-name"
             name="name"
             placeholder="이름을 입력해 주세요"
             value={isRequestData.name}
             onChange={handleInputChange}
           />
         </div>
-
-        <div className="nickname">
-          <p>닉네임</p>
+        <div className="SignUp-nickname">
+          <span>닉네임</span>
           <input
+            type="text"
+            id="SignUp-input-nickname"
             name="nickname"
             placeholder="닉네임을 입력해 주세요"
             value={isRequestData.nickname}
             onChange={handleInputChange}
           />
         </div>
+      </div>
 
-        <button
-          id="Sign-Up-button"
-          onClick={() => {
-            handleSignUp();
-            if (!isError) {
-              navigate('/Login');
-              console.log(isData);
-            }
-          }}
-        >
-          회원가입
+      <div className="SignUp-submit">
+        <button id="SignUp-button" onClick={handleSignUp}>
+          로그인
         </button>
-        <div className="sign-up">
-          <p>이미 네편이 회원이신가요?</p>
-          <p style={{ color: 'black' }}>
-            <strong>로그인</strong>
-          </p>
+        <div className="SignUp-link">
+          <div id="SignUp-mention">이미 네편이 회원이신가요?</div>
+          <div id="SignUp-SignUp">로그인</div>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpComponent;
