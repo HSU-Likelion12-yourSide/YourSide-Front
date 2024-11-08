@@ -1,8 +1,8 @@
-*{
+* {
   font-family: 'Pretendard';
 }
 
-.qnaposting {
+.postingqna {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@
   font-weight: 400;
   line-height: 28px;
 
-  .qnaposting-container{
+  .postingqna-container {
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
@@ -21,16 +21,18 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
 
-    .qnaposting-title-container{
+    .postingqna-title-container {
       margin-bottom: 33px;
-      #qnaposting-title {
+
+      #postingqna-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .qnaposting-title-input{
+
+      .postingqna-title-input {
         width: 1100px;
         height: 48px;
         font-size: 14px;
@@ -49,21 +51,24 @@
         }
       }
     }
-  
-    .qnaposting-category-container {
+
+    .postingqna-category-container {
       margin-bottom: 33px;
-      #qnaposting-title {
+
+      #postingqna-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .qnaposting-input-group {
+
+      .postingqna-input-group {
         color: 000000;
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
+
         #input-styled {
           border: 1px solid #E5E5EC;
           width: 22px;
@@ -71,24 +76,29 @@
           margin-right: 8px;
           vertical-align: middle;
         }
+
         span {
           vertical-align: middle;
         }
+
         span:nth-of-type(1) {
           margin-right: 32px;
         }
       }
     }
-    .qnaposting-content-container {
+
+    .postingqna-content-container {
       margin-bottom: 33px;
-      #qnaposting-title {
+
+      #postingqna-title {
         font-size: 22px;
         font-weight: 500;
         line-height: 30px;
         margin-bottom: 12px;
         color: #111111;
       }
-      .qnaposting-content-textarea {
+
+      .postingqna-content-textarea {
         width: 1100px;
         height: 404px;
         font-size: 14px;
@@ -107,15 +117,16 @@
     }
   }
 
-  .qnaposting-myresult-container {
-    #qnaposting-title {
+  .postingqna-myresult-container {
+    #postingqna-title {
       font-size: 22px;
       font-weight: 500;
       line-height: 30px;
       margin-bottom: 12px;
       color: #111111;
     }
-    .qnaposting-myresult-none {
+
+    .postingqna-myresult-none {
       background-color: #E1E1E1;
       border: dashed 1px #111111;
       width: 1100px;
@@ -124,22 +135,23 @@
       box-sizing: border-box;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
 
-  .qnaposting-vmwr-result {
+  .postingqna-vmwr-result {
     background-color: white;
     padding: 36px 60px;
     box-shadow: 0px 4px 10px -1px rgba(35, 48, 56, 0.08);
   }
 
-  #qnaposting-group {
+  #postingqna-group {
     display: flex;
     justify-content: flex-end;
     width: 1180px;
     margin: 60px 0px 120px 0px;
 
-    .qnaposting-button {
+    .postingqna-button {
       background-color: #1BBFC1;
       color: #FFFFFF;
       font-family: 'Pretendard';
@@ -148,6 +160,7 @@
       line-height: 28px;
       letter-spacing: -0.025em;
       padding: 16px;
+      cursor: pointer;
     }
   }
 }
