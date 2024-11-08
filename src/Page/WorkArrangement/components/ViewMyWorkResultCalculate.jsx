@@ -32,6 +32,10 @@ const ViewMyWorkResult = () => {
   useEffect(() => {
     if (!postData || !postData.data) {
       // postData가 없거나 데이터가 없는 경우
+      // eslint-disable-next-line no-alert
+      alert(
+        '해당 페이지는 근로결과지를 작성한 후 넘어가는 페이지입니다. 근로결과지 작성 페이지로 넘어갑니다.',
+      );
       navigate('/ViewMyWork'); // ViewMyWork 페이지로 리디렉션
     } else {
       const processedData = generateResultContent(postData.data);
