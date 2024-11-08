@@ -1,22 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import '../css/MyPage.scss';
+import Header from '../../Header/components/Header';
+import Footer from '../../Footer/components/Footer';
 
 const MyPage = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '40vh',
-        border: '1px solid black',
-      }}
-    >
-      <h1>네편 프로젝트 with 멋사</h1>
-      <h3>현재 페이지 파일 이름은 MyPage.jsx 입니다.</h3>
-      <Link to="/DevTerminal">
-        <button>개발 터미널로 이동</button>
-      </Link>
+    <div>
+      <Header />
+      <div>
+        <div>개인정보 프로필</div>
+        <div>스위치 버튼 Header와 같은 스타일 참조</div>
+        <div>contents 변경 컴포넌트</div>
+      </div>
+      <Footer />
     </div>
   );
 };
