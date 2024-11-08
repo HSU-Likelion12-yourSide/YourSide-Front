@@ -16,7 +16,7 @@ import MyPage from './Page/MyPage/components/MyPage';
 import Notice from './Page/Notice/components/Notice';
 import ModalCheck from './Global/components/Modal.components';
 import NoticeExample from './Page/Notice/components/NoticeExample';
-
+import QnAPosting from './Page/QnAPosting/components/QnAPosting';
 import DevTerminal from './DevTerminal';
 import DevMockingApi from './Test/Mocking/API/DevMockingApi';
 import DevNotation from './Test/Mocking/API/DevNotation';
