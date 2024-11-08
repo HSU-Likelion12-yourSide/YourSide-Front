@@ -55,7 +55,7 @@ const ModalResult = ({ postData, postContent }) => {
       return true;
     }
     // eslint-disable-next-line no-alert
-    alert('모든 필드를 입력해 주세요.');
+    alert('결과지 이름을 입력해주세요.');
     return false;
   };
 

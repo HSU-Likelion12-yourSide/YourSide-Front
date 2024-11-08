@@ -179,6 +179,13 @@
     line-height: 28px;
     letter-spacing: -0.025em;
     margin-bottom: 120px;
+    border: none;
+    cursor: pointer;
+
+    &.active {
+      background-color: #1bbfc1;
+      color: #ffffff;
+    }
   }
 }
 

@@ -21,6 +21,7 @@ const ViewMyWork = () => {
     holidayWork: '',
     tax: '',
   });
+  const [isButtonActive, setButtonActive] = useState(false);
   // post
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
     '',
@@ -73,6 +74,12 @@ const ViewMyWork = () => {
   };
   // 입력 필드 채워지는지 콘솔에서 확인
   useEffect(() => {
+    // 필드가 모두 채워지면 버튼 활성화
+    const requiredFields = Object.keys(isRequestData);
+    const isAllFieldsFilled = requiredFields.every(
+      field => isRequestData[field] !== '',
+    );
+    setButtonActive(isAllFieldsFilled); // 버튼 활성화 여부 설정
     console.log('Updated isRequestData:', isRequestData);
   }, [isRequestData]);
 
@@ -116,7 +123,7 @@ const ViewMyWork = () => {
         }
       </div>
       <button
-        className="vmw-result"
+        className={`vmw-result ${isButtonActive ? 'active' : ''}`}
         onClick={() => {
           const isValid = handleCalculate();
           if (isValid) {
