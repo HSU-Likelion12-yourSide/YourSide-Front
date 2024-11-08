@@ -18,10 +18,11 @@
         margin-bottom: 12px;
         color: black;
         .vmwr-result-overFive {
-          color: gray;
+          color: #767676;
         }
 
         &:last-child {
+          margin-top: 24px;
           margin-bottom: 24px;
         }
       }
