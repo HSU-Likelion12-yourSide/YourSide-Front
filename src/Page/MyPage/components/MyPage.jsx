@@ -5,12 +5,34 @@ import Footer from '../../Footer/components/Footer';
 
 const MyPage = () => {
   return (
-    <div>
+    <div className="MyPage">
       <Header />
-      <div>
-        <div>개인정보 프로필</div>
-        <div>스위치 버튼 Header와 같은 스타일 참조</div>
-        <div>contents 변경 컴포넌트</div>
+      <div className="MyPage-container">
+        <div className="MyPage-profile">
+          <div id="MyPage-nickname">사용자 닉네임</div>
+          <div className="MyPage-current">
+            <div id="MyPage-posting">
+              <span>내 개시글</span>
+              <span>999개</span>
+            </div>
+            <div id="MyPage-question">
+              <span>내 질문</span>
+              <span>999개</span>
+            </div>
+            <div id="MyPage-comment">
+              <span>내 답변</span>
+              <span>999개</span>
+            </div>
+          </div>
+        </div>
+        <div className="MyPage-switch">
+          <div id="">내 결과지</div>
+          <div id="">내 게시글</div>
+          <div id="">내 답변</div>
+          <div id="">책갈피</div>
+        </div>
+        <div className="MyPage-contents">contents 변경 컴포넌트</div>
+        <div className="MyPage-pagenation">페이지 네이션</div>
       </div>
       <Footer />
     </div>
