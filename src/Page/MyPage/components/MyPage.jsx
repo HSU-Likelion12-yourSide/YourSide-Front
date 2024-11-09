@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import '../css/MyPage.scss';
 import MyPageBookMark from './MyPage.BookMark.component';
 import MyPagePosting from './MyPage.Posting.component';
@@ -8,7 +9,6 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 
 const MyPage = () => {
-  // 이 부분을 contextAPI를 통해서 true false를 통해서 동작할 수 있게 구현 할 예정
   const [isContentState, setContentState] = useState(false);
   const [isContent, setContent] = useState({
     myResult: true,
@@ -32,14 +32,6 @@ const MyPage = () => {
     if (isContent.myPosting) return <MyPagePosting />;
     if (isContent.myComment) return <MyPageComment />;
     if (isContent.myBookMark) return <MyPageBookMark />;
-    return <div>선택한 항목이 없습니다.</div>;
-  };
-
-  const handleContentMessage = () => {
-    if (isContent.myResult) return '결과지가';
-    if (isContent.myPosting) return '질문이';
-    if (isContent.myComment) return '답변이';
-    if (isContent.myBookMark) return '북마크가';
     return <div>선택한 항목이 없습니다.</div>;
   };
 
@@ -110,13 +102,7 @@ const MyPage = () => {
             책갈피
           </div>
         </div>
-        {isContentState ? (
-          <div className="MyPage-contents">{renderContent()}</div>
-        ) : (
-          <div className="MyPage-none-contents">
-            작성한 {handleContentMessage()} 없습니다.
-          </div>
-        )}
+        <div className="MyPage-contents">{renderContent()}</div>
         {/* 페이지 네이션은 각 컴폰넌트 내부로 들어갈 예정이다. */}
         <div className="MyPage-pagenation">
           {isContentState ? '페이지 네이션' : ''}
