@@ -80,8 +80,16 @@
     }
 
     .MyPage-contents {
+      display: flex;
+      justify-content: center;
+      width: 100%;
       margin-top: 70px;
       margin-bottom: 40px;
+    }
+
+    .MyPage-none-contents {
+      margin-top: 200px;
+      margin-bottom: 400px;
     }
 
     .MyPage-pagenation {}
