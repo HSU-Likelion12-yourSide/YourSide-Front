@@ -101,7 +101,6 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
       .trim()
       .split('니다.')
       .filter(el => el !== ''); // 빈 문자열 제거
-    console.log('ResultContents:', ResultContents);
     resultState = [
       postData.extra_pay,
       postData.week_pay,
@@ -136,7 +135,11 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
               const isOverFive =
                 ['야간근로수당', '연장근로수당', '휴일근로수당'].some(keyword =>
                   el.includes(keyword),
-                ) && postData?.over_five === false;
+                ) &&
+                (postData?.over_five === false ||
+                  isData.data.content.includes(
+                    '5인 미만 사업장에서 근무하시기에',
+                  ));
               return (
                 <div
                   key={index}

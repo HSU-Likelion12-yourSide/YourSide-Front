@@ -4,7 +4,7 @@ const generateResultContent = isData => {
     content: {
       overFiveMessage: isData.over_five
         ? '상시 5인 이상 사업장에서 근무하시므로 추가적인 가산 수당이 발생합니다.'
-        : '상시 5인 미만 사업장에서 근무하셨으므로 추가적인 가산 수당이 발생하지 않습니다.',
+        : '상시 5인 미만 사업장에서 근무하시므로 추가적인 가산 수당이 발생하지 않습니다.',
 
       weekPayMessage: isData.week_pay
         ? `주 근로 시간이 ${isData.week_work}시간으로 주휴수당이 발생합니다.`
