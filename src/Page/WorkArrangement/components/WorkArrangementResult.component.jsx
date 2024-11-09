@@ -32,6 +32,13 @@ const WorkArrangementResult = ({
   const firstRowOptions = OptionsList.slice(0, 3);
   const secondRowOptions = OptionsList.slice(3);
 
+  // content를 split
+  const splitContent = content
+    .trim()
+    .split('니다.')
+    .filter(el => el !== '')
+    .map(el => `${el}니다.`);
+
   return (
     <div className="wa-result">
       <div className="wa-control">
@@ -56,7 +63,11 @@ const WorkArrangementResult = ({
         </div>
       </div>
       <div className="wa-group">
-        <div className="wa-description">{content}</div>
+        <div className="wa-description">
+          {splitContent.slice(0, 4).map((line, index) => (
+            <div key={index}>{index === 3 ? `${line}..` : line}</div>
+          ))}
+        </div>
         <div className="wa-options">
           <div className="wa-contents">
             <div className="wa-title">발생 요건들</div>
