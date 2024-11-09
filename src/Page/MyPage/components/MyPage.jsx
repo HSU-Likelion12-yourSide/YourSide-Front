@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import '../css/MyPage.scss';
+import MyPageBookMark from './MyPage.BookMark.component';
+import MyPagePosting from './MyPage.Posting.component';
+import MyPageComment from './MyPage.Comment.component';
+import MyPageResult from './MyPage.Result.component';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 
 const MyPage = () => {
+  // 이 부분을 contextAPI를 통해서 true false를 통해서 동작할 수 있게 구현 할 예정
   const [isContentState, setContentState] = useState(false);
   const [isContent, setContent] = useState({
     myResult: true,
@@ -20,6 +25,22 @@ const MyPage = () => {
       myComment: contentType === 'myComment',
       myBookMark: contentType === 'myBookMark',
     }));
+  };
+
+  const renderContent = () => {
+    if (isContent.myResult) return <MyPageResult />;
+    if (isContent.myPosting) return <MyPagePosting />;
+    if (isContent.myComment) return <MyPageComment />;
+    if (isContent.myBookMark) return <MyPageBookMark />;
+    return <div>선택한 항목이 없습니다.</div>;
+  };
+
+  const handleContentMessage = () => {
+    if (isContent.myResult) return '결과지가';
+    if (isContent.myPosting) return '질문이';
+    if (isContent.myComment) return '답변이';
+    if (isContent.myBookMark) return '북마크가';
+    return <div>선택한 항목이 없습니다.</div>;
   };
 
   return (
@@ -90,11 +111,10 @@ const MyPage = () => {
           </div>
         </div>
         {isContentState ? (
-          <div className="MyPage-contents">contents 변경 컴포넌트</div>
+          <div className="MyPage-contents">{renderContent()}</div>
         ) : (
-          // 해당 부분 질문 부분에 동적으로 변경이 가능하도록 구현해야한다.
           <div className="MyPage-none-contents">
-            작성한 질문(글)이 없습니다.
+            작성한 {handleContentMessage()} 없습니다.
           </div>
         )}
         {/* 페이지 네이션은 각 컴폰넌트 내부로 들어갈 예정이다. */}
