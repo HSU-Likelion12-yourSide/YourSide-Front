@@ -44,6 +44,7 @@ const App = () => {
         <Route path="/FindUser" element={<FindUser />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/Notice" element={<Notice />} />
+        <Route path="/QnAPosting" element={<QnAPosting />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />
         <Route path="/DevMockingApi" element={<DevMockingApi />} />
         <Route path="/DevNotation" element={<DevNotation />} />
