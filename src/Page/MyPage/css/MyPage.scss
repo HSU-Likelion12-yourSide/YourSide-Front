@@ -1,0 +1,89 @@
+.MyPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  font-family: Pretendard;
+
+  .MyPage-container {
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 109px;
+    margin-bottom: 120px;
+    width: 980px;
+    // padding: 109px 470px 120px 470px;
+
+    .MyPage-profile {
+      // background-color: wheat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      margin-bottom: 138px;
+
+      #MyPage-nickname {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: -0.025em;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-bottom: 13px;
+      }
+
+      .MyPage-current {
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #333333;
+
+        #MyPage-posting span:last-child,
+        #MyPage-question span:last-child,
+        #MyPage-comment span:last-child {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 22px;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          margin-left: 8px;
+          margin-right: 18px;
+          color: #111111;
+        }
+      }
+    }
+
+    .MyPage-switch {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      height: 37px;
+      gap: 38px;
+    }
+
+    .MyPage-switch div:hover {
+      color: #204598;
+      border-bottom: 1px solid #204598;
+      cursor: pointer;
+    }
+
+    #MyPage-switched {
+      color: #204598;
+      border-bottom: 1px solid #204598;
+    }
+
+    .MyPage-contents {
+      margin-top: 70px;
+      margin-bottom: 40px;
+    }
+
+    .MyPage-pagenation {}
+  }
+}
