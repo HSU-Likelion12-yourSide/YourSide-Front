@@ -111,6 +111,7 @@ const VQnACommentList = ({ workSheetId }) => {
               onClick={() => {
                 console.log('click');
                 postComment();
+                triggerReload();
               }}
               role="button"
               tabIndex="0"

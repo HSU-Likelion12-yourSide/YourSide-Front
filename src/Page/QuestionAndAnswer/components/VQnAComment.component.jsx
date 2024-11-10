@@ -19,8 +19,8 @@ const VQnAComment = ({
   // 나의 버튼 상태 값
   const [isLike, setLiked] = useState(isLiked);
   const [isBad, setBad] = useState(isDisLiked);
-  const [isLikedCount, setLikedCount] = useState(likeCount);
-  const [isBadCount, setBadCount] = useState(dislikeCount);
+  // const [isLikedCount, setLikedCount] = useState(likeCount);
+  // const [isBadCount, setBadCount] = useState(dislikeCount);
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
   // lint 문법을 피하기 위한 log
   // eslint-disable-next-line camelcase
