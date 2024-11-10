@@ -6,21 +6,25 @@ import '../css/VQnACommentList.scss';
 
 // props로 외부 컴포넌트에 params 가져올 것
 const VQnACommentList = ({ workSheetId }) => {
+  const [isReloadState, setReloadState] = useState(false); // 리로드 트리거용 상태
   const [isComment, setComment] = useState();
   const [isContent, setContent] = useState('');
+
+  // eslint-disable-next-line camelcase
+  const posting_id = workSheetId;
 
   // 해당 user_id, posting_id 다시 설정 필요
   const requestCommentData = {
     // eslint-disable-next-line camelcase
     user_id: 2,
     // eslint-disable-next-line camelcase
-    posting_id: { workSheetId },
+    posting_id,
     content: isComment,
   };
 
   // GET API 수정 예정
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
-    `/comment/list?user_id=1&posting_id=${workSheetId}`,
+    `/comment/list?user_id=${'2'}&posting_id=${workSheetId}`,
     'GET',
   );
 
@@ -40,22 +44,31 @@ const VQnACommentList = ({ workSheetId }) => {
     }
   };
 
+  // reload를 위한 함수
+  const triggerReload = () => {
+    console.log('isReloadState or workSheetId changed, setting URL');
+    setReloadState(prev => !prev); // 상태를 토글하여 재조회 트리거
+    setUrl(''); // URL을 비워서 상태 초기화
+    setTimeout(() => {
+      setUrl(`/comment/list?user_id=${'2'}&posting_id=${workSheetId}`);
+      console.log('변경');
+    }, 0); // 비동기적으로 URL 설정하여 재요청 유도
+  };
+
   useEffect(() => {
+    // triggerReload();
     if (isLoading || isCommentLoading) {
       console.log('..is Loading');
       setContent('Loading...');
     } else if (isError || isCommentError) {
       console.log(`Error: `, isError || isCommentError);
       setContent(`Error: ${isError || isCommentError}`);
-    } else {
-      if (isData && isData.data) {
-        console.log(`Success GET Contact: `, isData);
-        setContent(isData.data);
-      }
-      if (isCommentData && isCommentData.data) {
-        console.log(`Success POST Comment: `, isCommentData);
-        setContent(isCommentData.data);
-      }
+    } else if (isData && isData.data) {
+      console.log(`Success GET Contact: `, isData);
+      setContent(isData.data);
+    } else if (isCommentData && isCommentData.data) {
+      console.log(`Success POST Comment: `, isCommentData);
+      setContent(isCommentData.data);
     }
   }, [
     isLoading,
@@ -64,6 +77,7 @@ const VQnACommentList = ({ workSheetId }) => {
     isCommentError,
     isData,
     isCommentData,
+    isReloadState,
   ]);
 
   useEffect(() => {
@@ -72,6 +86,7 @@ const VQnACommentList = ({ workSheetId }) => {
       console.log(`Success POST Comment: `, isCommentData);
       setContent(isCommentData.data);
       setCommentUrl(null); // 초기화하여 재요청 방지
+      setReloadState(prev => !prev); // GET 요청 새로 고침
       setComment(''); // 요청 후 입력란 비우기
     }
   }, [isCommentData]);
@@ -125,6 +140,7 @@ const VQnACommentList = ({ workSheetId }) => {
               isLiked={comment.is_liked}
               likeCount={comment.like_count}
               dislikeCount={comment.dislike_count}
+              triggerReload={triggerReload}
             />
           ))
         ) : (
