@@ -1,37 +1,30 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import PropTypes from 'prop-types';
 import VQnAComment from './VQnAComment.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import '../css/VQnACommentList.scss';
 
-const VQnACommentList = () => {
+// props로 외부 컴포넌트에 params 가져올 것
+const VQnACommentList = ({ workSheetId }) => {
   const [isComment, setComment] = useState();
   const [isContent, setContent] = useState('');
-
-  // 해당 user_id, posting_id 다시 설정 필요
-  const requestData = {
-    // eslint-disable-next-line camelcase
-    user_id: 2, // 현재 조회하는 회원의 고유 ID
-    // eslint-disable-next-line camelcase
-    posting_id: 2, // 댓글 고유 ID
-  };
 
   // 해당 user_id, posting_id 다시 설정 필요
   const requestCommentData = {
     // eslint-disable-next-line camelcase
     user_id: 2,
     // eslint-disable-next-line camelcase
-    posting_id: 2,
+    posting_id: { workSheetId },
     content: isComment,
   };
 
   // GET API 수정 예정
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
-    '/comment/list',
+    `/comment/list?user_id=1&posting_id=${workSheetId}`,
     'GET',
-    requestData,
   );
 
+  // Post Comment
   const {
     isData: isCommentData,
     isLoading: isCommentLoading,
@@ -83,41 +76,6 @@ const VQnACommentList = () => {
     }
   }, [isCommentData]);
 
-  // 임시
-  // useEffect(() => {
-  //   const fetchDataWithBodyInGet = async () => {
-  //     const requestData = {
-  //       // eslint-disable-next-line camelcase
-  //       user_id: 1, // 현재 조회하는 회원의 고유 ID
-  //       // eslint-disable-next-line camelcase
-  //       posting_id: 2, // 댓글 고유 ID
-  //     };
-
-  //     try {
-  //       const response = await axios({
-  //         method: 'GET',
-  //         url: 'http://13.124.144.93:8080/api/comment/list',
-  //         transformRequest: [
-  //           /* eslint-disable no-param-reassign */
-  //           (data, headers) => {
-  //             headers['Content-Type'] = 'application/json';
-  //             // payload 확인용 로깅
-  //             console.log('Payload:', data);
-  //             return JSON.stringify(data);
-  //           } /* eslint-enable no-param-reassign */,
-  //         ],
-
-  //         data: requestData, // GET 요청에서 body에 데이터 포함
-  //       });
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchDataWithBodyInGet();
-  // }, []);
-
   return (
     <div className="qav-comment-group">
       <div className="qav-write-comment">
@@ -154,10 +112,31 @@ const VQnACommentList = () => {
           <div id="qav-comment-array-method">최신순</div>
         </div>
         {/* props필요 */}
-        <VQnAComment />
+        {/* <VQnAComment workSheetId={workSheetId} /> */}
+        {isData?.data?.comments?.length > 0 ? (
+          isData.data.comments.map(comment => (
+            <VQnAComment
+              key={comment.id}
+              comment_id={comment.id}
+              nickName={comment.nickname}
+              content={comment.content}
+              createdAt={comment.created_at}
+              isDisLiked={comment.is_disliked}
+              isLiked={comment.is_liked}
+              likeCount={comment.like_count}
+              dislikeCount={comment.dislike_count}
+            />
+          ))
+        ) : (
+          <p>No comments available</p>
+        )}
       </div>
     </div>
   );
+};
+
+VQnACommentList.propTypes = {
+  workSheetId: PropTypes.number.isRequired,
 };
 
 export default VQnACommentList;

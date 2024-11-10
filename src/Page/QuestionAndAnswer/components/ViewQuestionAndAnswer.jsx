@@ -135,7 +135,7 @@ const ViewQuestionAndAnswer = () => {
             </div>
           </div>
         </div>
-        <CommentList />
+        <CommentList workSheetId={id} />
       </div>
       <Footer />
     </div>
