@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import likeButton from '../image/like-btn.svg';
-// import badButton from '../image/bad-btn.svg';
 import PropTypes from 'prop-types';
 import '../css/VQnAComment.scss';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
