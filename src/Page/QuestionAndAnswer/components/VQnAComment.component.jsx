@@ -14,13 +14,21 @@ const VQnAComment = ({
   isLiked,
   likeCount,
   dislikeCount,
+  triggerReload,
 }) => {
-  const [isLike, setLiked] = useState(false);
-  const [isBad, setBad] = useState(false);
+  // 나의 버튼 상태 값
+  const [isLike, setLiked] = useState(isLiked);
+  const [isBad, setBad] = useState(isDisLiked);
   const [isLikedCount, setLikedCount] = useState(likeCount);
   const [isBadCount, setBadCount] = useState(dislikeCount);
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
-  console.log(userId);
+  // lint 문법을 피하기 위한 log
+  // eslint-disable-next-line camelcase
+  if (comment_id === null) {
+    console.log(userId);
+    console.log(isDisLiked);
+  }
+
   const requestLike = {
     // eslint-disable-next-line camelcase
     user_id: 2,
@@ -39,6 +47,7 @@ const VQnAComment = ({
     is_disliked: isBad,
   };
 
+  // 좋아요 FetchAPI 훅
   const {
     isData: isLikeData,
     isLoading: isLikeLoading,
@@ -46,6 +55,7 @@ const VQnAComment = ({
     setUrl: setLikeUrl,
   } = useFetchAPI('', 'POST', requestLike);
 
+  // 싫어요 FetchAPI 훅
   const {
     isData: isBadData,
     isLoading: isBadLoading,
@@ -54,34 +64,50 @@ const VQnAComment = ({
   } = useFetchAPI('', 'POST', requestBad);
 
   const likeButtonController = () => {
-    setLiked(!isLike);
-    setLikedCount(isLikedCount + 1);
+    setLiked(prev => !prev); // 상태 반전
+    // setLiked(isLike);
     setLikeUrl('/comment/likes');
+    triggerReload();
+    console.log(`현재 좋아요는 ${isLike}`);
   };
 
   const badButtonController = () => {
-    setBad(!isBad);
-    setBadCount(isBadCount + 1);
+    setBad(prev => !prev); // 상태 반전
+    // setBad(isBad);
+    // setBadCount(isBadCount + 1);
     setBadUrl('/comment/dislikes');
+    triggerReload();
+    console.log(`현재 싫어요는 ${isBad}`);
   };
 
-  // GET API 상태 표기
+  // useEffect(() => {
+  //   // isLike 상태 변경 시 트리거
+  //   if (isLike) {
+  //     triggerReload();
+  //   }
+  // }, [isLike]);
+
+  // useEffect(() => {
+  //   // isBad 상태 변경 시 트리거
+  //   if (isBad) {
+  //     triggerReload();
+  //   }
+  // }, [isBad]);
+
   useEffect(() => {
+    triggerReload();
     if (isLikeLoading || isBadLoading) {
       console.log('..is Loading');
       setContent('Loading...');
     } else if (isLikeError || isBadError) {
       console.log(`Error: `, isLikeError || isBadError);
       setContent(`Error: ${isLikeError || isBadError}`);
-    } else {
-      if (isLikeData && isLikeData.data) {
-        console.log(`Success Like Contact: `, isLikeData);
-        setContent(isLikeData.data);
-      }
-      if (isBadData && isBadData.data) {
-        console.log(`Success Bad Contact: `, isBadData);
-        setContent(isBadData.data);
-      }
+    } else if (isLikeData && isLikeData.data) {
+      console.log(`Success Like Contact: `, isLikeData);
+      setContent(isLikeData.data);
+    } else if (isBadData && isBadData.data) {
+      console.log(`Success Bad Contact: `, isBadData);
+      setContent(isBadData.data);
     }
   }, [
     isLikeLoading,
@@ -117,11 +143,14 @@ const VQnAComment = ({
                 aria-label="like-btn"
               />
               <div className="qav-comment-like">
+                {/* <div id="qav-comment-like-count">{likeCount}</div> */}
                 <div id="qav-comment-like-count">{likeCount}</div>
               </div>
             </div>
             <div id="qav-button-bad-group">
               <div
+                // API 점검 필요로 API에 따른 boolean 값으로 확인하지 않고 로컬 boolean 값으로 지정
+                // id={isDisLiked ? 'qav-clicked-bad' : 'qav-bad-button'}
                 id={isDisLiked ? 'qav-clicked-bad' : 'qav-bad-button'}
                 onKeyDown={() => {}}
                 onClick={() => {
@@ -132,6 +161,7 @@ const VQnAComment = ({
                 aria-label="bad-btn"
               />
               <div className="qav-comment-bad">
+                {/* <div id="qav-comment-bad-count">{dislikeCount}</div> */}
                 <div id="qav-comment-bad-count">{dislikeCount}</div>
               </div>
             </div>
@@ -154,6 +184,7 @@ VQnAComment.propTypes = {
   isLiked: PropTypes.bool.isRequired,
   likeCount: PropTypes.number.isRequired,
   dislikeCount: PropTypes.number.isRequired,
+  triggerReload: PropTypes.func.isRequired,
 };
 
 export default VQnAComment;
