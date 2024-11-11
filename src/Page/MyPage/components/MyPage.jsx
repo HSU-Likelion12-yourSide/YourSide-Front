@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import '../css/MyPage.scss';
+import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import MyPageBookMark from './MyPage.BookMark.component';
 import MyPagePosting from './MyPage.Posting.component';
 import MyPageComment from './MyPage.Comment.component';
@@ -9,6 +10,9 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 
 const MyPage = () => {
+  const userId = 2;
+  const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  const [isUser, setUser] = useState();
   const [isContentState, setContentState] = useState(false);
   const [isContent, setContent] = useState({
     myResult: true,
@@ -28,31 +32,56 @@ const MyPage = () => {
   };
 
   const renderContent = () => {
-    if (isContent.myResult) return <MyPageResult />;
-    if (isContent.myPosting) return <MyPagePosting />;
-    if (isContent.myComment) return <MyPageComment />;
-    if (isContent.myBookMark) return <MyPageBookMark />;
+    if (isContent.myResult) return <MyPageResult userId={userId} />;
+    if (isContent.myPosting) return <MyPagePosting userId={userId} />;
+    if (isContent.myComment) return <MyPageComment userId={userId} />;
+    if (isContent.myBookMark) return <MyPageBookMark userId={userId} />;
     return <div>선택한 항목이 없습니다.</div>;
   };
+
+  useEffect(() => {
+    setUrl(`/mypage/${userId}`);
+    if (isLoading) {
+      console.log('..is Loading');
+      setUser('Loading...');
+    } else if (isError) {
+      console.log(`is Error : `, isError);
+      setUser(`Error: `, isError);
+    } else if (isData && isData.data) {
+      console.log(`Success Contact : `, isData);
+      setUser(isData.data);
+      // if (isData.status === 200 || isData.status === 201) {
+      // }
+    } else {
+      setUser(null);
+    }
+  }, [isLoading, isError, isData]);
 
   return (
     <div className="MyPage">
       <Header />
       <div className="MyPage-container">
         <div className="MyPage-profile">
-          <div id="MyPage-nickname">사용자 닉네임</div>
+          <div id="MyPage-nickname">
+            {isData && isData.data ? isUser.nickname : '코카콜라'}
+          </div>
           <div className="MyPage-current">
             <div id="MyPage-posting">
               <span>내 개시글</span>
-              <span>999개</span>
+              <span>
+                {isData && isData.data ? isUser.posting_count : '0'}개
+              </span>
             </div>
             <div id="MyPage-question">
               <span>내 질문</span>
-              <span>999개</span>
+              {/* API 수정 필요 */}
+              <span>{isData && isData.data ? isUser.like_count : '0'}개</span>
             </div>
             <div id="MyPage-comment">
               <span>내 답변</span>
-              <span>999개</span>
+              <span>
+                {isData && isData.data ? isUser.comment_count : '0'}개
+              </span>
             </div>
           </div>
         </div>
