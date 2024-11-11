@@ -9,34 +9,36 @@ const ModalResultList = () => {
   const { setModalType } = useGlobalState();
 
   return (
-    <div className="modal-default">
+    <div className="modal-result-list">
       <div id="modal-header">
         <div id="modal-title">나의 결과지</div>
-        <div
-          id="modal-get"
-          onKeyDown={() => {
-            console.log('test');
-          }}
-          role="button"
-          tabIndex="0"
-          onClick={() => {
-            modalStateController(isModalState, setModalState);
-          }}
-        >
-          가져오기
-        </div>
-        <div
-          id="modal-close"
-          onKeyDown={() => {
-            console.log('test');
-          }} // 키보드 지원
-          role="button"
-          tabIndex="0"
-          onClick={() => {
-            modalStateController(isModalState, setModalState);
-          }}
-        >
-          <img src={closeIcon} alt="x" id="modal-closeicon" />
+        <div id="modal-header-close">
+          <div
+            id="modal-get"
+            onKeyDown={() => {
+              console.log('test');
+            }}
+            role="button"
+            tabIndex="0"
+            onClick={() => {
+              modalStateController(isModalState, setModalState);
+            }}
+          >
+            가져오기
+          </div>
+          <div
+            id="modal-close"
+            onKeyDown={() => {
+              console.log('test');
+            }} // 키보드 지원
+            role="button"
+            tabIndex="0"
+            onClick={() => {
+              modalStateController(isModalState, setModalState);
+            }}
+          >
+            <img src={closeIcon} alt="x" id="modal-closeicon" />
+          </div>
         </div>
       </div>
       <div id="modal-contents">

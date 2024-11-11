@@ -29,7 +29,7 @@ const ModalResult = () => {
 
   const handleShare = () => {
     // 공유하기를 누르면 서버에 PUT 요청을 보냄
-    console.log('WorksheetID: ', isWorkSheetId);
+    console.log('workSheetId: ', isWorkSheetId);
     setUrl(`worksheet/${isWorkSheetId}`);
   };
 
