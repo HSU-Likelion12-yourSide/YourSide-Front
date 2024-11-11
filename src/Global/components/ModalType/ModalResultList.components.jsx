@@ -61,6 +61,7 @@ const ModalResultList = () => {
             role="button"
             tabIndex="0"
             onClick={() => {
+              setSelectedId(null);
               modalStateController(isModalState, setModalState);
             }}
           >
