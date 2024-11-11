@@ -50,7 +50,6 @@ const VQnAComment = ({
     is_disliked: isBad,
   };
 
-
   // 좋아요 FetchAPI 훅
   const {
     isData: isLikeData,

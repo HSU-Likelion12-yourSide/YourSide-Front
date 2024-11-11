@@ -7,8 +7,10 @@ import ContractReview from './Page/ContractReview/components/ContractReview';
 import QuestionAndAnswer from './Page/QuestionAndAnswer/components/QuestionAndAnswer';
 import ViewQuestionAndAnswer from './Page/QuestionAndAnswer/components/ViewQuestionAndAnswer';
 import WorkArrangement from './Page/WorkArrangement/components/WorkArrangement';
+import WorkArrangementList from './Page/WorkArrangement/components/WorkArrangementList';
 import ViewMyWork from './Page/WorkArrangement/components/ViewMyWork';
 import ViewMyWorkResult from './Page/WorkArrangement/components/ViewMyWorkResult';
+import ViewMyWorkResultCalculate from './Page/WorkArrangement/components/ViewMyWorkResultCalculate';
 import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/components/SignUp';
 import FindUser from './Page/Login/components/FindUser';
@@ -33,12 +35,20 @@ const App = () => {
         <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
-          path="/ViewQuestionAndAnswer/:id"
+          path="/ViewQuestionAndAnswer/:workSheetId"
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
+        <Route path="/WorkArrangement/List" element={<WorkArrangementList />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
-        <Route path="/ViewMyWorkResult" element={<ViewMyWorkResult />} />
+        <Route
+          path="/ViewMyWorkResult/:workSheetId"
+          element={<ViewMyWorkResult />}
+        />
+        <Route
+          path="/ViewMyWorkResult"
+          element={<ViewMyWorkResultCalculate />}
+        />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/FindUser" element={<FindUser />} />

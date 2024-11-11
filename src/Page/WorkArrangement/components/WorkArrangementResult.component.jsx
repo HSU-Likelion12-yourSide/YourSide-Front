@@ -1,25 +1,57 @@
 import React from 'react';
-import '../css/WorkArrangementResult.scss';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import '../css/WorkArrangementResult.scss';
+import VmwrOptionButton from './VmwrButton.component';
 import navigateController from '../../../Global/function/navigateController';
 import arrowRight from '../image/arrow-right.svg';
 
-const WorkArrangementResult = () => {
+const WorkArrangementResult = ({
+  id,
+  title,
+  content,
+  extraPay,
+  weekPay,
+  nightPay,
+  overtimePay,
+  holidayPay,
+}) => {
   const navigate = useNavigate();
+
+  const resultState = [extraPay, weekPay, nightPay, overtimePay, holidayPay];
+
+  const OptionsList = [
+    '가산수당',
+    '주휴수당',
+    '야간근로수당',
+    '연장근로수당',
+    '휴일근로수당',
+  ];
+
+  // 배열을 두 줄로 나눔
+  const firstRowOptions = OptionsList.slice(0, 3);
+  const secondRowOptions = OptionsList.slice(3);
+
+  // content를 split
+  const splitContent = content
+    .trim()
+    .split('니다.')
+    .filter(el => el !== '')
+    .map(el => `${el}니다.`);
 
   return (
     <div className="wa-result">
       <div className="wa-control">
-        <div id="wa-title">미도인 성수 근로 결과지</div>
+        <div id="wa-title">{title} 근로 결과지</div>
         <div
           id="wa-short-cut"
           onKeyDown={() => {}}
           onClick={() => {
             /* eslint-disable-next-line no-alert */
-            alert(
-              '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewMyWorkResult로 넘거 갑니다.',
-            );
-            navigateController(navigate, '/ViewMyWorkResult');
+            // alert( // 경고문 불필요해서 주석처리
+            //   '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewMyWorkResult로 넘거 갑니다.',
+            // );
+            navigateController(navigate, `/ViewMyWorkResult/${id}`);
           }}
           role="button"
           tabIndex="0"
@@ -32,28 +64,49 @@ const WorkArrangementResult = () => {
       </div>
       <div className="wa-group">
         <div className="wa-description">
-          <div>
-            상시 5인 미만 사업장에서 근무하시므로 추가적인 가산 수당이 없습니다.
-          </div>
-          <div>
-            상시 5인 미만 사업장에서 근무하시므로 추가적인 가산 수당이 없습니다.
-          </div>
-          <div>
-            상시 5인 미만 사업장에서 근무하시므로 추가적인 가산 수당이 없습니다.
-          </div>
-          <div>
-            상시 5인 미만 사업장에서 근무하시므로 추가적인 가산 수당이 없습니다.
-          </div>
+          {splitContent.slice(0, 4).map((line, index) => (
+            <div key={index}>{index === 3 ? `${line}..` : line}</div>
+          ))}
         </div>
         <div className="wa-options">
           <div className="wa-contents">
             <div className="wa-title">발생 요건들</div>
-            <div id="wa-option">주휴수당</div>
+            <div className="wa-list">
+              <div className="wa-row">
+                {firstRowOptions.map((option, index) => (
+                  <VmwrOptionButton
+                    key={option}
+                    resultState={resultState[index] ? 'check' : 'uncheck'}
+                    option={option}
+                  />
+                ))}
+              </div>
+              <div className="wa-row">
+                {secondRowOptions.map((option, index) => (
+                  <VmwrOptionButton
+                    key={option}
+                    resultState={resultState[index + 3] ? 'check' : 'uncheck'}
+                    option={option}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+WorkArrangementResult.propTypes = {
+  id: PropTypes.number.isRequired, // id string
+  title: PropTypes.string.isRequired, // title string
+  content: PropTypes.string.isRequired, // content string
+  extraPay: PropTypes.bool.isRequired, // extraPay bool
+  weekPay: PropTypes.bool.isRequired, // weekPay bool
+  nightPay: PropTypes.bool.isRequired, // nightPay bool
+  overtimePay: PropTypes.bool.isRequired, // overtimePay bool
+  holidayPay: PropTypes.bool.isRequired, // holidayPay bool
 };
 
 export default WorkArrangementResult;

@@ -26,19 +26,41 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ resultId }) => {
+const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
+  const [stringifiedValues, setStringifiedValues] = useState('');
+
+  // fetch 상태 초기 값
+  useEffect(() => {
+    if (postData && postData.data && postData.data.content) {
+      const values = Object.values(postData.data.content).join('');
+      console.log('Stringified Values:', values);
+      setStringifiedValues(values);
+    }
+  }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
-    console.log(resultId);
-    if (resultId !== null && resultId !== undefined) {
-      console.log(`WorkSheet-Id is ${resultId}`);
-      setUrl(`worksheet/${resultId}`);
-    } else if (!resultId) {
+    console.log(workSheetId);
+    if (workSheetId !== null && workSheetId !== undefined) {
+      console.log(`WorkSheet-Id is ${workSheetId}`);
+      setUrl(`worksheet/${workSheetId}`);
+    } else if (!workSheetId) {
       console.error(`!Error: lost WorkSheet-Id. Check WorkSheet-Id`);
     }
-  }, [resultId]);
+  }, [workSheetId]);
+
+  useEffect(() => {
+    if (postData && postData.data && postData.data.content) {
+      const values = Object.values(postData.data.content).join('');
+      console.log('content:', values);
+      setStringifiedValues(values);
+
+      if (onResultValues) {
+        onResultValues(values);
+      }
+    }
+  }, [postData, onResultValues]);
 
   // fetch 상태 초기 값
   useEffect(() => {
@@ -48,16 +70,21 @@ const VmwrResult = ({ resultId }) => {
     } else if (isError) {
       console.log(`is Error : ${isError}`);
       setContent(`Error: ${isError}`);
-    } else if (isData) {
+    } else if (isData && isData.data) {
       setContent(isData);
-      console.log(`Success, WorkSheet-Id ${resultId} Contact: `, isData.data);
+      console.log(
+        `Success, WorkSheet-Id ${workSheetId} Contact: `,
+        isData.data,
+      );
+    } else if (postData && postData.data) {
+      setContent(postData);
+      console.log(`Success, content is : `, postData);
     } else {
       setContent(null);
     }
-  }, [isLoading, isError, isData]);
+  }, [isLoading, isError, isData, postData]);
 
   // 데이터 검증이 필요
-
   let ResultContents = '';
   let resultState = [];
   if (isData && isData.data) {
@@ -71,6 +98,18 @@ const VmwrResult = ({ resultId }) => {
       isData.data.night_pay,
       isData.data.overtime_pay,
       isData.data.holiday_pay,
+    ];
+  } else if (postData && postData.data) {
+    ResultContents = stringifiedValues
+      .trim()
+      .split('니다.')
+      .filter(el => el !== ''); // 빈 문자열 제거
+    resultState = [
+      postData.extra_pay,
+      postData.week_pay,
+      postData.night_pay,
+      postData.overtime_pay,
+      postData.holiday_pay,
     ];
   } else {
     // 데이터가 없을 경우 기본값 설정
@@ -88,21 +127,42 @@ const VmwrResult = ({ resultId }) => {
   return (
     <div className="vmwr-container">
       <div className="vmwr-contents">
-        <div className="vmwr-result-title">근로 결과지</div>
+        <div className="vmwr-result-title">
+          {isData && isData.data
+            ? `${isData.data.title} 근로 결과지`
+            : '근로 결과지'}
+        </div>
         <div>
-          {isData &&
-            isData.data &&
-            ResultContents.map(el => {
-              return <div key={el}>{el}니다.</div>;
-            })}
+          {(isData && isData.data && ResultContents.length > 0) ||
+          (postData && postData.data && ResultContents.length > 0) ? (
+            ResultContents.map((el, index) => {
+              const isOverFive =
+                ['야간근로수당', '연장근로수당', '휴일근로수당'].some(keyword =>
+                  el.includes(keyword),
+                ) &&
+                (postData?.over_five === false ||
+                  isData?.data?.content?.includes(
+                    '5인 미만 사업장에서 근무하시기에',
+                  ));
+              return (
+                <div
+                  key={index}
+                  className={isOverFive ? 'vmwr-result-overFive' : ''}
+                >
+                  {el}니다.
+                </div>
+              );
+            })
+          ) : (
+            <div>데이터가 없습니다.</div>
+          )}
         </div>
         {/* <div>{content}</div> */}
       </div>
       <div className="vmwr-group">
         <div className="vmwr-options">발생 요건들</div>
         <div className="vmwr-list">
-          {isData &&
-            isData.data &&
+          {((isData && isData.data) || (postData && postData.data)) &&
             OptionsList.map((option, index) => (
               <VmwrOptionButton
                 key={option}
@@ -117,7 +177,47 @@ const VmwrResult = ({ resultId }) => {
 };
 
 VmwrResult.propTypes = {
-  resultId: PropTypes.number.isRequired,
+  onResultValues: PropTypes.func,
+  workSheetId: PropTypes.number,
+  postData: PropTypes.shape({
+    data: PropTypes.shape({
+      content: PropTypes.shape({
+        holidayPayMessage: PropTypes.string,
+        incomeTasMessage: PropTypes.string,
+        insuranceMessage: PropTypes.string,
+        nightPayMessage: PropTypes.string,
+        overFiveMessage: PropTypes.string,
+        overtimePayMessage: PropTypes.string,
+        totalPayMessage: PropTypes.string,
+        weekPayMessage: PropTypes.string,
+      }),
+    }),
+    /* eslint-disable camelcase */
+    extra_pay: PropTypes.bool,
+    holiday_money: PropTypes.number,
+    holiday_pay: PropTypes.bool,
+    holiday_work: PropTypes.number,
+    income_tax: PropTypes.bool,
+    major_insurance: PropTypes.bool,
+    night_money: PropTypes.number,
+    night_pay: PropTypes.bool,
+    night_work: PropTypes.number,
+    over_five: PropTypes.bool,
+    overtime_money: PropTypes.number,
+    overtime_pay: PropTypes.bool,
+    overtime_work: PropTypes.number,
+    total_pay: PropTypes.number,
+    week_money: PropTypes.number,
+    week_pay: PropTypes.bool,
+    week_work: PropTypes.number,
+    /* eslint-able camelcase */
+  }),
+};
+
+VmwrResult.defaultProps = {
+  onResultValues: null,
+  workSheetId: null,
+  postData: null, // 기본값 설정
 };
 
 export default VmwrResult;

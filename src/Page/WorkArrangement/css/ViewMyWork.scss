@@ -94,6 +94,10 @@
         line-height: 22px;
 
         .vmw-input-group {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
           #input-styled {
             border: 1px solid #E5E5EC;
             width: 22px;
@@ -175,5 +179,42 @@
     line-height: 28px;
     letter-spacing: -0.025em;
     margin-bottom: 120px;
+    border: none;
+
+    &.active {
+      background-color: #1bbfc1;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
+
+input[type="radio"] {
+  appearance: none; // 기본 브라우저 스타일 제거
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #E5E5EC;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  margin: 0 0 0 8px;
+
+  &:checked {
+    background-color: #204598;
+    border-color: #204598;
+
+    &::after {
+      font-family: 'Pretendard';
+      content: '✓'; // 체크 표시
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); // 중앙 정렬
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
   }
 }
