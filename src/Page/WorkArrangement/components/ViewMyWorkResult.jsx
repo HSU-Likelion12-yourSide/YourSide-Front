@@ -31,7 +31,7 @@ const ViewMyWorkResult = () => {
       setContent(`Error: ${isError}`);
     } else if (isData) {
       console.log(`Success Contact : ${isData}`);
-      setContent(<Result resultId={workSheetId} />);
+      setContent(<Result workSheetId={workSheetId} />);
     } else {
       setContent(null);
     }

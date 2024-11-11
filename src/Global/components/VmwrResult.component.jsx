@@ -133,14 +133,15 @@ const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
             : '근로 결과지'}
         </div>
         <div>
-          {((isData && isData.data) || (postData && postData.data)) &&
+          {(isData && isData.data && ResultContents.length > 0) ||
+          (postData && postData.data && ResultContents.length > 0) ? (
             ResultContents.map((el, index) => {
               const isOverFive =
                 ['야간근로수당', '연장근로수당', '휴일근로수당'].some(keyword =>
                   el.includes(keyword),
                 ) &&
                 (postData?.over_five === false ||
-                  isData.data.content.includes(
+                  isData?.data?.content?.includes(
                     '5인 미만 사업장에서 근무하시기에',
                   ));
               return (
@@ -151,7 +152,10 @@ const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
                   {el}니다.
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div>데이터가 없습니다.</div>
+          )}
         </div>
         {/* <div>{content}</div> */}
       </div>
