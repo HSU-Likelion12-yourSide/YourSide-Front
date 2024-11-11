@@ -29,7 +29,7 @@ const ModalGetResult = () => {
   }, [isLoading, isError, isData]);
 
   return (
-    <div className="modal-default">
+    <div className="modal-get-result">
       <div id="modal-header">
         <div
           className="modal-back"

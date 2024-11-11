@@ -83,7 +83,7 @@ const ModalResult = ({ postData, postContent }) => {
   }, [isLoading, isError, isData]);
 
   return (
-    <div className="modal-default">
+    <div className="modal-result">
       <div id="modal-title">결과지 이름</div>
       <div className="modal-content">
         <input

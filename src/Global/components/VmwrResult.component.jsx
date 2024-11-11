@@ -26,7 +26,7 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ resultId, postData, onResultValues }) => {
+const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
   const [stringifiedValues, setStringifiedValues] = useState('');
@@ -41,14 +41,14 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
   }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
-    console.log(resultId);
-    if (resultId !== null && resultId !== undefined) {
-      console.log(`WorkSheet-Id is ${resultId}`);
-      setUrl(`worksheet/${resultId}`);
-    } else if (!resultId) {
+    console.log(workSheetId);
+    if (workSheetId !== null && workSheetId !== undefined) {
+      console.log(`WorkSheet-Id is ${workSheetId}`);
+      setUrl(`worksheet/${workSheetId}`);
+    } else if (!workSheetId) {
       console.error(`!Error: lost WorkSheet-Id. Check WorkSheet-Id`);
     }
-  }, [resultId]);
+  }, [workSheetId]);
 
   useEffect(() => {
     if (postData && postData.data && postData.data.content) {
@@ -72,7 +72,10 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
       setContent(`Error: ${isError}`);
     } else if (isData && isData.data) {
       setContent(isData);
-      console.log(`Success, WorkSheet-Id ${resultId} Contact: `, isData.data);
+      console.log(
+        `Success, WorkSheet-Id ${workSheetId} Contact: `,
+        isData.data,
+      );
     } else if (postData && postData.data) {
       setContent(postData);
       console.log(`Success, content is : `, postData);
@@ -130,14 +133,15 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
             : '근로 결과지'}
         </div>
         <div>
-          {((isData && isData.data) || (postData && postData.data)) &&
+          {(isData && isData.data && ResultContents.length > 0) ||
+          (postData && postData.data && ResultContents.length > 0) ? (
             ResultContents.map((el, index) => {
               const isOverFive =
                 ['야간근로수당', '연장근로수당', '휴일근로수당'].some(keyword =>
                   el.includes(keyword),
                 ) &&
                 (postData?.over_five === false ||
-                  isData.data.content.includes(
+                  isData?.data?.content?.includes(
                     '5인 미만 사업장에서 근무하시기에',
                   ));
               return (
@@ -148,7 +152,10 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
                   {el}니다.
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div>데이터가 없습니다.</div>
+          )}
         </div>
         {/* <div>{content}</div> */}
       </div>
@@ -171,7 +178,7 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
 
 VmwrResult.propTypes = {
   onResultValues: PropTypes.func,
-  resultId: PropTypes.number,
+  workSheetId: PropTypes.number,
   postData: PropTypes.shape({
     data: PropTypes.shape({
       content: PropTypes.shape({
@@ -209,7 +216,7 @@ VmwrResult.propTypes = {
 
 VmwrResult.defaultProps = {
   onResultValues: null,
-  resultId: null,
+  workSheetId: null,
   postData: null, // 기본값 설정
 };
 
