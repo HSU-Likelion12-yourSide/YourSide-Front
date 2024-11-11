@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
-          path="/ViewQuestionAndAnswer/:worksheetid"
+          path="/ViewQuestionAndAnswer/:worksheetId"
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
