@@ -6,8 +6,8 @@ import closeIcon from '../../image/modal-closeIcon.svg';
 import useFetchAPI from '../../API/Hooks/useFetchAPI';
 
 const ModalResultList = () => {
-  const { isModalState, setModalState } = useGlobalState();
-  const { setModalType } = useGlobalState();
+  const { isModalState, setModalState, setModalType, setWorkSheetId } =
+    useGlobalState();
   const [isContent, setContent] = useState('');
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
 
@@ -65,7 +65,7 @@ const ModalResultList = () => {
         {isLoading && <p>Loading...</p>}
         {!isLoading && isError && <p>Error: {isError.message}</p>}
         {!isLoading && isData && isData.data
-          ? isData.data.slice(0, 4).map(item => (
+          ? isData.data.slice(27, 31).map(item => (
               <div className="modal-resultbox">
                 <div
                   className="modal-resultname"
@@ -74,7 +74,20 @@ const ModalResultList = () => {
                 >
                   임시 제목
                 </div>
-                <div className="modal-viewdetails">자세히 보기 &gt;</div>
+                <div
+                  className="modal-viewdetails"
+                  onKeyDown={() => {
+                    console.log('test');
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  onClick={() => {
+                    setWorkSheetId(item.worksheet_id); // worksheet_id 설정
+                    setModalType('GetResult'); // ModalGetResult로 전환
+                  }}
+                >
+                  자세히 보기 &gt;
+                </div>{' '}
               </div>
             ))
           : !isLoading && !isError && <p>No data available</p>}
