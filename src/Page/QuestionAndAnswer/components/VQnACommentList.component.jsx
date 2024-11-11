@@ -39,21 +39,22 @@ const VQnACommentList = ({ workSheetId }) => {
   const postComment = () => {
     if (isComment.trim()) {
       setCommentUrl('/comment'); // 답변이 있을 때만 URL을 설정하여 POST 요청 발생
+      window.location.reload();
     } else {
       // alert('댓글 내용을 입력해주세요.');
     }
   };
 
   // reload를 위한 함수
-  const triggerReload = () => {
-    console.log('isReloadState or workSheetId changed, setting URL');
-    setReloadState(prev => !prev); // 상태를 토글하여 재조회 트리거
-    setUrl(''); // URL을 비워서 상태 초기화
-    setTimeout(() => {
-      setUrl(`/comment/list?user_id=${'2'}&posting_id=${workSheetId}`);
-      console.log('변경');
-    }, 0); // 비동기적으로 URL 설정하여 재요청 유도
-  };
+  // const triggerReload = () => {
+  //   console.log('isReloadState or workSheetId changed, setting URL');
+  //   setReloadState(prev => !prev); // 상태를 토글하여 재조회 트리거
+  //   setUrl(''); // URL을 비워서 상태 초기화
+  //   setTimeout(() => {
+  //     setUrl(`/comment/list?user_id=${'2'}&posting_id=${workSheetId}`);
+  //     console.log('변경');
+  //   }, 0); // 비동기적으로 URL 설정하여 재요청 유도
+  // };
 
   useEffect(() => {
     // triggerReload();
@@ -111,7 +112,7 @@ const VQnACommentList = ({ workSheetId }) => {
               onClick={() => {
                 console.log('click');
                 postComment();
-                triggerReload();
+                // triggerReload();
               }}
               role="button"
               tabIndex="0"
@@ -141,7 +142,7 @@ const VQnACommentList = ({ workSheetId }) => {
               isLiked={comment.is_liked}
               likeCount={comment.like_count}
               dislikeCount={comment.dislike_count}
-              triggerReload={triggerReload}
+              // triggerReload={triggerReload}
             />
           ))
         ) : (
