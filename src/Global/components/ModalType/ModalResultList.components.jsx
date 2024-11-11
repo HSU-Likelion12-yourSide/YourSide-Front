@@ -6,10 +6,15 @@ import closeIcon from '../../image/modal-closeIcon.svg';
 import useFetchAPI from '../../API/Hooks/useFetchAPI';
 
 const ModalResultList = () => {
-  const { isModalState, setModalState, setModalType, setWorkSheetId } =
-    useGlobalState();
+  const {
+    isModalState,
+    setModalState,
+    setModalType,
+    setWorkSheetId,
+    isSelectedId,
+    setSelectedId,
+  } = useGlobalState();
   const [isContent, setContent] = useState('');
-  const [selectedId, setSelectedId] = useState(null);
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
 
   // API 요청을 위한 URL 설정
@@ -43,6 +48,7 @@ const ModalResultList = () => {
             tabIndex="0"
             onClick={() => {
               modalStateController(isModalState, setModalState);
+              setSelectedId(isSelectedId);
             }}
           >
             가져오기
@@ -69,7 +75,7 @@ const ModalResultList = () => {
           ? isData.data.slice(26, 31).map(item => (
               <div
                 className={`modal-resultbox ${
-                  selectedId === item.worksheet_id ? 'selected' : ''
+                  isSelectedId === item.worksheet_id ? 'selected' : ''
                 }`}
                 onKeyDown={() => {
                   console.log('test');
@@ -97,7 +103,7 @@ const ModalResultList = () => {
                   }}
                 >
                   자세히 보기 &gt;
-                </div>{' '}
+                </div>
               </div>
             ))
           : !isLoading && !isError && <p>No data available</p>}

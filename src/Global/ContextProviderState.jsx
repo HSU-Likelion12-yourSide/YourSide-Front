@@ -9,6 +9,7 @@ const ContextProviderState = ({ children }) => {
   const [isModalType, setModalType] = useState('');
   const [isModalState, setModalState] = useState(false);
   const [isWorkSheetId, setWorkSheetId] = useState();
+  const [isSelectedId, setSelectedId] = useState();
   const [isUser, setUser] = useState();
   const value = useMemo(
     () => ({
@@ -22,6 +23,8 @@ const ContextProviderState = ({ children }) => {
       setModalState,
       isWorkSheetId,
       setWorkSheetId,
+      isSelectedId,
+      setSelectedId,
       isUser,
       setUser,
     }),
@@ -36,6 +39,8 @@ const ContextProviderState = ({ children }) => {
       setModalState,
       isWorkSheetId,
       setWorkSheetId,
+      isSelectedId,
+      setSelectedId,
       isUser,
       setUser,
     ],

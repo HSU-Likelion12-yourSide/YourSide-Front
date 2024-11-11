@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from 'react';
 import React from 'react';
 import '../css/QnAPosting.scss';
 import Header from '../../Header/components/Header';
@@ -9,38 +8,28 @@ import ModalGetResult from '../../../Global/components/ModalType/ModalGetResult.
 import modalStateController from '../../../Global/function/modalStateController';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import plusIcon from '../image/plusIcon.svg';
-// 이 외에 아래 코드에서 주석처리 된 부분은 내 결과지를 가져오지 않을 때의 기본 화면
-// import VmwrResult from '../../../Global/components/VmwrResult.component';
+import VmwrResult from '../../../Global/components/VmwrResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
-// const Result = VmwrResult;
+const Result = VmwrResult;
 
 const QnAPosing = () => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI('/results', 'GET');
-  // const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
 
-  const { isModalState, setModalState, isModalType, setModalType } =
-    useGlobalState();
+  const {
+    isModalState,
+    setModalState,
+    isModalType,
+    setModalType,
+    isSelectedId,
+  } = useGlobalState();
 
   let ModalComponent = ModalResultList;
   if (isModalType === 'GetResult') {
     ModalComponent = ModalGetResult;
   }
 
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     console.log('..is Loading');
-  //     setContent('Loading...');
-  //   } else if (isError) {
-  //     console.log(`is Error : ${isError}`);
-  //     setContent(`Error: ${isError}`);
-  //   } else if (isData) {
-  //     console.log(`Success Contact : ${isData}`);
-  //     setContent(<Result data={isData} />);
-  //   } else {
-  //     setContent(null);
-  //   }
-  // }, [isLoading, isError, isData]);
+  console.log(isSelectedId);
 
   return (
     <div className="postingqna">
@@ -82,21 +71,26 @@ const QnAPosing = () => {
         </div>
         <div className="postingqna-myresult-container">
           <div id="postingqna-title">내 결과지 가져오기(선택)</div>
-          <div
-            className="postingqna-myresult-none"
-            onKeyDown={() => {
-              console.log('test');
-            }}
-            role="button"
-            tabIndex="0"
-            onClick={() => {
-              setModalType('ResultList');
-              modalStateController(isModalState, setModalState);
-            }}
-          >
-            <img src={plusIcon} alt="+" id="postingqna-plusIcon" />
-          </div>
-          {/* <div className="postingqna-vmwr-result">{content}</div> */}
+          {isSelectedId ? (
+            <div className="postingqna-vmwr-result">
+              <Result workSheetId={isSelectedId} />
+            </div>
+          ) : (
+            <div
+              className="postingqna-myresult-none"
+              onKeyDown={() => {
+                console.log('test');
+              }}
+              role="button"
+              tabIndex="0"
+              onClick={() => {
+                setModalType('ResultList');
+                modalStateController(isModalState, setModalState);
+              }}
+            >
+              <img src={plusIcon} alt="+" id="postingqna-plusIcon" />
+            </div>
+          )}
         </div>
       </div>
       <div id="postingqna-group">
