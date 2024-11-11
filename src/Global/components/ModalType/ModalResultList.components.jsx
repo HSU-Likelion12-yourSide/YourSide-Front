@@ -9,6 +9,7 @@ const ModalResultList = () => {
   const { isModalState, setModalState, setModalType, setWorkSheetId } =
     useGlobalState();
   const [isContent, setContent] = useState('');
+  const [selectedId, setSelectedId] = useState(null);
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
 
   // API 요청을 위한 URL 설정
@@ -65,13 +66,22 @@ const ModalResultList = () => {
         {isLoading && <p>Loading...</p>}
         {!isLoading && isError && <p>Error: {isError.message}</p>}
         {!isLoading && isData && isData.data
-          ? isData.data.slice(27, 31).map(item => (
-              <div className="modal-resultbox">
-                <div
-                  className="modal-resultname"
-                  key={item.id}
-                  id={item.worksheet_id}
-                >
+          ? isData.data.slice(26, 31).map(item => (
+              <div
+                className={`modal-resultbox ${
+                  selectedId === item.worksheet_id ? 'selected' : ''
+                }`}
+                onKeyDown={() => {
+                  console.log('test');
+                }}
+                key={item.worksheet_id}
+                role="button"
+                tabIndex="0"
+                onClick={() => {
+                  setSelectedId(item.worksheet_id);
+                }}
+              >
+                <div className="modal-resultname" id={item.worksheet_id}>
                   임시 제목
                 </div>
                 <div
@@ -82,8 +92,8 @@ const ModalResultList = () => {
                   role="button"
                   tabIndex="0"
                   onClick={() => {
-                    setWorkSheetId(item.worksheet_id); // worksheet_id 설정
-                    setModalType('GetResult'); // ModalGetResult로 전환
+                    setWorkSheetId(item.worksheet_id);
+                    setModalType('GetResult');
                   }}
                 >
                   자세히 보기 &gt;
