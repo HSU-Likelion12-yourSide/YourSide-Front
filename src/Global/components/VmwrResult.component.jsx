@@ -26,7 +26,7 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ resultId, postData, onResultValues }) => {
+const VmwrResult = ({ worksheetId, postData, onResultValues }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
   const [stringifiedValues, setStringifiedValues] = useState('');
@@ -41,14 +41,14 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
   }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
-    console.log(resultId);
-    if (resultId !== null && resultId !== undefined) {
-      console.log(`WorkSheet-Id is ${resultId}`);
-      setUrl(`worksheet/${resultId}`);
-    } else if (!resultId) {
+    console.log(worksheetId);
+    if (worksheetId !== null && worksheetId !== undefined) {
+      console.log(`WorkSheet-Id is ${worksheetId}`);
+      setUrl(`worksheet/${worksheetId}`);
+    } else if (!worksheetId) {
       console.error(`!Error: lost WorkSheet-Id. Check WorkSheet-Id`);
     }
-  }, [resultId]);
+  }, [worksheetId]);
 
   useEffect(() => {
     if (postData && postData.data && postData.data.content) {
@@ -72,7 +72,10 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
       setContent(`Error: ${isError}`);
     } else if (isData && isData.data) {
       setContent(isData);
-      console.log(`Success, WorkSheet-Id ${resultId} Contact: `, isData.data);
+      console.log(
+        `Success, WorkSheet-Id ${worksheetId} Contact: `,
+        isData.data,
+      );
     } else if (postData && postData.data) {
       setContent(postData);
       console.log(`Success, content is : `, postData);
@@ -171,7 +174,7 @@ const VmwrResult = ({ resultId, postData, onResultValues }) => {
 
 VmwrResult.propTypes = {
   onResultValues: PropTypes.func,
-  resultId: PropTypes.number,
+  worksheetId: PropTypes.number,
   postData: PropTypes.shape({
     data: PropTypes.shape({
       content: PropTypes.shape({
@@ -209,7 +212,7 @@ VmwrResult.propTypes = {
 
 VmwrResult.defaultProps = {
   onResultValues: null,
-  resultId: null,
+  worksheetId: null,
   postData: null, // 기본값 설정
 };
 

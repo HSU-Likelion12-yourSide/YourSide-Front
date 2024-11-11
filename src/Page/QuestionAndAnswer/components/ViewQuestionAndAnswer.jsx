@@ -103,7 +103,7 @@ const ViewQuestionAndAnswer = () => {
 
             <div className="qav-work-arrangement">
               {isData && isData.data && isData.data.worksheet_id ? (
-                <VmwrResult resultId={isData.data.worksheet_id} />
+                <VmwrResult workSheetId={isData.data.worksheet_id} />
               ) : null}
             </div>
           </div>
