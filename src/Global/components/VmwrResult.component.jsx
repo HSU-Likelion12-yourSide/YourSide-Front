@@ -26,7 +26,7 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @returns {JSX.Element} VmwrResult 컴포넌트
  */
 
-const VmwrResult = ({ worksheetId, postData, onResultValues }) => {
+const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
   const [isContent, setContent] = useState();
   const [stringifiedValues, setStringifiedValues] = useState('');
@@ -41,14 +41,14 @@ const VmwrResult = ({ worksheetId, postData, onResultValues }) => {
   }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
-    console.log(worksheetId);
-    if (worksheetId !== null && worksheetId !== undefined) {
-      console.log(`WorkSheet-Id is ${worksheetId}`);
-      setUrl(`worksheet/${worksheetId}`);
-    } else if (!worksheetId) {
+    console.log(workSheetId);
+    if (workSheetId !== null && workSheetId !== undefined) {
+      console.log(`WorkSheet-Id is ${workSheetId}`);
+      setUrl(`worksheet/${workSheetId}`);
+    } else if (!workSheetId) {
       console.error(`!Error: lost WorkSheet-Id. Check WorkSheet-Id`);
     }
-  }, [worksheetId]);
+  }, [workSheetId]);
 
   useEffect(() => {
     if (postData && postData.data && postData.data.content) {
@@ -73,7 +73,7 @@ const VmwrResult = ({ worksheetId, postData, onResultValues }) => {
     } else if (isData && isData.data) {
       setContent(isData);
       console.log(
-        `Success, WorkSheet-Id ${worksheetId} Contact: `,
+        `Success, WorkSheet-Id ${workSheetId} Contact: `,
         isData.data,
       );
     } else if (postData && postData.data) {
@@ -174,7 +174,7 @@ const VmwrResult = ({ worksheetId, postData, onResultValues }) => {
 
 VmwrResult.propTypes = {
   onResultValues: PropTypes.func,
-  worksheetId: PropTypes.number,
+  workSheetId: PropTypes.number,
   postData: PropTypes.shape({
     data: PropTypes.shape({
       content: PropTypes.shape({
@@ -212,7 +212,7 @@ VmwrResult.propTypes = {
 
 VmwrResult.defaultProps = {
   onResultValues: null,
-  worksheetId: null,
+  workSheetId: null,
   postData: null, // 기본값 설정
 };
 

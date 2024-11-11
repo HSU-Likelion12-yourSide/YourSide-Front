@@ -35,14 +35,14 @@ const App = () => {
         <Route path="/ContractReview/" element={<ContractReview />} />
         <Route path="/QuestionAndAnswer" element={<QuestionAndAnswer />} />
         <Route
-          path="/ViewQuestionAndAnswer/:worksheetId"
+          path="/ViewQuestionAndAnswer/:workSheetId"
           element={<ViewQuestionAndAnswer />}
         />
         <Route path="/WorkArrangement" element={<WorkArrangement />} />
         <Route path="/WorkArrangement/List" element={<WorkArrangementList />} />
         <Route path="/ViewMyWork" element={<ViewMyWork />} />
         <Route
-          path="/ViewMyWorkResult/:worksheetId"
+          path="/ViewMyWorkResult/:workSheetId"
           element={<ViewMyWorkResult />}
         />
         <Route

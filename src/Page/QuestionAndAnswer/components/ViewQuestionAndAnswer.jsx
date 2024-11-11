@@ -29,21 +29,22 @@ const ViewQuestionAndAnswer = () => {
   } = useFetchAPI('', 'POST', isReqBookMark);
 
   // 객체로 들어가서 생기는 문제
-  const { id } = useParams();
+  const { workSheetId } = useParams();
+  console.log(workSheetId);
   // 동적 URI 검증 useEffect
   useEffect(() => {
-    // id 값 거증
-    if (id) {
-      //   const numericId = parseInt(id, 10);
-      if (!Number.isNaN(id) && id > 0) {
-        // NaN인지 확인하고 유효한 id인지 확인
-        setUrl(`/posting/${id}`);
+    // workSheetId 값 거증
+    if (workSheetId) {
+      //   const numericworkSheetId = parseInt(workSheetId, 10);
+      if (!Number.isNaN(workSheetId) && workSheetId > 0) {
+        // NaN인지 확인하고 유효한 workSheetId인지 확인
+        setUrl(`/posting/${workSheetId}`);
       } else {
-        console.error(`Invalid id: ${id}`);
+        console.error(`InvalworkSheetId workSheetId: ${workSheetId}`);
         // 여기서 경고 표시 창
       }
     }
-  }, [id, setUrl]); // [id, setUrl]
+  }, [workSheetId, setUrl]); // [workSheetId, setUrl]
 
   // GET API 상태 표기
   useEffect(() => {
@@ -68,7 +69,7 @@ const ViewQuestionAndAnswer = () => {
     const bookmarkData = {
       /* eslint-disable camelcase */
       user_id: 2, // 임시 아이디
-      post_id: id,
+      post_id: workSheetId,
       is_bookmarked: isBookMark,
       /* eslint-enable camelcase */
     };
@@ -135,7 +136,7 @@ const ViewQuestionAndAnswer = () => {
             </div>
           </div>
         </div>
-        <CommentList workSheetId={id} />
+        <CommentList workSheetId={workSheetId} />
       </div>
       <Footer />
     </div>
