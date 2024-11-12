@@ -1,6 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
 import workArrangementIntro from '../image/work-arrangement-intro.png';
@@ -15,7 +14,9 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
   const { isUser, setUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
   setUser(useParams().user);
+  const navigate = useNavigate();
 
   return (
     <div className="main">
@@ -47,7 +48,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/ContractReview');
+                    navigate(`${basePath}/ContractReview`);
                   }}
                   role="button"
                   tabIndex="0"
@@ -80,7 +81,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/ViewMyWork');
+                    navigate(`${basePath}/ViewMyWork`);
                   }}
                   role="button"
                   tabIndex="0"
@@ -108,7 +109,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/QuestionAndAnswer');
+                    navigate(`${basePath}/QuestionAndAnswer`);
                   }}
                   role="button"
                   tabIndex="0"
