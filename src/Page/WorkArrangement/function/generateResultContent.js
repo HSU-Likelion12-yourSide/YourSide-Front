@@ -1,5 +1,5 @@
-const user = '코카콜라';
-const generateResultContent = isData => {
+// const user = '코카콜라';
+const generateResultContent = (isData, isUserName) => {
   const data = {
     content: {
       overFiveMessage: isData.over_five
@@ -28,7 +28,7 @@ const generateResultContent = isData => {
 
       incomeTaxMessage: isData.income_tax ? '소득세 3.3%가 적용됩니다.' : '',
 
-      totalPayMessage: `따라서, ${user}님의 월급은 ${isData.total_pay}원 입니다.`,
+      totalPayMessage: `따라서, ${isUserName}님의 월급은 ${isData.total_pay}원 입니다.`,
     },
   };
 
