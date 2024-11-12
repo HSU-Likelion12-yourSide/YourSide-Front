@@ -11,7 +11,7 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 const Option = ViewMyWorkOption;
 
 const ViewMyWork = () => {
-  const { isUser } = useGlobalState();
+  const { isUser, isUserName } = useGlobalState();
   const basePath = isUser ? `/${isUser}` : '';
   const navigate = useNavigate();
   const [isContent, setContent] = useState();
@@ -157,10 +157,10 @@ const ViewMyWork = () => {
       <Header />
       <div className="vmw-container">
         <div id="vmw-title">내 근로 살펴보기</div>
-        {OptionsData.map(el => (
+        {OptionsData.map((el, index) => (
           <Option
             key={el.id}
-            option={el.option}
+            option={index === 0 ? `${isUserName}${el.option}` : el.option} // 첫 번째 항목에만 isUserName 추가
             display={el.display}
             description={el.description || ''}
             type={el.type}

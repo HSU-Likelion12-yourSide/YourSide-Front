@@ -11,6 +11,7 @@ const ContextProviderState = ({ children }) => {
   const [isWorkSheetId, setWorkSheetId] = useState();
   const [isSelectedId, setSelectedId] = useState();
   const [isUser, setUser] = useState();
+  const [isUserName, setUserName] = useState();
   const value = useMemo(
     () => ({
       isState,
@@ -27,6 +28,8 @@ const ContextProviderState = ({ children }) => {
       setSelectedId,
       isUser,
       setUser,
+      isUserName,
+      setUserName,
     }),
     [
       isState,
@@ -43,6 +46,8 @@ const ContextProviderState = ({ children }) => {
       setSelectedId,
       isUser,
       setUser,
+      isUserName,
+      setUserName,
     ],
   );
   return (

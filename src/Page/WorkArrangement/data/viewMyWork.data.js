@@ -1,8 +1,8 @@
-const user = '코카콜라';
+// const user = '코카콜라';
 const data = [
   {
     id: 'hourPay',
-    option: `${user}님의 시급은 얼마입니까?`,
+    option: `님의 시급은 얼마입니까?`,
     display: 'none',
     type: 'input',
     placeholder: '시급을 입력해주세요.',

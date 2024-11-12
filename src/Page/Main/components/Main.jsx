@@ -13,10 +13,11 @@ import Footer from '../../Footer/components/Footer';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
-  const { isUser, setUser } = useGlobalState();
+  const { isUser, setUser, isUserName } = useGlobalState();
   const basePath = isUser ? `/${isUser}` : '';
   setUser(useParams().user);
   const navigate = useNavigate();
+  console.log(isUserName);
 
   return (
     <div className="main">

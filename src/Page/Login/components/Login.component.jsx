@@ -7,7 +7,7 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import '../css/Login.component.scss';
 
 const LoginComponent = () => {
-  const { setUser } = useGlobalState();
+  const { setUser, setUserName } = useGlobalState();
   const navigate = useNavigate();
   const [isRequestData, setRequestData] = useState({
     username: '',
@@ -51,6 +51,7 @@ const LoginComponent = () => {
       if (isData.status === 200 || isData.status === 201) {
         const user = isData.data.user_id;
         setUser(user);
+        setUserName(isRequestData.username);
         navigate(`/${user}`);
       }
     } else {

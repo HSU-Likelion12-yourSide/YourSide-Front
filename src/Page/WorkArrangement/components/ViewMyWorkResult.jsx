@@ -21,7 +21,7 @@ const ViewMyWorkResult = () => {
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
-  const { isUser } = useGlobalState();
+  const { isUser, isUserName } = useGlobalState();
   const basePath = isUser ? `/${isUser}` : '';
   console.log(isUser);
 
@@ -45,7 +45,7 @@ const ViewMyWorkResult = () => {
       <Header />
       <div className="vmwr-title">
         {isData && isData.data && isData.data.nickname
-          ? `${isData.data.nickname}님의 근로 결과지`
+          ? `${isUserName}님의 근로 결과지`
           : '내 근로 결과지'}
       </div>
       <div className="vmwr-result">{content}</div>
