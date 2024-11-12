@@ -21,7 +21,7 @@ const MyPageViewResult = () => {
     `/worksheet/${workSheetId}`,
     'GET',
   );
-  const { isModalState, setModalState } = useGlobalState();
+  const { isModalState, setModalState, setSelectedId } = useGlobalState();
   const [content, setContent] = useState(''); // 렌더링할 content 상태 관리
 
   const {
@@ -41,6 +41,7 @@ const MyPageViewResult = () => {
       setContent(`Error: ${isError}`);
     } else if (isData) {
       console.log(`GET Success : ${isData.data}`);
+      setSelectedId(workSheetId);
       setContent(<VmwrResult workSheetId={workSheetId} />);
     }
 

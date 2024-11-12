@@ -32,7 +32,7 @@
       }
 
       #qav-comment-textfield {
-        width: calc(100% - 84px - 16px);
+        width: calc(100% - 84px);
         background-color: #d4ddff;
         // width: 1060px;
         // border-color: #eff6fe;
@@ -70,7 +70,7 @@
 
         #qav-comment-button {
           display: flex;
-          width: 60px;
+          // width: 60px;
           justify-content: center;
           align-items: center;
           background: #204598;
