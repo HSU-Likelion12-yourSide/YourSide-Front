@@ -15,6 +15,7 @@ import Login from './Page/Login/components/Login';
 import SignUp from './Page/Login/components/SignUp';
 import FindUser from './Page/Login/components/FindUser';
 import MyPage from './Page/MyPage/components/MyPage';
+import MyPageViewResult from './Page/MyPage/components/MyPage.ViewResult';
 import Notice from './Page/Notice/components/Notice';
 import ModalCheck from './Global/components/Modal.components';
 import NoticeExample from './Page/Notice/components/NoticeExample';
@@ -53,6 +54,11 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/FindUser" element={<FindUser />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route
+          path="/MyPageViewResult/:workSheetId"
+          element={<MyPageViewResult />}
+        />
+
         <Route path="/Notice" element={<Notice />} />
         <Route path="/QnAPosting" element={<QnAPosting />} />
         <Route path="/DevTerminal" element={<DevTerminal />} />

@@ -1,0 +1,64 @@
+.MyPage-comment-container {
+  font-family: Pretendard;
+  width: 100%;
+
+  .MyPage-comment-Content {
+    background-color: white;
+    padding: 30px;
+    height: 200px;
+    margin-bottom: 30px;
+
+    .MyPage-comment-Question {
+      display: flex;
+      color: #505050;
+      // background-color: aqua;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      margin-bottom: 36px;
+    }
+
+    .MyPage-comment-Answer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 26px;
+      // text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+      .MyPage-comment-element {
+        width: 756px;
+
+        span {
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 26px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: #204598;
+        }
+      }
+
+      .MyPage-comment-Button {
+        display: flex;
+        align-items: center;
+        border: 1px solid black;
+        padding: 14px 16px;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        // text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
