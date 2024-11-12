@@ -8,9 +8,9 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Header = () => {
   const { setUser, isUser } = useGlobalState();
-  setUser(useParams().user);
   const basePath = isUser ? `/${isUser}` : '';
-  console.log(isUser);
+  setUser(useParams().user);
+  // console.log(isUser);
 
   return (
     <div className="header">
