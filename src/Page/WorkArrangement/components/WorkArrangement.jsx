@@ -7,12 +7,16 @@ import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
 import WorkArrangementResult from './WorkArrangementResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const WorkArrangement = () => {
   // useNavigate 사용하기 위한 변수 정의
   const navigate = useNavigate();
   const [isContent, setContent] = useState('');
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+  console.log(isUser);
 
   // API 요청을 위한 URL 설정
   useEffect(() => {
@@ -47,7 +51,7 @@ const WorkArrangement = () => {
             id="wa-short-cut"
             onKeyDown={() => {}}
             onClick={() => {
-              navigateController(navigate, '/ViewMyWork');
+              navigateController(navigate, `${basePath}/ViewMyWork`);
             }}
             role="button"
             tabIndex="0"

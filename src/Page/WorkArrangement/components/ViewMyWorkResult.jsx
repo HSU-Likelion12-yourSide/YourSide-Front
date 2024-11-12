@@ -21,6 +21,9 @@ const ViewMyWorkResult = () => {
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+  console.log(isUser);
 
   useEffect(() => {
     if (isLoading) {
@@ -55,7 +58,7 @@ const ViewMyWorkResult = () => {
           role="button"
           tabIndex="0"
           onClick={() => {
-            navigateController(navigate, '/WorkArrangement/List');
+            navigateController(navigate, `${basePath}/WorkArrangement/List`);
           }}
         >
           목록
