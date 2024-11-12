@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import VmwrOptionButton from '../../WorkArrangement/components/VmwrButton.component';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
 
-const Result = ({ workSheetId, totalPay, date, resultState }) => {
+const Result = ({ workSheetId, title, totalPay, date, resultState }) => {
   const navigate = useNavigate();
   console.log(workSheetId);
   const OptionsList = [
@@ -19,7 +19,7 @@ const Result = ({ workSheetId, totalPay, date, resultState }) => {
     <div className="MyPage-Result-Content">
       <div className="MyPage-Result-Title">
         <div className="MyPage-Result-Title-group">
-          <span>메가커피 근로 결과지</span>
+          {title ? <span>{title}</span> : <span>메가커피 근로 결과지</span>}
           <span>{date}</span>
         </div>
         <div className="MyPage-Result-Button">
@@ -60,6 +60,7 @@ const Result = ({ workSheetId, totalPay, date, resultState }) => {
 
 Result.propTypes = {
   workSheetId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   totalPay: PropTypes.number.isRequired,
   date: PropTypes.number.isRequired,
   // 구체적으로 각 배열 값들의 타입을 정의해야 한다.
