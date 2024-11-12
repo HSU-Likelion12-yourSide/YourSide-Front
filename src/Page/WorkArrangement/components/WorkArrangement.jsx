@@ -8,6 +8,9 @@ import Footer from '../../Footer/components/Footer';
 import WorkArrangementResult from './WorkArrangementResult.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
+import Modal from '../../../Global/components/Modal.components';
+import modalStateController from '../../../Global/function/modalStateController';
+import ModalLogin from '../../../Global/components/ModalType/ModalLogin.components';
 
 const WorkArrangement = () => {
   // useNavigate 사용하기 위한 변수 정의
@@ -17,6 +20,7 @@ const WorkArrangement = () => {
   const { isUser } = useGlobalState();
   const basePath = isUser ? `/${isUser}` : '';
   console.log(isUser);
+  const { isModalState, setModalState } = useGlobalState();
 
   // API 요청을 위한 URL 설정
   useEffect(() => {
@@ -47,11 +51,17 @@ const WorkArrangement = () => {
         </div>
         <div className="wa-quiz">
           <img src={quizImage} alt="quiz-name" />
+          {isModalState && (
+            <Modal isOpen={isModalState} ModalType={ModalLogin} />
+          )}
           <div
             id="wa-short-cut"
             onKeyDown={() => {}}
             onClick={() => {
-              navigateController(navigate, `${basePath}/ViewMyWork`);
+              // eslint-disable-next-line no-unused-expressions
+              isUser
+                ? navigateController(navigate, `${basePath}/ViewMyWork`)
+                : modalStateController(isModalState, setModalState);
             }}
             role="button"
             tabIndex="0"

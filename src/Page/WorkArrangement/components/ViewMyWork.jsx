@@ -6,10 +6,13 @@ import Footer from '../../Footer/components/Footer';
 import ViewMyWorkOption from './ViewMyWorkOption.component';
 import OptionsData from '../data/viewMyWork.data';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Option = ViewMyWorkOption;
 
 const ViewMyWork = () => {
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
   const navigate = useNavigate();
   const [isContent, setContent] = useState();
   const [isRequestData, setRequestData] = useState({
@@ -143,7 +146,7 @@ const ViewMyWork = () => {
     } else if (isData && isData.data) {
       console.log(`Success Contact : `, isData);
       setContent(isData.data);
-      navigate('/viewMyWorkResult', { state: isData });
+      navigate(`${basePath}/viewMyWorkResult`, { state: isData });
     } else {
       setContent(null);
     }

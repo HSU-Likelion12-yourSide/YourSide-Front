@@ -7,7 +7,8 @@ import myPage from '../img/my-page.svg';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Header = () => {
-  const { isUser } = useGlobalState();
+  const { setUser, isUser } = useGlobalState();
+  setUser(useParams().user);
   const basePath = isUser ? `/${isUser}` : '';
   console.log(isUser);
 
