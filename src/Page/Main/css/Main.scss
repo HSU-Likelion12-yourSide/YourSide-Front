@@ -29,9 +29,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 5px;
 
     img {}
   }
+}
+
+#short-cut:hover {
+  background-color: #1BBFC1;
+  font-weight: 600;
+  color: white;
 }
 
 // @extend로 나눌 수도 있음.

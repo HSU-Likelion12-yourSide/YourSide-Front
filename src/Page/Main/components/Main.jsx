@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
@@ -14,7 +15,7 @@ import Footer from '../../Footer/components/Footer';
 
 const Main = () => {
   // const { isUser } = useGlobalState();
-
+  const navigate = useNavigate();
   return (
     <div className="main">
       <Header />
@@ -42,11 +43,19 @@ const Main = () => {
                 <div id="sub-title">
                   근로 계약서에 유의깊게 봐야할 항목을 확인해봐요
                 </div>
-                <div id="short-cut">
-                  바로가기{' '}
+                <div
+                  id="short-cut"
+                  onClick={() => {
+                    navigate('/ContractReview');
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  onKeyDown={() => {}}
+                >
+                  바로가기
                   <div>
                     <img src={arrowB} alt="short-cut" />
-                  </div>{' '}
+                  </div>
                 </div>
               </div>
               <div id="image">
@@ -67,7 +76,15 @@ const Main = () => {
                 <div id="sub-title">
                   혹시 놓치고 있는 급여가 얼마를 받을 수 있는 지 확인해 봐요.
                 </div>
-                <div id="short-cut">
+                <div
+                  id="short-cut"
+                  onClick={() => {
+                    navigate('/ViewMyWork');
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  onKeyDown={() => {}}
+                >
                   바로가기{' '}
                   <div>
                     <img src={arrowB} alt="short-cut" />
@@ -87,7 +104,15 @@ const Main = () => {
                   결과지를 토대로 나의 상황을 간단히 보여주고
                 </div>
                 <div id="sub-title">궁금점에 대한 답을 알아가요!</div>
-                <div id="short-cut">
+                <div
+                  id="short-cut"
+                  onClick={() => {
+                    navigate('/QuestionAndAnswer');
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  onKeyDown={() => {}}
+                >
                   바로가기{' '}
                   <div>
                     <img src={arrowB} alt="short-cut" />
