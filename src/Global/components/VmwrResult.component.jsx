@@ -41,7 +41,6 @@ const VmwrResult = ({ workSheetId, postData, onResultValues }) => {
   }, [postData]);
   // WorkSheet 상태 초기 값
   useEffect(() => {
-    console.log(workSheetId);
     if (workSheetId !== null && workSheetId !== undefined) {
       console.log(`WorkSheet-Id is ${workSheetId}`);
       setUrl(`worksheet/${workSheetId}`);

@@ -68,6 +68,10 @@
       justify-content: space-between;
       padding: 28px 30px;
 
+      &.selected {
+        border: 2px solid #204598;
+      }
+
       .modal-resultname {
         font-size: 18px;
         font-weight: 400;

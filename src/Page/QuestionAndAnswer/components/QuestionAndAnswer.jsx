@@ -129,8 +129,6 @@ const QuestionAndAnswer = () => {
             id="qa-write"
             onKeyDown={() => {}}
             onClick={() => {
-              /* eslint-disable-next-line no-alert */
-              alert('게시글 작성 페이지는 준비 중입니다.');
               navigateController(navigate, '/QnAPosting');
             }}
             role="button"
