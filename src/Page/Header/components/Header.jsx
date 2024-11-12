@@ -8,21 +8,21 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Header = () => {
   const { isUser } = useGlobalState();
-  const basePath = isUser ? `/${isUser.user}` : '/';
-  console.log(useParams());
+  const basePath = isUser ? `/${isUser}` : '';
+  console.log(isUser);
 
   return (
     <div className="header">
       <div className="h-container">
         <div className="h-logo">
-          <Link id="h-link" to={basePath}>
+          <Link id="h-link" to={`${basePath}/`}>
             <img src={logo} alt="" />
           </Link>
         </div>
 
         <div className="h-hyper-group">
           <div className="h-hyper-link">
-            <Link id="h-link" to={basePath}>
+            <Link id="h-link" to={`${basePath}/`}>
               홈
             </Link>
           </div>

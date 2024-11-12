@@ -14,7 +14,7 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
   const { isUser, setUser } = useGlobalState();
-  setUser(useParams());
+  setUser(useParams().user);
 
   return (
     <div className="main">
