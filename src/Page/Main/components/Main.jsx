@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
 import workArrangementIntro from '../image/work-arrangement-intro.png';
@@ -10,10 +10,11 @@ import arrowB from '../image/arrowB.svg';
 import '../css/Main.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-// import useGlobalState from '../../../Global/Hooks/useGlobalState';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
-  // const { isUser } = useGlobalState();
+  const { isUser, setUser } = useGlobalState();
+  setUser(useParams());
 
   return (
     <div className="main">

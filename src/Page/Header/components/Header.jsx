@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import '../css/Header.scss';
 import logo from '../img/logo.svg';
 import login from '../img/login.svg';
 import myPage from '../img/my-page.svg';
 
 const Header = () => {
+  console.log(useParams());
+
   return (
     <div className="header">
       <div className="h-container">
@@ -44,21 +46,25 @@ const Header = () => {
         </div>
 
         <div className="h-group">
-          <div id="h-my-page">
-            <Link
-              id="h-link"
-              to="/MyPage"
-              onKeyDown={() => {}}
-              onClick={() => {
-                /* eslint-disable-next-line no-alert */
-                alert('마이 페이지는 준비 중입니다.');
-              }}
-              role="button"
-              tabIndex="0"
-            >
-              <img src={myPage} alt="" />
-            </Link>
-          </div>
+          {useParams().user ? (
+            <div id="h-my-page">
+              <Link
+                id="h-link"
+                to="/MyPage"
+                onKeyDown={() => {}}
+                onClick={() => {
+                  /* eslint-disable-next-line no-alert */
+                  alert('마이 페이지는 준비 중입니다.');
+                }}
+                role="button"
+                tabIndex="0"
+              >
+                <img src={myPage} alt="" />
+              </Link>
+            </div>
+          ) : (
+            <div id="h-my-page" />
+          )}
           <div id="h-login">
             <Link id="h-link" to="/Login">
               <img src={login} alt="" />
