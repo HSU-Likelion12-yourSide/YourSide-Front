@@ -4,42 +4,45 @@ import '../css/Header.scss';
 import logo from '../img/logo.svg';
 import login from '../img/login.svg';
 import myPage from '../img/my-page.svg';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Header = () => {
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser.user}` : '/';
   console.log(useParams());
 
   return (
     <div className="header">
       <div className="h-container">
         <div className="h-logo">
-          <Link id="h-link" to="/">
+          <Link id="h-link" to={basePath}>
             <img src={logo} alt="" />
           </Link>
         </div>
 
         <div className="h-hyper-group">
           <div className="h-hyper-link">
-            <Link id="h-link" to="/">
+            <Link id="h-link" to={basePath}>
               홈
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link id="h-link" to="/Notice">
+            <Link id="h-link" to={`${basePath}/Notice`}>
               공지사항
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link id="h-link" to="/ContractReview">
+            <Link id="h-link" to={`${basePath}/ContractReview`}>
               내 계약서 검토
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link id="h-link" to="/WorkArrangement">
+            <Link id="h-link" to={`${basePath}/WorkArrangement`}>
               내 근로 정리
             </Link>
           </div>
           <div className="h-hyper-link">
-            <Link id="h-link" to="/QuestionAndAnswer">
+            <Link id="h-link" to={`${basePath}/QuestionAndAnswer`}>
               네편 현답
             </Link>
           </div>
