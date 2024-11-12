@@ -4,8 +4,8 @@ import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
 import workArrangementIntro from '../image/work-arrangement-intro.png';
 import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
-import arrowL from '../image/arrowL.svg';
-import arrowR from '../image/arrowR.svg';
+// import arrowL from '../image/arrowL.svg';
+// import arrowR from '../image/arrowR.svg';
 import arrowB from '../image/arrowB.svg';
 import '../css/Main.scss';
 import Header from '../../Header/components/Header';
@@ -19,13 +19,13 @@ const Main = () => {
     <div className="main">
       <Header />
       <div className="slide-show">
-        <div id="left">
+        {/* <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
-        </div>
+        </div> */}
         <img src={slidShow} alt="imageName" />
-        <div id="right">
+        {/* <div id="right">
           <img id="arrowR" src={arrowR} alt="arrowR" />
-        </div>
+        </div> */}
       </div>
       <div className="container">
         <div className="intro">
