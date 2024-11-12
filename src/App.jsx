@@ -79,6 +79,7 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/FindUser" element={<FindUser />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/:user/MyPage" element={<MyPage />} />
         <Route
           path="/MyPageViewResult/:workSheetId"
           element={<MyPageViewResult />}

@@ -54,11 +54,11 @@ const Header = () => {
             <div id="h-my-page">
               <Link
                 id="h-link"
-                to="/MyPage"
+                to={`${basePath}/MyPage`}
                 onKeyDown={() => {}}
                 onClick={() => {
-                  /* eslint-disable-next-line no-alert */
-                  alert('마이 페이지는 준비 중입니다.');
+                  // /* eslint-disable-next-line no-alert */
+                  // alert('마이 페이지는 준비 중입니다.');
                 }}
                 role="button"
                 tabIndex="0"

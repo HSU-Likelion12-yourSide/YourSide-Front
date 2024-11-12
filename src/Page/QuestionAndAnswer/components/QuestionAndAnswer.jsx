@@ -7,6 +7,7 @@ import Footer from '../../Footer/components/Footer';
 import RankQuestion from './RankQuestion.component';
 import Question from './Question.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const QuestionAndAnswer = () => {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ const QuestionAndAnswer = () => {
   const [isPopularContent, setPopularContent] = useState('');
   const [isType, setType] = useState(0);
   const { isData, isLoading, isError, setUrl } = useFetchAPI();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
   const {
     isData: isPopularData,
     isLoading: isPopularLoading,
@@ -129,7 +132,7 @@ const QuestionAndAnswer = () => {
             id="qa-write"
             onKeyDown={() => {}}
             onClick={() => {
-              navigateController(navigate, '/QnAPosting');
+              navigateController(navigate, `${basePath}/QnAPosting`);
             }}
             role="button"
             tabIndex="0"
