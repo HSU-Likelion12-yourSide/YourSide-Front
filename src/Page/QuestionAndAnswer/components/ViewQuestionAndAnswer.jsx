@@ -7,10 +7,14 @@ import CommentList from './VQnACommentList.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 import VmwrResult from '../../../Global/components/VmwrResult.component';
 import navigateController from '../../../Global/function/navigateController';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const ViewQuestionAndAnswer = () => {
   const navigate = useNavigate();
   // 북마크 비구조 할당 으로 선언 필요
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+
   const [isBookMark, setBookMark] = useState();
   const [isReqBookMark, setReqBookMark] = useState();
   const [isContent, setContent] = useState(''); // 렌더링할 content 상태 관리 content
@@ -127,7 +131,7 @@ const ViewQuestionAndAnswer = () => {
               id="qav-middle-list"
               onKeyDown={() => {}}
               onClick={() => {
-                navigateController(navigate, `/QuestionAndAnswer`);
+                navigateController(navigate, `${basePath}/QuestionAndAnswer`);
               }}
               role="button"
               tabIndex="0"

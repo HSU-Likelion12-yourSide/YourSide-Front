@@ -21,6 +21,9 @@ const ViewMyWorkResult = () => {
 
   const { isModalState, setModalState, isModalType, setModalType } =
     useGlobalState();
+  const { isUser, isUserName } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+  console.log(isUser);
 
   useEffect(() => {
     if (isLoading) {
@@ -42,7 +45,7 @@ const ViewMyWorkResult = () => {
       <Header />
       <div className="vmwr-title">
         {isData && isData.data && isData.data.nickname
-          ? `${isData.data.nickname}님의 근로 결과지`
+          ? `${isUserName}님의 근로 결과지`
           : '내 근로 결과지'}
       </div>
       <div className="vmwr-result">{content}</div>
@@ -55,7 +58,7 @@ const ViewMyWorkResult = () => {
           role="button"
           tabIndex="0"
           onClick={() => {
-            navigateController(navigate, '/WorkArrangement/List');
+            navigateController(navigate, `${basePath}/WorkArrangement/List`);
           }}
         >
           목록

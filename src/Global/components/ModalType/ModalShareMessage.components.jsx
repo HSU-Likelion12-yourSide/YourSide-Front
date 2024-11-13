@@ -9,6 +9,8 @@ import navigateController from '../../function/navigateController';
 const ModalResult = () => {
   const { isModalState, setModalState } = useGlobalState();
   const navigate = useNavigate();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
 
   return (
     <div className="modal-share">
@@ -19,7 +21,8 @@ const ModalResult = () => {
           id="modal-share"
           onKeyDown={() => {}}
           onClick={() => {
-            navigateController(navigate, '/WorkArrangement');
+            navigateController(navigate, `${basePath}/WorkArrangement`);
+            setModalState(false);
           }}
           role="button"
           tabIndex="0"

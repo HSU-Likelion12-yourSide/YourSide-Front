@@ -25,7 +25,7 @@ const ViewMyWorkResult = () => {
     console.log('Parent received ResultContents:', values);
   };
 
-  const { isModalState, setModalState, isModalType, setModalType } =
+  const { isModalState, setModalState, isModalType, setModalType, isUserName } =
     useGlobalState();
   const location = useLocation();
   const { state: postData } = location || {}; // POST로 전달된 데이터
@@ -38,7 +38,7 @@ const ViewMyWorkResult = () => {
       );
       navigate('/ViewMyWork'); // ViewMyWork 페이지로 리디렉션
     } else {
-      const processedData = generateResultContent(postData.data);
+      const processedData = generateResultContent(postData.data, isUserName);
       console.log('가공된 데이터', processedData);
       setResData(processedData);
       setContent(

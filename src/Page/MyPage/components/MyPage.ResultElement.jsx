@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import VmwrOptionButton from '../../WorkArrangement/components/VmwrButton.component';
 import learnMoreArrow from '../image/learnMoreArrow.svg';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Result = ({ workSheetId, title, totalPay, date, resultState }) => {
   const navigate = useNavigate();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
   console.log(workSheetId);
   const OptionsList = [
     '가산수당',
@@ -26,7 +29,7 @@ const Result = ({ workSheetId, title, totalPay, date, resultState }) => {
           <span
             onKeyDown={() => {}}
             onClick={() => {
-              navigate(`/MyPageViewResult/${workSheetId}`);
+              navigate(`${basePath}/MyPageViewResult/${workSheetId}`);
             }}
             role="button"
             tabIndex="0"

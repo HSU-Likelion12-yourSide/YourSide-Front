@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import '../css/RankQuestion.scss';
 import { useNavigate } from 'react-router-dom';
 import navigateController from '../../../Global/function/navigateController';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const RankQuestion = ({ title, content }) => {
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+
   const navigate = useNavigate();
   return (
     <div
@@ -14,9 +18,9 @@ const RankQuestion = ({ title, content }) => {
       onClick={() => {
         /* eslint-disable-next-line no-alert */
         alert(
-          '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 ViewQuestionAndAnswer로 넘거 갑니다.',
+          '해당 페이지는 workSheet와 같은 고유 아이디를 받아 특정 결과지 페이지로 넘어가야 합니다. 우선 Main으로 넘겨 갑니다.',
         );
-        navigateController(navigate, '/ViewQuestionAndAnswer');
+        navigateController(navigate, `${basePath}/`);
       }}
       role="button"
       tabIndex="0"

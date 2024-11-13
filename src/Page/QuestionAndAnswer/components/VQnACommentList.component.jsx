@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import VQnAComment from './VQnAComment.component';
 import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 import '../css/VQnACommentList.scss';
 
 // props로 외부 컴포넌트에 params 가져올 것
@@ -9,6 +10,8 @@ const VQnACommentList = ({ workSheetId }) => {
   const [isReloadState, setReloadState] = useState(false); // 리로드 트리거용 상태
   const [isComment, setComment] = useState();
   const [isContent, setContent] = useState('');
+
+  const { isUserName, isUser } = useGlobalState();
 
   // eslint-disable-next-line camelcase
   const posting_id = workSheetId;
@@ -96,7 +99,7 @@ const VQnACommentList = ({ workSheetId }) => {
     <div className="qav-comment-group">
       <div className="qav-write-comment">
         <div className="qav-group">
-          <div id="qav-comment-writer">코카콜라</div>
+          <div id="qav-comment-writer">{isUserName}</div>
           <textarea
             cols="80"
             id="qav-comment-textfield"

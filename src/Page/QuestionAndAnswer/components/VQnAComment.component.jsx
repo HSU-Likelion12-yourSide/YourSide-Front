@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../css/VQnAComment.scss';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 // import useFetchAPI from '../../../Global/API/Hooks/useFetchAPI';
 
 const VQnAComment = ({
@@ -144,12 +145,15 @@ const VQnAComment = ({
     isBadData,
   ]);
  */
+
+  const { isUserName } = useGlobalState();
+
   return (
     <div className="qav-comment">
       <div className="qav-group">
         <div className="qav-comment-writer">
           <span id="qav-writer">
-            {nickName === 'null' ? nickName : '코카콜라'}
+            {isUserName === 'null' ? nickName : isUserName}
           </span>
           {/* 등급 부분 미제작 */}
           {/* <div id="user-rank">네편 노무사</div> */}

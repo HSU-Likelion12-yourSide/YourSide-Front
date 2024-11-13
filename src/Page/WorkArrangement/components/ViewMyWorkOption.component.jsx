@@ -5,7 +5,7 @@ import VmwBinaryAnswer from './type/VmwBinaryAnswer.component';
 import VmwMultiAnswer from './type/VmwMultiAnswer.component';
 
 const ViewMyWorkOption = ({
-  option = '코카콜라님의 시급은 얼마입니까?',
+  option,
   display = 'none',
   description,
   type = 'input',
