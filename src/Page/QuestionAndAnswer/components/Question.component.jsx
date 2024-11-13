@@ -9,6 +9,8 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 const Question = ({ id, title, content, date }) => {
   const navigate = useNavigate();
   const { isWorkSheetId, setWorkSheetId } = useGlobalState();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
 
   return (
     <div id={id} className="qa-post-card">
@@ -26,7 +28,10 @@ const Question = ({ id, title, content, date }) => {
           onKeyDown={() => {}}
           onClick={() => {
             setWorkSheetId(id);
-            navigateController(navigate, `/ViewQuestionAndAnswer/${id}`);
+            navigateController(
+              navigate,
+              `${basePath}/ViewQuestionAndAnswer/${id}`,
+            );
           }}
           role="button"
           tabIndex="0"

@@ -8,6 +8,7 @@ import MyPageComment from './MyPage.Comment.component';
 import MyPageResult from './MyPage.Result.component';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const MyPage = () => {
   const userId = 2;
@@ -20,6 +21,7 @@ const MyPage = () => {
     myComment: false,
     myBookMark: false,
   });
+  const { isUserName } = useGlobalState();
 
   const handleContent = contentType => {
     setContent(prev => ({
@@ -62,12 +64,10 @@ const MyPage = () => {
       <Header />
       <div className="MyPage-container">
         <div className="MyPage-profile">
-          <div id="MyPage-nickname">
-            {isData && isData.data ? isUser.nickname : '코카콜라'}
-          </div>
+          <div id="MyPage-nickname">{isUserName || '코카콜라'}</div>
           <div className="MyPage-current">
             <div id="MyPage-posting">
-              <span>내 개시글</span>
+              <span>내 게시글</span>
               <span>
                 {isData && isData.data ? isUser.posting_count : '0'}개
               </span>

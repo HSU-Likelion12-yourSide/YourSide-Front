@@ -1,32 +1,35 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
 import workArrangementIntro from '../image/work-arrangement-intro.png';
 import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
-import arrowL from '../image/arrowL.svg';
-import arrowR from '../image/arrowR.svg';
+// import arrowL from '../image/arrowL.svg';
+// import arrowR from '../image/arrowR.svg';
 import arrowB from '../image/arrowB.svg';
 import '../css/Main.scss';
 import Header from '../../Header/components/Header';
 import Footer from '../../Footer/components/Footer';
-// import useGlobalState from '../../../Global/Hooks/useGlobalState';
+import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
-  // const { isUser } = useGlobalState();
+  const { isUser, setUser, isUserName } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
+  setUser(useParams().user);
   const navigate = useNavigate();
+  console.log(isUserName);
+
   return (
     <div className="main">
       <Header />
       <div className="slide-show">
-        <div id="left">
+        {/* <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
-        </div>
+        </div> */}
         <img src={slidShow} alt="imageName" />
-        <div id="right">
+        {/* <div id="right">
           <img id="arrowR" src={arrowR} alt="arrowR" />
-        </div>
+        </div> */}
       </div>
       <div className="container">
         <div className="intro">
@@ -46,7 +49,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/ContractReview');
+                    navigate(`${basePath}/ContractReview`);
                   }}
                   role="button"
                   tabIndex="0"
@@ -79,7 +82,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/ViewMyWork');
+                    navigate(`${basePath}/ViewMyWork`);
                   }}
                   role="button"
                   tabIndex="0"
@@ -107,7 +110,7 @@ const Main = () => {
                 <div
                   id="short-cut"
                   onClick={() => {
-                    navigate('/QuestionAndAnswer');
+                    navigate(`${basePath}/QuestionAndAnswer`);
                   }}
                   role="button"
                   tabIndex="0"

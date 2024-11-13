@@ -14,6 +14,8 @@ import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const MyPageViewResult = () => {
   const { workSheetId } = useParams();
+  const { isUser } = useGlobalState();
+  const basePath = isUser ? `/${isUser}` : '';
   const navigate = useNavigate();
   const { isData, isLoading, isError, setUrl } = useFetchAPI(
     `/worksheet/${workSheetId}`,
@@ -66,7 +68,7 @@ const MyPageViewResult = () => {
             id="MyPage-ViewResult-button"
             onKeyDown={() => {}}
             onClick={() => {
-              navigate(`/QnAPosting`);
+              navigate(`${basePath}/QnAPosting`);
             }}
             role="button"
             tabIndex="0"
@@ -98,7 +100,7 @@ const MyPageViewResult = () => {
               id="MyPage-ViewResult-list"
               onKeyDown={() => {}}
               onClick={() => {
-                navigate(`/MyPage`);
+                navigate(`${basePath}/MyPage`);
               }}
               role="button"
               tabIndex="0"
