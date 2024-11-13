@@ -1,8 +1,6 @@
 # Your-Side
 <img src="./src/Global/image/logo.png" alt="alt text" width="300px">
 
-<br>
-
 # List
 <details close>
   <summary>목차</summary>
@@ -17,7 +15,7 @@
         <li><a href="#team-document">Team-Document</a></li>
       </ul>
     </li>
-    <li><a href="#develop">Develop</a>
+    <li><a href="#front-develop">Front-Develop</a>
       <ul>
         <li><a href="#front-skill">Front-Skill</a></li>
         <li><a href="#code-quality-and-formatting">Code Quality and Formatting</a></li>
@@ -27,13 +25,15 @@
     </li>
     <li><a href="#web-page-preview">Web Page Preview</a>
       <ul>
-        <li><a href="#main-page">Main Page</a></li>
-        <li><a href="#login-page">Login/SignUp Page</a></li>
-        <li><a href="#my-page">My Page</a></li>
-        <li><a href="#contractreview-page">ContractReview Page</a></li>
-        <li><a href="#workarrangement-page">WorkArrangement Page</a></li>
-        <li><a href="#questionandanswer-page">QuestionAndAnswer Page</a></li>
-        <li><a href="#modal">Modal</a></li>
+        <li><a href="#main-page">메인 페이지(Main Page)</a></li>
+        <li><a href="#login-page">로그인 페이지(Login Page)</a></li>
+        <li><a href="#signup-page">회원가입 페이지(SignUp Page)</a></li>
+        <li><a href="#my-page">마이페이지(My Page)</a></li>
+        <li><a href="#contractreview-page">내 계약서 검토 페이지(ContractReview Page)</a></li>
+        <li><a href="#workarrangement-page">내 근로 정리 페이지(WorkArrangement Page)</a></li>
+        <li><a href="#postingQnA-page">게시글 작성 페이지(PostingQnA)</a></li>
+        <li><a href="#questionandanswer-page">네편 현답 페이지(QuestionAndAnswer Page)</a></li>
+        <li><a href="#modal">모달(Modal)</a></li>
       </ul>
     </li>
     <li><a href="#project-contributors">Project Contributors</a>
@@ -47,8 +47,9 @@
   </ul>
 </details>
 
+<br>
 
-## Your-Side는 네편 입니다.
+# Your-Side는 네편 입니다.
 근로계약서 검토 너무 어려우신가요?
 
 나는 지금 알맞은 월급을 받고 있을까요?
@@ -56,48 +57,69 @@
 세세한 근로법이 어려운 ***‘네편’*** 이 되어줄 [네편](https://your-side.vercel.app/ "Your-Side-Web")에서 확인해세요!
 
 ## Project-한줄평
-- 4Bee/김동우 : 우여곡절이 많았지만 끝까지 프로젝트를 마칠 수 있어서 팀원들고 기다려준 많은 분들게 감사하다고 전하고 싶습니다. 앞으로 있을 버전 2도 열심히 준비해서 좋은 모습 보여드리 겠습니다.
+- 4Bee/김동우 : 우여곡절이 많았지만 끝까지 프로젝트를 마칠 수 있어서 팀원들과 기다려준 많은 분들게 감사하다고 전하고 싶습니다. 앞으로 있을 버전 2도 열심히 준비해서 좋은 모습 보여드리 겠습니다.
 
-- 임혜정 :
+- 임혜정 : 열정적인 팀원들과 함께 깊이 있는 협업을 경험할 수 있어 정말 감사했습니다. 마지막까지 목표를 달성해가는 과정에서 많은 걸 배웠습니다!
 
-- 윤예진 :
+- 윤예진 : 긴장과 설렘 속에서 개인적인 성장과 실력 향상의 발판이 되었던 값진 여정이었습니다. 버전 2에서는 더욱 완성도 높은 모습으로 도전과 성취를 이어가겠습니다.
 
-## Contact
+<br>
 
-## Web Link
+---
+
+<br>
+
+## Project-Duration
+- 2개월
+
+# Contact
+
+<span id="contact">
+  <a href="https://discord.gg/S7rKVkXB" title="Your-side-Discord">
+    <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
+  </a>
+</span>
+
+# Web Link
 Web-Site
-<div>
+<div id="web-site">
   <a href="https://www.notion.so/4bfc/77a113431d0c43afbd318f291c38a6e0" title="Your-Side-Notion">
     <img src="https://img.shields.io/badge/YourSide-204598?style=for-the-badge&logo=google-chrome&logoColor=white" alt="YourSide">
   </a>
 </div>
 
 Web-Front-Develop-Document
-<div>
+<div id="web-front-develop-document">
   <a href="https://your-side-front-doc.vercel.app/" title="Your-Side-Develop-Document">
     <img src="https://img.shields.io/badge/Document-212529?style=for-the-badge&logo=javascript&logoColor=#" alt="YourSide">
   </a>
 </div>
 
 Team-Document
-<div>
-  <a href="https://www.notion.so/4bfc/77a113431d0c43afbd318f291c38a6e0" title="Your-Side-Notion">
-    <img src="https://img.shields.io/badge/notion-black?style=for-the-badge&logo=notion&logoColor=white" alt="Notion">
-  </a>
-  <a href="https://github.com/HSU-Likelion12-yourSide" title="Your-side-GitHub">
-    <img src="https://img.shields.io/badge/github-333333?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <a href="https://www.figma.com/design/TDsnsYM8pnk7EhgJrvYMwp/2024-%EB%B6%80%EA%B8%B0%ED%86%A4-%EB%84%A4%ED%8E%B8-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mrFVdoDi8mEejn1z-0" title="Your-side-Figma">
-    <img src="https://img.shields.io/badge/Figma-FE5196?style=for-the-badge&logo=Figma&logoColor=black" alt="Figma">
-  </a>
-  <a href="https://discord.gg/S7rKVkXB" title="Your-side-Discord">
-    <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
-  </a>
+<div id="team-document">
+  <span>
+    <a href="https://www.notion.so/4bfc/77a113431d0c43afbd318f291c38a6e0" title="Your-Side-Notion">
+      <img src="https://img.shields.io/badge/notion-black?style=for-the-badge&logo=notion&logoColor=white" alt="Notion">
+    </a>
+  </span>
+  <span>
+    <a href="https://github.com/HSU-Likelion12-yourSide" title="Your-side-GitHub">
+      <img src="https://img.shields.io/badge/github-333333?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+    </a>
+  </span>
+  <span>
+    <a href="https://www.figma.com/design/TDsnsYM8pnk7EhgJrvYMwp/2024-%EB%B6%80%EA%B8%B0%ED%86%A4-%EB%84%A4%ED%8E%B8-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mrFVdoDi8mEejn1z-0" title="Your-side-Figma">
+      <img src="https://img.shields.io/badge/Figma-FE5196?style=for-the-badge&logo=Figma&logoColor=black" alt="Figma">
+    </a>
+  </span>
 </div>
-
+<br>
 <br>
 
-# Develop
+---
+<br>
+
+# Front-Develop
 <div>
   <h3>Front-Skill</h3>
   <div>
@@ -111,10 +133,12 @@ Team-Document
     <img src="https://img.shields.io/badge/.env-ECD53F?style=for-the-badge&logo=.env&logoColor=black">
     <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
     <img src="https://img.shields.io/badge/react router-CA4245?style=for-the-badge&logo=react router&logoColor=white">
-    <br>
+  </div>
+
+  <h3>Configuration and PackageManager</h3>
+  <div>
     <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
     <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=black">
-    <img src="https://img.shields.io/badge/sourcetree-0052CC?style=for-the-badge&logo=sourcetree&logoColor=white">
   </div>
 
 <h3>Code Quality and Formatting</h3>
@@ -128,7 +152,8 @@ Team-Document
   <h3>Tool</h3>
   
   <div>
-    <img src="https://img.shields.io/badge/github-333333?style=for-the-badge&logo=github&logoColor=white">
+    <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
+    <img src="https://img.shields.io/badge/sourcetree-0052CC?style=for-the-badge&logo=sourcetree&logoColor=white">
     <img src="https://img.shields.io/badge/notion-black?style=for-the-badge&logo=notion&logoColor=white">
     <img src="https://img.shields.io/badge/Figma-FE5196?style=for-the-badge&logo=Figma&logoColor=black">
     <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
@@ -143,29 +168,87 @@ Team-Document
 <br>
 <br>
 
+---
+<br>
+
 # Web Page Preview
+> Test를 기준으로 찍은 영상입니다.
 
-### Main Page
+### 메인 페이지(Main Page)
 
-### Login Page
+<div id="main-page">
+  <img src="https://github.com/user-attachments/assets/fb7f053a-1298-4ca0-b3b3-1d947fabb96c" alrt="Main" width="600" />
+</div>
 
-### SignUp Page
+### 로그인 페이지(Login Page)
 
-### My Page
+<div id="login-page">
+  <img src="https://github.com/user-attachments/assets/4c193b41-f684-44d7-8b2e-8599d2148255" alrt="Login" width="600" />
+</div>
 
-### ContractReview Page
+### 회원가입 페이지(SignUp Page)
 
-### WorkArrangement Page
+<div id="signup-page">
+  <img src="https://github.com/user-attachments/assets/0b5cfa7f-c4d6-4e0c-80d1-5694df19f5f2" alrt="SignUp" width="600" />
+</div>
 
-### My Page
+### 마이페이지(My Page)
 
-### QuestionAndAnswer Page
+  - MyPage Menu
+    <div id="my-page">
+      <img src="https://github.com/user-attachments/assets/0f5ec60f-ffe1-49e7-b2e2-a4d524b6df71" alrt="MyPage-Menu" width="600" />
+    </div>
+  <br>
+  
+  - MyPage Pagination
+    <div id="my-page">
+      <img src="https://github.com/user-attachments/assets/241a9786-1249-49d7-87fb-ead0c8e7ede3" alrt="MyPage-Pagination" width="600" />
+    </div>
 
-### Modal
+### 내 계약서 검토 페이지(ContractReview Page)
+
+  <div id="contractreview-page">
+    <img src="https://github.com/user-attachments/assets/843af74a-5ec2-4580-b375-3ec74c20b874" alrt="contractreview" width="600" />
+  </div>
+  
+### 내 근로 정리 페이지(WorkArrangement Page)
+  
+  - WorkArrangement
+    <div id="workarrangement-page">
+      <img src="https://github.com/user-attachments/assets/92a8f2c0-cb90-4a56-bfce-3bdb05ca7789" alrt="WorkArrangement" width="600" />
+    </div>
+
+  - WorkArrangement-input
+    <div id="workarrangement-page">
+      <img src="https://github.com/user-attachments/assets/9f4f9280-ab0d-4d2a-91b9-4915bbf746a9" alrt="WorkArrangement-input" width="600" />
+    </div>
+
+### 게시글 작성 페이지(PostingQnA)
+
+  <div id="postingQnA-page">
+    <img src="https://github.com/user-attachments/assets/8f3da9b1-84ee-4a09-a645-05d16d8788f7" alrt="PostingQnA" width="600" />
+  </div>
+  
+### 네편 현답 페이지(QuestionAndAnswer Page)
+
+  <div id="questionandanswer-page">
+    <img src="https://github.com/user-attachments/assets/7883c2e9-a5f6-4243-b488-0b10591f266e" alrt="QuestionAndAnswer" width="600" />
+  </div>
+  
+### 모달(Modal)
+
+  <div id="modal">
+    <img src="https://github.com/user-attachments/assets/3aadaf25-4403-4307-9c1b-97fb640b4e31" alrt="Modal" width="600" />
+  </div>
 
 <br>
 
-## Project Contributors
+---
+
+<br>
+
+
+# Project Contributors
 
 ### [Project Manager](https://www.instagram.com/)
 |   |   
