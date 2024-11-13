@@ -60,10 +60,10 @@
 
 ## Project Contributors
 
-|   |   |   |   |
-|---|---|---|---|
+|   |   |   |   
+|---|---|---|
 | <img src="https://avatars.githubusercontent.com/u/109135643?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/156324288?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/138736197?v=4" width="120"> |
- Frontend | Frontend/Backend | Frontend |
-[4Bee/김동우](https://github.com/4BFC) | [임혜정](https://github.com/frombunny) | [윤예진](https://github.com/nyun-nye) |
+ Frontend | Frontend/Backend | Frontend 
+[4Bee/김동우](https://github.com/4BFC) | [임혜정](https://github.com/frombunny) | [윤예진](https://github.com/nyun-nye) 
 
 
