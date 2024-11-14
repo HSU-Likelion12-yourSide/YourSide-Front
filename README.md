@@ -1,8 +1,6 @@
 # Your-Side
 <img src="./src/Global/image/logo.png" alt="alt text" width="300px">
 
-<br>
-
 # List
 <details close>
   <summary>목차</summary>
