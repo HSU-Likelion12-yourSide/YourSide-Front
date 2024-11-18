@@ -6,8 +6,8 @@
     "maxNodeModuleJsDepth": 2
   },
   "include": [
-    "src/Global/API/Hooks/useFetchAPI.jsx",
-    "src/Global/API/fetch.instance.js"
+    "src/**/*.js",
+    "src/**/*.jsx"
   ],
   "exclude": [
     "node_modules"
@@ -17,15 +17,16 @@
   },
   "source": {
     "include": [
-      "src"
+      "src/Global/API/Hooks/useFetchAPI.jsx",
+      "src/Global/API/fetch.instance.js"
     ],
-    "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)node_modules"
   },
   "opts": {
     "template": "node_modules/docdash",
     "encoding": "utf8",
     "destination": "./docs",
+    "readme": "./README.doc.md",
     "recurse": true,
     "verbose": true
   },
