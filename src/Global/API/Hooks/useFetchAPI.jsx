@@ -4,26 +4,23 @@ import fetchAPI from '../fetch.instance';
 const { REACT_APP_API_URL } = process.env;
 
 /**
- * @param {string} initialUrl - API 요청을 보낼 초기 URL.
- * @param {'GET'|'POST'|'PUT'|'DELETE'} [method='GET'] - 요청에 사용할 HTTP 메서드 (기본값은 'GET').
- * @param {object|null} [requestData=null] - 요청에 포함될 데이터 (POST, PUT 메서드에서 사용).
+ * @param {string} initialUrl - API 요청을 보낼 초기 URL
+ * @param {'GET'|'POST'|'PUT'|'DELETE'} [method='GET'] - 요청에 사용할 HTTP 메서드 (기본값은 'GET')
+ * @param {object|null} [requestData=null] - 요청에 포함될 데이터 (POST, PUT 메서드에서 사용)
  *
  * @description <해당 커스텀 훅(Hook)은 `fetch.instance.js`를 기반으로 동작하고 있습니다. 따라서 해당 Axios instance를 모른다면 `fetch.instance.js`를 보고 오시는 것을 추천 합니다.> useFetchAPI는 4가지 상태를 관리하고 반환한다. 차례대로 `isLoading`, `isUrl`, `isData`, `isError`와 같다. useFetchAPI는 현재 fetchData 함수는 단일 요청만 처리하도록 작성되어 있다. 따라서 한 번 호출할 때 하나의 요청만 수행하며 내부에서 병렬로 여러 요청을 처리하는 로직이 포함되어 있지 않다. 그래서 useFetchAPI를 다중으로 사용할 때는 비구조할당 방식으로 useFetchAPI를 두번 호출해야하는 불편함과 단점이 있다.
  * @version 1.0.0
  * @author 김동우 | 4BEE <4bee.code@gamil.com>
  * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43}
- * @todo Promise.all을 사용해서 직렬 Fetch 병렬 Fetch로 변환해본다.
+ * @todo Promise.all을 사용해서 직렬 Fetch를 병렬 Fetch로 변환해본다.
  *
- * API 요청 상태 및 유틸리티 함수들을 담은 객체를 반환합니다.
+ * @property {any} isData - API에서 반환된 데이터 / default: `null`
+ * @property {boolean} isLoading - 요청이 진행 중인지 나타내는 상태 / default: `false`
+ * @property {Error|null} isError - 요청이 실패했을 경우 발생한 에러 객체. 없을 경우 `null` / default: `null`
+ * @property {string} setUrl - 요청 URL을 설정하거나 업데이트하는 함수 / default: `initialUrl`
  *
- * @property {any} isData - API에서 반환된 데이터. 기본값: `null`.
- * @property {boolean} isLoading - 요청이 진행 중인지 나타내는 상태. 기본값: `false`.
- * @property {Error|null} isError - 요청이 실패했을 경우 발생한 에러 객체. 없을 경우 `null`. 기본값: `null`.
- * @property {function(string): void} setUrl - 요청 URL을 설정하거나 업데이트하는 함수.
+ * @returns {Object} API 요청 상태들을 담은 객체를 반환합니다.
  *
- * @returns {Object} API 요청 상태 및 유틸리티 함수들을 담은 객체를 반환합니다.
- *
- * 사용 예시는 다음과 같습니다.
  * @example
  * const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' });
  * const [isContent, setContent] = useState();
