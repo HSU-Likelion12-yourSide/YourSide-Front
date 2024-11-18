@@ -6,8 +6,8 @@
     "maxNodeModuleJsDepth": 2
   },
   "include": [
-    "src/**/*.js",
-    "src/**/*.jsx"
+    "src/Global/API/Hooks/useFetchAPI.jsx",
+    "src/Global/API/fetch.instance.js"
   ],
   "exclude": [
     "node_modules"
