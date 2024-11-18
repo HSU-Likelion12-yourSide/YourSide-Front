@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#VmwBinaryAnswer">VmwBinaryAnswer</a></li><li><a href="global.html#VmwrResult">VmwrResult</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#VmwBinaryAnswer">VmwBinaryAnswer</a></li><li><a href="global.html#VmwrResult">VmwrResult</a></li><li><a href="global.html#fetchAPI">fetchAPI</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li></ul>
     
 </nav>
 
@@ -827,6 +827,285 @@
 
     
 
+    <h4 class="name" id="fetchAPI"><span class="type-signature"></span>fetchAPI<span class="signature">(baseURL<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {AxiosInstance}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>이 함수는 기본 API URL을 설정하고, timeout 및 기본 header와 같은 공통 설정이 포함된 Axios instance를 생성하여 반환한다.`.env` 파일에서 환경 변수 `REACT_APP_API_URL` 값을 가져와 기본 URL로 설정하며 별도로 전달된 `baseURL` 값을 사용할 수도 있다.</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:4bee.code@gamil.com">김동우 | 4BEE</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43">https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43</a></li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Promise.all을 사용해서 직렬 Fetch를 병렬 Fetch로 변환해본다.</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">요청 timeout을 5000ms(5초)로 설정</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">기본 요청 headers를 설정, 기본적으로 `Content-Type: application/json`을 포함한다.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// 기본 URL을 사용하여 Axios 인스턴스 생성// useFetchAPI 참조const api = fetchAPI();// 사용자 지정 baseURL을 사용하여 Axios 인스턴스 생성const customAPI = fetchAPI('https://custom-api.example.com');// API 요청 예시api.get('/endpoint')  .then(response => {    console.log('Response data:', response.data);  })  .catch(error => {    console.error('Error:', error);  });</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>REACT_APP_API_URL</code>
+                
+                </td>
+            
+
+            <td class="description last">API 요청의 기본 URL. 설정하지 않으면 환경 변수 `REACT_APP_API_URL`을 기본값으로 사용</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    설정된 Axios 인스턴스를 반환한다. 이를 통해 API 요청을 손쉽게 처리할 수 있다.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">AxiosInstance</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="test"><span class="type-signature"></span>test<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
 
     
@@ -1363,7 +1642,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Nov 19 2024 00:52:36 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Nov 19 2024 01:03:22 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -44,7 +44,6 @@ const { REACT_APP_API_URL } = process.env;
  * setUrl('/api/new-data'); // 요청 URL 업데이트
  */
 
-// useFetchAPI 훅 정의
 const useFetchAPI = (initialUrl, method = 'GET', requestData = null) => {
   const [isLoading, setLoading] = useState(false); // 데이터를 요청하는 동안의 로딩 상태 중인지 isLoading으로 나타냅니다.
 
