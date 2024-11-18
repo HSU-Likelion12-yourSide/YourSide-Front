@@ -22,7 +22,7 @@ const { REACT_APP_API_URL } = process.env;
  * @returns {Object} API 요청 상태들을 담은 객체를 반환합니다.
  *
  * @example
- * const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' });
+ * const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' }); // post 요청 시에만 객체 key, value로 설정
  * const [isContent, setContent] = useState();
  *
  * useEffect(() => {
