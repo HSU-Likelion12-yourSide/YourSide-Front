@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#VmwBinaryAnswer">VmwBinaryAnswer</a></li><li><a href="global.html#VmwrResult">VmwrResult</a></li><li><a href="global.html#test">test</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#VmwBinaryAnswer">VmwBinaryAnswer</a></li><li><a href="global.html#VmwrResult">VmwrResult</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li></ul>
     
 </nav>
 
@@ -926,6 +926,424 @@
 
 
         
+            
+
+    
+
+    <h4 class="name" id="useFetchAPI"><span class="type-signature"></span>useFetchAPI<span class="signature">(initialUrl, method<span class="signature-attributes">opt</span>, requestData<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><해당 커스텀 훅(Hook)은 `fetch.instance.js`를 기반으로 동작하고 있습니다. 따라서 해당 Axios instance를 모른다면 `fetch.instance.js`를 보고 오시는 것을 추천 합니다.> useFetchAPI는 4가지 상태를 관리하고 반환한다. 차례대로 `isLoading`, `isUrl`, `isData`, `isError`와 같다. useFetchAPI는 현재 fetchData 함수는 단일 요청만 처리하도록 작성되어 있다. 따라서 한 번 호출할 때 하나의 요청만 수행하며 내부에서 병렬로 여러 요청을 처리하는 로직이 포함되어 있지 않다. 그래서 useFetchAPI를 다중으로 사용할 때는 비구조할당 방식으로 useFetchAPI를 두번 호출해야하는 불편함과 단점이 있다.</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:4bee.code@gamil.com">김동우 | 4BEE</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43">https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43</a></li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Promise.all을 사용해서 직렬 Fetch 병렬 Fetch로 변환해본다.API 요청 상태 및 유틸리티 함수들을 담은 객체를 반환합니다.</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">API에서 반환된 데이터. 기본값: `null`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isLoading</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">요청이 진행 중인지 나타내는 상태. 기본값: `false`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">요청이 실패했을 경우 발생한 에러 객체. 없을 경우 `null`. 기본값: `null`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">요청 URL을 설정하거나 업데이트하는 함수.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' });const [isContent, setContent] = useState();useEffect(() => {   if (isLoading) {     console.log('..is Loading');     setContent('Loading...');   } else if (isError) {     console.log(`is Error : `, isError);     setContent(`Error: `, isError);   } else if (isData &amp;&amp; isData.data) {     console.log(`Success Contact : `, isData);     setContent(isData.data);   } else {     setContent(null);   } }, [isLoading, isError, isData]);setUrl('/api/new-data'); // 요청 URL 업데이트</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>initialUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">API 요청을 보낼 초기 URL.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">'GET'</span>
+|
+
+<span class="param-type">'POST'</span>
+|
+
+<span class="param-type">'PUT'</span>
+|
+
+<span class="param-type">'DELETE'</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'GET'</code>
+                
+                </td>
+            
+
+            <td class="description last">요청에 사용할 HTTP 메서드 (기본값은 'GET').</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>requestData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last">요청에 포함될 데이터 (POST, PUT 메서드에서 사용).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    API 요청 상태 및 유틸리티 함수들을 담은 객체를 반환합니다.사용 예시는 다음과 같습니다.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     
@@ -945,7 +1363,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Nov 18 2024 22:35:13 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Nov 19 2024 00:34:27 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
