@@ -24,16 +24,8 @@ export const StateContext = createContext();
  * @returns {JSX.Element} `ContextProviderState`는 자식 컴포넌트(App)를 Context Provider로 래핑하며, 상태 값과 변경 함수들을 제공합니다.
  *
  * @example
- * // 사용할 상태 변수와 상태 변경 함수 기입
- * const { isState, setState } = useGlobalState();
- * setState();
- *
- * // isState, setState 사용 예시
- * const handleClick = value => {
- *  setState(value);
- *  setNum(prev => prev + 1);
- *  return console.log('in the !handleClick-Fn', isState);
- *  };
+ * // useGlobalState에서의 사용 예시이다.
+ * const context = useContext(StateContext);
  */
 
 const ContextProviderState = ({ children }) => {
