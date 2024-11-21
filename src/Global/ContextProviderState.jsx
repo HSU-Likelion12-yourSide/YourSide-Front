@@ -6,9 +6,9 @@ export const StateContext = createContext();
 /**
  * @param {ReactNode} children - Provider로 래핑할 React 엘리먼트 또는 컴포넌트.
  *
- * @description 이 컴포넌트는 React의 Context API를 사용하여 공유 상태를 제공한다. 여러 상태 변수와 해당 상태 변경 함수를 관리하며, 이를 하위 컴포넌트에서 사용할 수 있도록 한다.
+ * @description 이 컴포넌트는 React의 Context API를 사용하여 공유 상태를 제공합니다. 여러 상태 변수와 해당 상태 변경 함수를 관리하며, 이를 하위 컴포넌트에서 사용할 수 있도록 합니다.
  * @version 1.0.0
- * @author 윤예진 <2001_11_7@naver.com>
+ * @author 윤예진 | nyun-nye <2001_11_7@naver.com>
  * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/28}
  * @todo ContextAPI 대신 Recoil을 사용해 비교해본다.
  *
@@ -24,7 +24,7 @@ export const StateContext = createContext();
  * @returns {JSX.Element} `ContextProviderState`는 자식 컴포넌트(App)를 Context Provider로 래핑하며, 상태 값과 변경 함수들을 제공합니다.
  *
  * @example
- * // useGlobalState에서의 사용 예시이다.
+ * // useGlobalState에서의 사용 예시입니다.
  * const context = useContext(StateContext);
  */
 

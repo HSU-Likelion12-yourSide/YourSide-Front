@@ -19,7 +19,8 @@
     "include": [
       "src/Global/API/Hooks/useFetchAPI.jsx",
       "src/Global/API/fetch.instance.js",
-      "src/Global/ContextProviderState.jsx"
+      "src/Global/ContextProviderState.jsx",
+      "src/Global/Hooks/useGlobalState.jsx"
     ],
     "excludePattern": "(^|\\/|\\\\)node_modules"
   },
