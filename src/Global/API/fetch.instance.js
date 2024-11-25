@@ -14,7 +14,7 @@ console.log('Environment variable:', process.env.REACT_APP_API_URL);
  * </span>
  *
  * @version 1.0.0
- * @author 김동우 | 4BEE <4bee.code@gamil.com>
+ * @author 김동우 | 4BEE <4bee.code@gmail.com>
  * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43}
  * @todo Promise.all을 사용해서 직렬 Fetch를 병렬 Fetch로 변환해본다.
  *
