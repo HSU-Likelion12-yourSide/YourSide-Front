@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 export const StateContext = createContext();
 
 /**
- * @param {ReactNode} children - Provider로 래핑할 React 엘리먼트 또는 컴포넌트.
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {ReactNode} props.children - Provider로 래핑할 React 엘리먼트 또는 컴포넌트
  *
  * @description 이 컴포넌트는 React의 Context API를 사용하여 공유 상태를 제공합니다. 여러 상태 변수와 해당 상태 변경 함수를 관리하며, 이를 하위 컴포넌트에서 사용할 수 있도록 합니다.
  * @version 1.0.0
