@@ -1,7 +1,9 @@
 # Your-Side
+
 <img src="./src/Global/image/logo.png" alt="alt text" width="300px">
 
 # List
+
 <details close>
   <summary>목차</summary>
   <ul>
@@ -12,6 +14,7 @@
       <ul>
         <li><a href="#web-site">Web-Site</a></li>
         <li><a href="#web-front-develop-document">Web-Front-Develop-Document</a></li>
+        <li><a href="#Github-Wiki">Github-Wiki</a></li>
         <li><a href="#team-document">Team-Document</a></li>
       </ul>
     </li>
@@ -50,13 +53,15 @@
 <br>
 
 # Your-Side는 네편 입니다.
+
 근로계약서 검토 너무 어려우신가요?
 
 나는 지금 알맞은 월급을 받고 있을까요?
 
-세세한 근로법이 어려운 ***‘네편’*** 이 되어줄 [네편](https://your-side.vercel.app/ "Your-Side-Web")에서 확인해세요!
+세세한 근로법이 어려운 **_‘네편’_** 이 되어줄 [네편](https://your-side.vercel.app/ 'Your-Side-Web')에서 확인해세요!
 
 ## Project-한줄평
+
 - 4Bee/김동우 : 우여곡절이 많았지만 끝까지 프로젝트를 마칠 수 있어서 팀원들과 기다려준 많은 분들게 감사하다고 전하고 싶습니다. 앞으로 있을 버전 2도 열심히 준비해서 좋은 모습 보여드리 겠습니다.
 
 - 임혜정 : 열정적인 팀원들과 함께 깊이 있는 협업을 경험할 수 있어 정말 감사했습니다. 마지막까지 목표를 달성해가는 과정에서 많은 걸 배웠습니다!
@@ -70,7 +75,10 @@
 <br>
 
 ## Project-Duration
-- 2개월
+
+- Web : 2개월(08.22~10.30)
+- Doc : 3주(11.06~11.26)
+- Wiki : 3주(11.06~11.26)
 
 # Contact
 
@@ -80,22 +88,36 @@
   </a>
 </span>
 
+<br>
+
 # Web Link
-Web-Site
+
+<b>Web-Site</b>
+
 <div id="web-site">
-  <a href="https://www.notion.so/4bfc/77a113431d0c43afbd318f291c38a6e0" title="Your-Side-Notion">
+  <a href="https://your-side.vercel.app/" title="Your-Side-Web">
     <img src="https://img.shields.io/badge/YourSide-204598?style=for-the-badge&logo=google-chrome&logoColor=white" alt="YourSide">
   </a>
 </div>
 
-Web-Front-Develop-Document
+<b>Web-Front-Develop-Document</b>
+
 <div id="web-front-develop-document">
   <a href="https://your-side-front-doc.vercel.app/" title="Your-Side-Develop-Document">
     <img src="https://img.shields.io/badge/Document-212529?style=for-the-badge&logo=javascript&logoColor=#" alt="YourSide">
   </a>
 </div>
 
+<b>Github-Wiki</b>
+
+<div id="Github-Wiki">
+  <a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/wiki" title="Your-Side-Wiki">
+    <img src="https://img.shields.io/badge/Wiki-white?style=for-the-badge&logo=github&logoColor=black" alt="github-wiki">
+  </a>
+</div>
+
 Team-Document
+
 <div id="team-document">
   <span>
     <a href="https://www.notion.so/4bfc/77a113431d0c43afbd318f291c38a6e0" title="Your-Side-Notion">
@@ -117,9 +139,11 @@ Team-Document
 <br>
 
 ---
+
 <br>
 
 # Front-Develop
+
 <div>
   <h3>Front-Skill</h3>
   <div>
@@ -169,9 +193,11 @@ Team-Document
 <br>
 
 ---
+
 <br>
 
 # Web Page Preview
+
 > Test를 기준으로 찍은 영상입니다.
 
 ### 메인 페이지(Main Page)
@@ -194,16 +220,16 @@ Team-Document
 
 ### 마이페이지(My Page)
 
-  - MyPage Menu
-    <div id="my-page">
-      <img src="https://github.com/user-attachments/assets/0f5ec60f-ffe1-49e7-b2e2-a4d524b6df71" alrt="MyPage-Menu" width="600" />
-    </div>
-  <br>
-  
-  - MyPage Pagination
-    <div id="my-page">
-      <img src="https://github.com/user-attachments/assets/241a9786-1249-49d7-87fb-ead0c8e7ede3" alrt="MyPage-Pagination" width="600" />
-    </div>
+- MyPage Menu
+  <div id="my-page">
+    <img src="https://github.com/user-attachments/assets/0f5ec60f-ffe1-49e7-b2e2-a4d524b6df71" alrt="MyPage-Menu" width="600" />
+  </div>
+<br>
+
+- MyPage Pagination
+  <div id="my-page">
+    <img src="https://github.com/user-attachments/assets/241a9786-1249-49d7-87fb-ead0c8e7ede3" alrt="MyPage-Pagination" width="600" />
+  </div>
 
 ### 내 계약서 검토 페이지(ContractReview Page)
 
@@ -218,10 +244,10 @@ Team-Document
       <img src="https://github.com/user-attachments/assets/92a8f2c0-cb90-4a56-bfce-3bdb05ca7789" alrt="WorkArrangement" width="600" />
     </div>
 
-  - WorkArrangement-input
-    <div id="workarrangement-page">
-      <img src="https://github.com/user-attachments/assets/9f4f9280-ab0d-4d2a-91b9-4915bbf746a9" alrt="WorkArrangement-input" width="600" />
-    </div>
+- WorkArrangement-input
+  <div id="workarrangement-page">
+    <img src="https://github.com/user-attachments/assets/9f4f9280-ab0d-4d2a-91b9-4915bbf746a9" alrt="WorkArrangement-input" width="600" />
+  </div>
 
 ### 게시글 작성 페이지(PostingQnA)
 
@@ -247,33 +273,38 @@ Team-Document
 
 <br>
 
-
 # Project Contributors
 
 ### [Project Manager](https://www.instagram.com/)
-|   |   
-|---|
-| <img src="https://github.com/user-attachments/assets/a5e55697-b75d-4180-b8a0-41c9d98d9119" width="120">|
- Project Manager | 
-[이남희](https://www.instagram.com/)  
+
+|                                                                                                         |
+| ------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/a5e55697-b75d-4180-b8a0-41c9d98d9119" width="120"> |
+| Project Manager                                                                                         |
+
+[이남희](https://www.instagram.com/)
 
 ### [Designer](https://www.figma.com/design/TDsnsYM8pnk7EhgJrvYMwp/2024-%EB%B6%80%EA%B8%B0%ED%86%A4-%EB%84%A4%ED%8E%B8-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mrFVdoDi8mEejn1z-0)
-|   |   
-|---|
-| <img src="https://github.com/user-attachments/assets/6b37d3ef-fb38-430c-8d11-ca646c2aee61" width="120">|
- Designer | 
-[권기남](https://www.figma.com/design/TDsnsYM8pnk7EhgJrvYMwp/2024-%EB%B6%80%EA%B8%B0%ED%86%A4-%EB%84%A4%ED%8E%B8-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mrFVdoDi8mEejn1z-0)  
+
+|                                                                                                         |
+| ------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/6b37d3ef-fb38-430c-8d11-ca646c2aee61" width="120"> |
+| Designer                                                                                                |
+
+[권기남](https://www.figma.com/design/TDsnsYM8pnk7EhgJrvYMwp/2024-%EB%B6%80%EA%B8%B0%ED%86%A4-%EB%84%A4%ED%8E%B8-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?t=mrFVdoDi8mEejn1z-0)
 
 ### [Frontend](https://github.com/HSU-Likelion12-yourSide/YourSide-Front)
-|   |   |   |   
-|---|---|---|
+
+|                                                                               |                                                                               |                                                                               |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/109135643?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/156324288?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/138736197?v=4" width="120"> |
- Frontend | Frontend/Backend | Frontend 
-[4Bee/김동우](https://github.com/4BFC) | [임혜정](https://github.com/frombunny) | [윤예진](https://github.com/nyun-nye) 
+| Frontend                                                                      | Frontend/Backend                                                              | Frontend                                                                      |
+| [4Bee/김동우](https://github.com/4BFC)                                        | [임혜정](https://github.com/frombunny)                                        | [윤예진](https://github.com/nyun-nye)                                         |
 
 ### [Backend](https://github.com/HSU-Likelion12-yourSide/YourSide-Server)
-|   |   |   |   
-|---|---|---|
+
+|                                                                              |                                                                               |                                                                               |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <img src="https://avatars.githubusercontent.com/u/77336664?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/147326233?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/156324288?v=4" width="120"> |
- Backend | Backend | Frontend/Backend
-[이현승](https://github.com/gesal03) | [김혜진](https://github.com/khyaejin) | [임혜정](https://github.com/frombunny)  
+| Backend                                                                      | Backend                                                                       | Frontend/Backend                                                              |
+| [이현승](https://github.com/gesal03)                                         | [김혜진](https://github.com/khyaejin)                                         | [임혜정](https://github.com/frombunny)                                        |
