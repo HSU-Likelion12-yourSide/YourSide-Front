@@ -4,7 +4,7 @@
 
 지금까지 Your-Side를 작업하면서 중요하게 다루었던 함수, 컴포넌트, 커스텀 훅들을 js-doc을 통해서 문서화한 내용입니다.
 
-**_‘네편’_**은 [링크](https://your-side.vercel.app/ 'Your-Side-Web')에서 확인해세요.
+**네편**은 [링크](https://your-side.vercel.app/ 'Your-Side-Web')에서 확인해세요.
 
 <br>
 
