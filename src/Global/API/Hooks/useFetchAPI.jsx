@@ -8,7 +8,7 @@ const { REACT_APP_API_URL } = process.env;
  * @param {'GET'|'POST'|'PUT'|'DELETE'} [method='GET'] - 요청에 사용할 HTTP 메서드 (기본값은 'GET')
  * @param {object|null} [requestData=null] - 요청에 포함될 데이터 (POST, PUT 메서드에서 사용)
  *
- * @description <해당 커스텀 훅(Hook)은 `fetch.instance.js`를 기반으로 동작하고 있습니다. 따라서 해당 Axios instance를 모른다면 `fetch.instance.js`를 보고 오시는 것을 추천 합니다.> useFetchAPI는 4가지 상태를 관리하고 반환한다. 차례대로 `isLoading`, `isUrl`, `isData`, `isError`와 같다. useFetchAPI는 현재 fetchData 함수는 단일 요청만 처리하도록 작성되어 있다. 따라서 한 번 호출할 때 하나의 요청만 수행하며 내부에서 병렬로 여러 요청을 처리하는 로직이 포함되어 있지 않다. 그래서 useFetchAPI를 다중으로 사용할 때는 비구조할당 방식으로 useFetchAPI를 두번 호출해야하는 불편함과 단점이 있다.
+ * @description <해당 커스텀 훅(Hook)은 `fetch.instance.js`를 기반으로 동작하고 있다. 따라서 해당 Axios instance를 모른다면 `fetch.instance.js`를 보고 오시는 것을 추천 합니다.> useFetchAPI는 4가지 상태를 관리하고 반환한다. 차례대로 `isLoading`, `isUrl`, `isData`, `isError`와 같다. useFetchAPI는 현재 fetchData 함수는 단일 요청만 처리하도록 작성되어 있다. 따라서 한 번 호출할 때 하나의 요청만 수행하며 내부에서 병렬로 여러 요청을 처리하는 로직이 포함되어 있지 않다. 그래서 useFetchAPI를 다중으로 사용할 때는 비구조할당 방식으로 useFetchAPI를 두번 호출해야하는 불편함과 단점이 있다.
  * @version 1.0.0
  * @author 김동우 | 4BEE <4bee.code@gmail.com>
  * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/43}
