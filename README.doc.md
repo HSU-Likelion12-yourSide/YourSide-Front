@@ -1,5 +1,4 @@
-# Your-Side
-
+<img src="https://github.com/user-attachments/assets/aafdfcde-ee6a-412a-b083-a2709db0e196" alt="alt text">
 # Your-Side Document 입니다.
 
 지금까지 Your-Side를 작업하면서 중요하게 다루었던 함수, 컴포넌트, 커스텀 훅들을 js-doc을 통해서 문서화한 내용입니다.
@@ -141,3 +140,7 @@
 | <img src="https://avatars.githubusercontent.com/u/109135643?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/138736197?v=4" width="120"> |
 | Frontend                                                                      | Frontend                                                                      |
 | [4Bee/김동우](https://github.com/4BFC)                                        | [윤예진](https://github.com/nyun-nye)                                         |
+
+<br>
+<br>
+<img src="https://github.com/user-attachments/assets/4c7874e2-e3ea-469b-b7fc-3eef4a331785" alt="alt text">

@@ -1,6 +1,4 @@
-# Your-Side
-
-<img src="./src/Global/image/logo.png" alt="alt text" width="300px">
+<img src="https://github.com/user-attachments/assets/aafdfcde-ee6a-412a-b083-a2709db0e196" alt="alt text">
 
 # List
 
@@ -308,3 +306,7 @@
 | <img src="https://avatars.githubusercontent.com/u/77336664?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/147326233?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/156324288?v=4" width="120"> |
 | Backend                                                                      | Backend                                                                       | Frontend/Backend                                                              |
 | [이현승](https://github.com/gesal03)                                         | [김혜진](https://github.com/khyaejin)                                         | [임혜정](https://github.com/frombunny)                                        |
+
+<br>
+<br>
+<img src="https://github.com/user-attachments/assets/4c7874e2-e3ea-469b-b7fc-3eef4a331785" alt="alt text">
