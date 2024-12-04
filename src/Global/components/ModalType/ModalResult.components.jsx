@@ -4,6 +4,47 @@ import PropTypes from 'prop-types';
 import useGlobalState from '../../Hooks/useGlobalState';
 import useFetchAPI from '../../API/Hooks/useFetchAPI';
 
+/**
+ * ModalResult 컴포넌트
+ *
+ * @description 이 컴포넌트는 결과지 이름을 입력받고 저장하기 버튼 클릭 시 POST 요청을 통해 데이터를 서버로 전송한다.
+ * 데이터 전송 후 성공적으로 처리되면 부모 컴포넌트의 상태를 변경하여 모달 상태를 업데이트한다.
+ * <br>
+ * <b style="color:tomato;">주의 사항</b>
+ * <br> - `postData`와 `postContent`는 필수 props이며 올바르게 제공되어야 한다.
+ * <br> - `postData`의 필드는 명시된 타입에 맞아야 한다.
+ * @version 1.0.0
+ * @author 김동우 | 4BEE <4bee.code@gmail.com>
+ * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/56}
+ *
+ * @component
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {Object} props.postData - 서버에 전송할 데이터 객체
+ * @param {number} props.postData.total_pay - 총 지급액
+ * @param {boolean} props.postData.extra_pay - 추가 지급 여부
+ * @param {boolean} props.postData.week_pay - 주휴수당 여부
+ * @param {boolean} props.postData.night_pay - 야간수당 여부
+ * @param {boolean} props.postData.overtime_pay - 초과근무수당 여부
+ * @param {boolean} props.postData.holiday_pay - 휴일수당 여부
+ * @param {string} props.postContent - 전송할 내용의 텍스트
+ *
+ *
+ * @example
+ * <ModalResult
+ *   postData={{
+ *     total_pay: 5000000,
+ *     extra_pay: true,
+ *     week_pay: true,
+ *     night_pay: false,
+ *     overtime_pay: true,
+ *     holiday_pay: false,
+ *   }}
+ *   postContent="근로 결과지에 관한 내용"
+ * />
+ *
+ * @returns {JSX.Element} 결과지 모달 UI를 반환한다.
+ */
+
 const ModalResult = ({ postData, postContent }) => {
   console.log('모달 데이터: ', postData);
   // user_id값 임시 지정
