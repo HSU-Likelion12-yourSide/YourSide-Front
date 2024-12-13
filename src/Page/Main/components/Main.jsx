@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import slidShow from '../image/slide-show.png';
 import contractReviewIntro from '../image/contract-review-intro.png';
 import workArrangementIntro from '../image/work-arrangement-intro.png';
 import questionAndAnswerIntro from '../image/question-and-answer-intro.png';
+import Modal from '../../../Global/components/Modal.components';
+import ModalNotifi from '../../../Global/components/ModalType/ModalNotifi.component';
 // import arrowL from '../image/arrowL.svg';
 // import arrowR from '../image/arrowR.svg';
 import arrowB from '../image/arrowB.svg';
@@ -13,15 +15,23 @@ import Footer from '../../Footer/components/Footer';
 import useGlobalState from '../../../Global/Hooks/useGlobalState';
 
 const Main = () => {
-  const { isUser, setUser, isUserName } = useGlobalState();
+  const { isUser, setUser, isUserName, isModalState, setModalState } =
+    useGlobalState();
   const basePath = isUser ? `/${isUser}` : '';
   setUser(useParams().user);
   const navigate = useNavigate();
   console.log(isUserName);
 
+  useEffect(() => {
+    if (!isModalState) {
+      setModalState(true);
+    }
+  }, []);
+
   return (
     <div className="main">
       <Header />
+      {isModalState && <Modal isOpen={isModalState} ModalType={ModalNotifi} />}
       <div className="slide-show">
         {/* <div id="left">
           <img id="arrowL" src={arrowL} alt="arrowL" />
