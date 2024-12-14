@@ -24,7 +24,11 @@
     "docs": "jsdoc -c jsdoc.config.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "login:server": "npx supabase login",
+    "start:supabase": "npx supabase start",
+    "start:server": "npx supabase functions serve",
+    "start:deploy": "npx supabase functions deploy"
   },
   "eslintConfig": {
     "extends": [
