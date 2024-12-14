@@ -5,10 +5,11 @@
     "node": true
   },
   "extends": [
-     /**⚠ airbnb-Config 설정, Prettier 통합 */
+    /**⚠ airbnb-Config 설정, Prettier 통합 */
     "airbnb",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:deno/recommended" // Deno 플러그인 추가
   ],
   "parserOptions": {
     "ecmaVersion": 2021,
@@ -23,7 +24,7 @@
     "prettier"
   ],
   "rules": {
-     /**⚠ prettier를 ESlint안에서 통합관리 */
+    /**⚠ prettier를 ESlint안에서 통합관리 */
     "prettier/prettier": [
       "error",
       {
@@ -42,7 +43,7 @@
         // 화살표 함수가 하나의 매개변수를 받을 때 괄호를 생략하게 formatting
         "arrowParens": "avoid",
         // 이 줄을 추가하여 Prettier가 줄 끝 문자를 자동으로 감지하고 CR error를 처리하도록 설정
-        "endOfLine": "auto" 
+        "endOfLine": "auto"
       }
     ],
     /** ⚠ camelcase만 허용 */
