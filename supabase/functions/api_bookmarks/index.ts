@@ -3,6 +3,11 @@
 
 // .env 파일 로드
 import "https://deno.land/std@0.177.0/dotenv/load.ts";
+// Supabase 라이브러리 가져오기
+import {
+  createClient,
+  SupabaseClient,
+} from "https://esm.sh/@supabase/supabase-js@2";
 
 console.log("Hello from Functions!");
 
@@ -14,11 +19,25 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error("Supabase URL or Key is missing from environment variables");
 }
 
+// Supabase 클라이언트 초기화
+const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
+
 // Edge Function 시작
 Deno.serve(async (req) => {
   try {
     // GET 메서드 처리
     if (req.method === "GET") {
+      // Supabase에서 'bookmarks' 테이블 데이터 가져오기
+      const { data, error } = await supabase.from("bookmarks").select("*");
+
+      if (error) {
+        console.error("Error fetching bookmarks:", error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch bookmarks" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
       return new Response(
         JSON.stringify({ message: "This is a GET request" }),
         { headers: { "Content-Type": "application/json" }, status: 200 },
