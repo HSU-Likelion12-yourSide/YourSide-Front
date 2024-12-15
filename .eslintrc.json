@@ -1,0 +1,88 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    /**⚠ airbnb-Config 설정, Prettier 통합 */
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:deno/recommended" // Deno 플러그인 추가
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    /**⚠ arrow 함수만 사용 할 수 있게 추가하는 plugin */
+    "prefer-arrow",
+    "prettier"
+  ],
+  "rules": {
+    /**⚠ prettier를 ESlint안에서 통합관리 */
+    "prettier/prettier": [
+      "error",
+      {
+        // 문자열은 따옴표로 formatting
+        "singleQuote": true,
+        // 코드 마지막에 세미콜론이 있게 formatting
+        "semi": true,
+        // 탭의 사용을 금하고 스페이스바 사용으로 대체하게 formatting
+        "useTabs": false,
+        // 들여쓰기 너비는 2칸 VSC 세팅에선 indentation을 검색하고 확인 하면 된다.
+        "tabWidth": 2,
+        // 객체나 배열 키:값 뒤에 항상 콤마를 붙히도록 formatting
+        "trailingComma": "all",
+        // 코드 한 줄이 maximum 80칸
+        "printWidth": 80,
+        // 화살표 함수가 하나의 매개변수를 받을 때 괄호를 생략하게 formatting
+        "arrowParens": "avoid",
+        // 이 줄을 추가하여 Prettier가 줄 끝 문자를 자동으로 감지하고 CR error를 처리하도록 설정
+        "endOfLine": "auto"
+      }
+    ],
+    /** ⚠ camelcase만 허용 */
+    "camelcase": ["error", { "properties": "always" }],
+    /** ⚠ key를 index를 사용할 할 수 있게 허용 */
+    "react/no-array-index-key": "off",
+    /** ⚠jsx와 js파일들이 해당 rules에 적용 되게 한다. */
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    /** ⚠. button type */
+    "react/button-has-type": "off",
+    /** ⚠. a href */
+    "jsx-a11y/anchor-has-content": "off",
+    /** ⚠ 화살표 함수 사용 */
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "disallowPrototype": true, // true일 경우, 프로토타입에 할당된 함수도 화살표 함수로 강제합니다.
+        "singleReturnOnly": false, // true일 경우, 한 줄로 반환하는 함수만 화살표 함수로 강제합니다.
+        "classPropertiesAllowed": false // true일 경우, 클래스 속성에 할당된 함수는 화살표 함수로 강제하지 않습니다.
+      }
+    ],
+    "react/function-component-definition": [
+      // 이 규칙은 리액트 함수 컴포넌트를 어떻게 정의할지에 대한 스타일을 강제합니다.
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        //이름이 있는 컴포넌트를 어떻게 정의할지 설정합니다. 여기서는 "arrow-function"으로 설정하여 화살표 함수를 사용하도록 강제합니다.
+        "unnamedComponents": "arrow-function"
+        //이름이 없는 컴포넌트 (익명 함수 컴포넌트)를 어떻게 정의할지 설정합니다. 여기서도 "arrow-function"으로 설정하여 화살표 함수를 사용하도록 강제합니다.
+      }
+    ],
+    "no-console": "off", // console 사용을 허용
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "ignoreRestSiblings": false,
+        "varsIgnorePattern": "^(is|set)[A-Z].*$|^(Dev)[a-zA-Z].*$"
+      }
+    ]
+  }
+}

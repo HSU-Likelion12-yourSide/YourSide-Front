@@ -1,0 +1,29 @@
+{
+  //settings.json
+
+  "editor.formatOnSave": true, // 파일을 저장할 때 자동으로 포맷팅을 수행합니다.
+
+  "[javascript]": {
+    "editor.formatOnSave": false
+  }, // JavaScript 파일에 대해서는 기본 포맷팅을 비활성화합니다.
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }, // 파일을 저장할 때 ESLint를 사용하여 모든 가능한 문제를 자동으로 수정합니다.
+
+  "eslint.alwaysShowStatus": true, // VSCode 하단 상태바에 ESLint 상태를 항상 표시합니다.
+
+  "prettier.disableLanguages": ["js"],
+  // Prettier가 JavaScript 파일을 포맷팅하지 않도록 설정합니다.
+  // ESLint가 대신 포맷팅을 처리하게 합니다.
+
+  "files.autoSave": "onFocusChange", // 파일을 자동 저장하는 트리거를 포커스가 변경될 때로 설정합니다.
+  "editor.defaultFormatter": "esbenp.prettier-vscode", //해당 프로젝트를 prettier를 기본으로 규칙을 설정한다.
+  "deno.enable": true, // Deno를 활성화
+  "deno.lint": true, // Deno Lint 활성화
+  "deno.unstable": true,
+  "deno.config": "./deno.json", // Deno 설정 파일 경로
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno" // Deno 포매터 사용
+  }
+}
