@@ -1,4 +1,4 @@
-import { calculateProps } from "../type.ts";
+import { calculateProps } from "./type.ts";
 // 근로 조건에 따라 total_pay 계산
 export function calculateTotalPay({
   hour_pay, // 시급
