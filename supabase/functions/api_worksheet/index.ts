@@ -7,6 +7,7 @@ import {
   SupabaseClient,
 } from "https://esm.sh/@supabase/supabase-js@2.47.7";
 import { calculateTotalPay } from "./calculate.ts";
+import author from "./author.ts";
 
 console.log("Hello from Functions!");
 
@@ -77,40 +78,12 @@ Deno.serve(async (req) => {
 
     // POST: `/api_worksheet` 처리
     if (url.pathname === "/api_worksheet" && req.method === "POST") {
-      const authHeader = req.headers.get("Authorization");
-
-      if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return new Response(
-          JSON.stringify({
-            error: "Authorization header is missing or invalid",
-          }),
-          { headers: { "Content-Type": "application/json" }, status: 401 },
-        );
+      // 사용자 검증
+      const userAuthor = await author(req, supabase);
+      if (userAuthor instanceof Response) {
+        return userAuthor;
       }
-
-      const token = authHeader.split(" ")[1];
-      const {
-        data: { user },
-        error: userError,
-      } = await supabase.auth.getUser(token);
-
-      // Supabase에서 사용자 정보 가져오기 실패 시 처리
-      if (userError) {
-        console.error("Error fetching user:", userError);
-        return new Response(
-          JSON.stringify({ error: "Invalid or expired token" }),
-          { headers: { "Content-Type": "application/json" }, status: 500 },
-        );
-      }
-
-      // 사용자 정보가 없는 경우 처리
-      if (!user) {
-        console.error("User is null or invalid token provided.");
-        return new Response(
-          JSON.stringify({ error: "Failed to retrieve user information" }),
-          { headers: { "Content-Type": "application/json" }, status: 401 },
-        );
-      }
+      const { userId } = userAuthor;
 
       let body;
       try {
@@ -126,7 +99,7 @@ Deno.serve(async (req) => {
         .from("worksheet")
         .insert([
           {
-            user_id: user.id,
+            user_id: userId,
             title: body.title,
             content: body.content,
             total_pay: body.total_pay,
@@ -162,6 +135,87 @@ Deno.serve(async (req) => {
       return new Response(
         JSON.stringify({ error: "No data inserted" }),
         { headers: { "Content-Type": "application/json" }, status: 500 },
+      );
+    }
+
+    if (req.method === "PUT" && url.pathname.startsWith("/api_worksheet/")) {
+      // URL에서 ID 추출
+      const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
+      const id = Number(idPart); // 숫자로 변환
+
+      // ID가 유효한지 확인
+      if (!id || isNaN(id) || id <= 0) {
+        return new Response(
+          JSON.stringify({ error: "Invalid or missing ID in URL" }),
+          { headers: { "Content-Type": "application/json" }, status: 400 },
+        );
+      }
+
+      // 사용자 검증
+      const userAuthor = await author(req, supabase);
+      if (userAuthor instanceof Response) {
+        return userAuthor;
+      }
+      const { userId } = userAuthor;
+
+      // 현재 상태 확인
+      const { data: currentData, error: fetchError } = await supabase
+        .from("worksheet")
+        .select("is_open")
+        .eq("id", id)
+        .single();
+
+      if (fetchError) {
+        console.error("Error fetching current data:", fetchError);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch current data" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!currentData) {
+        return new Response(
+          JSON.stringify({ error: "No record found for the provided ID" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      // 상태 토글
+      const newIsOpen = !currentData.is_open;
+      console.log("ID to update:", id);
+      console.log("New is_open value:", newIsOpen);
+      console.log("Current data fetched:", currentData);
+
+      // 데이터베이스 업데이트
+      const { data: updatedData, error: updateError } = await supabase
+        .from("worksheet")
+        .update({ is_open: newIsOpen })
+        .eq("id", id)
+        .select("id, is_open")
+        .maybeSingle();
+
+      if (updateError) {
+        console.error("Error updating data:", updateError);
+        return new Response(
+          JSON.stringify({ error: "Failed to update data" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!updatedData) {
+        return new Response(
+          JSON.stringify({ error: "No matching rows to update" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({
+          status: 200,
+          data: updatedData,
+          message: "Successfully toggled 'is_open' field",
+        }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
       );
     }
 
