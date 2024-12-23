@@ -27,8 +27,8 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
 
   try {
-    // GET 메서드 처리
-    if (req.method === "GET") {
+    // GET: `/api_worksheet` 메서드 처리 - 전체
+    if (url.pathname === "/api_worksheet" && req.method === "GET") {
       console.log("Fetching worksheet...");
       const { data, error } = await supabase.from("worksheet").select("*");
 
@@ -37,6 +37,72 @@ Deno.serve(async (req) => {
         return new Response(
           JSON.stringify({ error: "Failed to fetch worksheet" }),
           { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ data }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
+    }
+
+    // GET: `/api_worksheet/shared` 메서드 처리 - 공유된 결과지 조회
+    if (url.pathname === "/api_worksheet/shared" && req.method === "GET") {
+      console.log("Fetching worksheet...");
+      const { data, error } = await supabase
+        .from("worksheet")
+        .select("*")
+        .eq(
+          "is_open",
+          true,
+        );
+
+      if (error) {
+        console.error("Error fetching worksheet:", error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch worksheet" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!data || data.length === 0) {
+        return new Response(
+          JSON.stringify({ error: "No shared worksheets found" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ data }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
+    }
+
+    //GET: `/api_worksheet/N` 처리 - 세부 조회
+    if (url.pathname.startsWith("/api_worksheet/") && req.method === "GET") {
+      // URL에서 ID 추출
+      const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
+      const id = Number(idPart); // 숫자로 변환
+
+      // 테이블에서 가져올 데이터
+      const { data, error } = await supabase
+        .from("worksheet")
+        .select("*")
+        .eq("id", id)
+        .single(); // 단일 행 반환
+
+      if (error) {
+        console.error(`Error fetching ${id} data:`, error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch current data" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!data) {
+        return new Response(
+          JSON.stringify({ error: "No record found for the provided ID" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
         );
       }
 
@@ -137,8 +203,8 @@ Deno.serve(async (req) => {
         { headers: { "Content-Type": "application/json" }, status: 500 },
       );
     }
-
-    if (req.method === "PUT" && url.pathname.startsWith("/api_worksheet/")) {
+    // PUT: `/api_worksheet/N` 처리
+    if (url.pathname.startsWith("/api_worksheet/") && req.method === "PUT") {
       // URL에서 ID 추출
       const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
       const id = Number(idPart); // 숫자로 변환
