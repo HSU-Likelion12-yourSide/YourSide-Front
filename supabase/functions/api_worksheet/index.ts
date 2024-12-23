@@ -1,22 +1,20 @@
 /// <reference lib="deno.ns" />
 /// <reference lib="deno.unstable" />
 
-// .env 파일 로드
 import "https://deno.land/std@0.177.0/dotenv/load.ts";
-// Supabase 라이브러리 가져오기
 import {
   createClient,
   SupabaseClient,
 } from "https://esm.sh/@supabase/supabase-js@2.47.7";
-
 import { calculateTotalPay } from "./calculate.ts";
+import author from "./author.ts";
+
 console.log("Hello from Functions!");
 
 // 환경 변수 확인
 const supabaseUrl = Deno.env.get("SUPABASE_URL");
 const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY");
 
-// supabase URL과 Key가 없을 경우 Error
 if (!supabaseUrl || !supabaseKey) {
   throw new Error("Supabase URL or Key is missing from environment variables");
 }
@@ -27,13 +25,11 @@ const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
 // Edge Function 시작
 Deno.serve(async (req) => {
   const url = new URL(req.url);
-  try {
-    const body = await req.json();
 
-    // GET 메서드 처리
-    if (req.method === "GET") {
+  try {
+    // GET: `/api_worksheet` 메서드 처리 - 전체
+    if (url.pathname === "/api_worksheet" && req.method === "GET") {
       console.log("Fetching worksheet...");
-      // Supabase에서 'bookmarks' 테이블 데이터 가져오기
       const { data, error } = await supabase.from("worksheet").select("*");
 
       if (error) {
@@ -44,22 +40,98 @@ Deno.serve(async (req) => {
         );
       }
 
-      console.log("Data:", data);
       return new Response(
         JSON.stringify({ data }),
         { headers: { "Content-Type": "application/json" }, status: 200 },
       );
     }
 
-    /** api_worksheet 전체 조회*/
-    // `~/api_worksheet/calculate` 처리
-    if (
-      req.method === "POST" &&
-      url.pathname === "/calculate"
-    ) {
-      // `total_pay` 계산
-      const total_pay = calculateTotalPay(body);
+    // GET: `/api_worksheet/shared` 메서드 처리 - 공유된 결과지 조회
+    if (url.pathname === "/api_worksheet/shared" && req.method === "GET") {
+      console.log("Fetching worksheet...");
+      const { data, error } = await supabase
+        .from("worksheet")
+        .select("*")
+        .eq(
+          "is_open",
+          true,
+        );
 
+      if (error) {
+        console.error("Error fetching worksheet:", error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch worksheet" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!data || data.length === 0) {
+        return new Response(
+          JSON.stringify({ error: "No shared worksheets found" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ data }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
+    }
+
+    //GET: `/api_worksheet/N` 처리 - 세부 조회
+    if (url.pathname.startsWith("/api_worksheet/") && req.method === "GET") {
+      // URL에서 ID 추출
+      const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
+      const id = Number(idPart); // 숫자로 변환
+
+      // 테이블에서 가져올 데이터
+      const { data, error } = await supabase
+        .from("worksheet")
+        .select("*")
+        .eq("id", id)
+        .single(); // 단일 행 반환
+
+      if (error) {
+        console.error(`Error fetching ${id} data:`, error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch current data" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!data) {
+        return new Response(
+          JSON.stringify({ error: "No record found for the provided ID" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ data }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
+    }
+
+    // POST: `/calculate` 처리
+    if (url.pathname === "/api_worksheet/calculate" && req.method === "POST") {
+      if (req.headers.get("Content-Type") !== "application/json") {
+        return new Response(
+          JSON.stringify({ error: "Content-Type must be application/json" }),
+          { headers: { "Content-Type": "application/json" }, status: 400 },
+        );
+      }
+
+      let body;
+      try {
+        body = await req.json();
+      } catch {
+        return new Response(
+          JSON.stringify({ error: "Invalid or missing JSON body" }),
+          { headers: { "Content-Type": "application/json" }, status: 400 },
+        );
+      }
+
+      const total_pay = calculateTotalPay(body);
       return new Response(
         JSON.stringify({
           status: 200,
@@ -69,62 +141,29 @@ Deno.serve(async (req) => {
         { headers: { "Content-Type": "application/json" }, status: 200 },
       );
     }
-    /** api_worksheet 전체 조회*/
-    // `~/api_worksheet` 처리 (데이터 저장)
-    if (req.method === "POST") {
-      /** 사용자 정보 가져오기*/
-      // 클라이언트에서 Authorization 헤더를 가져오기
-      const authHeader = req.headers.get("Authorization");
-      console.log("Authorization Header:", authHeader);
 
-      // Authorization 헤더가 없을 경우 401 Unauthorized 반환
-      if (!authHeader) {
+    // POST: `/api_worksheet` 처리
+    if (url.pathname === "/api_worksheet" && req.method === "POST") {
+      // 사용자 검증
+      const userAuthor = await author(req, supabase);
+      if (userAuthor instanceof Response) {
+        return userAuthor;
+      }
+      const { userId } = userAuthor;
+
+      let body;
+      try {
+        body = await req.json();
+      } catch {
         return new Response(
-          JSON.stringify({ error: "Authorization header is missing" }),
-          { headers: { "Content-Type": "application/json" }, status: 401 },
+          JSON.stringify({ error: "Invalid or missing JSON body" }),
+          { headers: { "Content-Type": "application/json" }, status: 400 },
         );
       }
 
-      // Bearer 토큰에서 JWT 추출
-      const token = authHeader.split(" ")[1]; // "Bearer <token>"에서 <token>만 추출
-      if (!token) {
-        return new Response(
-          JSON.stringify({ error: "Invalid authorization token" }),
-          { headers: { "Content-Type": "application/json" }, status: 401 },
-        );
-      }
-
-      // Supabase 클라이언트로 사용자 정보 가져오기
-      const {
-        data: { user },
-        error: userError,
-      } = await supabase.auth.getUser(token);
-
-      // Supabase에서 사용자 정보 가져오기 실패 시 처리
-      if (userError) {
-        console.error("Error fetching user:", userError);
-        return new Response(
-          JSON.stringify({ error: "Invalid or expired token" }),
-          { headers: { "Content-Type": "application/json" }, status: 500 },
-        );
-      }
-
-      // 사용자 정보가 없는 경우 처리
-      if (!user) {
-        console.error("User is null or invalid token provided.");
-        return new Response(
-          JSON.stringify({ error: "Failed to retrieve user information" }),
-          { headers: { "Content-Type": "application/json" }, status: 401 },
-        );
-      }
-
-      console.log("Authenticated User:", user);
-      const userId = user.id; // 현재 로그인된 사용자의 user_id
-      /** 사용자 정보 가져오기*/
-
-      // !! 데이터베이스에 저장: 데이터 삽입
       const { data: insertData, error: insertError } = await supabase
-        .from("worksheet").insert([
+        .from("worksheet")
+        .insert([
           {
             user_id: userId,
             title: body.title,
@@ -143,10 +182,7 @@ Deno.serve(async (req) => {
       if (insertError) {
         console.error("Error inserting into worksheet:", insertError);
         return new Response(
-          JSON.stringify({
-            error: insertError.message ||
-              "Failed to insert data into worksheet",
-          }),
+          JSON.stringify({ error: "Failed to insert data into worksheet" }),
           { headers: { "Content-Type": "application/json" }, status: 500 },
         );
       }
@@ -162,30 +198,91 @@ Deno.serve(async (req) => {
         );
       }
 
-      // 삽입된 데이터의 ID 또는 특정 조건으로 데이터 조회
-      const { data: insertedData, error: selectError } = await supabase
-        .from("worksheet")
-        .select("*");
-      // .eq("id", insertData[0]?.id) // 삽입된 데이터의 ID로 다시 조회
-      // .single(); // 단일 데이터만 반환
+      return new Response(
+        JSON.stringify({ error: "No data inserted" }),
+        { headers: { "Content-Type": "application/json" }, status: 500 },
+      );
+    }
+    // PUT: `/api_worksheet/N` 처리
+    if (url.pathname.startsWith("/api_worksheet/") && req.method === "PUT") {
+      // URL에서 ID 추출
+      const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
+      const id = Number(idPart); // 숫자로 변환
 
-      // 삽입된 데이터가 없는 경우 (예외 상황 처리)
-      if (!insertedData || insertedData.length === 0) {
+      // ID가 유효한지 확인
+      if (!id || isNaN(id) || id <= 0) {
         return new Response(
-          JSON.stringify({ error: "No data found after insertion" }),
+          JSON.stringify({ error: "Invalid or missing ID in URL" }),
+          { headers: { "Content-Type": "application/json" }, status: 400 },
+        );
+      }
+
+      // 사용자 검증
+      const userAuthor = await author(req, supabase);
+      if (userAuthor instanceof Response) {
+        return userAuthor;
+      }
+      const { userId } = userAuthor;
+
+      // 현재 상태 확인
+      const { data: currentData, error: fetchError } = await supabase
+        .from("worksheet")
+        .select("is_open")
+        .eq("id", id)
+        .single();
+
+      if (fetchError) {
+        console.error("Error fetching current data:", fetchError);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch current data" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!currentData) {
+        return new Response(
+          JSON.stringify({ error: "No record found for the provided ID" }),
           { headers: { "Content-Type": "application/json" }, status: 404 },
         );
       }
 
-      if (selectError) {
-        console.error("Error retrieving inserted data:", selectError);
+      // 상태 토글
+      const newIsOpen = !currentData.is_open;
+      console.log("ID to update:", id);
+      console.log("New is_open value:", newIsOpen);
+      console.log("Current data fetched:", currentData);
+
+      // 데이터베이스 업데이트
+      const { data: updatedData, error: updateError } = await supabase
+        .from("worksheet")
+        .update({ is_open: newIsOpen })
+        .eq("id", id)
+        .select("id, is_open")
+        .maybeSingle();
+
+      if (updateError) {
+        console.error("Error updating data:", updateError);
         return new Response(
-          JSON.stringify({
-            error: "Failed to retrieve inserted data",
-          }),
+          JSON.stringify({ error: "Failed to update data" }),
           { headers: { "Content-Type": "application/json" }, status: 500 },
         );
       }
+
+      if (!updatedData) {
+        return new Response(
+          JSON.stringify({ error: "No matching rows to update" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({
+          status: 200,
+          data: updatedData,
+          message: "Successfully toggled 'is_open' field",
+        }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
     }
 
     // 지원하지 않는 메서드에 대한 처리
