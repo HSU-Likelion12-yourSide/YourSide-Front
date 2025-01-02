@@ -51,10 +51,7 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("postings")
         .select("*")
-        .eq(
-          "is_open",
-          true,
-        );
+        .eq("posting_type", "qna"); // posting_type이 "qna"인 항목
 
       if (error) {
         console.error("Error fetching postings:", error);
@@ -83,10 +80,7 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("postings")
         .select("*")
-        .eq(
-          "is_open",
-          true,
-        );
+        .eq("posting_type", "info"); // posting_type이 "info"인 항목
 
       if (error) {
         console.error("Error fetching postings:", error);
@@ -109,30 +103,56 @@ Deno.serve(async (req) => {
       );
     }
 
-    //GET: `/api_postings/N` 처리 - 세부 조회
-    if (url.pathname.startsWith("/api_postings/") && req.method === "GET") {
-      // URL에서 ID 추출
-      const idPart = url.pathname.split("/").pop(); // 경로의 마지막 부분
-      const id = Number(idPart); // 숫자로 변환
+    // -- 아래는 작업 필요 --
 
-      // 테이블에서 가져올 데이터
+    // GET: `/api_postings/qna` 메서드 처리 - qna
+    if (url.pathname === "/api_postings/qna/popular" && req.method === "GET") {
+      console.log("Fetching postings...");
       const { data, error } = await supabase
         .from("postings")
         .select("*")
-        .eq("id", id)
-        .single(); // 단일 행 반환
+        .eq("posting_type", "qna"); // posting_type이 "qna"인 항목
 
       if (error) {
-        console.error(`Error fetching ${id} data:`, error);
+        console.error("Error fetching postings:", error);
         return new Response(
-          JSON.stringify({ error: "Failed to fetch current data" }),
+          JSON.stringify({ error: "Failed to fetch postings" }),
           { headers: { "Content-Type": "application/json" }, status: 500 },
         );
       }
 
-      if (!data) {
+      if (!data || data.length === 0) {
         return new Response(
-          JSON.stringify({ error: "No record found for the provided ID" }),
+          JSON.stringify({ error: "No shared postingss found" }),
+          { headers: { "Content-Type": "application/json" }, status: 404 },
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ data }),
+        { headers: { "Content-Type": "application/json" }, status: 200 },
+      );
+    }
+
+    // GET: `/api_postings/info` 메서드 처리 - info
+    if (url.pathname === "/api_postings/info/popular" && req.method === "GET") {
+      console.log("Fetching postings...");
+      const { data, error } = await supabase
+        .from("postings")
+        .select("*")
+        .eq("posting_type", "info"); // posting_type이 "info"인 항목
+
+      if (error) {
+        console.error("Error fetching postings:", error);
+        return new Response(
+          JSON.stringify({ error: "Failed to fetch postings" }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
+
+      if (!data || data.length === 0) {
+        return new Response(
+          JSON.stringify({ error: "No shared postingss found" }),
           { headers: { "Content-Type": "application/json" }, status: 404 },
         );
       }
