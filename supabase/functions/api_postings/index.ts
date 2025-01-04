@@ -111,7 +111,9 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("postings")
         .select("*")
-        .eq("posting_type", "qna"); // posting_type이 "qna"인 항목
+        .eq("posting_type", "qna") // posting_type이 "qna"인 항목
+        .order("bookmark_count", { ascending: false }) // `bookmark_count` 기준 정렬
+        .limit(10); // 상위 10개 제한
 
       if (error) {
         console.error("Error fetching postings:", error);
@@ -140,7 +142,9 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("postings")
         .select("*")
-        .eq("posting_type", "info"); // posting_type이 "info"인 항목
+        .eq("posting_type", "info")
+        .order("bookmark_count", { ascending: false }) // `bookmark_count` 기준 정렬
+        .limit(10); // 상위 10개 제한
 
       if (error) {
         console.error("Error fetching postings:", error);
