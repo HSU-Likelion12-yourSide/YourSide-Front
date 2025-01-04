@@ -165,8 +165,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // -- 아래는 작업 필요 --
-
     // POST: `/api_postings` 처리
     if (url.pathname === "/api_postings" && req.method === "POST") {
       // 사용자 검증
@@ -246,6 +244,203 @@ Deno.serve(async (req) => {
         JSON.stringify({ error: "No data inserted" }),
         { headers: { "Content-Type": "application/json" }, status: 500 },
       );
+    }
+
+    // -- 아래는 작업 필요 --
+    // 북마크 관련 코드 이전
+
+    if (url.pathname === "/api_postings/bookmark" && req.method === "POST") {
+      // 사용자 검증
+      const userAuthor = await author(req, supabase);
+      if (userAuthor instanceof Response) {
+        return userAuthor;
+      }
+      const { userId } = userAuthor;
+
+      try {
+        let body;
+        try {
+          body = await req.json();
+        } catch {
+          return new Response(
+            JSON.stringify({ error: "Invalid or missing JSON body" }),
+            { headers: { "Content-Type": "application/json" }, status: 400 },
+          );
+        }
+        // 타입 필드 검증
+        // if (body.posting_type !== "qna" && body.posting_type !== "info") {
+        //   return new Response(
+        //     JSON.stringify({
+        //       error: "Invalid type value. Expected 'qna' or 'info'.",
+        //     }),
+        //     { headers: { "Content-Type": "application/json" }, status: 400 },
+        //   );
+        // }
+
+        // posting_id와 bookmark 상태 검증
+        const { posting_id, bookmark_state } = body;
+        if (!posting_id || typeof posting_id !== "number") {
+          return new Response(
+            JSON.stringify({ error: "Invalid or missing 'posting_id'." }),
+            { headers: { "Content-Type": "application/json" }, status: 400 },
+          );
+        }
+
+        if (typeof bookmark_state !== "boolean") {
+          return new Response(
+            JSON.stringify({
+              error: "Invalid 'bookmark_state' value. Must be boolean.",
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 400 },
+          );
+        }
+
+        // bookmark_count 가져오기
+        const { data: currentData, error: fetchError } = await supabase
+          .from("postings")
+          .select("bookmark_count")
+          .eq("id", posting_id)
+          .single();
+
+        console.log("Current Data:", currentData); // 여기서 currentData 값 확인
+
+        if (fetchError || !currentData) {
+          console.error("Error fetching current bookmark count:", fetchError);
+          return new Response(
+            JSON.stringify({
+              error: "Failed to fetch current bookmark count.",
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 500 },
+          );
+        }
+
+        // 북마크 상태에 따라 분기
+        if (bookmark_state) {
+          // 북마크 추가
+          const { error: insertError } = await supabase
+            .from("bookmarks")
+            .insert([{ user_id: userId, posting_id }]);
+
+          if (insertError) {
+            if (
+              insertError.message.includes(
+                "duplicate key value violates unique constraint",
+              )
+            ) {
+              return new Response(
+                JSON.stringify({ error: "Bookmark already exists." }),
+                {
+                  headers: { "Content-Type": "application/json" },
+                  status: 409,
+                },
+              );
+            }
+            console.error("Error adding bookmark:", insertError);
+            return new Response(
+              JSON.stringify({ error: "Failed to add bookmark." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          // bookmark_count 증가
+          const newCount = (currentData.bookmark_count || 0) + 1;
+          console.log("Updating bookmark_count for posting_id:", posting_id);
+          console.log("newCount Data:", newCount); // 여기서 currentData 값 확인
+
+          const { data: updatedData, error: countError } = await supabase
+            .from("postings")
+            .update({ bookmark_count: newCount })
+            .eq("id", posting_id)
+            .select("id, bookmark_count");
+
+          if (countError) {
+            console.error("Error updating bookmark count:", countError);
+            return new Response(
+              JSON.stringify({ error: "Failed to update bookmark count." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          // 업데이트 후 결과 확인
+          console.log("Updated Data:", updatedData);
+
+          if (!updatedData || updatedData.length === 0) {
+            return new Response(
+              JSON.stringify({ error: "Bookmark count update failed." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          return new Response(
+            JSON.stringify({
+              message: `Bookmark added successfully.`,
+              updatedData,
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 200 },
+          );
+        } else {
+          // 북마크 삭제
+          const { error: deleteError } = await supabase
+            .from("bookmarks")
+            .delete()
+            .eq("user_id", userId)
+            .eq("posting_id", posting_id);
+
+          if (deleteError) {
+            console.error("Error removing bookmark:", deleteError);
+            return new Response(
+              JSON.stringify({ error: "Failed to remove bookmark." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          // bookmark_count 감소
+          const newCount = Math.max(0, (currentData.bookmark_count || 0) - 1);
+          console.log("newCount Data:", newCount); // 여기서 currentData 값 확인
+          console.log("Updating bookmark_count for posting_id:", posting_id);
+          const { data: updatedData, error: countError } = await supabase
+            .from("postings")
+            .update({ bookmark_count: newCount })
+            .eq("id", posting_id)
+            .select("id, bookmark_count");
+
+          if (countError) {
+            console.error("Error updating bookmark count:", countError);
+            return new Response(
+              JSON.stringify({ error: "Failed to update bookmark count." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          // 업데이트 후 결과 확인
+          console.log("Updated Data:", updatedData);
+
+          if (!updatedData || updatedData.length === 0) {
+            return new Response(
+              JSON.stringify({ error: "Bookmark count update failed." }),
+              { headers: { "Content-Type": "application/json" }, status: 500 },
+            );
+          }
+
+          return new Response(
+            JSON.stringify({
+              message: `Bookmark added successfully.`,
+              updatedData,
+            }),
+            { headers: { "Content-Type": "application/json" }, status: 200 },
+          );
+        }
+      } catch (error) {
+        console.error("Unhandled Error:", error);
+        return new Response(
+          JSON.stringify({
+            error: error instanceof Error
+              ? error.message
+              : "Unknown error occurred.",
+          }),
+          { headers: { "Content-Type": "application/json" }, status: 500 },
+        );
+      }
     }
 
     // 지원하지 않는 메서드에 대한 처리
