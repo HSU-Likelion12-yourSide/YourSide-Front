@@ -250,7 +250,6 @@ Deno.serve(async (req) => {
     // 북마크 관련 코드 이전
 
     if (url.pathname === "/api_postings/bookmark" && req.method === "POST") {
-      // 사용자 검증
       const userAuthor = await author(req, supabase);
       if (userAuthor instanceof Response) {
         return userAuthor;
@@ -267,21 +266,11 @@ Deno.serve(async (req) => {
             { headers: { "Content-Type": "application/json" }, status: 400 },
           );
         }
-        // 타입 필드 검증
-        // if (body.posting_type !== "qna" && body.posting_type !== "info") {
-        //   return new Response(
-        //     JSON.stringify({
-        //       error: "Invalid type value. Expected 'qna' or 'info'.",
-        //     }),
-        //     { headers: { "Content-Type": "application/json" }, status: 400 },
-        //   );
-        // }
 
-        // posting_id와 bookmark 상태 검증
-        const { posting_id, bookmark_state } = body;
-        if (!posting_id || typeof posting_id !== "number") {
+        const { id, bookmark_state } = body; // 수정: posting_id -> id
+        if (!id || typeof id !== "number") {
           return new Response(
-            JSON.stringify({ error: "Invalid or missing 'posting_id'." }),
+            JSON.stringify({ error: "Invalid or missing 'id'." }), // 수정: posting_id -> id
             { headers: { "Content-Type": "application/json" }, status: 400 },
           );
         }
@@ -295,14 +284,16 @@ Deno.serve(async (req) => {
           );
         }
 
-        // bookmark_count 가져오기
+        console.log(
+          `Updating bookmark_count for id: ${id} with state: ${bookmark_state}`, // 수정: posting_id -> id
+        );
+
+        // 현재 bookmark_count 가져오기
         const { data: currentData, error: fetchError } = await supabase
           .from("postings")
           .select("bookmark_count")
-          .eq("id", posting_id)
+          .eq("id", id) // 수정: posting_id -> id
           .single();
-
-        console.log("Current Data:", currentData); // 여기서 currentData 값 확인
 
         if (fetchError || !currentData) {
           console.error("Error fetching current bookmark count:", fetchError);
@@ -314,12 +305,13 @@ Deno.serve(async (req) => {
           );
         }
 
-        // 북마크 상태에 따라 분기
+        const currentCount = currentData.bookmark_count || 0;
+
         if (bookmark_state) {
           // 북마크 추가
           const { error: insertError } = await supabase
             .from("bookmarks")
-            .insert([{ user_id: userId, posting_id }]);
+            .insert([{ user_id: userId, posting_id: id }]); // 수정: posting_id -> id
 
           if (insertError) {
             if (
@@ -343,17 +335,18 @@ Deno.serve(async (req) => {
           }
 
           // bookmark_count 증가
-          const newCount = (currentData.bookmark_count || 0) + 1;
-          console.log("Updating bookmark_count for posting_id:", posting_id);
-          console.log("newCount Data:", newCount); // 여기서 currentData 값 확인
+          const newCount = currentCount + 1;
+          console.log("Updating bookmark_count for id:", id); // 수정: posting_id -> id
+          console.log("newCount Data:", newCount);
 
           const { data: updatedData, error: countError } = await supabase
             .from("postings")
             .update({ bookmark_count: newCount })
-            .eq("id", posting_id)
-            .select("id, bookmark_count");
+            .eq("id", id) // 수정: posting_id -> id
+            .select("id, bookmark_count")
+            .maybeSingle();
 
-          if (countError) {
+          if (countError || !updatedData) {
             console.error("Error updating bookmark count:", countError);
             return new Response(
               JSON.stringify({ error: "Failed to update bookmark count." }),
@@ -361,19 +354,10 @@ Deno.serve(async (req) => {
             );
           }
 
-          // 업데이트 후 결과 확인
           console.log("Updated Data:", updatedData);
-
-          if (!updatedData || updatedData.length === 0) {
-            return new Response(
-              JSON.stringify({ error: "Bookmark count update failed." }),
-              { headers: { "Content-Type": "application/json" }, status: 500 },
-            );
-          }
-
           return new Response(
             JSON.stringify({
-              message: `Bookmark added successfully.`,
+              message: "Bookmark added successfully.",
               updatedData,
             }),
             { headers: { "Content-Type": "application/json" }, status: 200 },
@@ -384,7 +368,7 @@ Deno.serve(async (req) => {
             .from("bookmarks")
             .delete()
             .eq("user_id", userId)
-            .eq("posting_id", posting_id);
+            .eq("posting_id", id); // 수정: posting_id -> id
 
           if (deleteError) {
             console.error("Error removing bookmark:", deleteError);
@@ -395,16 +379,18 @@ Deno.serve(async (req) => {
           }
 
           // bookmark_count 감소
-          const newCount = Math.max(0, (currentData.bookmark_count || 0) - 1);
-          console.log("newCount Data:", newCount); // 여기서 currentData 값 확인
-          console.log("Updating bookmark_count for posting_id:", posting_id);
+          const newCount = Math.max(0, currentCount - 1);
+          console.log("Updating bookmark_count for id:", id); // 수정: posting_id -> id
+          console.log("newCount Data:", newCount);
+
           const { data: updatedData, error: countError } = await supabase
             .from("postings")
             .update({ bookmark_count: newCount })
-            .eq("id", posting_id)
-            .select("id, bookmark_count");
+            .eq("id", id) // 수정: posting_id -> id
+            .select("id, bookmark_count")
+            .maybeSingle();
 
-          if (countError) {
+          if (countError || !updatedData) {
             console.error("Error updating bookmark count:", countError);
             return new Response(
               JSON.stringify({ error: "Failed to update bookmark count." }),
@@ -412,19 +398,10 @@ Deno.serve(async (req) => {
             );
           }
 
-          // 업데이트 후 결과 확인
           console.log("Updated Data:", updatedData);
-
-          if (!updatedData || updatedData.length === 0) {
-            return new Response(
-              JSON.stringify({ error: "Bookmark count update failed." }),
-              { headers: { "Content-Type": "application/json" }, status: 500 },
-            );
-          }
-
           return new Response(
             JSON.stringify({
-              message: `Bookmark added successfully.`,
+              message: "Bookmark removed successfully.",
               updatedData,
             }),
             { headers: { "Content-Type": "application/json" }, status: 200 },
