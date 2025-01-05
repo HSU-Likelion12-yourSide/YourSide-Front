@@ -27,7 +27,7 @@ Deno.serve(async (req) => {
 
   try {
     // GET: `/api_postings` 메서드 처리 - 전체
-    if (url.pathname === "/api_postings" && req.method === "GET") {
+    if (url.pathname === "/api_postings/list" && req.method === "GET") {
       console.log("Fetching postings...");
       const { data, error } = await supabase.from("postings").select("*");
 
@@ -173,7 +173,7 @@ Deno.serve(async (req) => {
         return userAuthor;
       }
       const { userId } = userAuthor;
-
+      // console.log("Authenticated User ID:", userId);
       let body;
       try {
         body = await req.json();
@@ -206,7 +206,8 @@ Deno.serve(async (req) => {
         );
       }
       const postingType = body.posting_type; // 유효한 값이면 그대로 사용
-
+      // console.log("Authenticated User ID:", userId);
+      // console.log("Body Data:", body);
       const { data: insertData, error: insertError } = await supabase
         .from("postings")
         .insert([
@@ -216,13 +217,14 @@ Deno.serve(async (req) => {
             worksheet_id: body.worksheet_id,
             title: body.title,
             content: body.content,
-            bookmark_count: body.bookmark_count, //qna:네편 답변, info: 네편 정보
+            bookmark_count: body.bookmark_count || 0,
           },
         ])
         .select("*");
 
       if (insertError) {
         console.error("Error inserting into postings:", insertError);
+        // console.log(userAuthor);
         return new Response(
           JSON.stringify({ error: "Failed to insert data into postings" }),
           { headers: { "Content-Type": "application/json" }, status: 500 },
@@ -233,6 +235,7 @@ Deno.serve(async (req) => {
         return new Response(
           JSON.stringify({
             status: 201,
+            // userAuthor,
             insertedData: insertData[0],
             message: "postings data successfully inserted.",
           }),
@@ -245,9 +248,6 @@ Deno.serve(async (req) => {
         { headers: { "Content-Type": "application/json" }, status: 500 },
       );
     }
-
-    // -- 아래는 작업 필요 --
-    // 북마크 관련 코드 이전
 
     if (url.pathname === "/api_postings/bookmark" && req.method === "POST") {
       const userAuthor = await author(req, supabase);
@@ -311,7 +311,10 @@ Deno.serve(async (req) => {
           // 북마크 추가
           const { error: insertError } = await supabase
             .from("bookmarks")
-            .insert([{ user_id: userId, posting_id: id }]); // 수정: posting_id -> id
+            .insert([{
+              user_id: userId,
+              posting_id: id,
+            }]); // 수정: posting_id -> id
 
           if (insertError) {
             if (
