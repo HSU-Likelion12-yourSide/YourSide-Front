@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ContextProviderState">ContextProviderState</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#ModalResult">ModalResult</a></li><li><a href="global.html#fetchAPI">fetchAPI</a></li><li><a href="global.html#modalStateController">modalStateController</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li><li><a href="global.html#useGlobalState">useGlobalState</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ContextProviderState">ContextProviderState</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#ModalResult">ModalResult</a></li><li><a href="global.html#fetchAPI">fetchAPI</a></li><li><a href="global.html#generateResultContent">generateResultContent</a></li><li><a href="global.html#modalStateController">modalStateController</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li><li><a href="global.html#useGlobalState">useGlobalState</a></li></ul>
     
 </nav>
 
@@ -1655,6 +1655,205 @@
 
     
 
+    <h4 class="name" id="generateResultContent"><span class="type-signature"></span>generateResultContent<span class="signature">(isData, isUserName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>이 함수는 근로 결과지에 대한 api 데이터를 받아 근로 결과지 화면의 글씨 데이터를 생성합니다.<br>근로 결과지에 대한 데이터는 사용자 이름, 가산 수당 발생 여부, 주휴 수당 발생 여부, 야간 수당 발생 여부, 연장 근로 수당 발생 여부, 휴일 근로 수당 발생 여부, 4대보험 및 소득세 적용 여부, 총 급여입니다.각 데이터의 true or false/시간/금액에 따라 해당하는 문구를 생성합니다. <br>자세한 예시는 아래를 참고해주세요.</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:2001_11_7@naver.com">윤예진 | nyun-nye</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/84">https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/84</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// 이 부분은 원래 받아온 api 데이터를 사용하는 부분이지만, 테스트를 위해 데이터를 직접 입력하였습니다.const data = { over_five: true, week_pay: false, week_work: 14, night_pay: false, night_work: 0, overtime_pay: false, overtime_work: 0, holiday_pay: false, holiday_work: 0, major_insurance: true, income_tax: true, total_pay: 800000,};const userName = '코카콜라';const result = generateResultContent(data, userName);console.log(result);// 위 데이터에 대한 반환값(result 값)은 다음과 같습니다.// '상시 5인 이상 사업장에서 근무하시므로 추가적인 가산 수당이 발생합니다.'// '주 근로 시간이 14시간으로 주휴수당이 발생하지 않습니다.'// '한 주 동안 야간 근로시간이 0시간이므로 야간근로수당 0원이 발생합니다.'// '한 주 동안 연장 근로시간이 0시간이므로 연장근로수당 0원이 발생합니다.'// '취업 규칙 에서 정한 약정 휴일에 0시간 근무하므로 휴일근로수당 0원이 발생합니다.'// '4대보험 9.32% 가 적용됩니다.'// '소득세 3.3%가 적용됩니다.'// '따라서, 코카콜라 님의 월급은 800,000 원 입니다.'</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">api 데이터로 받아온 결과 데이터 객체입니다. 객체 내부에는 가산 수당 발생 여부, 주휴 수당 발생 여부, 야간 수당 발생 여부, 연장 근로 수당 발생 여부, 휴일 근로 수당 발생 여부, 4대보험 및 소득세 적용 여부, 총 급여가 있습니다.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isUserName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로 결과지 생성에 필요한 사용자 이름을 문자열로 받아옵니다.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    결과 화면의 글씨 데이터를 반환합니다.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="modalStateController"><span class="type-signature"></span>modalStateController<span class="signature">(isModalState, setModalState)</span><span class="type-signature"></span></h4>
 
     
@@ -2398,7 +2597,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Dec 02 2024 22:48:04 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri Jan 10 2025 12:47:59 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
