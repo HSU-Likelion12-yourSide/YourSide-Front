@@ -19,7 +19,8 @@
       "src/Global/components/Modal.components.jsx",
       "src/Global/components/ModalType/ModalResult.components.jsx",
       "src/Global/function/modalStateController.js",
-      "src/Page/WorkArrangement/function/generateResultContent.js"
+      "src/Page/WorkArrangement/function/generateResultContent.js",
+      "src/Global/components/VmwrResult.component.jsx"
     ],
     "excludePattern": "(^|\\/|\\\\)node_modules"
   },
