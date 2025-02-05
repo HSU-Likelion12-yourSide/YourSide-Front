@@ -1,0 +1,8 @@
+{
+  "name": "YourSide-Front",
+  "packageManager": "yarn@4.2.2",
+  "dependencies": {
+    "react": "18",
+    "react-dom": "18"
+  }
+}
