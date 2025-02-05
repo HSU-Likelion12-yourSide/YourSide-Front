@@ -6,8 +6,11 @@ import '../css/VmwrResult.component.scss';
 // import data from '../temp/data/vmwrResult.data';
 import useFetchAPI from '../API/Hooks/useFetchAPI';
 /**
- * VmwrResult 컴포넌트
- * API로부터 받은 근로 결과 데이터를 렌더링하는 컴포넌트입니다.
+ * @description
+ * API로부터 받은 근로 결과 데이터를 렌더링하는 VmwrResult 컴포넌트입니다.
+ * @version 1.0.0
+ * @author 윤예진 | nyun-nye <2001_11_7@naver.com>
+ * @see {@link https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/51}
  *
  * @component
  * @param {Object} props - 컴포넌트에 전달되는 props
@@ -23,7 +26,9 @@ import useFetchAPI from '../API/Hooks/useFetchAPI';
  * @param {boolean} props.data[].data.overtimePay - 연장 근로 수당 여부
  * @param {boolean} props.data[].data.holidayPay - 휴일 근로 수당 여부
  * @param {string} props.data[].message - 결과 메시지
- * @returns {JSX.Element} VmwrResult 컴포넌트
+ * @returns {JSX.Element} VmwrResult 컴포넌트를 반환합니다.
+ * @example
+ * return <VmwrResult data={data} />;
  */
 
 const VmwrResult = ({ workSheetId, postData, onResultValues }) => {

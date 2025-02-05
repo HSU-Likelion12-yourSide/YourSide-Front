@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ContextProviderState">ContextProviderState</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#ModalResult">ModalResult</a></li><li><a href="global.html#fetchAPI">fetchAPI</a></li><li><a href="global.html#modalStateController">modalStateController</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li><li><a href="global.html#useGlobalState">useGlobalState</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ContextProviderState">ContextProviderState</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#ModalResult">ModalResult</a></li><li><a href="global.html#VmwrResult">VmwrResult</a></li><li><a href="global.html#fetchAPI">fetchAPI</a></li><li><a href="global.html#generateResultContent">generateResultContent</a></li><li><a href="global.html#modalStateController">modalStateController</a></li><li><a href="global.html#useFetchAPI">useFetchAPI</a></li><li><a href="global.html#useGlobalState">useGlobalState</a></li></ul>
     
 </nav>
 
@@ -445,7 +445,8 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>// useGlobalState에서의 사용 예시입니다.const context = useContext(StateContext);</code></pre>
+    <pre class="prettyprint"><code>// useGlobalState에서의 사용 예시입니다.
+const context = useContext(StateContext);</code></pre>
 
 
 
@@ -605,7 +606,9 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>이 컴포넌트는 전역 상태를 관리하며 모달 창을 열고 닫는 기능을 제공한다.사용자가 클릭하여 모달을 닫거나 특정 `ModalType`을 렌더링할 수 있다.`isOpen` 상태를 기반으로 모달을 렌더링하며, 모달이 열릴 때 스크롤 비활성화 기능을 제공한다.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>이 컴포넌트는 전역 상태를 관리하며 모달 창을 열고 닫는 기능을 제공한다.
+사용자가 클릭하여 모달을 닫거나 특정 `ModalType`을 렌더링할 수 있다.
+`isOpen` 상태를 기반으로 모달을 렌더링하며, 모달이 열릴 때 스크롤 비활성화 기능을 제공한다.</li></ul></dd>
     
 
     
@@ -670,7 +673,26 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>// 기본 사용법import Modal from './Modal';const App = () => {  const [isOpen, setIsOpen] = useState(false);  const toggleModal = () => setIsOpen(!isOpen);  return (    &lt;div>      &lt;button onClick={toggleModal}>Open Modal&lt;/button>      &lt;Modal        isOpen={isOpen}        ModalType={MyModalComponent}        postData={{ data: { content: { holidayPayMessage: '내용' } } }}  // post 되는 데이터가 있을 경우 사용        postContent="모달 내용"  // ModalType 중에 postContent가 필요한 경우 상요 `ModalResult.components.tsx`가 대표적이다.      />    &lt;/div>  );};</code></pre>
+    <pre class="prettyprint"><code>// 기본 사용법
+import Modal from './Modal';
+
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => setIsOpen(!isOpen);
+
+  return (
+    &lt;div>
+      &lt;button onClick={toggleModal}>Open Modal&lt;/button>
+      &lt;Modal
+        isOpen={isOpen}
+        ModalType={MyModalComponent}
+        postData={{ data: { content: { holidayPayMessage: '내용' } } }}  // post 되는 데이터가 있을 경우 사용
+        postContent="모달 내용"  // ModalType 중에 postContent가 필요한 경우 상요 `ModalResult.components.tsx`가 대표적이다.
+      />
+    &lt;/div>
+  );
+};</code></pre>
 
 
 
@@ -943,7 +965,12 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>이 컴포넌트는 결과지 이름을 입력받고 저장하기 버튼 클릭 시 POST 요청을 통해 데이터를 서버로 전송한다.데이터 전송 후 성공적으로 처리되면 부모 컴포넌트의 상태를 변경하여 모달 상태를 업데이트한다.<br><b style="color:tomato;">주의 사항</b><br> - `postData`와 `postContent`는 필수 props이며 올바르게 제공되어야 한다.<br> - `postData`의 필드는 명시된 타입에 맞아야 한다.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>이 컴포넌트는 결과지 이름을 입력받고 저장하기 버튼 클릭 시 POST 요청을 통해 데이터를 서버로 전송한다.
+데이터 전송 후 성공적으로 처리되면 부모 컴포넌트의 상태를 변경하여 모달 상태를 업데이트한다.
+<br>
+<b style="color:tomato;">주의 사항</b>
+<br> - `postData`와 `postContent`는 필수 props이며 올바르게 제공되어야 한다.
+<br> - `postData`의 필드는 명시된 타입에 맞아야 한다.</li></ul></dd>
     
 
     
@@ -1008,7 +1035,17 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>&lt;ModalResult  postData={{    total_pay: 5000000,    extra_pay: true,    week_pay: true,    night_pay: false,    overtime_pay: true,    holiday_pay: false,  }}  postContent="근로 결과지에 관한 내용"/></code></pre>
+    <pre class="prettyprint"><code>&lt;ModalResult
+  postData={{
+    total_pay: 5000000,
+    extra_pay: true,
+    week_pay: true,
+    night_pay: false,
+    overtime_pay: true,
+    holiday_pay: false,
+  }}
+  postContent="근로 결과지에 관한 내용"
+/></code></pre>
 
 
 
@@ -1352,6 +1389,521 @@
 
     
 
+    <h4 class="name" id="VmwrResult"><span class="type-signature"></span>VmwrResult<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>API로부터 받은 근로 결과 데이터를 렌더링하는 VmwrResult 컴포넌트입니다.</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:2001_11_7@naver.com">윤예진 | nyun-nye</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/51">https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/51</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>return &lt;VmwrResult data={data} />;</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">컴포넌트에 전달되는 props
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로 결과 데이터 배열
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로 결과 데이터 객체</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">HTTP 상태 코드 (예: 200, 404)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.nickname</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로자 닉네임</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로지 이름</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">결과지 설명</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.extraPay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">가산수당 여부</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.weekPay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">주휴수당 여부</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.nightPay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">야간 근로 수당 여부</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.overtimePay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">연장 근로 수당 여부</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data.holidayPay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">휴일 근로 수당 여부</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">결과 메시지</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    VmwrResult 컴포넌트를 반환합니다.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="fetchAPI"><span class="type-signature"></span>fetchAPI<span class="signature">(baseURL<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {AxiosInstance}</span></h4>
 
     
@@ -1362,7 +1914,12 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>이 함수는 기본 API URL을 설정하고, timeout 및 기본 header와 같은 공통 설정이 포함된 Axios instance를 생성하여 반환한다.`.env` 파일에서 환경 변수 `REACT_APP_API_URL` 값을 가져와 기본 URL로 설정하며 별도로 전달된 `baseURL` 값을 사용할 수도 있다.<br><span style="color: tomato;">참고로 하단 property는 axios.create의 속성이므로 착오 없이 fetch.instance.js 함수와는 무관함을 인지해야 한다.</span></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>이 함수는 기본 API URL을 설정하고, timeout 및 기본 header와 같은 공통 설정이 포함된 Axios instance를 생성하여 반환한다.
+`.env` 파일에서 환경 변수 `REACT_APP_API_URL` 값을 가져와 기본 URL로 설정하며 별도로 전달된 `baseURL` 값을 사용할 수도 있다.
+<br>
+<span style="color: tomato;">
+참고로 하단 property는 axios.create의 속성이므로 착오 없이 fetch.instance.js 함수와는 무관함을 인지해야 한다.
+</span></li></ul></dd>
     
 
     
@@ -1535,7 +2092,21 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>// 기본 URL을 사용하여 Axios 인스턴스 생성// useFetchAPI 참조const api = fetchAPI();// 사용자 지정 baseURL을 사용하여 Axios 인스턴스 생성const customAPI = fetchAPI('https://custom-api.example.com');// API 요청 예시api.get('/endpoint')  .then(response => {    console.log('Response data:', response.data);  })  .catch(error => {    console.error('Error:', error);  });</code></pre>
+    <pre class="prettyprint"><code>// 기본 URL을 사용하여 Axios 인스턴스 생성
+// useFetchAPI 참조
+const api = fetchAPI();
+
+// 사용자 지정 baseURL을 사용하여 Axios 인스턴스 생성
+const customAPI = fetchAPI('https://custom-api.example.com');
+
+// API 요청 예시
+api.get('/endpoint')
+  .then(response => {
+    console.log('Response data:', response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });</code></pre>
 
 
 
@@ -1655,6 +2226,237 @@
 
     
 
+    <h4 class="name" id="generateResultContent"><span class="type-signature"></span>generateResultContent<span class="signature">(isData, isUserName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>이 함수는 근로 결과지에 대한 api 데이터를 받아 근로 결과지 화면의 글씨 데이터를 생성합니다.
+<br>
+근로 결과지에 대한 데이터는 사용자 이름, 가산 수당 발생 여부, 주휴 수당 발생 여부, 야간 수당 발생 여부, 연장 근로 수당 발생 여부, 휴일 근로 수당 발생 여부, 4대보험 및 소득세 적용 여부, 총 급여입니다.
+각 데이터의 true or false/시간/금액에 따라 해당하는 문구를 생성합니다. 
+<br>
+자세한 예시는 아래를 참고해주세요.</li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:2001_11_7@naver.com">윤예진 | nyun-nye</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/84">https://github.com/HSU-Likelion12-yourSide/YourSide-Front/pull/84</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// 이 부분은 원래 받아온 api 데이터를 사용하는 부분이지만, 테스트를 위해 데이터를 직접 입력하였습니다.
+const data = {
+ over_five: true,
+ week_pay: false,
+ week_work: 14,
+ night_pay: false,
+ night_work: 0,
+ overtime_pay: false,
+ overtime_work: 0,
+ holiday_pay: false,
+ holiday_work: 0,
+ major_insurance: true,
+ income_tax: true,
+ total_pay: 800000,
+};
+const userName = '코카콜라';
+const result = generateResultContent(data, userName);
+console.log(result);
+
+// 위 데이터에 대한 반환값(result 값)은 다음과 같습니다.
+// '상시 5인 이상 사업장에서 근무하시므로 추가적인 가산 수당이 발생합니다.'
+// '주 근로 시간이 14시간으로 주휴수당이 발생하지 않습니다.'
+// '한 주 동안 야간 근로시간이 0시간이므로 야간근로수당 0원이 발생합니다.'
+// '한 주 동안 연장 근로시간이 0시간이므로 연장근로수당 0원이 발생합니다.'
+// '취업 규칙 에서 정한 약정 휴일에 0시간 근무하므로 휴일근로수당 0원이 발생합니다.'
+// '4대보험 9.32% 가 적용됩니다.'
+// '소득세 3.3%가 적용됩니다.'
+// '따라서, 코카콜라 님의 월급은 800,000 원 입니다.'</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">api 데이터로 받아온 결과 데이터 객체입니다. 객체 내부에는 가산 수당 발생 여부, 주휴 수당 발생 여부, 야간 수당 발생 여부, 연장 근로 수당 발생 여부, 휴일 근로 수당 발생 여부, 4대보험 및 소득세 적용 여부, 총 급여가 있습니다.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isUserName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">근로 결과지 생성에 필요한 사용자 이름을 문자열로 받아옵니다.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    결과 화면의 글씨 데이터를 반환합니다.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="modalStateController"><span class="type-signature"></span>modalStateController<span class="signature">(isModalState, setModalState)</span><span class="type-signature"></span></h4>
 
     
@@ -1665,7 +2467,14 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>모달 상태를 반전시키는 함수이다. 해당 함수를 문서화 한 이유는 Modal Component의 props로 존재하는 isOpen을 Component를 사용할 때 지속적으로 상기시키기 위해서 였다.이 함수는 React의 `useState`를 통해 관리되는 상태 값을 받아 해당 값을 반전(`true` ↔ `false`)시킨다.특정 컴포넌트의 모달 상태를 제어하기 위해 사용된니다.<br><b style="color:tomato;">주의 사항</b><br> - 이 함수는 상태와 상태 변경 함수를 직접 받아야 동작한다.<br> - 상태와 상태 변경 함수(`useState`)는 해당 컴포넌트 혹은 부모로부터 전달되어야 한다.<br> - 자식 컴포넌트가 부모 컴포넌트의 상태를 직접 제어하려면 부모로부터 상태 변경 함수를 `props`로 전달받아야 한다.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>모달 상태를 반전시키는 함수이다. 해당 함수를 문서화 한 이유는 Modal Component의 props로 존재하는 isOpen을 Component를 사용할 때 지속적으로 상기시키기 위해서 였다.
+이 함수는 React의 `useState`를 통해 관리되는 상태 값을 받아 해당 값을 반전(`true` ↔ `false`)시킨다.
+특정 컴포넌트의 모달 상태를 제어하기 위해 사용된니다.
+<br>
+<b style="color:tomato;">주의 사항</b>
+<br> - 이 함수는 상태와 상태 변경 함수를 직접 받아야 동작한다.
+<br> - 상태와 상태 변경 함수(`useState`)는 해당 컴포넌트 혹은 부모로부터 전달되어야 한다.
+<br> - 자식 컴포넌트가 부모 컴포넌트의 상태를 직접 제어하려면 부모로부터 상태 변경 함수를 `props`로 전달받아야 한다.</li></ul></dd>
     
 
     
@@ -1730,9 +2539,17 @@
 
     <h5 class="h5-examples">Examples</h5>
     
-    <pre class="prettyprint"><code>//사용 예시const [isModalOpen, setModalOpen] = useState(false);// 상태를 반전시키기modalStateController(isModalOpen, setModalOpen);</code></pre>
+    <pre class="prettyprint"><code>//사용 예시
+const [isModalOpen, setModalOpen] = useState(false);
 
-    <pre class="prettyprint"><code>// 부모 상태를 자식에서 제어하는 예시const ParentComponent = () => {  const [isModalOpen, setModalOpen] = useState(false);  return &lt;ChildComponent isModalState={isModalOpen} setModalState={setModalOpen} />;};</code></pre>
+// 상태를 반전시키기
+modalStateController(isModalOpen, setModalOpen);</code></pre>
+
+    <pre class="prettyprint"><code>// 부모 상태를 자식에서 제어하는 예시
+const ParentComponent = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  return &lt;ChildComponent isModalState={isModalOpen} setModalState={setModalOpen} />;
+};</code></pre>
 
 
 
@@ -2043,7 +2860,26 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>// post 요청 시에만 객체 key, value로 설정const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' });const [isContent, setContent] = useState();useEffect(() => {   if (isLoading) {     console.log('..is Loading');     setContent('Loading...');   } else if (isError) {     console.log(`is Error : `, isError);     setContent(`Error: `, isError);   } else if (isData &amp;&amp; isData.data) {     console.log(`Success Contact : `, isData);     setContent(isData.data);   } else {     setContent(null);   } }, [isLoading, isError, isData]);setUrl('/api/new-data'); // 요청 URL 업데이트</code></pre>
+    <pre class="prettyprint"><code>// post 요청 시에만 객체 key, value로 설정
+const { isData, isLoading, isError, setUrl } = useFetchAPI('/api/data', 'GET', { key: 'value' });
+const [isContent, setContent] = useState();
+
+useEffect(() => {
+   if (isLoading) {
+     console.log('..is Loading');
+     setContent('Loading...');
+   } else if (isError) {
+     console.log(`is Error : `, isError);
+     setContent(`Error: `, isError);
+   } else if (isData &amp;&amp; isData.data) {
+     console.log(`Success Contact : `, isData);
+     setContent(isData.data);
+   } else {
+     setContent(null);
+   }
+ }, [isLoading, isError, isData]);
+
+setUrl('/api/new-data'); // 요청 URL 업데이트</code></pre>
 
 
 
@@ -2261,7 +3097,9 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>`ContextProviderState`에서 제공하는 상태 갑과 상태 변경 함수를 반환하는 커스텀 훅입니다. 반환된 객체를 통해 컴포넌트에서 전역 상태를 쉽게 읽고 업데이트할 수 있습니다.<br/><span style="color: tomato;">context가 정의되지 않았을 경우 에러를 발생시킵니다. (ContextProviderState 외부에서 사용되는 경우)</span></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>`ContextProviderState`에서 제공하는 상태 갑과 상태 변경 함수를 반환하는 커스텀 훅입니다. 반환된 객체를 통해 컴포넌트에서 전역 상태를 쉽게 읽고 업데이트할 수 있습니다.
+<br/>
+<span style="color: tomato;">context가 정의되지 않았을 경우 에러를 발생시킵니다. (ContextProviderState 외부에서 사용되는 경우)</span></li></ul></dd>
     
 
     
@@ -2333,7 +3171,16 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>// 사용할 상태 변수와 상태 변경 함수 기입const { isState, setState } = useGlobalState();setState();// isState, setState 사용 예시const handleClick = value => { setState(value); setNum(prev => prev + 1); return console.log('in the !handleClick-Fn', isState); };</code></pre>
+    <pre class="prettyprint"><code>// 사용할 상태 변수와 상태 변경 함수 기입
+const { isState, setState } = useGlobalState();
+setState();
+
+// isState, setState 사용 예시
+const handleClick = value => {
+ setState(value);
+ setNum(prev => prev + 1);
+ return console.log('in the !handleClick-Fn', isState);
+ };</code></pre>
 
 
 
@@ -2398,7 +3245,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Dec 02 2024 22:48:04 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Sat Jan 11 2025 15:55:49 GMT+0900 (대한민국 표준시) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
