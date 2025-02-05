@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // default TypeScript setup
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "module": "ESNext",
+    "jsx": "react-jsx",
+
+    // Bundler mode setup
+    "moduleResolution": "bundler",
+    "noEmit": true,
+
+    // Linting setup
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src", "src/global.d.ts"]
+}
