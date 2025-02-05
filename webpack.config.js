@@ -23,8 +23,15 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
+        // use: {
+        //   loader: "babel-loader",
+        // },
         use: {
-          loader: "babel-loader",
+          loader: "esbuild-loader",
+          options: {
+            loader: "tsx",
+            target: "esnext",
+          },
         },
       },
       {
