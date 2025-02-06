@@ -6,14 +6,14 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.tsx",
+  entry: "./client/src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "public"),
+      directory: path.resolve(__dirname, "./client/public"),
     },
     port: 3000,
     hot: true,
@@ -68,11 +68,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: "./client/index.html",
       // minify: false,
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "public", to: "" }],
+      patterns: [{ from: "./client/public", to: "" }],
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
