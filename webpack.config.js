@@ -47,7 +47,19 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ["svgo-loader"],
+        use: [
+          {
+            loader: "svgo-loader",
+            options: {
+              plugins: [
+                {
+                  name: "removeViewBox",
+                  active: false,
+                },
+              ],
+            },
+          },
+        ],
       },
     ],
   },
