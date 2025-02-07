@@ -1,3 +1,3 @@
-const clientConfig = require("./client/webpack.client.js");
+const clientConfig = require("./web/webpack.client.js");
 
 module.exports = clientConfig;
