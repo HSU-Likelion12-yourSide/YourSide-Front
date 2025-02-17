@@ -7,18 +7,19 @@ const PORT = process.env.PORT || 9999;
 
 app.use(express.static("dist/client")); // 정적 파일 제공
 
-// ✅ Webpack으로 빌드된 `entry-server.js`를 CommonJS 방식으로 가져오기
+// ✅ Webpack으로 빌드된 `entry-server.js`를 가져오기 (CommonJS 방식)
 const { render } = require("../dist/server/entry-server.js");
 
 app.get("*", (req, res) => {
   res.setHeader("Content-Type", "text/html");
 
-  const manifest = JSON.parse(
-    fs.readFileSync(
-      path.resolve(__dirname, "dist/client/manifest.json"),
-      "utf8"
-    )
-  );
+  // ✅ `index.html` 읽기
+  const indexHtmlPath = path.resolve(__dirname, "../dist/client/index.html");
+  let indexHtml = fs.readFileSync(indexHtmlPath, "utf8");
+
+  // ✅ manifest.json을 읽어 CSS와 JS 추가
+  const manifestPath = path.resolve(__dirname, "../dist/client/manifest.json");
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 
   const scripts = Object.keys(manifest)
     .filter((key) => key.endsWith(".js"))
@@ -32,28 +33,26 @@ app.get("*", (req, res) => {
     )
     .join("\n");
 
-  res.write(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>React SSR</title>
-        ${styles}
-    </head>
-    <body>
-        <div id="root">
-  `);
-
+  // ✅ SSR 렌더링
   const { pipe } = render(req.url);
-  pipe(res);
+  let ssrHtml = "";
 
-  res.write(`
-        </div>
-        ${scripts}
-    </body>
-    </html>
-  `);
+  pipe({
+    write(chunk) {
+      ssrHtml += chunk.toString();
+    },
+    end() {
+      // ✅ `<!--app-html-->` 부분을 SSR 결과로 대체
+      indexHtml = indexHtml.replace("<!--app-html-->", ssrHtml);
+      // ✅ `<!--app-head-->` 부분을 styles로 대체 (JS는 body에 남김)
+      indexHtml = indexHtml.replace("<!--app-head-->", styles);
+      // ✅ 스크립트는 body 끝부분에 추가
+      indexHtml = indexHtml.replace("</body>", `${scripts}</body>`);
+
+      // ✅ 최종 HTML 전송
+      res.status(200).send(indexHtml);
+    },
+  });
 });
 
 app.listen(PORT, () => {
