@@ -3,14 +3,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const { jsx } = require("react/jsx-runtime");
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, "src", "index.tsx"),
+  entry: path.resolve(__dirname, "src", "entry-client.tsx"),
   output: {
-    path: path.resolve(__dirname, "../dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, "../dist/client"),
+    filename: "entry-client.js",
     // library: "React",
   },
   devServer: {
@@ -81,6 +82,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
+    }),
+    new WebpackManifestPlugin({
+      fileName: "manifest.json",
+      publicPath: "/",
     }),
     new CleanWebpackPlugin(),
   ],

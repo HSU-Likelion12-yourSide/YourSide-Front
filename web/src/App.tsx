@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 // import logo from "./dev/img/logo192.png";
 import check from "./dev/img/modal-check.svg";
 
 const App = () => {
+  const [isHydration, setHydration] = useState(false);
+
+  useEffect(() => {
+    setHydration(true);
+  }, []);
+
+  if (!isHydration) {
+    return null;
+  }
+
   return (
     <div id="title">
       <h1>Hello, Webpack with React!</h1>
