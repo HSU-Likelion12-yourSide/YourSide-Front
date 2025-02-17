@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 9999;
 
-app.use(express.static("dist/client")); // 정적 파일 제공
+app.use(express.static("dist/client")); // 정적 파일 제공 -> 해당 부분으로 개발자 도구 상에서 CSR과 같은 모습이 보이는 것을 판단된다.
 
 // ✅ Webpack으로 빌드된 `entry-server.js`를 가져오기 (CommonJS 방식)
 const { render } = require("../dist/server/entry-server.js");
