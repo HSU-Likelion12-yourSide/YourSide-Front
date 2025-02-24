@@ -9,6 +9,15 @@ module.exports = {
     filename: "server.js",
     path: path.resolve(__dirname, "dist"),
   },
+  externals: [
+    nodeExternals(),
+    ({ request }, callback) => {
+      if (/\.(css|png|jpe?g|gif|svg)$/.test(request)) {
+        return callback(null, "commonjs " + request); // ✅ CSS 및 정적 파일을 Node.js에서 무시하도록 설정
+      }
+      callback();
+    },
+  ],
   module: {
     rules: [
       {
@@ -24,6 +33,10 @@ module.exports = {
         // options: {
         //   presets: ["@babel/preset-env", "@babel/preset-react"],
         // },
+      },
+      {
+        test: /\.css$/, // ✅ 서버에서 CSS를 무시하도록 처리
+        loader: "null-loader",
       },
     ],
   },

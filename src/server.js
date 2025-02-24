@@ -9,9 +9,14 @@ app.use(express.static("public"));
 app.get("*", (req, res) => {
   const html = ReactDOMServer.renderToString(<App />);
   const template = `
-  <html>
+  <!DOCTYPE html>
+  <html lang="en">
     <head>
-      <title>SSR React APP</title>
+      <meta charset="UTF-8" />
+      <link rel="icon" href="./favicon.ico" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/styles.css" />
+      <title>yourSide</title>
     </head>
 
     <body>
