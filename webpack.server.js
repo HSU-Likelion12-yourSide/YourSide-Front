@@ -13,11 +13,17 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: "esbuild-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
+          loader: "jsx", // JSX 문법을 사용하는 경우 "jsx", 아니면 "js"로 설정
+          target: "es2015", // 변환할 ECMAScript 버전 지정
         },
+        // loader: "babel-loader",
+        // exclude: /node_modules/,
+        // options: {
+        //   presets: ["@babel/preset-env", "@babel/preset-react"],
+        // },
       },
     ],
   },
